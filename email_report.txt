@@ -1,0 +1,53 @@
+-----------
+select
+  om.dat ,om.id, 
+  (select fullname from objects  o where o.oid=om.id_izg) as izg,
+  (select fullname from objects  o where o.oid=om.id_zak) as zak,
+  om.nds,
+  ot.id_pos,
+  (select fullname from objects  o where o.oid=ot.id_tovar) as tovar,
+  ot.cena,ot.kolotp
+from naklot ot inner join naklo om
+  on ot.id_nakl=om.id_nakl
+where  om.dat between '01.12.08' and '31.12.08'
+  and om.tip=3047
+  and om.delmarked=0
+  and om.id_izg=1264
+  and om.id_zak=21458
+order by om.dat, om.id,ot.id_pos
+
+select
+  om.dat ,om.id,
+  (select fullname from objects  o where o.oid=om.id_izg) as izg,
+  (select fullname from objects  o where o.oid=om.id_zak) as zak,
+  (select k.ipn from klient  k where k.id=om.id_zak) as zak_ipn,
+  (select k.okpo from klient  k where k.id=om.id_zak) as zak_okpo,
+  om.nds,
+  ot.id_pos,
+  (select fullname from objects  o where o.oid=ot.id_tovar) as tovar,
+  ot.cena,ot.kolotp
+from naklot ot inner join naklo om
+  on ot.id_nakl=om.id_nakl
+where  om.dat between '01.12.08' and '31.12.08'
+  and om.tip =3047
+  and om.delmarked=0
+  and om.id_izg=21458
+order by om.dat, om.id,ot.id_pos
+
+select
+  om.dat ,om.id,
+  (select fullname from objects  o where o.oid=om.id_izg) as izg,
+  (select fullname from objects  o where o.oid=om.id_zak) as zak,
+  om.nds,
+  ot.id_pos,
+  (select fullname from objects  o where o.oid=ot.id_tovar) as tovar,
+  ot.cena,ot.kolotp
+from naklot ot inner join naklo om
+  on ot.id_nakl=om.id_nakl
+where  om.dat between '01.11.08' and '30.11.08'
+  and om.tip=8896
+  and om.delmarked=0
+  and om.id_zak=1264
+  and om.id_izg=21458
+order by om.dat, om.id,om.id_nakl, ot.id_pos
+

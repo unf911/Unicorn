@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<DECLAR xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="J1201501.xsd">
+	<DECLARHEAD>
+		<TIN>31595602</TIN>
+		<C_DOC>J12</C_DOC>
+		<C_DOC_SUB>015</C_DOC_SUB>
+		<C_DOC_VER>1</C_DOC_VER>
+		<C_DOC_TYPE>0</C_DOC_TYPE>
+		<C_DOC_CNT>1</C_DOC_CNT>
+		<C_REG>15</C_REG>
+		<C_RAJ>52</C_RAJ>
+		<PERIOD_MONTH>8</PERIOD_MONTH>
+		<PERIOD_TYPE>1</PERIOD_TYPE>
+		<PERIOD_YEAR>2007</PERIOD_YEAR>
+		<D_FILL>04092007</D_FILL>
+	</DECLARHEAD>
+	<DECLARBODY>
+		<HZY>2007</HZY>
+		<HZM>8</HZM>
+		<HNAME>ТзОВ "Українська кабельна компанiя"</HNAME>
+		<HLOC>ADRP</HLOC>
+		<HNPDV>315956015529</HNPDV>
+		<HNSPDV>22319129</HNSPDV>
+		<H01G01D>01082007</H01G01D>
+		<H02G01D>31082007</H02G01D>
+	</DECLARBODY>
+</DECLAR>

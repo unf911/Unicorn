@@ -1,0 +1,568 @@
+CREATE PROCEDURE NAKLRT_SEBEST_PC(
+    NAKL INTEGER)
+RETURNS (
+    NPP INTEGER,
+    KOLOTP DOUBLE PRECISION,
+    TOVAR VARCHAR(45),
+    SKIDKA_FACT NUMERIC(15,4),
+    CENA_FACT NUMERIC(15,4),
+    CENA_NDS NUMERIC(15,4),
+    SUM_GRN_NDS NUMERIC(15,4),
+    CENA_SEBEST NUMERIC(15,4),
+    SSUM_YE_NDS NUMERIC(15,4),
+    KURS NUMERIC(15,4),
+    KURS2 NUMERIC(15,4),
+    NDS_SEBEST NUMERIC(15,4),
+    DOXOD NUMERIC(15,4),
+    PERCENT NUMERIC(15,4))
+AS
+DECLARE VARIABLE DAT DATE;
+DECLARE VARIABLE ID_TOVAR integer;
+DECLARE VARIABLE NALOG_NDS NUMERIC(15,4);
+begin
+  /* Procedure Text */
+  select
+    n.dat,
+    n.nalog_nds,
+    n.kurs_fact,
+    Round(
+      Dif (Round(n.kurs_fact-1.0000,4), n.kurs_fact, k.usd),
+      4
+    )
+  from
+    naklr n  left join kurs k on n.dat=k.dat
+  where
+    n.fix='*' and n.nakl=:nakl
+  into :dat,:nalog_nds,:kurs2,:kurs;
+for
+  select 
+  a.kod, a.npp, a.kolotp,
+  a.tovar,a.skidka_fact,a.cena_fact
+
+/*  Round(
+    Round(a.cena_fact*:kurs2,2)
+    *(1+:nalog_nds),2
+  ) as cena_nds,*/
+
+/*  Round(
+    Round(
+      Round(a.cena_fact*:kurs2,2)*
+      (1+:nalog_nds),2
+    )*a.kolotp,2
+  ) as sum_grn_nds,
+  s.sebest as cena_sebest ,
+  Round( s.sebest *a.kolotp,2) as ssum_ye_nds,
+  Round(
+    Round(a.kolotp* s.sebest ,2) *
+    :kurs,2
+  ) as nds_sebest
+*/
+from
+  naklrt a
+  /*left join sebest s on  a.kod=s.tovar_id
+  left join sebest s2 on a.kod=s2.tovar_id*/
+where 
+  a.tara<>1 and
+  bitand(a.tip,2)=2 and
+/*  (s.dat is null  or :dat>=s.dat) and
+  (s2.dat is null  or :dat>=s2.dat) and*/
+  a.nakl=:nakl
+  /*
+group by
+  a.npp, a.kolotp,a.tovar,a.skidka_fact,a.cena_fact,
+  
+  s.sebest , s.dat,
+  Round(
+    Round(a.cena_fact*:kurs2,2)
+    *(1+:nalog_nds),2
+  ) ,
+  Round(
+    Round(
+      Round(a.cena_fact*:kurs2,2)*
+      (1+:nalog_nds),2
+    )*a.kolotp,2
+  ) ,
+  s.sebest  ,
+  Round( s.sebest *a.kolotp,2) ,
+  Round(
+    Round(a.kolotp* s.sebest ,2) *
+    :kurs,2
+  )
+
+having
+  s.dat=max(s2.dat) or
+  s.dat is null
+order by
+  a.npp
+*/
+into
+  :id_tovar, :npp, :kolotp,
+  :tovar,:skidka_fact,:cena_fact/*,
+
+  :cena_nds,
+
+  :sum_grn_nds,:cena_sebest,:ssum_ye_nds,
+  :nds_sebest*/
+  /*,:doxod,:percent*/
+do begin
+  cena_nds=Round(Round(:cena_fact*:kurs2,2)*(1+:nalog_nds),2);
+  sum_grn_nds=Round(:cena_nds*:kolotp,2);
+  cena_sebest = null ;
+  select first 1 s.sebest
+    from sebest s
+    where s.tovar_id=:id_tovar and s.dat<=:dat
+    order by s.dat desc
+    into :cena_sebest;
+  ssum_ye_nds=Round(:cena_sebest *:kolotp,2);
+  nds_sebest=Round(:ssum_ye_nds*:kurs,2);
+  doxod = Round(:sum_grn_nds-:nds_sebest,2);
+  percent = 100*DZero(:doxod,:nds_sebest,0);
+  suspend;
+end /*end for*/
+END
+
+create view kurs_vw (
+  dat,kurs_from ,kurs_to,
+  id_currency_to ,id_currency_from,
+  kurs_indirect )
+as
+select 
+  k.dat,k.kurs_from ,k.usd,
+  k.id_currency ,k.id_currency_from,
+  cast(0 as integer) as kurs_indirect
+from kurs k
+union all
+select 
+  k2.dat,k2.usd ,k2.kurs_from,
+  k2.id_currency_from,
+  k2.id_currency as id_currency_from,
+  cast(1 as integer) as kurs_indirect
+from kurs k2
+
+
+CREATE VIEW REALPRICEMAKE_DOC_VW(
+    ID_POS,
+    ID_TOVAR,
+    CENA,
+    KOLOTP,
+    ID_NAKLD,
+    ID_NAKL,
+    SKIDKA,
+    KODCN,
+    KURS,
+    PARENT_ID_NAKL,
+    NALOG_NDS,
+    ID,
+    TARA,
+    TIP,
+    DAT)
+AS
+select
+  ot.id_pos,ot.id_tovar,
+  ot.cena,ot.kolotp,
+  ot.id_nakld,ot.id_nakl,
+  ot.skidka,ot.kodcn,om.kurs,om.parent_id_nakl,om.nalog_nds,
+  OM.ID,
+  (select t.tara from tovar t where t.oid=ot.id_tovar),
+  om.tip,
+  om.dat
+from
+  naklot ot inner join naklo om on om.id_nakl=ot.id_nakl;
+
+CREATE VIEW REALPRICEMAKE_FACT_VW(
+    ID_POS,
+    ID_TOVAR,
+    CENA,
+    KOLOTP,
+    ID_NAKLD,
+    ID_NAKL,
+    SKIDKA,
+    KODCN,
+    KURS,
+    PARENT_ID_NAKL,
+    NALOG_NDS)
+AS
+select
+  ot.id_pos,ot.id_tovar,
+  ot.cena,ot.kolotp,
+  ot.id_nakld,ot.id_nakl,
+  ot.skidka,ot.kodcn,om.kurs,om.parent_id_nakl,om.nalog_nds
+from
+  naklot ot inner join naklo om on om.id_nakl=ot.id_nakl;
+
+CREATE PROCEDURE GET_ID_MANAGER_PC
+RETURNS (
+    ID_MANAGER INTEGER)
+AS
+begin
+  select p.id
+  from users u inner join posr p
+    on p.id=u.id_posr
+  where u.user_name=upper(user)
+  into :id_manager;
+
+if (exists( select  a.RDB$RELATION_NAME
+      from  RDB$USER_PRIVILEGES a, RDB$ROLES b
+      where a.RDB$RELATION_NAME = b.RDB$ROLE_NAME and
+        a.RDB$USER=user and a.RDB$RELATION_NAME<>'MANAGER'
+)) then begin
+  id_manager=0;
+end
+
+  suspend;
+  /*незаполнена ссылка на номер менеджера*/
+/*  if (id_manager is null or id_manager=12) then begin
+    select
+      a.RDB$RELATION_NAME
+    from
+      RDB$USER_PRIVILEGES a, RDB$ROLES b
+    where a.RDB$RELATION_NAME = b.RDB$ROLE_NAME and
+      a.RDB$USER=user and a.RDB$RELATION_NAME='POWER_USER'
+    into :role_name;
+    if (role_name = 'POWER_USER') then begin
+      id_manager=0;
+    end
+  end*/
+  /*
+  if (USER='SYSDBA') then begin
+    id_manager=0;
+  end
+  */
+END
+
+--------------------------------------------
+CREATE PROCEDURE GET_USERMODIFIED_PC(
+    TABLE_NAME VARCHAR(50),
+    PK INTEGER)
+RETURNS (
+    MODIFIED_BY VARCHAR(50),
+    MODIFIED DATE)
+AS
+DECLARE VARIABLE ID_USER SMALLINT;
+begin
+
+  if (:table_name = 'naklr') then begin
+    select
+      n.modified_iduser,n.modified
+    from
+      naklr n
+    where
+      n.nakl=:pk
+    into
+      :id_user,:modified;
+  end
+  
+  if (table_name='naklrt') then begin
+    select
+      d.modified_iduser,d.modified
+    from
+      naklrt d
+    where
+      d.sch=:pk
+    into
+      :id_user,:modified;
+  end
+  
+  if (id_user is not null) then begin
+    select
+      u.user_name
+    from
+      users u
+    where
+      u.id_user=:id_user
+    into
+      :modified_by;
+  end
+  
+  suspend;
+END
+------------------------------------------------
+procedure TfrmNNakl.cdsNaklrAfterScroll(DataSet: TDataSet);
+var
+  dblNds,dblVsego : double;
+begin
+try
+//
+try
+  dsNaklrt.DataSet.DisableControls;
+except
+  AssertInternal('{17BE5ED1-1CD2-4FA6-B824-5D71C589536F}');
+end;
+  dsNaklrt.DataSet.First;
+  while not dsNaklrt.DataSet.Eof do begin
+    dsNaklrt.DataSet.Edit;
+try
+    dblNds:=
+    rroundto(
+      dsNaklrt.DataSet.FieldByName('cena').AsFloat
+      *
+      (1+dsNaklr.DataSet.FieldByName('nalog_nds').AsFloat),-2);
+except
+  AssertInternal('{GB233D3E-EC7B-4D2B-AB91-B4BA14BCB6D6} '
+  + ' cena: ' + dsNaklrt.DataSet.FieldByName('cena').AsString
+  +' nalog: '+ dsNaklr.DataSet.FieldByName('nalog_nds').AsString
+  + ' nds: '+ dsNaklrt.DataSet.FieldByName('nds').AsString);
+end;
+try
+    dsNaklrt.DataSet.FieldByName('nds').AsString := floattostr(dblNds);
+except
+  AssertInternal('{FB233D3E-EC7B-4D2B-AB91-B4BA14BCB6D6} '
+  + ' cena: ' + dsNaklrt.DataSet.FieldByName('cena').AsString
+  +' nalog: '+ dsNaklr.DataSet.FieldByName('nalog_nds').AsString
+  + ' nds: '+ dsNaklrt.DataSet.FieldByName('nds').AsString);
+end;
+try
+    dblVsego :=  rroundto(
+        dsNaklrt.DataSet.FieldByName('suma2').AsFloat
+        *
+        (1+dsNaklr.DataSet.FieldByName('nalog_nds').AsFloat),-2);
+except
+  AssertInternal('{860B6E82-4E43-47EE-B522-4D1FC192CAA4}'
+    + ' suma2: ' + dsNaklrt.DataSet.FieldByName('suma2').AsString
+    +' nalog: '+ dsNaklr.DataSet.FieldByName('nalog_nds').AsString
+    + ' vsego: '+ dsNaklrt.DataSet.FieldByName('vsego').AsString
+  );
+end;
+try
+    dsNaklrt.DataSet.FieldByName('vsego').AsString := floattostr(dblVsego);
+except
+  AssertInternal('{760B6E82-4E43-47EE-B522-4D1FC192CAA4}'
+    + ' suma2: ' + dsNaklrt.DataSet.FieldByName('suma2').AsString
+    +' nalog: '+ dsNaklr.DataSet.FieldByName('nalog_nds').AsString
+    + ' vsego: '+ dsNaklrt.DataSet.FieldByName('vsego').AsString
+  );
+end;
+    dsNaklrt.DataSet.CheckBrowseMode;
+    dsNaklrt.DataSet.Next;
+  end;
+try
+  dsNaklrt.DataSet.EnableControls;
+except
+  AssertInternal('{2C86A2CB-5DFC-46B7-8190-DEFA1797918F}');
+end;
+
+//
+except
+  AssertInternal('{67E56C14-709B-4EAA-A475-B1D073F5983D}');
+end;
+end;
+
+
+
+select
+  om.dat, k.name as zak, p.name as manager,
+  t.name as tara, od.kolotp, od.kolbuxt,od.tip
+from 
+  naklodet od
+  inner join naklot ot on ot.id_nakld=od.id_nakld
+  inner join naklo om on om.id_nakl=ot.id_nakl
+  inner join klient k on om.id_zak = k.id
+  inner join posr p on p.id=om.id_manager
+  inner join tovar t on t.tovar=od.id_tara
+  inner join sklostdet sd on sd.id_det=od.id_det
+where 
+  od.id_ostt=:id_ostt 
+group by 
+  om.dat, k.name , p.name,t.name,od.kolotp,od.kolbuxt, od.tip
+order by
+  od.tip, om.dat
+
+/*-----------------------------*/
+CREATE PROCEDURE NAKLRT_SEBEST2_PC (
+    NAKL INTEGER)
+RETURNS (
+    NPP INTEGER,
+    KOLOTP DOUBLE PRECISION,
+    TOVAR VARCHAR(45),
+    SKIDKA_FACT NUMERIC(15,4),
+    CENA_FACT NUMERIC(15,4),
+    CENA_NDS NUMERIC(15,4),
+    SUM_GRN_NDS NUMERIC(15,4),
+    CENA_SEBEST NUMERIC(15,4),
+    SSUM_YE_NDS NUMERIC(15,4),
+    KURS NUMERIC(15,4),
+    KURS2 NUMERIC(15,4),
+    NDS_SEBEST NUMERIC(15,4),
+    DOXOD NUMERIC(15,4),
+    PERCENT NUMERIC(15,4))
+AS
+DECLARE VARIABLE DAT DATE;
+DECLARE VARIABLE NALOG_NDS NUMERIC(15,4);
+begin
+  /* Procedure Text */
+  select
+    n.dat,
+    n.nalog_nds,
+    n.kurs_fact,
+    Round(
+      Dif (Round(n.kurs_fact-1.0000,4), n.kurs_fact, k.usd),
+      4
+    )
+  from
+    naklr n  left join kurs k on n.dat=k.dat
+  where
+    n.fix='*' and n.nakl=:nakl
+  into :dat,:nalog_nds,:kurs2,:kurs;
+for
+  select 
+  a.npp, a.kolotp,a.tovar,
+  a.skidka_fact,a.cena_fact,
+  s.sebest ,
+  Round( s.sebest *a.kolotp,2),
+  Round(
+    Round(a.kolotp* s.sebest ,2) *
+    :kurs,2
+  )
+
+from
+  (naklrt a left join sebest s on  a.kod=s.tovar_id)
+  left join sebest s2 on a.kod=s2.tovar_id
+where 
+  a.tara<>1 and
+  bitand(a.tip,2)=2 and
+  (s.dat is null  or :dat>=s.dat)
+  and a.nakl=:nakl
+group by
+  a.npp, a.kolotp,a.tovar,a.skidka_fact,a.cena_fact,
+  s.sebest , s.dat,
+  Round( s.sebest *a.kolotp,2) ,
+  Round(
+    Round(a.kolotp* s.sebest ,2) *
+    :kurs,2
+  )  
+
+having
+  s.dat=max(s2.dat) or
+  s.dat is null
+
+into
+  :npp, :kolotp,:tovar,:skidka_fact,:cena_fact,
+  
+
+ :cena_sebest,:ssum_ye_nds,
+  :nds_sebest/*,:doxod,:percent */
+do begin
+  doxod = Round(:sum_grn_nds-:nds_sebest,2);
+  percent = 100*DZero(:doxod,:nds_sebest,0);
+  suspend;
+end /*end for*/
+end
+--------------------------------------
+поле сумма без ндс в расходных
+[If( [qurNaklrt."CENA"]>0, [Round([qurNaklrt."CENA"] * [if([qurNaklrt."TARA"]<>2,1,[qurNaklr."KURS"])] *100)/100 * [qurNaklrt."KOLOTP"]], [qurNaklrt."SUMA2"]*[if([qurNaklrt."TARA"]<>2,1,[qurNaklr."KURS"])] )]
+------------------------------------
+CREATE PROCEDURE NAKLR_VSEGO_PC (
+    NAKL2 INTEGER)
+RETURNS (
+    VSEGO NUMERIC(15,2),
+    NAKL INTEGER,
+    NDS NUMERIC(15,2))
+AS
+DECLARE VARIABLE NALOG_NDS NUMERIC(15,2);
+begin
+  /* Procedure Text */
+select 
+  n.nalog_nds,
+      sum (
+        Round(
+          dif(
+             bitand(a.tip,1)-1,
+             0,
+             /*fact posit*/
+             Round(
+               dif(a.tara-1,
+                 /*not tara*/
+                 Round(Round(a.cena,2)*n.kurs,2),
+                 /*tara*/
+                 Round(a.cena,2)
+               )*a.kolotp,2
+             )/*end round*/
+           )/*dif*/ ,2
+        )/*round*/
+      ) /*sum*/
+From 
+  naklr n inner join naklrt a
+  on n.nakl=a.nakl
+where
+  n.fix='*' and n.nakl=:nakl2
+group by
+  n.nakl,n.kurs,n.kurs_fact,n.nalog_nds
+into :nalog_nds,:vsego;
+
+nakl=:nakl2;
+nds = Round((:nalog_nds+1)*vsego,2);
+  
+
+suspend;
+end
+
+
+
+
+/*------------------------------------------------*/
+
+CREATE PROCEDURE NAKLR_FACTSUM_PC (
+    NAKL INTEGER)
+RETURNS (
+    FACT_SUM NUMERIC(15,2))
+AS
+begin
+  select
+z(Round(
+  1.2*Round (
+    sum(Dif (a.tara-1,Round(
+      Round( a.cena_fact*Round(n.kurs,4),2 )
+      *a.kolotp,2),0)
+    ),2
+  ),2
+))  
+  from
+    naklrt a inner join naklr n on
+    a.nakl=n.nakl
+  where
+    n.nakl=:nakl
+  into :FACT_SUM;
+  suspend;
+end
+
+/*--------------------------*/
+
+
+CREATE PROCEDURE NAKLR_CLEARSUM_PC (
+    NAKL INTEGER)
+RETURNS (
+    CLEAR_SUM NUMERIC(15,2))
+AS
+begin
+  select
+    z(Round(
+      sum(
+        Round(d.cena_fact*Round(n.kurs,4),2)
+        *Round(d.kolotp,3)),2
+    ))
+  from
+    naklrt d inner join naklr n
+    on n.nakl=d.nakl
+  where
+    n.nakl=:nakl and d.tara<>1
+  into :clear_sum;
+  suspend;
+end
+
+
+/*-------------------*/
+
+
+select
+  t.izg,
+  t.zak,
+  t.manager,
+  round(sum(t.debet)-sum(t.kredit),2) as saldo
+from
+  tmp_dolg2 t
+group by
+  t.izg,t.zak,t.manager
+having
+  round(sum(t.debet)-sum(t.kredit),2)<>0
+order by
+  t.zak,t.manager,t.izg

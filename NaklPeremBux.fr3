@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TfrxReport Version="3.23.7" DotMatrixReport="False" IniFile="\Software\Fast Reports" PreviewOptions.Buttons="4095" PreviewOptions.Zoom="1" PrintOptions.Printer="Default" ReportOptions.CreateDate="38985,4293527546" ReportOptions.Description.Text="" ReportOptions.LastChange="38988,754264537" ScriptLanguage="PascalScript" ScriptText.Text="begin&#13;&#10;&#13;&#10;end." PropData="044C65667403E80103546F7003500108446174617365747301010C2C00000020446174615365743D22667244424E616B6C6F2220446174615365744E616D653D22667244424E616B6C6F2200010C2E00000020446174615365743D22667244424E616B6C6F742220446174615365744E616D653D22667244424E616B6C6F74220000095661726961626C657301010C10000000204E616D653D2220416C6C566172732200010C0F000000204E616D653D224E445354455854220000055374796C650100">
+  <TfrxReportPage Name="Page1" PaperWidth="210" PaperHeight="297" PaperSize="9" LeftMargin="4" RightMargin="4" TopMargin="4" BottomMargin="4" Columns="1" ColumnWidth="202" ColumnPositions.Text="0" Bin="65535" BinOtherPages="65535" HGuides.Text="" VGuides.Text="">
+    <TfrxMasterData Name="MasterData1" Height="50" Left="0" Top="104" Width="763,46506" Columns="1" ColumnWidth="200" ColumnGap="20" RowCount="1">
+      <TfrxMemoView Name="Memo67" Left="41" Top="0" Width="645" Height="50" Font.Charset="204" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="11" ParentFont="False" Text=""/>
+      <TfrxMemoView Name="Memo3" Left="49" Top="4" Width="112" Height="18" Font.Charset="204" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="0" ParentFont="False" Text="Отпущено :"/>
+      <TfrxMemoView Name="Memo5" Left="49" Top="26" Width="112" Height="18" Font.Charset="204" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="0" ParentFont="False" Text="Получено :"/>
+      <TfrxMemoView Name="Memo33" Left="171" Top="4" Width="509" Height="18" Color="16777215" Font.Charset="204" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="0" ParentFont="False" Text="[frDBNaklo.&#34;SKLAD_FULLNAME&#34;]"/>
+      <TfrxMemoView Name="Memo4" Left="171" Top="26" Width="509" Height="18" Color="16777215" Font.Charset="204" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="0" ParentFont="False" Text="[frDBNaklo.&#34;SKLAD_TO_FULLNAME&#34;]"/>
+    </TfrxMasterData>
+    <TfrxHeader Name="DetailHeader1" Height="33" Left="0" Top="176" Width="763,46506">
+      <TfrxMemoView Name="Memo10" Left="41" Top="1" Width="28" Height="32" Color="16777215" Font.Charset="204" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="1" Frame.Typ="15" ParentFont="False" Text="№"/>
+      <TfrxMemoView Name="Memo11" Left="69" Top="1" Width="356" Height="32" Color="16777215" Font.Charset="204" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="1" Frame.Typ="15" ParentFont="False" Text="Наименование"/>
+      <TfrxMemoView Name="Memo12" Left="425" Top="1" Width="37" Height="32" Color="16777215" Font.Charset="204" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="1" Frame.Typ="15" ParentFont="False" Text="Ед.&#13;&#10;из"/>
+      <TfrxMemoView Name="Memo13" Left="462" Top="1" Width="60" Height="32" Color="16777215" Font.Charset="204" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="1" Frame.Typ="15" ParentFont="False" Text="Кол-во"/>
+      <TfrxMemoView Name="Memo14" Left="522" Top="1" Width="68" Height="32" Color="16777215" Font.Charset="204" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="1" Frame.Typ="15" ParentFont="False" Text="Цена/ед&#13;&#10;в грн"/>
+      <TfrxMemoView Name="Memo15" Left="590" Top="1" Width="96" Height="32" Color="16777215" Font.Charset="204" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="1" Frame.Typ="15" ParentFont="False" Text="Сумма&#13;&#10;в грн"/>
+    </TfrxHeader>
+    <TfrxDetailData Name="Band1" Height="18" Left="0" Top="228" Width="763,46506" Columns="1" ColumnWidth="200" ColumnGap="20" DataSet="frDBNaklot" DataSetName="frDBNaklot" RowCount="0">
+      <TfrxMemoView Name="Memo25" Left="41" Top="0" Width="28" Height="18" Color="16777215" Font.Charset="204" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="15" ParentFont="False" Text="[frDBNaklot.&#34;ID_POS&#34;]"/>
+      <TfrxMemoView Name="Memo26" Left="69" Top="0" Width="356" Height="18" Color="16777215" Font.Charset="204" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="15" ParentFont="False" Text="[frDBNaklot.&#34;FULLNAME&#34;]"/>
+      <TfrxMemoView Name="Memo27" Left="425" Top="0" Width="37" Height="18" Color="16777215" Font.Charset="204" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="15" ParentFont="False" Text="[frDBNaklot.&#34;EDIZ&#34;]"/>
+      <TfrxMemoView Name="Memo31" Left="462" Top="0" Width="60" Height="18" Color="16777215" Font.Charset="204" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="15" HAlign="haRight" ParentFont="False" Text="[IIF(&#60;frdbNaklot.&#34;EDIZ&#34;&#62;='шт',FormatFloat('0.',&#60;frdbNaklot.&#34;KOLOTP&#34;&#62;),FormatFloat('0.000',&#60;frdbNaklot.&#34;KOLOTP&#34;&#62;))]"/>
+      <TfrxMemoView Name="Memo34" Left="522" Top="0" Width="68" Height="18" Color="16777215" DisplayFormat.DecimalSeparator="," DisplayFormat.FormatStr="%2.2f" DisplayFormat.Kind="fkNumeric" Font.Charset="204" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="15" HAlign="haRight" ParentFont="False" Text="[frDBNaklot.&#34;CENA&#34;]"/>
+      <TfrxMemoView Name="Memo35" Left="590" Top="0" Width="96" Height="18" Color="16777215" DisplayFormat.DecimalSeparator="," DisplayFormat.FormatStr="%2.2f" DisplayFormat.Kind="fkNumeric" Font.Charset="204" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="15" HAlign="haRight" ParentFont="False" Text="[frDBNaklot.&#34;SUMA&#34;]"/>
+    </TfrxDetailData>
+    <TfrxReportTitle Name="ReportTitle1" Height="30" Left="0" Top="16" Width="763,46506">
+      <TfrxMemoView Name="Memo16" Left="41" Top="0" Width="645" Height="30" Font.Charset="204" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="7" ParentFont="False" Text=""/>
+      <TfrxMemoView Name="Memo7" Left="120" Top="6" Width="90" Height="18" Font.Charset="204" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="1" ParentFont="False" Text="Накладная №"/>
+      <TfrxMemoView Name="Memo1" Left="211" Top="6" Width="468" Height="18" Font.Charset="204" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="1" ParentFont="False" Text="[frDBNaklo.&#34;ID&#34;]  от    [frDBNaklo.&#34;DAT&#34;]"/>
+    </TfrxReportTitle>
+    <TfrxFooter Name="MasterFooter1" Height="122" Left="0" Top="264" Width="763,46506">
+      <TfrxMemoView Name="Memo36" Left="40" Top="64" Width="66" Height="17" Color="16777215" Font.Charset="204" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="0" ParentFont="False" Text="Отпустил"/>
+      <TfrxMemoView Name="Memo37" Left="390" Top="64" Width="63" Height="18" Color="16777215" Font.Charset="204" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="0" ParentFont="False" Text="Получил"/>
+      <TfrxMemoView Name="Memo38" Left="163" Top="103" Width="45" Height="18" Color="16777215" Font.Charset="204" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="0" ParentFont="False" Text="м.п."/>
+      <TfrxMemoView Name="Memo39" Left="531" Top="101" Width="45" Height="18" Color="16777215" Font.Charset="204" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="0" ParentFont="False" Text="м.п."/>
+      <TfrxLineView Name="Line1" Left="97" Top="82" Width="197" Height="0" Frame.Typ="4"/>
+      <TfrxLineView Name="Line2" Left="442" Top="83" Width="193" Height="0" Frame.Typ="4"/>
+      <TfrxMemoView Name="Memo18" Left="459" Top="0" Width="61" Height="18" Color="16777215" Font.Charset="204" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="1" Frame.Typ="4" ParentFont="False" Text="Сумма :"/>
+      <TfrxMemoView Name="Memo22" Left="590" Top="0" Width="96" Height="18" Color="16777215" DisplayFormat.DecimalSeparator="," DisplayFormat.FormatStr="%2.2f" DisplayFormat.Kind="fkNumeric" Font.Charset="204" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="1" Frame.Typ="15" HAlign="haRight" ParentFont="False" Text="[SUM(&#60;frDBNaklot.&#34;CENA&#34;&#62;*&#60;frDBNaklot.&#34;KOLOTP&#34;&#62;,Band1)]"/>
+      <TfrxMemoView Name="Memo70" Left="41" Top="24" Width="644" Height="34" Font.Charset="204" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="0" ParentFont="False" Text="[NDSTEXT]"/>
+    </TfrxFooter>
+  </TfrxReportPage>
+</TfrxReport>

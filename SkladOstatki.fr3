@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TfrxReport Version="3.23.7" DotMatrixReport="False" EngineOptions.DoublePass="True" IniFile="\Software\Fast Reports" PreviewOptions.Buttons="4095" PreviewOptions.Zoom="1" PrintOptions.Printer="Default" ReportOptions.CreateDate="38985,4332951736" ReportOptions.Description.Text="" ReportOptions.LastChange="38994,4655092593" ScriptLanguage="PascalScript" ScriptText.Text="begin&#13;&#10;&#13;&#10;end." PropData="044C65667403B00003546F70024808446174617365747301010C3600000020446174615365743D2266725573657244617461736574312220446174615365744E616D653D226672557365724461746173657431220000095661726961626C657301010C11000000204E616D653D2220416C6C20766172732200010C0D000000204E616D653D225469746C652200010C1A000000204E616D653D224B4F4C544F54414C222056616C75653D22302200010C17000000204E616D653D22544F564152222056616C75653D22302200010C0A000000204E616D653D222020220000055374796C650100">
+  <TfrxReportPage Name="Page1" PaperWidth="210" PaperHeight="297" PaperSize="9" LeftMargin="10" RightMargin="10" TopMargin="10" BottomMargin="10" Columns="2" ColumnWidth="95" ColumnPositions.Text="0&#13;&#10;95" Bin="65535" BinOtherPages="65535" HGuides.Text="" VGuides.Text="">
+    <TfrxReportTitle Name="ReportTitle1" Height="64" Left="0" Top="16" Width="718,1107">
+      <TfrxMemoView Name="Memo18" Left="-1" Top="0" Width="677" Height="63" Font.Charset="204" Font.Color="0" Font.Height="-19" Font.Name="Arial" Font.Style="0" ParentFont="False" Text="[Title]"/>
+    </TfrxReportTitle>
+    <TfrxHeader Name="MasterHeader1" Height="15" Left="0" Top="161" Width="718,1107" ReprintOnNewPage="True" Stretched="True">
+      <TfrxMemoView Name="Memo2" Left="-2" Top="0" Width="245" Height="15" StretchMode="smMaxHeight" Color="8421376" Font.Charset="204" Font.Color="0" Font.Height="-11" Font.Name="Arial" Font.Style="0" Frame.Typ="15" ParentFont="False" Text="Кабель"/>
+      <TfrxMemoView Name="Memo5" Left="243" Top="0" Width="95" Height="15" StretchMode="smMaxHeight" Color="8421376" Font.Charset="204" Font.Color="0" Font.Height="-11" Font.Name="Arial" Font.Style="0" Frame.Typ="15" ParentFont="False" Text="Количество"/>
+    </TfrxHeader>
+    <TfrxMasterData Name="MasterData1" Height="15" Left="0" Top="217" Width="718,1107" Columns="1" ColumnWidth="200" ColumnGap="20" DataSet="frUserDataset1" DataSetName="frUserDataset1" RowCount="0">
+      <TfrxMemoView Name="Memo10" Left="-2" Top="0" Width="245" Height="15" Font.Charset="204" Font.Color="0" Font.Height="-11" Font.Name="Arial" Font.Style="0" Frame.Typ="15" ParentFont="False" Text="[TOVAR]"/>
+      <TfrxMemoView Name="Memo13" Left="243" Top="0" Width="95" Height="15" DisplayFormat.DecimalSeparator="," DisplayFormat.FormatStr="%2.3f" DisplayFormat.Kind="fkNumeric" Font.Charset="204" Font.Color="0" Font.Height="-11" Font.Name="Arial" Font.Style="0" Frame.Typ="15" HAlign="haRight" ParentFont="False" Text="[KOLTOTAL]"/>
+    </TfrxMasterData>
+    <TfrxPageFooter Name="PageFooter1" Height="10" Left="0" Top="394" Width="718,1107">
+      <TfrxMemoView Name="Memo1" Left="225" Top="0" Width="416" Height="10" Font.Charset="204" Font.Color="0" Font.Height="-8" Font.Name="Arial" Font.Style="0" HAlign="haRight" ParentFont="False" Text="[Title]                 [PAGE#] из [TOTALPAGES]"/>
+    </TfrxPageFooter>
+    <TfrxReportSummary Name="ReportSummary1" Height="40" Left="0" Top="313" Width="718,1107">
+      <TfrxMemoView Name="Memo3" Left="243" Top="2" Width="95" Height="18" DisplayFormat.DecimalSeparator="," DisplayFormat.FormatStr="%2.3f" DisplayFormat.Kind="fkNumeric" Font.Charset="204" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="15" Frame.Width="2" HAlign="haRight" ParentFont="False" Text="[SUM(&#60;Koltotal&#62;, MasterData1)]"/>
+      <TfrxMemoView Name="Memo6" Left="-2" Top="2" Width="245" Height="18" DisplayFormat.DecimalSeparator="," DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="204" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="15" Frame.Width="2" ParentFont="False" Text="Общая длина : "/>
+      <TfrxMemoView Name="Memo4" Left="243" Top="20" Width="95" Height="18" DisplayFormat.DecimalSeparator="," DisplayFormat.FormatStr="%g" DisplayFormat.Kind="fkNumeric" Font.Charset="204" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="15" Frame.Width="2" HAlign="haRight" ParentFont="False" Text="[COUNT(MasterData1)]"/>
+      <TfrxMemoView Name="Memo7" Left="-2" Top="20" Width="245" Height="18" DisplayFormat.DecimalSeparator="," DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="204" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="15" Frame.Width="2" ParentFont="False" Text="Кол-во позиций : "/>
+    </TfrxReportSummary>
+  </TfrxReportPage>
+</TfrxReport>

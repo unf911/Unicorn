@@ -1,0 +1,487 @@
+create view temp1
+(nakl,
+npp,
+sebest)
+as
+select n.nakl,a.npp,s2.sebest
+from
+((naklr n  inner join naklrt a on n.nakl=a.nakl)
+left join kurs k on n.dat=k.dat)
+left join sebest s2 on  a.kod=s2.tovar_id
+where n.fix='*'  and a.tara<>1 and n.dat>=s2.dat
+group by
+  n.nakl,a.npp,s2.sebest
+having
+  s2.dat=max(s2.dat)
+;
+/////////////////////////////////
+select *
+ from
+temp1
+where nakl=1111
+//////////////////////////////
+
+select n.nakl,a.npp,s2.sebest
+from
+((naklr n  inner join naklrt a on n.nakl=a.nakl)
+left join kurs k on n.dat=k.dat)
+left join sebest s2 on  a.kod=s2.tovar_id
+where n.fix='*'  and a.tara<>1 and n.dat>=s2.dat and n.nakl=1111
+group by
+  n.nakl,a.npp,s2.sebest
+having
+  s2.dat=max(s2.dat)
+;
+////////////////////////////////
+
+//тесты на целостность БД
+// 1)
+// тест на совпадение сумм оплат записанных в накладных 
+//  и сумм соответствующих траншей
+
+
+select
+  nakl,izg,zak,dat,nds,n.oplacheno,sum(t.transh),n.oplacheno-sum(t.transh)
+from
+  naklr n inner join oplnakl t on n.nakl=t.nakl_id
+where
+  fix='*'
+group by
+  n.nakl,n.izg,n.zak,n.dat,n.nds ,n.oplacheno
+having
+  round(n.oplacheno-sum(t.transh),2)<>0 or Round(n.oplacheno-n.nds,2)>0
+
+// 2)
+// тест на совпдение суммы потраченной оплаты с суммой траншей
+
+select
+  o.idi,o.izg,o.zak,o.opl,o.potracheno,sum(t.transh),
+  o.potracheno-sum(t.transh)
+from
+  oplaty o inner join oplnakl t on o.idi=t.opl_id
+group by
+  o.idi,o.izg,o.zak,o.opl,o.potracheno
+having
+  Round(o.potracheno-sum(t.transh),2)<>0 or Round(o.potracheno-o.opl,2)>0
+
+////////////////////////////////////////////////////////
+запрос по должникам
+select
+  izg,zak,
+(select
+  z(Round(sum(n.nds),2))
+  from
+    naklr n
+  where
+    n.fix='*' and
+    n.izg=m.izg and
+    n.zak=m.zak and
+    n.dat<:datefrom
+)-
+( select
+    z(Round(sum(t.transh),2))
+  from
+    naklr n2 inner join oplnakl t on n2.nakl=t.nakl_id
+  where
+    n2.fix="*" and
+    n2.izg=m.izg and
+    n2.zak=m.zak and
+    t.opl_data<:datefrom
+) as dolgbefore,
+
+(
+select
+  z(Round(sum(o2.opl),2))
+from
+  oplaty o2
+where
+  o2.izg=m.izg and
+  o2.zak=m.zak and
+  o2.dat<:datefrom
+)
+-
+(
+select
+  z(Round(sum(t.transh),2))
+from
+  oplaty o left join oplnakl t
+  on o.idi=t.opl_id
+where
+  o.izg=m.izg and
+  o.zak=m.zak and
+  o.dat<:datefrom  and
+  (t.opl_data<:datefrom or t.opl_data is null)
+)
+
+as predbefore,
+
+(select
+  z(Round(sum(n2.nds),2))
+from
+  naklr n2
+where
+  n2.fix='*' and
+  n2.izg=m.izg and
+  n2.zak=m.zak and
+  n2.dat >= :datefrom and
+  n2.dat <=:dateto
+) as otg,
+
+(
+select
+  z(Round(sum(o2.opl),2))
+from
+  oplaty o2
+where
+  o2.izg=m.izg and
+  o2.zak=m.zak and
+  o2.dat>=:datefrom and
+  o2.dat<=:dateto
+) as opl,
+
+(select
+  z(Round(sum(n.nds),2))
+  from
+    naklr n
+  where
+    n.fix='*' and
+    n.izg=m.izg and
+    n.zak=m.zak and
+    n.dat<:dateto
+)-
+( select
+    z(Round(sum(t.transh),2))
+  from
+    naklr n2 inner join oplnakl t on n2.nakl=t.nakl_id
+  where
+    n2.fix="*" and
+    n2.izg=m.izg and
+    n2.zak=m.zak and
+    t.opl_data<:dateto
+) as dolgafter,
+
+(
+select
+  z(Round(sum(o2.opl),2))
+from
+  oplaty o2
+where
+  o2.izg=m.izg and
+  o2.zak=m.zak and
+  o2.dat<:dateto
+)
+-
+(
+select
+  z(Round(sum(t.transh),2))
+from
+  oplaty o left join oplnakl t
+  on o.idi=t.opl_id
+where
+  o.izg=m.izg and
+  o.zak=m.zak and
+  o.dat<:dateto  and
+  (t.opl_data<:dateto or t.opl_data is null)
+)
+as predafter
+
+from
+  naklr m
+where
+  m.fix="*"
+group by
+  m.zak,m.izg
+
+union
+
+select
+  izg,zak,
+(select
+  z(Round(sum(n.nds),2))
+  from
+    naklr n
+  where
+    n.fix='*' and
+    n.izg=m.izg and
+    n.zak=m.zak and
+    n.dat<:datefrom
+)-
+( select
+    z(Round(sum(t.transh),2))
+  from
+    naklr n2 inner join oplnakl t on n2.nakl=t.nakl_id
+  where
+    n2.fix="*" and
+    n2.izg=m.izg and
+    n2.zak=m.zak and
+    t.opl_data<:datefrom
+) as dolgbefore,
+
+(
+select
+  z(Round(sum(o2.opl),2))
+from
+  oplaty o2
+where
+  o2.izg=m.izg and
+  o2.zak=m.zak and
+  o2.dat<:datefrom
+)
+-
+(
+select
+  z(Round(sum(t.transh),2))
+from
+  oplaty o left join oplnakl t
+  on o.idi=t.opl_id
+where
+  o.izg=m.izg and
+  o.zak=m.zak and
+  o.dat<:datefrom  and
+  (t.opl_data<:datefrom or t.opl_data is null)
+)
+
+as predbefore,
+
+(select
+  z(Round(sum(n2.nds),2))
+from
+  naklr n2
+where
+  n2.fix='*' and
+  n2.izg=m.izg and
+  n2.zak=m.zak and
+  n2.dat >= :datefrom and
+  n2.dat <=:dateto
+) as otg,
+
+(
+select
+  z(Round(sum(o2.opl),2))
+from
+  oplaty o2
+where
+  o2.izg=m.izg and
+  o2.zak=m.zak and
+  o2.dat>=:datefrom and
+  o2.dat<=:dateto
+) as opl,
+
+(select
+  z(Round(sum(n.nds),2))
+  from
+    naklr n
+  where
+    n.fix='*' and
+    n.izg=m.izg and
+    n.zak=m.zak and
+    n.dat<:dateto
+)-
+( select
+    z(Round(sum(t.transh),2))
+  from
+    naklr n2 inner join oplnakl t on n2.nakl=t.nakl_id
+  where
+    n2.fix="*" and
+    n2.izg=m.izg and
+    n2.zak=m.zak and
+    t.opl_data<:dateto
+) as dolgafter,
+
+(
+select
+  z(Round(sum(o2.opl),2))
+from
+  oplaty o2
+where
+  o2.izg=m.izg and
+  o2.zak=m.zak and
+  o2.dat<:dateto
+)
+-
+(
+select
+  z(Round(sum(t.transh),2))
+from
+  oplaty o left join oplnakl t
+  on o.idi=t.opl_id
+where
+  o.izg=m.izg and
+  o.zak=m.zak and
+  o.dat<:dateto  and
+  (t.opl_data<:dateto or t.opl_data is null)
+)
+as predafter
+
+from
+  oplaty m
+group by
+  m.zak,m.izg
+
+///////////////////////////////////////////////////
+отчёт с учётом странных предоплат
+select
+  m.izg,m.zak,m.manager,
+(select
+  z(Round(sum(n.nds),2))
+  from
+    naklr n
+  where
+    n.fix='*' and
+    n.izg=m.izg and
+    n.zak=m.zak and
+    n.auther=m.manager and
+    n.dat<:datefrom
+)-
+( select
+    z(Round(sum(t.transh),2))
+  from
+    naklr n2 inner join oplnakl t on n2.nakl=t.nakl_id
+  where
+    n2.fix="*" and
+    n2.izg=m.izg and
+    n2.zak=m.zak and
+    n2.auther=m.manager and
+    t.opl_data<:datefrom
+) as dolgbefore,
+
+(
+select
+  z(Round(sum(o2.opl),2))
+from
+  oplaty o2
+where
+  o2.izg=m.izg and
+  o2.zak=m.zak and
+  o2.id_manager=m.id_manager and
+  o2.dat<:datefrom
+)
+-
+(
+select
+  z(Round(sum(t.transh),2))
+from
+  oplaty o inner join oplnakl t
+  on o.idi=t.opl_id
+where
+  o.izg=m.izg and
+  o.zak=m.zak and
+  o.id_manager=m.id_manager and
+  o.dat<:datefrom  and
+  (t.opl_data<:datefrom)
+)
+
+as predbefore,
+
+(select
+  z(Round(sum(n2.nds),2))
+from
+  naklr n2
+where
+  n2.fix='*' and
+  n2.izg=m.izg and
+  n2.zak=m.zak and
+  n2.auther = m.manager and
+  n2.dat >= :datefrom and
+  n2.dat <=:dateto
+) as otg,
+
+(
+select
+  z( Round(sum(o2.opl),2) )
+from
+  oplaty o2
+where
+  o2.izg=m.izg and
+  o2.zak=m.zak and
+  o2.id_manager=m.id_manager and
+  o2.dat>=:datefrom and
+  o2.dat<=:dateto
+) as opl,
+
+(
+select
+  z( Round(sum(t.transh),2) )
+from
+  oplaty o2 inner join oplnakl t on o2.idi=t.opl_id
+where
+  o2.izg=m.izg and
+  o2.zak=m.zak and
+  o2.id_manager=m.id_manager and
+  t.id_manager<>m.id_manager and
+  o2.dat < :datefrom and
+  t.opl_data>= :datefrom and
+  t.opl_data<= :dateto
+) as pred_minus,
+
+(
+select
+  z( Round(sum(t.transh),2) )
+from
+  oplaty o2 inner join oplnakl t on o2.idi=t.opl_id
+where
+  o2.izg=m.izg and
+  o2.zak=m.zak and
+  o2.id_manager<>m.id_manager and
+  t.id_manager=m.id_manager and
+  o2.dat < :datefrom and
+  t.opl_data>= :datefrom and
+  t.opl_data<= :dateto
+)as pred_plus,
+
+(select
+  z(Round(sum(n.nds),2))
+  from
+    naklr n
+  where
+    n.fix='*' and
+    n.izg=m.izg and
+    n.zak=m.zak and
+    n.auther=m.manager and
+    n.dat<=:dateto
+)-
+( select
+    z(Round(sum(t.transh),2))
+  from
+    naklr n2 inner join oplnakl t on n2.nakl=t.nakl_id
+  where
+    n2.fix="*" and
+    n2.izg=m.izg and
+    n2.zak=m.zak and
+    n2.auther=m.manager and
+    t.opl_data<=:dateto
+) as dolgafter,
+
+(
+select
+  z(Round(sum(o2.opl),2))
+from
+  oplaty o2
+where
+  o2.izg=m.izg and
+  o2.zak=m.zak and
+  o2.id_manager = m.id_manager and
+  o2.dat<=:dateto
+)
+-
+(
+select
+  z(Round(sum(t.transh),2))
+from
+  oplaty o inner join oplnakl t
+  on o.idi=t.opl_id
+where
+  o.izg=m.izg and
+  o.zak=m.zak and
+  o.id_manager=m.id_manager and
+  o.dat<=:dateto  and
+  (t.opl_data<=:dateto)
+)
+as predafter
+
+from
+  tmp_dolglist m
+order by
+  m.izg,m.zak
+
+
