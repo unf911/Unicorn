@@ -1,0 +1,11 @@
+*.cfg
+*.dof
+cdsnaklodettip
+*.exe*
+*.dcu
+*.dsm
+*.dsk
+*.ddp
+*.~*
+*.bak
+*.frf
