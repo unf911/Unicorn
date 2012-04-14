@@ -96,8 +96,6 @@ type
     BitBtn2: TBitBtn;
     btnSettings: TBitBtn;
     Splitter1: TSplitter;
-    Panel3: TPanel;
-    dbgSklostt: TDBGridEh;
     PropStorageEh1: TPropStorageEh;
     rpsClientEdit: TRegPropStorageManEh;
     PopSklost: TPopupMenu;
@@ -153,6 +151,7 @@ type
     frSklostDet: TfrxReport;
     frSklost: TfrxReport;
     dteToday: TDBDateTimeEditEh;
+    dbgSklostt: TDBGridEh;
     procedure actRefreshExecute(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);

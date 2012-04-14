@@ -4,7 +4,7 @@ object frmSklost: TfrmSklost
   BorderStyle = bsDialog
   Caption = #1054#1089#1090#1072#1090#1082#1080' '#1085#1072' '#1089#1082#1083#1072#1076#1077
   ClientHeight = 404
-  ClientWidth = 632
+  ClientWidth = 688
   Color = clBtnFace
   Constraints.MinHeight = 24
   Constraints.MinWidth = 160
@@ -27,29 +27,31 @@ object frmSklost: TfrmSklost
   object Splitter1: TSplitter
     Left = 0
     Top = 193
-    Width = 632
+    Width = 688
     Height = 8
     Cursor = crVSplit
-    Align = alTop
+    Align = alBottom
     Beveled = True
+    Constraints.MinHeight = 8
+    MinSize = 193
     ResizeStyle = rsUpdate
   end
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 632
+    Width = 688
     Height = 193
-    Align = alTop
+    Align = alClient
     BevelOuter = bvNone
     Constraints.MinHeight = 193
     TabOrder = 0
     DesignSize = (
-      632
+      688
       193)
     object dbgSklost: TDBGridEh
       Left = 8
       Top = 24
-      Width = 527
+      Width = 583
       Height = 169
       Anchors = [akLeft, akTop, akRight, akBottom]
       DataSource = dsSklost
@@ -140,16 +142,16 @@ object frmSklost: TfrmSklost
       OnChange = edtTovarChange
     end
     object Panel2: TPanel
-      Left = 540
+      Left = 596
       Top = 18
       Width = 89
-      Height = 177
-      Anchors = [akTop, akRight]
+      Height = 175
+      Anchors = [akTop, akRight, akBottom]
       BevelOuter = bvNone
       TabOrder = 1
       DesignSize = (
         89
-        177)
+        175)
       object RadioGroup1: TRadioGroup
         Left = 0
         Top = 0
@@ -239,135 +241,126 @@ object frmSklost: TfrmSklost
       end
     end
   end
-  object Panel3: TPanel
+  object dbgSklostt: TDBGridEh
     Left = 0
     Top = 201
-    Width = 632
+    Width = 688
     Height = 203
-    Align = alClient
-    BevelOuter = bvNone
+    Align = alBottom
+    Constraints.MinHeight = 60
+    DataSource = dsSklostt
+    EditActions = [geaCopyEh, geaSelectAllEh]
+    Flat = False
+    FooterColor = clInfoBk
+    FooterFont.Charset = DEFAULT_CHARSET
+    FooterFont.Color = clWindowText
+    FooterFont.Height = -11
+    FooterFont.Name = 'MS Sans Serif'
+    FooterFont.Style = []
+    FooterRowCount = 1
+    Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgConfirmDelete, dgCancelOnExit, dgMultiSelect]
+    OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghRowHighlight]
+    ReadOnly = True
+    SortLocal = True
+    SumList.Active = True
     TabOrder = 1
-    TabStop = True
-    object dbgSklostt: TDBGridEh
-      Left = 0
-      Top = 0
-      Width = 632
-      Height = 203
-      Align = alClient
-      DataSource = dsSklostt
-      EditActions = [geaCopyEh, geaSelectAllEh]
-      Flat = False
-      FooterColor = clInfoBk
-      FooterFont.Charset = DEFAULT_CHARSET
-      FooterFont.Color = clWindowText
-      FooterFont.Height = -11
-      FooterFont.Name = 'MS Sans Serif'
-      FooterFont.Style = []
-      FooterRowCount = 1
-      Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgConfirmDelete, dgCancelOnExit, dgMultiSelect]
-      OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghRowHighlight]
-      ReadOnly = True
-      SortLocal = True
-      SumList.Active = True
-      TabOrder = 0
-      TitleFont.Charset = DEFAULT_CHARSET
-      TitleFont.Color = clWindowText
-      TitleFont.Height = -11
-      TitleFont.Name = 'MS Sans Serif'
-      TitleFont.Style = []
-      OnDblClick = dbgSklosttDblClick
-      Columns = <
-        item
-          EditButtons = <>
-          FieldName = 'TARA'
-          Footer.FieldName = 'TARA'
-          Footer.Value = #1055#1086#1079#1080#1094#1080#1081
-          Footer.ValueType = fvtStaticText
-          Footers = <>
-          Title.TitleButton = True
-          Width = 102
-        end
-        item
-          EditButtons = <>
-          FieldName = 'NOMER_TARY'
-          Footer.FieldName = 'NOMER_TARY'
-          Footer.ValueType = fvtCount
-          Footers = <>
-          Title.TitleButton = True
-        end
-        item
-          EditButtons = <>
-          FieldName = 'KOLOTP'
-          Footers = <>
-          Title.TitleButton = True
-          Width = 53
-        end
-        item
-          EditButtons = <>
-          FieldName = 'KOLBUXT'
-          Footers = <>
-          Title.TitleButton = True
-          Width = 25
-        end
-        item
-          EditButtons = <>
-          FieldName = 'KOLREZERV'
-          Footers = <>
-          Title.TitleButton = True
-          Width = 68
-        end
-        item
-          EditButtons = <>
-          FieldName = 'KOLBREZERV'
-          Footers = <>
-          Title.TitleButton = True
-          Width = 19
-        end
-        item
-          EditButtons = <>
-          FieldName = 'COMMENT'
-          Footers = <>
-          Title.TitleButton = True
-          Width = 99
-        end
-        item
-          EditButtons = <>
-          FieldName = 'ID_TYPE'
-          Footers = <>
-          Title.TitleButton = True
-          Width = 3
-        end
-        item
-          EditButtons = <>
-          FieldName = 'IZG'
-          Footers = <>
-          Width = 85
-        end
-        item
-          EditButtons = <>
-          FieldName = 'TIP2'
-          Footer.Value = #1044#1083#1080#1085#1072' '#1074#1089#1077#1075#1086
-          Footer.ValueType = fvtStaticText
-          Footers = <>
-          Width = 82
-        end
-        item
-          EditButtons = <>
-          FieldName = 'KOLTOTAL'
-          Footer.ValueType = fvtSum
-          Footers = <>
-        end
-        item
-          EditButtons = <>
-          FieldName = 'DAT_POST'
-          Footers = <>
-        end
-        item
-          EditButtons = <>
-          FieldName = 'KOLOTP_ISX'
-          Footers = <>
-        end>
-    end
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'MS Sans Serif'
+    TitleFont.Style = []
+    OnDblClick = dbgSklosttDblClick
+    Columns = <
+      item
+        EditButtons = <>
+        FieldName = 'TARA'
+        Footer.FieldName = 'TARA'
+        Footer.Value = #1055#1086#1079#1080#1094#1080#1081
+        Footer.ValueType = fvtStaticText
+        Footers = <>
+        Title.TitleButton = True
+        Width = 102
+      end
+      item
+        EditButtons = <>
+        FieldName = 'NOMER_TARY'
+        Footer.FieldName = 'NOMER_TARY'
+        Footer.ValueType = fvtCount
+        Footers = <>
+        Title.TitleButton = True
+      end
+      item
+        EditButtons = <>
+        FieldName = 'KOLOTP'
+        Footers = <>
+        Title.TitleButton = True
+        Width = 53
+      end
+      item
+        EditButtons = <>
+        FieldName = 'KOLBUXT'
+        Footers = <>
+        Title.TitleButton = True
+        Width = 25
+      end
+      item
+        EditButtons = <>
+        FieldName = 'KOLREZERV'
+        Footers = <>
+        Title.TitleButton = True
+        Width = 68
+      end
+      item
+        EditButtons = <>
+        FieldName = 'KOLBREZERV'
+        Footers = <>
+        Title.TitleButton = True
+        Width = 19
+      end
+      item
+        EditButtons = <>
+        FieldName = 'COMMENT'
+        Footers = <>
+        Title.TitleButton = True
+        Width = 99
+      end
+      item
+        EditButtons = <>
+        FieldName = 'ID_TYPE'
+        Footers = <>
+        Title.TitleButton = True
+        Width = 3
+      end
+      item
+        EditButtons = <>
+        FieldName = 'IZG'
+        Footers = <>
+        Width = 85
+      end
+      item
+        EditButtons = <>
+        FieldName = 'TIP2'
+        Footer.Value = #1044#1083#1080#1085#1072' '#1074#1089#1077#1075#1086
+        Footer.ValueType = fvtStaticText
+        Footers = <>
+        Width = 82
+      end
+      item
+        EditButtons = <>
+        FieldName = 'KOLTOTAL'
+        Footer.ValueType = fvtSum
+        Footers = <>
+      end
+      item
+        EditButtons = <>
+        FieldName = 'DAT_POST'
+        Footers = <>
+      end
+      item
+        EditButtons = <>
+        FieldName = 'KOLOTP_ISX'
+        Footers = <>
+      end>
   end
   object sdsSklost: TSQLDataSet
     CommandText = 
@@ -411,10 +404,12 @@ object frmSklost: TfrmSklost
     object sdsSklostKOLOTP: TFMTBCDField
       FieldName = 'KOLOTP'
       Precision = 15
+      Size = 8
     end
     object sdsSklostKOLREZERV: TFMTBCDField
       FieldName = 'KOLREZERV'
       Precision = 15
+      Size = 8
     end
     object sdsSklostTARA: TSmallintField
       FieldName = 'TARA'
@@ -539,6 +534,7 @@ object frmSklost: TfrmSklost
       ProviderFlags = []
       DisplayFormat = '0.000'
       Precision = 15
+      Size = 8
     end
     object cdsSklostID_SKLAD: TIntegerField
       DisplayLabel = #8470#1089#1082#1083#1072#1076#1072
@@ -556,6 +552,7 @@ object frmSklost: TfrmSklost
       Required = True
       DisplayFormat = '0.000'
       Precision = 15
+      Size = 8
     end
     object cdsSklostANALOG: TStringField
       DisplayLabel = #1040#1085#1072#1083#1086#1075
@@ -634,6 +631,7 @@ object frmSklost: TfrmSklost
       Required = True
       DisplayFormat = '0.000'
       Precision = 15
+      Size = 8
     end
     object cdsSklosttKOLBUXT: TIntegerField
       DisplayLabel = #1041#1091#1093#1090' '#1089#1074#1086#1073
@@ -661,6 +659,7 @@ object frmSklost: TfrmSklost
       Required = True
       DisplayFormat = '0.000'
       Precision = 15
+      Size = 8
     end
     object cdsSklosttKOLBREZERV: TIntegerField
       DisplayLabel = #1041#1091#1093#1090' '#1086#1090#1083#1086#1078
@@ -906,6 +905,7 @@ object frmSklost: TfrmSklost
       Required = True
       DisplayFormat = '0.000'
       Precision = 15
+      Size = 8
     end
     object IntegerField1: TIntegerField
       DisplayLabel = #1041#1091#1093#1090' '#1089#1074#1086#1073
@@ -933,6 +933,7 @@ object frmSklost: TfrmSklost
       Required = True
       DisplayFormat = '0.000'
       Precision = 15
+      Size = 8
     end
     object IntegerField3: TIntegerField
       DisplayLabel = #1041#1091#1093#1090' '#1086#1090#1083#1086#1078
@@ -1008,7 +1009,6 @@ object frmSklost: TfrmSklost
       FieldName = 'KOLOTP_ISX'
       DisplayFormat = '0.000'
       Precision = 15
-      Size = 4
     end
     object cdsSklostt2KOLTOTAL2: TAggregateField
       FieldName = 'KOLTOTAL2'
@@ -1041,9 +1041,9 @@ object frmSklost: TfrmSklost
       '<P>.PixelsPerInch'
       '<P>.Top'
       '<P>.Width'
-      'Panel1.<P>.Height'
-      'Panel1.dbgSklost.<P>.Columns.<ForAllItems>.Width'
-      'Panel3.dbgSklostt.<P>.Columns.<ForAllItems>.Width')
+      'dbgSklostt.<P>.Columns.<ForAllItems>.Width'
+      'dbgSklostt.<P>.Height'
+      'Panel1.dbgSklost.<P>.Columns.<ForAllItems>.Width')
     Left = 144
     Top = 32
   end
@@ -1405,7 +1405,6 @@ object frmSklost: TfrmSklost
     Top = 104
   end
   object ufSklostt: TUnfFilter
-    DBGridEh = dbgSklostt
     MTStrings.Find = #1055#1086#1080#1089#1082
     MTStrings.Filter = #1060#1080#1083#1100#1090#1088
     MTStrings.Copy = #1050#1086#1087#1080#1088#1086#1074#1072#1090#1100
@@ -1483,6 +1482,7 @@ object frmSklost: TfrmSklost
       Required = True
       DisplayFormat = '0.000'
       Precision = 15
+      Size = 8
     end
     object IntegerField7: TIntegerField
       DisplayLabel = #1041#1091#1093#1090' '#1089#1074#1086#1073
@@ -1510,6 +1510,7 @@ object frmSklost: TfrmSklost
       Required = True
       DisplayFormat = '0.000'
       Precision = 15
+      Size = 8
     end
     object IntegerField9: TIntegerField
       DisplayLabel = #1041#1091#1093#1090' '#1086#1090#1083#1086#1078
