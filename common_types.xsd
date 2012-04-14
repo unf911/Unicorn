@@ -256,7 +256,7 @@
 	<xs:simpleType name="DGPNtypr">
 		<xs:annotation>
 			<xs:documentation>ПОРЯДОК заповнення податкової накладної (Наказ Міністерства фінансів України від 01.11.11 № 1379)
-п.8. Усі примірники податкових накладних, окремі особливості заповнення яких викладені в підпунктах 8.1-8.4 цього пункту, залишаються в особи, що їх виписала, і зберігаються відповідно до викладеного в підпунктах 6.1 та 6.4 пункту 6 цього Порядку. 
+п.8. Усі примірники податкових накладних, окремі особливості заповнення яких викладені в підпунктах 8.1-8.4 цього пункту, залишаються в особи, що їх виписала, і зберігаються відповідно до викладеного в підпунктах 6.1 та 6.4 пункту 6 цього Порядку.
  Можливі значення значення 01, 02, ..., 14</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
@@ -270,7 +270,7 @@
 				Натуральна виплата в рахунок оплати праці фізичним особам
 			</xs:documentation></xs:annotation></xs:enumeration>
 			<xs:enumeration value="04"><xs:annotation><xs:documentation>
-				Постачання у межах балансу для невиробничого використання
+				Постачання у межах балансу для невиробничого використанн
 			</xs:documentation></xs:annotation></xs:enumeration>
 			<xs:enumeration value="05"><xs:annotation><xs:documentation>
 				Ліквідація основних засобів за самостійним рішенням платника податку
@@ -279,7 +279,7 @@
 				Переведення виробничих основних засобів до складу невиробничих
 			</xs:documentation></xs:annotation></xs:enumeration>
 			<xs:enumeration value="07"><xs:annotation><xs:documentation>
-				Експортні постачання
+				Експортні постачанн
 			</xs:documentation></xs:annotation></xs:enumeration>
 			<xs:enumeration value="08"><xs:annotation><xs:documentation>
 				Постачання для операцій, які не є об'єктом оподаткування податком на додану вартість
@@ -325,7 +325,7 @@
 			<xs:enumeration value="ВМД">
 				<xs:annotation>
 					<xs:documentation>
-				ВМД - вантажна митна декларація
+				ВМД - вантажна митна деклараці
 			</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
@@ -456,7 +456,7 @@
 			<xs:enumeration value="ВМД">
 				<xs:annotation>
 					<xs:documentation>
-				ВМД - вантажна митна декларація
+				ВМД - вантажна митна деклараці
 			</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
@@ -641,7 +641,7 @@
 	<!--Загальний тип "Код зовнішньоекономічної діяльності"-->
 	<xs:simpleType name="DGUKTZED">
 		<xs:restriction base="xs:integer">
-			<xs:pattern value="([0-9])([0-9])([0-9])([0-9])([0-9])([0-9])([0-9])([0-9])([0-9])([0-9])"/>
+			<xs:pattern value="([0-9]){10}|([0-9]){4}|([0-9]){6}"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<!--Загальний тип "Число від 10000000 до 99999999"-->
@@ -871,11 +871,25 @@
 			<xs:pattern value="([0-9]{5,10}|[АБВГДЕЄЖЗИІКЛМНОПРСТУФХЦЧШЩЮЯ]{2}[0-9]{6})"/>
 		</xs:restriction>
 	</xs:simpleType>
-	<!--Загальний тип "№ паспорта" (HPASS)-->
+	<!--Загальний тип "серія та № паспорта" (HPASS)-->
 	<xs:simpleType name="DGPass">
 		<xs:restriction base="xs:string">
 			<xs:maxLength value="8"/>
 			<xs:pattern value="[АБВГДЕЄЖЗИІКЛМНОПРСТУФХЦЧШЩЮЯ]{2}[0-9]{6}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--Загальний тип "серія паспорта" (HPASSSER)-->
+	<xs:simpleType name="DGPassSer">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="2"/>
+			<xs:pattern value="[АБВГДЕЄЖЗИІКЛМНОПРСТУФХЦЧШЩЮЯ]{2}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--Загальний тип "№ паспорта" (HPASSNUM)-->
+	<xs:simpleType name="DGPassNum">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="6"/>
+			<xs:pattern value="[0-9]{6}"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<!--Загальний тип "Код ЄДРПОУ (тiльки числа)"-->
@@ -930,7 +944,7 @@
 			Відповідно до Положення про реєстрацію платників податку на додану вартість, п.6.3 наказ ДПАУ від 22.12.2010 № 978
 			Індивідуальний податковий номер платника, можливі значення:
 			* 0 (нуль)
-			* число від 6 до 12 чисел 
+			* число від 6 до 12 чисел
 			* № паспорта
 		</xs:documentation>
 		</xs:annotation>
@@ -1022,6 +1036,14 @@
 	<xs:complexType name="TinColumn">
 		<xs:simpleContent>
 			<xs:extension base="DGLong">
+				<xs:attribute name="ROWNUM" type="rowInt" use="required"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<!--Загальний тип "Код ЕДРПОУ в колонці"-->
+	<xs:complexType name="EDRPOUColumn">
+		<xs:simpleContent>
+			<xs:extension base="DGNLong">
 				<xs:attribute name="ROWNUM" type="rowInt" use="required"/>
 			</xs:extension>
 		</xs:simpleContent>

@@ -196,9 +196,11 @@ uses
   VygruzkaSprEdit in 'VygruzkaSprEdit.pas' {frmVygruzkaSprEdit},
   RepReys in 'RepReys.pas' {frmRepReys},
   RepReysDet in 'RepReysDet.pas' {frmRepReysDet},
-  RepNNaklXml in 'RepNNaklXml.pas' {frmRepNnaklXml},
+  RepPribylPrilogEdnal in 'RepPribylPrilogEdnal.pas' {frmRepPribylPrilogEdnal},
   J1201004 in 'J1201004.pas',
-  J0215103 in 'J0215103.pas';
+  J0215103 in 'J0215103.pas',
+  J0111901 in 'J0111901.pas',
+  RepNNaklXml in 'RepNNaklXml.pas' {frmRepNnaklXml};
 
 {$R *.RES}
 begin

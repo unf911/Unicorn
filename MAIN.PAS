@@ -85,7 +85,8 @@ uses
   ReysSpr, //TfrmReysSpr
   DolgnostSpr, //TfrmDolgnostSpr
   RepReys, // TfrmRepReys
-  RepNNaklXml // TfrmRepNNaklXml
+  RepNNaklXml, // TfrmRepNNaklXml
+  RepPribylPrilogEdnal //TfrmRepPribylPrilogEdnal
   ;
 
 type
@@ -309,6 +310,8 @@ type
     N73: TMenuItem;
     actRepReestrEDRPN: TAction;
     N74: TMenuItem;
+    actRepPribylPrilogEdnal: TAction;
+    N75: TMenuItem;
 
     procedure FileNew1Execute(Sender: TObject);
     procedure FileOpen1Execute(Sender: TObject);
@@ -402,6 +405,7 @@ type
     procedure actRepReysExecute(Sender: TObject);
     procedure actTestShortExecute(Sender: TObject);
     procedure actRepReestrEDRPNExecute(Sender: TObject);
+    procedure actRepPribylPrilogEdnalExecute(Sender: TObject);
   private
     { Private declarations }
     procedure CreateMDIChild(const Name: string);
@@ -2527,6 +2531,23 @@ try
   end;
 except
 	AssertInternal ('4CBFACD6-9CAE-460A-AC9B-0553A9278998');
+end;
+end;
+
+procedure TMainForm.actRepPribylPrilogEdnalExecute(Sender: TObject);
+var
+  frmRepPribylPrilogEdnal: TfrmRepPribylPrilogEdnal;
+begin
+try
+	frmRepPribylPrilogEdnal := TfrmRepPribylPrilogEdnal.Create(Application);
+  with frmRepPribylPrilogEdnal do begin
+  	actSettings.Execute;
+    if not actSettings.Checked then begin
+      Close;
+    end;
+  end;
+except
+	AssertInternal ('4F5CF63D-B83F-4A89-93C7-E782F43802BD');
 end;
 end;
 

@@ -1,6 +1,6 @@
 object frmRepNnaklXml: TfrmRepNnaklXml
-  Left = 326
-  Top = 400
+  Left = 328
+  Top = 402
   BorderStyle = bsDialog
   Caption = #1057#1086#1079#1076#1072#1085#1080#1077' XML '#1080#1079' '#1085#1072#1083#1086#1075#1086#1074#1086#1081
   ClientHeight = 344
@@ -336,6 +336,7 @@ object frmRepNnaklXml: TfrmRepNnaklXml
       FieldName = 'KURS'
       ProviderFlags = []
       Precision = 15
+      Size = 8
     end
     object sdsNNaklVSEGO: TFMTBCDField
       FieldName = 'VSEGO'
