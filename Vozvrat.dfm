@@ -567,6 +567,7 @@ object frmVozvrat: TfrmVozvrat
       ProviderFlags = [pfInUpdate]
       Required = True
       Precision = 32
+      Size = 8
     end
     object sdsNakloDELMARKED: TSmallintField
       FieldName = 'DELMARKED'
@@ -590,6 +591,7 @@ object frmVozvrat: TfrmVozvrat
       FieldName = 'NDS_FROM'
       Required = True
       Precision = 32
+      Size = 8
     end
     object sdsNakloKURS_INDIRECT: TSmallintField
       FieldName = 'KURS_INDIRECT'
@@ -882,6 +884,7 @@ object frmVozvrat: TfrmVozvrat
       FieldName = 'NDS_FROM'
       Required = True
       Precision = 32
+      Size = 8
     end
     object cdsNakloKURS_INDIRECT: TSmallintField
       FieldName = 'KURS_INDIRECT'
@@ -1030,6 +1033,7 @@ object frmVozvrat: TfrmVozvrat
     object sdsNaklotCENA: TFMTBCDField
       FieldName = 'CENA'
       Precision = 15
+      Size = 8
     end
     object sdsNaklotID_NAKL: TIntegerField
       FieldName = 'ID_NAKL'
@@ -1155,6 +1159,7 @@ object frmVozvrat: TfrmVozvrat
       OnChange = cdsNaklotCENAChange
       DisplayFormat = '0.00'
       Precision = 15
+      Size = 8
     end
     object cdsNaklotID_NAKL: TIntegerField
       DisplayLabel = #1048#1076#1077#1085#1090
@@ -1251,7 +1256,6 @@ object frmVozvrat: TfrmVozvrat
       '<P>.PixelsPerInch'
       '<P>.Top'
       '<P>.Width'
-      '<P>.WindowState'
       'dbgNaklot.<P>.Columns.<ForAllItems>.Width'
       'Panel2.<P>.Height'
       'Panel2.dbgNaklo.<P>.Columns.<ForAllItems>.Width')

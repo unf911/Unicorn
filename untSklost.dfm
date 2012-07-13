@@ -1009,6 +1009,7 @@ object frmSklost: TfrmSklost
       FieldName = 'KOLOTP_ISX'
       DisplayFormat = '0.000'
       Precision = 15
+      Size = 8
     end
     object cdsSklostt2KOLTOTAL2: TAggregateField
       FieldName = 'KOLTOTAL2'

@@ -10,6 +10,7 @@ object frmRepDoxodRasxod: TfrmRepDoxodRasxod
   Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
+  Menu = MainMenu2
   OldCreateOrder = False
   OnCreate = FormCreate
   PixelsPerInch = 96
@@ -121,5 +122,45 @@ object frmRepDoxodRasxod: TfrmRepDoxodRasxod
     ProviderName = 'dspDolgBux2'
     Left = 264
     Top = 192
+  end
+  object MainMenu2: TMainMenu
+    AutoMerge = True
+    Left = 104
+    Top = 168
+    object mnuAction2: TMenuItem
+      Caption = #1044#1077#1081#1089#1090#1074#1080#1103
+      GroupIndex = 10
+      object N1: TMenuItem
+        Action = actSpisanieSebestRecount
+      end
+    end
+  end
+  object ActionList2: TActionList
+    Left = 168
+    Top = 168
+    object actSpisanieSebestRecount: TAction
+      Caption = #1055#1077#1088#1077#1089#1095#1080#1090#1072#1090#1100' '#1089#1090#1072#1090#1100#1102' '#1089#1087#1080#1089#1072#1085#1080#1077' '#1089'/'#1089' '#1090#1086#1074#1072#1088#1086#1074
+      OnExecute = actSpisanieSebestRecountExecute
+    end
+  end
+  object sdsSpisanieSebestRecount: TSQLDataSet
+    CommandText = 
+      'select * from STATYA_DR_SPISANIE_SEBEST_FIX(:dat_from,:dat_to, 1' +
+      ')'
+    MaxBlobSize = -1
+    Params = <
+      item
+        DataType = ftUnknown
+        Name = 'dat_from'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftUnknown
+        Name = 'dat_to'
+        ParamType = ptInput
+      end>
+    SQLConnection = dmdEx.scUchet
+    Left = 312
+    Top = 128
   end
 end

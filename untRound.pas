@@ -63,10 +63,11 @@ function VarToInt(const vIn: variant;Required:boolean=false): variant;
 ////variant преобразовать в вещественное, если невозможно возвр null или 0
 function VarToDbl(const vIn: variant;Required:boolean=true): variant;
 //Пересчёт цен если цена с ндс является полем internalcalc
-procedure FromCenaRecount (Source : integer;MDataSet,DDataSet : TDataSet;mode: integer=0);
-function GetPrice(cdsTemp:TClientDataSet; id_price: integer;id_tovar: integer;
+procedure FromCenaRecount (Source : integer;MDataSet,DDataSet : TDataSet;mode: integer=0;
+  id_price: integer=1; id_currency:integer=0);
+function GetPrice(cdsTemp:TClientDataSet; id_price: variant;id_tovar: integer;
   dat: TDate; WithNds: boolean;
-  var id_currency: integer; var price: double):boolean;
+  id_currency: integer; var price: double):boolean;
 //Пересчёт суммы накладной
 function SumRecount(MDataSet2,
   DDataSet2: TDataSet;iMode:integer=0):currency;
@@ -399,19 +400,35 @@ except
 end;
 end; // suma2grn
 
-function GetPrice(cdsTemp:TClientDataSet; id_price: integer;id_tovar: integer;
+//Прайс по умолчанию. Прайс Укк = 1. Используется в 99% использования прайсов
+//Прайс = 0  - нет прайса
+function GetPrice(cdsTemp:TClientDataSet; id_price: variant;id_tovar: integer;
   dat: TDate; WithNds: boolean;
-  var id_currency: integer; var price: double):boolean;
+  id_currency: integer; var price: double):boolean;
+var
+  id_price_str, id_currency_str : string;
 begin
 Result := false;
 try
   //Поддержка даты прайса пока не реализована, и вне зависимости
   //от значения withnds прайс ПОКА будет возвращаться без НДС
   cdsTemp.Close;
+  if id_price <> 0 then begin
+    id_price_str := inttostr(id_price);
+  end else begin
+    id_price_str := 'null';
+  end;
+  if id_currency <> 0 then begin
+    id_currency_str := inttostr(id_currency);
+  end else begin
+    id_currency_str := 'null';
+  end;
+
   cdsTemp.CommandText :=
-    'select round(cena,2) as cena from get_price_default_pc(null,'
-    +inttostr(id_tovar)
-    +',null,'
+    'select round(cena,2) as cena from get_price_default_pc('
+    + id_price_str + ','
+    + inttostr(id_tovar)
+    + ',' + id_currency_str + ','
     + quotedstr(datetostr(dat))
     +',0)';
   cdsTemp.Open;
@@ -421,9 +438,6 @@ try
     Result := false;
     Exit;
   end;
-  id_currency := 0; //пока идентификатор валюты не используется
-  {if (id_price=1) then begin}
-    //Прайс по умолчанию. Используется в 99% использования прайсов
     if cdsTemp.FieldByName('cena').isNull then begin
       Result := false;
     end else begin
@@ -645,15 +659,35 @@ end;
 function VarToInt(const vIn: variant;Required:boolean=false): variant;
 begin
 try
-	if VarIsOrdinal (vIn) then begin
-    Result := varasType(vIn,varInteger);
-	end else begin
-		if Required then begin
-			Result := 0;
-		end else begin
-			Result := Null;
-		end;
-	end;
+  if VarIsNull(vIn) then begin
+    if Required then begin
+      Result := 0;
+      exit;
+    end else begin
+      Result := Null;
+      exit;
+    end;
+  end;
+
+  try
+    if VarIsNumeric (vIn) then begin
+      Result := varasType(vIn,varInteger);
+      exit;
+    end;
+    if VarIsStr(vIn) then begin
+      Result := strtoint(VarToStr(vIn));
+      exit;
+    end;
+  except
+    on Exception do begin
+    end;
+  end;
+
+  if Required then begin
+    Result := 0;
+  end else begin
+    Result := Null;
+  end;
 except
 	AssertInternal('14CF4D34-8462-4578-AA3D-A67F957B8C80');
 end;
@@ -839,9 +873,10 @@ end;
 //mode=0 - цена округляется до 2 знаков
 //mode=1 - цена не округляется до 2 знаков
 //mode=2  пока не сделано- колво не округл до 3 знаков, цена округл до 2
-procedure FromCenaRecount (Source : integer;MDataSet,DDataSet : TDataSet;mode: integer=0);
+//id_price=0 - нет прайса, 1 - прайс укк, Остальные прайсы на 0 и 1.
+procedure FromCenaRecount (Source : integer;MDataSet,DDataSet : TDataSet;
+  mode: integer=0; id_price: integer=1; id_currency :integer=0);
 var
-  id_currency : integer;
   dPrice : double;
 begin
   if DDataSet.State=dsBrowse then begin DDataSet.Edit end;
@@ -903,7 +938,7 @@ begin
 
       if GetPrice(
         dmdEx.cdsTemp,
-        DDataSet.FieldByName('skidka').asinteger,
+        id_price,
         DDataSet.FieldByName('id_tovar').asinteger,
         MDataSet.FieldByName('dat').AsDateTime,
         false,
@@ -1167,16 +1202,12 @@ begin
         dtsTo.Edit;
       end;
       CopyFieldValues(dtsFrom,dtsTo,FromField,ToField);
-      //dtsTo.FieldByName(ToField).AsFloat :=
-      //  dtsFrom.FieldByName(FromField).AsFloat;
     end else begin //if found
       if OuterJoin then begin
         dtsTo.Append;
         dtsTo.FieldByName(KeyFieldTo).AsString :=
           dtsFrom.FieldByName(KeyFieldFrom).asString;
         CopyFieldValues(dtsFrom,dtsTo,FromField,ToField);
-        //dtsTo.FieldByName(ToField).asFloat :=
-        // dtsFrom.FieldByName(FromField).asFloat;
       end;
     end; //if found
     dtsTo.CheckBrowseMode;

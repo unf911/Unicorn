@@ -23,7 +23,7 @@ object frmSravnPrice: TfrmSravnPrice
   object GroupBox1: TGroupBox
     Left = 0
     Top = 0
-    Width = 634
+    Width = 626
     Height = 39
     Align = alTop
     TabOrder = 0
@@ -160,8 +160,8 @@ object frmSravnPrice: TfrmSravnPrice
   object AutoPanel1: TAutoPanel
     Left = 0
     Top = 39
-    Width = 634
-    Height = 405
+    Width = 626
+    Height = 393
     Align = alClient
     BevelInner = bvRaised
     BevelOuter = bvLowered
@@ -169,8 +169,8 @@ object frmSravnPrice: TfrmSravnPrice
     object PageControl1: TPageControl
       Left = 2
       Top = 2
-      Width = 630
-      Height = 401
+      Width = 622
+      Height = 389
       ActivePage = tsAllPrices
       Align = alClient
       TabOrder = 0
@@ -306,8 +306,8 @@ object frmSravnPrice: TfrmSravnPrice
         object dbgRepFact: TDBGridEh
           Left = 0
           Top = 0
-          Width = 622
-          Height = 357
+          Width = 614
+          Height = 345
           Align = alClient
           DataSource = dsFactTable
           EditActions = [geaCopyEh, geaSelectAllEh]
@@ -333,8 +333,8 @@ object frmSravnPrice: TfrmSravnPrice
         end
         object pbAllPrices: TProgressBar
           Left = 0
-          Top = 357
-          Width = 622
+          Top = 345
+          Width = 614
           Height = 16
           Align = alBottom
           Step = 1
@@ -1147,7 +1147,6 @@ object frmSravnPrice: TfrmSravnPrice
     object cdsSpecOstNerazmKOLOTP_NERAZM: TFMTBCDField
       FieldName = 'KOLOTP_NERAZM'
       Precision = 15
-      Size = 4
     end
   end
   object cdsSpecOstRazm: TClientDataSet
@@ -1179,7 +1178,6 @@ object frmSravnPrice: TfrmSravnPrice
     object cdsSpecOstRazmKOLOTP_RAZM: TFMTBCDField
       FieldName = 'KOLOTP_RAZM'
       Precision = 15
-      Size = 4
     end
   end
   object dsSpecOstRazm: TDataSource
@@ -1276,6 +1274,7 @@ object frmSravnPrice: TfrmSravnPrice
       DisplayLabel = #1062#1077#1085#1072
       FieldName = 'CENA'
       DisplayFormat = '0.0000'
+      Size = 8
     end
     object mteFactTableZAKUPKA: TFloatField
       DisplayLabel = #1047#1072#1082#1091#1087#1082#1072

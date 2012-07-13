@@ -580,6 +580,7 @@ object frmNaklo: TfrmNaklo
       FieldName = 'NDS'
       Required = True
       Precision = 15
+      Size = 8
     end
     object sdsNakloTIP: TSmallintField
       FieldName = 'TIP'
@@ -1619,6 +1620,7 @@ object frmNaklo: TfrmNaklo
     object cdsRepNakloKOLOTP: TFMTBCDField
       FieldName = 'KOLOTP'
       Precision = 15
+      Size = 8
     end
     object cdsRepNakloKOLBUXT: TIntegerField
       FieldName = 'KOLBUXT'
@@ -1629,6 +1631,7 @@ object frmNaklo: TfrmNaklo
     object cdsRepNakloKOLOTP_ITOG: TFMTBCDField
       FieldName = 'KOLOTP_ITOG'
       Precision = 15
+      Size = 8
     end
     object cdsRepNakloNOMER_TARY_ITOG: TStringField
       FieldName = 'NOMER_TARY_ITOG'
@@ -1751,6 +1754,7 @@ object frmNaklo: TfrmNaklo
     object sdsNaklotCENA: TFMTBCDField
       FieldName = 'CENA'
       Precision = 15
+      Size = 8
     end
     object sdsNaklotID_NAKL: TIntegerField
       FieldName = 'ID_NAKL'
@@ -1770,6 +1774,7 @@ object frmNaklo: TfrmNaklo
     object sdsNaklotKOLOTP: TFMTBCDField
       FieldName = 'KOLOTP'
       Precision = 15
+      Size = 8
     end
     object sdsNaklotSKIDKA: TFMTBCDField
       FieldName = 'SKIDKA'
@@ -1860,6 +1865,7 @@ object frmNaklo: TfrmNaklo
       FieldName = 'CENA'
       DisplayFormat = '0.00'
       Precision = 15
+      Size = 8
     end
     object cdsNaklotID_NAKL: TIntegerField
       DisplayWidth = 1
@@ -1883,6 +1889,7 @@ object frmNaklo: TfrmNaklo
       FieldName = 'KOLOTP'
       DisplayFormat = '0.000'
       Precision = 15
+      Size = 8
     end
     object cdsNaklotSKIDKA: TFMTBCDField
       DisplayLabel = #1057#1082#1080#1076#1082#1072
@@ -2032,6 +2039,7 @@ object frmNaklo: TfrmNaklo
     object FMTBCDField1: TFMTBCDField
       FieldName = 'KOLOTP'
       Precision = 15
+      Size = 8
     end
     object IntegerField1: TIntegerField
       FieldName = 'KOLBUXT'
@@ -2042,6 +2050,7 @@ object frmNaklo: TfrmNaklo
     object FMTBCDField2: TFMTBCDField
       FieldName = 'KOLOTP_ITOG'
       Precision = 15
+      Size = 8
     end
     object StringField2: TStringField
       FieldName = 'NOMER_TARY_ITOG'

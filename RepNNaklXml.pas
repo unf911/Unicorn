@@ -398,9 +398,9 @@ end;
 procedure TfrmRepNnaklXml.FillBodyXML(XMLDeclarContent:IXMLDeclarContent; dsNNakl: TDataSet);
 begin
   with XMLDeclarContent.DECLARBODY do begin
-    HCOPY := 0; //Не копия.
+    HCOPY := 1; //Копия.
     HERPN := 1; //Включено в ЕРПН
-    HORIG := GetOriginalOstaetsyUProdavtsa;//0. оригинал остаётся у продавца
+    HORIG1 := GetOriginalOstaetsyUProdavtsa;//0. оригинал остаётся у продавца
     HTYPR := GetOrigUProdTipPrichiny;
     HFILL := FormatDateTime('ddmmyyyy',dsNNakl.FieldByName('dat').AsDateTime);
     HNUM := dsNNakl.FieldByName('id').AsInteger;

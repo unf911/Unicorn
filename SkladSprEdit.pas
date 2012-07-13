@@ -8,7 +8,7 @@ uses
   Dialogs, StdCtrls, Mask, DBCtrls,
   DB, ActnList, Buttons,
   DBClient, ExtCtrls, DBCtrlsEh, DBLookupEh, DBGridEh,
-  untSkladEdit, PropFilerEh, PropStorageEh;
+  untSkladEdit, PropFilerEh, PropStorageEh, MemTableEh;
 
 type
   TfrmSkladSprEdit = class(TForm)
@@ -47,7 +47,12 @@ implementation
 
 procedure TfrmSkladSprEdit.actOkExecute(Sender: TObject);
 begin
-  ModalResult := mrOk;
+  dsSkladEdit.DataSet.CheckBrowseMode;
+  if PostAndApply(dsSkladEdit.DataSet)=0 then begin
+    ModalResult := mrOk;
+  end;
+
+  //ModalResult := mrOk;
 end;
 
 procedure TfrmSkladSprEdit.actCancelExecute(Sender: TObject);
@@ -58,6 +63,9 @@ end;
 procedure TfrmSkladSprEdit.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
+  TMemTableEh(dsSkladEdit.DataSet).CancelUpdates;
+  dsSkladEdit.DataSet.Cancel;
+{
   if ModalResult=mrOk then begin
     PostAndApply(dsSkladEdit.DataSet);
   end else begin //if mrOk
@@ -65,6 +73,7 @@ begin
       dsSkladEdit.DataSet.Cancel;
     end;//if browse
   end; //if mrOk
+}  
 end;
 
 end.

@@ -265,8 +265,6 @@ type
     IntegerField11: TIntegerField;
     dsStatyaDR: TDataSource;
     sdsUndelete: TSQLDataSet;
-    FloatField1: TFloatField;
-    FloatField2: TFloatField;
     cdsManagerSIGNATURE: TStringField;
     sdsVygruzka: TSQLDataSet;
     sdsVygruzkaID_PEREVOZCHIK: TIntegerField;
@@ -295,6 +293,7 @@ type
     sdsVygruzkaID_VYGRUZKA: TIntegerField;
     cdsVygruzkaPOKUPATEL_PLATIT: TSmallintField;
     cdsVygruzkaID_VYGRUZKA: TIntegerField;
+    cdsPostID_PRICE: TIntegerField;
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);
 //    procedure scUchetBeforeConnect(Sender: TObject);
@@ -404,7 +403,6 @@ type
     function GetUser : string;
     function GetWhereInList(DataSet :TDataSet;FieldName:string):string;
     procedure SetIntegerParamValue(Param:TParam;Value:string);
-    function UndeleteNakl(Field:TIntegerField;actRefresh:TAction):boolean; deprecated;
     function UndeleteNaklo(Field: TIntegerField;  actRefresh: TAction; KeyFieldName: String='id_nakl'): boolean;  //замена UndeleteNakl
     function PostNakl(Field:TIntegerField;sdsPost:TSqlDataSet;
       FieldIdNakl:TIntegerField;bAskConfirmationQuestion:boolean=true;
@@ -1655,25 +1653,6 @@ begin
   dbgNaklot.DataSource.DataSet.Edit;
   SetFieldValue(dbgNaklot.SelectedField, dbgNaklot.SelectedField.Value+param);
   dbgNaklot.DataSource.DataSet.Post;
-end;
-
-function TdmdEx.UndeleteNakl(Field: TIntegerField;
-  actRefresh: TAction): boolean; deprecated;
-begin
-  Result := false;
-  if Field.DataSet.Eof and Field.DataSet.Bof then begin
-    exit;
-  end;
-  if (Field.AsInteger<>0) then begin
-    if (Field.DataSet.State=dsBrowse) then begin
-      Field.DataSet.Edit;
-    end;
-    Field.AsInteger :=0;
-    Field.DataSet.CheckBrowseMode;
-    ApplyOrCancel(Field.DataSet);
-    actRefresh.Execute;
-    Result := true;
-  end;
 end;
 
 function TdmdEx.UndeleteNaklo(Field: TIntegerField;

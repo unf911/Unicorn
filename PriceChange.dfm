@@ -682,6 +682,7 @@ object frmPriceChange: TfrmPriceChange
     object sdsNaklotCENA: TFMTBCDField
       FieldName = 'CENA'
       Precision = 15
+      Size = 8
     end
     object sdsNaklotID_SEBEST: TIntegerField
       FieldName = 'ID_SEBEST'
@@ -801,6 +802,7 @@ object frmPriceChange: TfrmPriceChange
       FieldName = 'CENA'
       DisplayFormat = '0.0000'
       Precision = 15
+      Size = 8
     end
     object cdsNaklotID_SEBEST: TIntegerField
       FieldName = 'ID_SEBEST'

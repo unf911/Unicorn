@@ -158,6 +158,7 @@ begin
     ' Статья: ' +
     vartostr(dmdEx.cdsStatyaDR.Lookup('id',sub2_in,'fullname'))+
     '.';
+  ShowCopyForRoleOrUser(dbgSklostdet,'POWER_USER;BUXG','SYSDBA');    
 end;
 
 function TfrmRepSkladFactDet.ShowDetail(id_schet: integer;

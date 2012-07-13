@@ -503,7 +503,19 @@ object frmSpec: TfrmSpec
       'ct om.id from naklo om where om.id_nakl=n.parent_id_nakl) as par' +
       'ent_id'#13#10'from '#13#10'  SPEC_VW n'#13#10'order by'#13#10'  n.dat, n.id_nakl'#13#10
     MaxBlobSize = -1
-    Params = <>
+    Params = <
+      item
+        DataType = ftDate
+        Name = 'dat_from'
+        ParamType = ptInput
+        Value = 38139d
+      end
+      item
+        DataType = ftDate
+        Name = 'dat_to'
+        ParamType = ptInput
+        Value = 38169d
+      end>
     SQLConnection = dmdEx.scUchet
     Left = 392
     Top = 208
@@ -563,6 +575,7 @@ object frmSpec: TfrmSpec
       ProviderFlags = [pfInUpdate]
       Required = True
       Precision = 32
+      Size = 8
     end
     object sdsNakloDELMARKED: TSmallintField
       FieldName = 'DELMARKED'
@@ -857,6 +870,15 @@ object frmSpec: TfrmSpec
       DisplayLabel = #1055#1086#1076#1090#1074#1077#1088#1078#1076#1077#1085#1086
       FieldName = 'CONFIRMED'
     end
+    object cdsNakloID_PRICE: TStringField
+      FieldKind = fkLookup
+      FieldName = 'ID_PRICE'
+      LookupDataSet = dmdEx.cdsPost
+      LookupKeyFields = 'ID'
+      LookupResultField = 'ID_PRICE'
+      KeyFields = 'ID_IZG'
+      Lookup = True
+    end
   end
   object sdsPost: TSQLDataSet
     CommandText = 'SPEC_POST_PC'
@@ -1010,6 +1032,7 @@ object frmSpec: TfrmSpec
     object cdsRepNakloKOLOTP: TFMTBCDField
       FieldName = 'KOLOTP'
       Precision = 15
+      Size = 8
     end
     object cdsRepNakloKOLBUXT: TIntegerField
       FieldName = 'KOLBUXT'
@@ -1020,6 +1043,7 @@ object frmSpec: TfrmSpec
     object cdsRepNakloKOLOTP_ITOG: TFMTBCDField
       FieldName = 'KOLOTP_ITOG'
       Precision = 15
+      Size = 8
     end
     object cdsRepNakloNOMER_TARY_ITOG: TStringField
       FieldName = 'NOMER_TARY_ITOG'
@@ -1139,6 +1163,7 @@ object frmSpec: TfrmSpec
     object sdsNaklotCENA: TFMTBCDField
       FieldName = 'CENA'
       Precision = 15
+      Size = 8
     end
     object sdsNaklotID_NAKL: TIntegerField
       FieldName = 'ID_NAKL'
@@ -1158,6 +1183,7 @@ object frmSpec: TfrmSpec
     object sdsNaklotKOLOTP: TFMTBCDField
       FieldName = 'KOLOTP'
       Precision = 15
+      Size = 8
     end
     object sdsNaklotSKIDKA: TFMTBCDField
       FieldName = 'SKIDKA'
@@ -1256,7 +1282,6 @@ object frmSpec: TfrmSpec
       end>
     ProviderName = 'dspNaklot'
     StoreDefs = True
-    AfterOpen = cdsNaklotAfterOpen
     BeforeInsert = cdsNaklotBeforeInsert
     AfterInsert = cdsNaklotAfterInsert
     AfterDelete = cdsNaklotAfterDelete
@@ -1277,6 +1302,7 @@ object frmSpec: TfrmSpec
       OnChange = cdsNaklotCENAChange
       DisplayFormat = '0.0000'
       Precision = 15
+      Size = 8
     end
     object cdsNaklotID_NAKL: TIntegerField
       DisplayWidth = 1
@@ -1291,6 +1317,7 @@ object frmSpec: TfrmSpec
     object cdsNaklotID_TOVAR: TIntegerField
       FieldName = 'ID_TOVAR'
       Required = True
+      OnChange = cdsNaklotID_TOVARChange
     end
     object cdsNaklotKODCN: TSmallintField
       DisplayLabel = #1047#1072#1082#1088#1099#1090#1072' '#1087#1086#1079#1080#1094#1080#1103
@@ -1303,11 +1330,13 @@ object frmSpec: TfrmSpec
       OnChange = cdsNaklotKOLOTPChange
       DisplayFormat = '0.000'
       Precision = 15
+      Size = 8
     end
     object cdsNaklotSKIDKA: TFMTBCDField
       DisplayLabel = #1057#1082#1080#1076#1082#1072
       DisplayWidth = 5
       FieldName = 'SKIDKA'
+      OnChange = cdsNaklotSKIDKAChange
       DisplayFormat = '0.0'
       Precision = 15
       Size = 2
@@ -1492,6 +1521,7 @@ object frmSpec: TfrmSpec
     object FMTBCDField1: TFMTBCDField
       FieldName = 'KOLOTP'
       Precision = 15
+      Size = 8
     end
     object IntegerField1: TIntegerField
       FieldName = 'KOLBUXT'
@@ -1502,6 +1532,7 @@ object frmSpec: TfrmSpec
     object FMTBCDField2: TFMTBCDField
       FieldName = 'KOLOTP_ITOG'
       Precision = 15
+      Size = 8
     end
     object StringField2: TStringField
       FieldName = 'NOMER_TARY_ITOG'

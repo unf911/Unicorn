@@ -76,7 +76,8 @@ implementation
 procedure TfrmTovarSprEdit.actOkExecute(Sender: TObject);
 begin
   dsTovarEdit.DataSet.CheckBrowseMode;
-	if ( ApplyOrCancel(dsTovarEdit.DataSet)) then begin
+  if PostAndApply(dsTovarEdit.DataSet)=0 then begin
+//	if ( ApplyOrCancel(dsTovarEdit.DataSet)) then begin
     ModalResult := mrOk;
   end;
 end;
@@ -89,6 +90,7 @@ end;
 procedure TfrmTovarSprEdit.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
+  TClientDataset(dsTovarEdit.DataSet).CancelUpdates;
   dsTovarEdit.DataSet.Cancel;
 end;
 

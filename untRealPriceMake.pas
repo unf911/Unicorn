@@ -432,13 +432,12 @@ procedure TfrmRealPriceMake.cdsPaperSKIDKAChange(Sender: TField);
 var
   dPrice : double;
   dSkidka : double;
-  id_currency : integer;
 begin
   if not Semaphore1 then begin
     Semaphore1 := true;
     if GetPrice(dmdEx.cdsTemp,1,
      cdsPaper.FieldByName('id_tovar').asinteger,Now,false,
-     id_currency,dPrice) then begin
+     0,dPrice) then begin
       dSkidka :=  cdsPaper.FieldByName('skidka').asFloat;
       //такой товар был найден в прайсе
       cdsPaper.FieldByName('cena').AsFloat:=
@@ -453,7 +452,6 @@ end;
 
 procedure TfrmRealPriceMake.cdsRealSKIDKAChange(Sender: TField);
 var
-  id_currency : integer;
   dSkidka : double;
   dPrice : double;
 begin
@@ -461,7 +459,7 @@ begin
     Semaphore2 := true;
     if GetPrice(dmdEx.cdsTemp,1,
      cdsReal.FieldByName('id_tovar').asinteger,Now,false,
-     id_currency,dPrice) then begin
+     0,dPrice) then begin
       dSkidka :=  cdsReal.FieldByName('skidka').asFloat;
       //такой товар был найден в прайсе
       cdsReal.FieldByName('cena').AsFloat:=

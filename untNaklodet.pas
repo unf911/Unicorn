@@ -736,7 +736,6 @@ procedure TfrmNaklodet.FromCenaRecount (Source : integer);
 var
   dNds : double;
   dCena : double;
-  id_currency : integer;
   curPrice : double;
 begin
 
@@ -751,7 +750,7 @@ begin
     if GetPrice(dmdEx.cdsTemp,1,
      dsNaklotedit.DataSet.FieldByName('id_tovar').asinteger,
      dsNakloedit.DataSet.FieldByName('dat').asDateTime,false,
-     id_currency,curPrice) then begin
+     0,curPrice) then begin
     //такой товар был найден в прайсе
       dCena:= rroundto(curPrice,-2)*
         (1-VarToDbl(dbnSkidka.Value)/100);

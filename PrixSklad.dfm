@@ -354,6 +354,7 @@ object frmPrixSklad: TfrmPrixSklad
       FieldName = 'KOLOTP'
       DisplayFormat = '0.000'
       Precision = 15
+      Size = 8
     end
     object cdsSkladRasxID_ANALOG: TIntegerField
       FieldName = 'ID_ANALOG'
@@ -362,7 +363,88 @@ object frmPrixSklad: TfrmPrixSklad
   object cdsReport: TClientDataSet
     Aggregates = <>
     FilterOptions = [foCaseInsensitive]
-    FieldDefs = <>
+    FieldDefs = <
+      item
+        Name = 'TOVAR'
+        DataType = ftString
+        Size = 50
+      end
+      item
+        Name = 'ID_ANALOG'
+        DataType = ftInteger
+      end
+      item
+        Name = 'SKLADSKAYA'
+        DataType = ftInteger
+      end
+      item
+        Name = 'MONTHS_SALE'
+        DataType = ftInteger
+      end
+      item
+        Name = 'TOTAL_SALE'
+        DataType = ftFloat
+      end
+      item
+        Name = 'AVERAGE_SALE'
+        DataType = ftFloat
+      end
+      item
+        Name = 'AVERAGE_SALE_WITH_ZEROS'
+        DataType = ftFloat
+      end
+      item
+        Name = 'AVG2OTKL_SALE'
+        DataType = ftFloat
+      end
+      item
+        Name = 'RAZBROS_SALE'
+        DataType = ftFloat
+      end
+      item
+        Name = 'KOEF_SALE'
+        DataType = ftFloat
+      end
+      item
+        Name = 'OSTATOK'
+        DataType = ftFloat
+      end
+      item
+        Name = 'OSTATOK_REZERV'
+        DataType = ftFloat
+      end
+      item
+        Name = 'OSTATOK_FILIAL'
+        DataType = ftFloat
+      end
+      item
+        Name = 'OSTATOK_FILIAL_REZERV'
+        DataType = ftFloat
+      end
+      item
+        Name = 'OSTATOK_FILIAL_SIMF'
+        DataType = ftFloat
+      end
+      item
+        Name = 'SPEC_OST'
+        DataType = ftFloat
+      end
+      item
+        Name = 'PROGNOZ'
+        DataType = ftFloat
+      end
+      item
+        Name = 'ZAKUPKA'
+        DataType = ftFloat
+      end
+      item
+        Name = 'SPEC_OST_RAZM'
+        DataType = ftFloat
+      end
+      item
+        Name = 'SPEC_OST_NERAZM'
+        DataType = ftFloat
+      end>
     IndexDefs = <>
     Params = <>
     StoreDefs = True
@@ -453,6 +535,18 @@ object frmPrixSklad: TfrmPrixSklad
       DisplayLabel = #1054#1089#1090#1072#1090#1086#1082' '#1092#1080#1083#1080#1072#1083#1072' '#1089#1080#1084#1092' '#1089#1074#1086#1073
       DisplayWidth = 6
       FieldName = 'OSTATOK_FILIAL_SIMF'
+      DisplayFormat = '0.000'
+    end
+    object cdsReportOSTATOK_KLIENTS: TFloatField
+      DisplayLabel = #1054#1089#1090#1072#1090#1086#1082' '#1082#1083#1080#1077#1085#1090#1086#1074' '#1089#1074#1086#1073
+      DisplayWidth = 6
+      FieldName = 'OSTATOK_KLIENTS'
+      DisplayFormat = '0.000'
+    end
+    object cdsReportOSTATOK_KLIENTS_REZERV: TFloatField
+      DisplayLabel = #1054#1089#1090#1072#1090#1086#1082' '#1082#1083#1080#1077#1085#1090#1086#1074' '#1079#1072#1088#1077#1079
+      DisplayWidth = 6
+      FieldName = 'OSTATOK_KLIENTS_REZERV'
       DisplayFormat = '0.000'
     end
     object cdsReportSPEC_OST: TFloatField
@@ -621,6 +715,7 @@ object frmPrixSklad: TfrmPrixSklad
     object cdsNaklrKOLOTP: TFMTBCDField
       FieldName = 'KOLOTP'
       Precision = 15
+      Size = 8
     end
     object cdsNaklrID_ANALOG: TIntegerField
       FieldName = 'ID_ANALOG'
@@ -688,10 +783,12 @@ object frmPrixSklad: TfrmPrixSklad
       DisplayWidth = 9
       FieldName = 'KOLOTP'
       Precision = 15
+      Size = 8
     end
     object cdsSklostKOLOTP_REZERV: TFMTBCDField
       FieldName = 'KOLOTP_REZERV'
       Precision = 15
+      Size = 8
     end
     object cdsSklostID_ANALOG: TIntegerField
       FieldName = 'ID_ANALOG'
@@ -937,7 +1034,6 @@ object frmPrixSklad: TfrmPrixSklad
     object cdsSpecOstNerazmKOLOTP_NERAZM: TFMTBCDField
       FieldName = 'KOLOTP_NERAZM'
       Precision = 15
-      Size = 4
     end
   end
   object dsSpecNerazm: TDataSource
@@ -999,7 +1095,6 @@ object frmPrixSklad: TfrmPrixSklad
     object cdsSpecOstRazmKOLOTP_RAZM: TFMTBCDField
       FieldName = 'KOLOTP_RAZM'
       Precision = 15
-      Size = 4
     end
   end
   object dsSpecOstRazm: TDataSource

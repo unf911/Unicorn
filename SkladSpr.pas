@@ -12,7 +12,8 @@ uses
   ActnList, DB, DBClient,
   Provider, SqlExpr, untRound,
   ExtCtrls, DBCtrls, DBGridEh, Buttons, UnfFilter, PropStorageEh,
-  PropFilerEh, GridsEh, QueryExtender, Menus;
+  PropFilerEh, GridsEh, QueryExtender, Menus, MemTableDataEh, MemTableEh,
+  DataDriverEh;
 
 type
   TfrmSkladSpr = class(TForm)
@@ -48,11 +49,23 @@ type
     cdsSkladPOID: TIntegerField;
     cdsSkladPARENT_SKLAD: TStringField;
     actShowDeleted: TAction;
-    qeKlient: TQueryExtender;
+    qeSklad: TQueryExtender;
     MainMenu1: TMainMenu;
     N1: TMenuItem;
     N2: TMenuItem;
     N3: TMenuItem;
+    DataSetDriverEh1: TDataSetDriverEh;
+    MemTableEh1: TMemTableEh;
+    MemTableEh1ExpCount: TAggregateField;
+    MemTableEh1OID: TIntegerField;
+    MemTableEh1NAME: TStringField;
+    MemTableEh1DELMARKED: TSmallintField;
+    MemTableEh1MANAGER: TStringField;
+    MemTableEh1ID_MANAGER: TIntegerField;
+    MemTableEh1FULLNAME: TStringField;
+    MemTableEh1ISDEFAULT: TSmallintField;
+    MemTableEh1POID: TIntegerField;
+    MemTableEh1PARENT_SKLAD: TStringField;
     procedure btnDeleteClick(Sender: TObject);
     procedure btnInsertClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -65,13 +78,16 @@ type
       var Action: TReconcileAction);
     procedure actRefreshExecute(Sender: TObject);
     procedure cdsSkladAfterInsert(DataSet: TDataSet);
-    procedure cdsSkladBeforePost(DataSet: TDataSet);
     procedure dbgClientDblClick(Sender: TObject);
     procedure dbgClientKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure actShowDeletedExecute(Sender: TObject);
+    procedure MemTableEh1AfterInsert(DataSet: TDataSet);
+    procedure MemTableEh1BeforeInsert(DataSet: TDataSet);
+    procedure MemTableEh1BeforePost(DataSet: TDataSet);
   private
     { Private declarations }
+    FPoid: integer;
     frmSkladSprEdit: TfrmSkladSprEdit;    
     procedure SkladEdit;
     procedure ProcessShowDeleted;
@@ -92,9 +108,11 @@ uses untSkladEdit;
 procedure TfrmSkladSpr.btnDeleteClick(Sender: TObject);
 begin
 try
-  if MessageDlg('”далить запись?',
-    mtConfirmation, [mbYes, mbNo], 0) = mrYes then begin
-      DelmarkRecord(cdsSklad);
+  if MessageDlg('”далить запись?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then begin
+    MemTableEh1.Edit;
+    MemTableEh1.FieldByName('delmarked').asInteger := 1;
+    MemTableEh1.Post;
+    PostAndApply(MemTableEh1);
   end; //if
 except
   AssertInternal('E25D69A4-6278-43EA-A3BC-DC939B51C829');
@@ -105,7 +123,8 @@ end;
 procedure TfrmSkladSpr.btnInsertClick(Sender: TObject);
 begin
 try
-  cdsSklad.Insert;
+  MemTableEh1.Append;
+//  cdsSklad.Insert;
   SkladEdit;
 except
   AssertInternal('FE9AE570-4058-4B3D-83F8-415EC1A9584D');
@@ -132,12 +151,13 @@ end;
 
 procedure TfrmSkladSpr.FormCreate(Sender: TObject);
 begin
-  qeKlient.DefSql := sdsSklad.CommandText;
+  qeSklad.DefSql := sdsSklad.CommandText;
   ProcessShowDeleted;
-  qeKlient.Refresh();
+  qeSklad.Refresh();
+  MemTableEh1.Open;
   //cdsSklad.Open;
   frmSkladSprEdit := TfrmSkladSprEdit.Create (self);
-  frmSkladSprEdit.dsSkladEdit.Dataset := cdsSklad;
+  frmSkladSprEdit.dsSkladEdit.Dataset := MemTableEh1;
 end;
 
 procedure TfrmSkladSpr.UnfDBGrid1KeyUp(Sender: TObject; var Key: Word;
@@ -154,7 +174,8 @@ end;
 procedure TfrmSkladSpr.btnEditClick(Sender: TObject);
 begin
 try
-  cdsSklad.Edit;
+  MemTableEh1.edit;
+  //cdsSklad.Edit;
   SkladEdit;
 except
   assertInternal('1BCB1572-38DE-41FA-A8C9-6E693C51F1FF');
@@ -173,6 +194,8 @@ procedure TfrmSkladSpr.actRefreshExecute(Sender: TObject);
 begin
 try
   cdsSklad.Refresh;
+  MemTableEh1.Close;
+  MemTableEh1.Open;
 except
   AssertInternal('E2846380-49A7-4131-8B11-C3B963C22E71');
 end;
@@ -188,18 +211,6 @@ try
 except
   AssertInternal('294D416F-A6E1-4B2E-8A52-59D36EEFAEF6');
 end;
-end;
-
-procedure TfrmSkladSpr.cdsSkladBeforePost(DataSet: TDataSet);
-begin
-  if cdsSklad.FieldByName('NAME').IsNull then begin
-    showmessage('¬ведите название склада');
-    Abort;
-  end;
-  if cdsSklad.FieldByName('ID_MANAGER').IsNull then begin
-    showmessage('¬ведите менеджера ответственного за склад');
-    Abort;
-  end;
 end;
 
 procedure TfrmSkladSpr.dbgClientDblClick(Sender: TObject);
@@ -229,19 +240,46 @@ begin
   dmdEx.StartWaiting;
 	actShowDeleted.Checked := not actShowDeleted.Checked;
   ProcessShowDeleted;
-  qeKlient.Refresh;
+  actRefresh.Execute;
   dmdEx.StopWaiting;
 end;
 
 procedure TfrmSkladSpr.ProcessShowDeleted;
 begin
   if actShowDeleted.Checked then begin
-		qeKlient.SetSQL ('where','delmarked=1',0);
+		qeSklad.SetSQL ('where','',0);
   end
   else begin
-    qeKlient.SetSQL ('where','delmarked=0',0);
+    qeSklad.SetSQL ('where','delmarked=0',0);
   end;//checked
-  qeKlient.prepare;
+  qeSklad.prepare;
+end;
+
+procedure TfrmSkladSpr.MemTableEh1AfterInsert(DataSet: TDataSet);
+begin
+  DataSet.FieldByName('oid').asInteger :=
+    dmdEx.GetGenValue('oid_gen');
+  DataSet.FieldByName('delmarked').asInteger := 0;
+  DataSet.FieldByName('poid').asInteger := FPoid;
+  DataSet.FieldByName('isdefault').asInteger := 0;
+
+end;
+
+procedure TfrmSkladSpr.MemTableEh1BeforeInsert(DataSet: TDataSet);
+begin
+  FPoid := DataSet.FieldByName('oid').asInteger;
+end;
+
+procedure TfrmSkladSpr.MemTableEh1BeforePost(DataSet: TDataSet);
+begin
+  if DataSet.FieldByName('NAME').IsNull then begin
+    showmessage('¬ведите название склада');
+    Abort;
+  end;
+  if DataSet.FieldByName('ID_MANAGER').IsNull then begin
+    showmessage('¬ведите менеджера ответственного за склад');
+    Abort;
+  end;
 end;
 
 end.

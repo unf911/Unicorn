@@ -571,21 +571,19 @@ end;
 
 procedure TfrmNNakl.actPostIf2Execute(Sender: TObject);
 var
-  id_currency: integer;
   dPrice : double;
 begin
 try
   if (dsNaklrt.DataSet.State in [dsBrowse]) then begin
     dsNaklrt.DataSet.Edit;
   end;//if dsBrowse
-
   if GetPrice(
     dmdEx.cdsTemp,
-    dsNaklrt.DataSet.FieldByName('skidka').asinteger,
+    1,
     dsNaklrt.DataSet.FieldByName('id_tovar').asinteger,
     dsNaklr.DataSet.FieldByName('dat').AsDateTime,
     false,
-    id_currency,dPrice) then begin
+    0,dPrice) then begin
     //такой товар был найден в прайсе
     dsNaklrt.DataSet.FieldByName('cena').asFloat:= rroundto(dPrice,-2);
   end else begin
@@ -1157,14 +1155,12 @@ procedure TfrmNNakl.cdsNaklrtSKIDKAChange(Sender: TField);
 var
   curPrice : Currency;
   dPrice : double;
-  id_currency : integer;
 begin
   if not Semaphore then begin
     Semaphore := true;
-//  if sState ='skidka_enter' then begin
-    if GetPrice(dmdEx.cdsTemp,dsNaklrt.DataSet.FieldByName('kodcn').asinteger,
+    if GetPrice(dmdEx.cdsTemp,1,
       dsNaklrt.DataSet.FieldByName('id_tovar').asinteger,Now,false,
-      id_currency,dPrice) then begin
+      0,dPrice) then begin
       //такой товар был найден в прайсе
       curPrice := rroundto(rroundto(dPrice,-2)
           *(1-dsNaklrt.DataSet.fieldbyname('skidka').asfloat/100),-2);

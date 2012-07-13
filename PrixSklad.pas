@@ -139,6 +139,8 @@ type
     cdsReportAVERAGE_SALE_WITH_ZEROS: TFloatField;
     cdsReportOSTATOK_FILIAL_SIMF: TFloatField;
     cdsReportOSTATOK_FILIAL_REZERV: TFloatField;
+    cdsReportOSTATOK_KLIENTS: TFloatField;
+    cdsReportOSTATOK_KLIENTS_REZERV: TFloatField;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure actRefreshExecute(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -168,7 +170,7 @@ type
     FIdSravnPrice : integer;//номер сравнения прайсов из которого
       //загрузились обороты
     FdtsNaklo , FdtsNaklot :TDataSet;
-    FiSkladOsn,  FiSkladFilial, FiSkladFilialSimf : integer;
+    FiSkladOsn,  FiSkladFilial, FiSkladFilialSimf, FiSkladKlients : integer;
     //FiSchetSpec : integer;
     FsFilter : string; //фильтр по товарам. налагается на
     //отчёт по оборотам на стадии формирования
@@ -549,25 +551,15 @@ try
   //cdsSklost.Close;
   iTipSklad :=dmdEx.GetOidObjects('ТИП НАЗВАНИЯ СКЛАДОВ',-100);
   FiSkladOsn :=dmdEx.GetPredefinedObjects('ВСЕ СКЛАДЫ ГОЛОВНОЙ КОМПАНИИ',iTipSklad);
+  FiSkladKlients :=dmdEx.GetPredefinedObjects('ВСЕ СКЛАДЫ КЛИЕНТОВ',iTipSklad);
   FiSkladFilial:= dmdEx.GetOidObjects('Все склады киевского филиала',iTipSklad);
   FiSkladFilialSimf:= dmdEx.GetOidObjects('Все склады симферопольского филиала',iTipSklad);
-  //cdsSklost.Params.ParamByName('dateto').asDate := DateTo;
   sTovarList :=SqlFilterListCreate(dsTovar.DataSet,'id_tovar');
-  //cdsSklost.Params.ParamByName('id_tovars_in').asString := sTovarList;
-  //cdsSklost.Params.ParamByName('id_sklad_in').AsInteger :=FiSkladOsn;
-  //cdsSklost.Filtered := false;
-  //dmdEx.OpenQuery(cdsSklost);
-  //ProgressBar1.StepIt;
-  //MergeStrings(cdsSklost,cdsReport,'tovar','tovar','kolotp','ostatok');
-  //ProgressBar1.StepIt;
-  //MergeStrings(cdsSklost,cdsReport,'tovar','tovar','kolotp_rezerv','ostatok_REZERV');
 
   FillSklostFilial(FiSkladOsn,sTovarList,DateTo,'ostatok','ostatok_REZERV');
   FillSklostFilial(FiSkladFilial,sTovarList,DateTo,'ostatok_filial','ostatok_filial_rezerv');
   FillSklostFilial(FiSkladFilialSimf,sTovarList,DateTo,'ostatok_filial_simf');
-
-
-
+  FillSklostFilial(FiSkladKlients,sTovarList,DateTo,'ostatok_klients', 'ostatok_klients_rezerv');
 except
   AssertInternal('1AFDB5E2-D249-42AF-A324-392C60D0F3D0');
 end;
@@ -677,6 +669,19 @@ begin
     frmSklost := TfrmSklost.Create(Application);
     frmSklost.ShowDetail(2,
       FiSkladFilialSimf,
+      null,
+      setT.DateTo,
+      dsReport.DataSet.FieldByName('id_analog').asInteger,
+    );
+  end;
+  if (AnsiUpperCase(dbgRep.SelectedField.FieldName)=
+    AnsiUpperCase('OSTATOK_KLIENTS')) or
+    (AnsiUpperCase(dbgRep.SelectedField.FieldName)=
+    AnsiUpperCase('OSTATOK_KLIENTS_REZERV'))
+  then begin
+    frmSklost := TfrmSklost.Create(Application);
+    frmSklost.ShowDetail(2,
+      FiSkladKlients,
       null,
       setT.DateTo,
       dsReport.DataSet.FieldByName('id_analog').asInteger,

@@ -230,6 +230,7 @@ type
     actPost: TAction;
     sdsNaklotANALOG: TStringField;
     cdsNaklotANALOG: TStringField;
+    cdsNakloID_PRICE: TStringField;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure actSettingsExecute(Sender: TObject);
 		procedure actGrid1ListShowExecute(Sender: TObject);
@@ -279,7 +280,6 @@ type
     procedure cdsNaklotSUMANDSChange(Sender: TField);
     procedure cdsNaklotCENAChange(Sender: TField);
     procedure cdsNaklotCalcFields(DataSet: TDataSet);
-    procedure cdsNaklotAfterOpen(DataSet: TDataSet);
     procedure cdsNaklotAfterDelete(DataSet: TDataSet);
     procedure actAddDetExecute(Sender: TObject);
     procedure actShowSravnPriceListExecute(Sender: TObject);
@@ -297,6 +297,8 @@ type
     procedure actConfirmExecute(Sender: TObject);
     procedure actMakePriceChangeExecute(Sender: TObject);
     procedure actPostExecute(Sender: TObject);
+    procedure cdsNaklotSKIDKAChange(Sender: TField);
+    procedure cdsNaklotID_TOVARChange(Sender: TField);
 
 	private
 		intNpp : integer; //номер позиции по порядку
@@ -949,7 +951,9 @@ procedure TfrmSpec.cdsNaklotCENANDSChange(Sender: TField);
 begin
   if not Semaphore then begin
     Semaphore := true;
-    FromCenaRecount(2,dsNaklo.DataSet,dsNaklot.Dataset,1);
+    FromCenaRecount(2,dsNaklo.DataSet,dsNaklot.Dataset, 1,
+      VarToInt(dsNaklo.DataSet.FieldByName('id_price').asVariant,true),
+      dsNaklo.DataSet.FieldByName('id_currency').asInteger);
     Semaphore := false;
   end;
 end;
@@ -958,7 +962,9 @@ procedure TfrmSpec.cdsNaklotKOLOTPChange(Sender: TField);
 begin
   if not Semaphore then begin
     Semaphore := true;
-    FromCenaRecount(1,dsNaklo.DataSet,dsNaklot.Dataset,1);
+    FromCenaRecount(1,dsNaklo.DataSet,dsNaklot.Dataset, 1,
+      VarToInt(dsNaklo.DataSet.FieldByName('id_price').asVariant,true),
+      dsNaklo.DataSet.FieldByName('id_currency').asInteger);
     Semaphore := false;
   end;
 end;
@@ -967,7 +973,9 @@ procedure TfrmSpec.cdsNaklotSUMAChange(Sender: TField);
 begin
   if not Semaphore then begin
     Semaphore := true;
-    FromCenaRecount(3,dsNaklo.DataSet,dsNaklot.Dataset,1);
+    FromCenaRecount(3,dsNaklo.DataSet,dsNaklot.Dataset, 1,
+      VarToInt(dsNaklo.DataSet.FieldByName('id_price').asVariant,true),
+      dsNaklo.DataSet.FieldByName('id_currency').asInteger);
     Semaphore := false;
   end;
 end;
@@ -976,7 +984,9 @@ procedure TfrmSpec.cdsNaklotSUMANDSChange(Sender: TField);
 begin
   if not Semaphore then begin
     Semaphore := true;
-    FromCenaRecount(4,dsNaklo.DataSet,dsNaklot.DataSet,1);
+    FromCenaRecount(4,dsNaklo.DataSet,dsNaklot.DataSet, 1,
+      VarToInt(dsNaklo.DataSet.FieldByName('id_price').asVariant,true),
+      dsNaklo.DataSet.FieldByName('id_currency').asInteger);
     Semaphore := false;
   end;
 end;
@@ -985,7 +995,9 @@ procedure TfrmSpec.cdsNaklotCENAChange(Sender: TField);
 begin
   if not Semaphore then begin
     Semaphore := true;
-    FromCenaRecount(6,dsNaklo.DataSet,dsNaklot.DataSet,1);
+    FromCenaRecount(6,dsNaklo.DataSet,dsNaklot.DataSet, 1,
+      VarToInt(dsNaklo.DataSet.FieldByName('id_price').asVariant,true),
+      dsNaklo.DataSet.FieldByName('id_currency').asInteger);
     Semaphore := false;
   end;
 end;
@@ -994,30 +1006,12 @@ procedure TfrmSpec.cdsNaklotCalcFields(DataSet: TDataSet);
 begin
   if not Semaphore and (DataSet.state =dsInternalCalc) then begin
     Semaphore := true;
-    FromCenaRecount(1,dsNaklo.DataSet,dsNaklot.DataSet,1);
+    FromCenaRecount(1,dsNaklo.DataSet,dsNaklot.DataSet, 1,
+      VarToInt(dsNaklo.DataSet.FieldByName('id_price').asVariant,true),
+      dsNaklo.DataSet.FieldByName('id_currency').asInteger
+      );
     Semaphore := false;
   end;
-end;
-
-procedure TfrmSpec.cdsNaklotAfterOpen(DataSet: TDataSet);
-begin
-{
-  with  cdsNaklot do begin
-    DisableControls;
-    First;
-    while not Eof do begin
-      Edit;
-      if not Semaphore then begin
-        Semaphore := true;
-        FromCenaRecount(1,dsNaklo.DataSet,dsNaklot.DataSet);
-        Semaphore := false;
-      end;
-      Next;
-    end;
-    First;
-    EnableControls;
-  end;
-}
 end;
 
 procedure TfrmSpec.cdsNaklotAfterDelete(DataSet: TDataSet);
@@ -1490,6 +1484,28 @@ begin
     sdsPost,
     TIntegerField(cdsNaklo.FieldByName('id_nakl')),
     not actPost.Checked);
+end;
+
+procedure TfrmSpec.cdsNaklotSKIDKAChange(Sender: TField);
+begin
+  if not Semaphore then begin
+    Semaphore := true;
+    FromCenaRecount(5,dsNaklo.DataSet,dsNaklot.DataSet, 1,
+      VarToInt(dsNaklo.DataSet.FieldByName('id_price').asVariant, true),
+      dsNaklo.DataSet.FieldByName('id_currency').asInteger);
+    Semaphore := false;
+  end;
+end;
+
+procedure TfrmSpec.cdsNaklotID_TOVARChange(Sender: TField);
+begin
+  if not Semaphore then begin
+    Semaphore := true;
+    FromCenaRecount(5,dsNaklo.DataSet,dsNaklot.DataSet, 1,
+      VarToInt(dsNaklo.DataSet.FieldByName('id_price').asVariant, true),
+      dsNaklo.DataSet.FieldByName('id_currency').asInteger);
+    Semaphore := false;
+  end;
 end;
 
 end.

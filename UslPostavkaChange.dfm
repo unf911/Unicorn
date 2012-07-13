@@ -675,10 +675,12 @@ object frmUslPostavkaChange: TfrmUslPostavkaChange
     object sdsNaklotTARA: TFMTBCDField
       FieldName = 'TARA'
       Precision = 15
+      Size = 8
     end
     object sdsNaklotVALUTA: TFMTBCDField
       FieldName = 'VALUTA'
       Precision = 15
+      Size = 8
     end
     object sdsNaklotTAMOGNYA: TFMTBCDField
       FieldName = 'TAMOGNYA'
@@ -688,6 +690,7 @@ object frmUslPostavkaChange: TfrmUslPostavkaChange
     object sdsNaklotPROCENT_PREDOPL: TFMTBCDField
       FieldName = 'PROCENT_PREDOPL'
       Precision = 15
+      Size = 8
     end
     object sdsNaklotOTSROCHKA: TSmallintField
       FieldName = 'OTSROCHKA'
@@ -695,6 +698,7 @@ object frmUslPostavkaChange: TfrmUslPostavkaChange
     object sdsNaklotSTAVKA_BANKA: TFMTBCDField
       FieldName = 'STAVKA_BANKA'
       Precision = 15
+      Size = 8
     end
     object sdsNaklotID_USL_POSTAVKA: TIntegerField
       FieldName = 'ID_USL_POSTAVKA'
@@ -850,12 +854,14 @@ object frmUslPostavkaChange: TfrmUslPostavkaChange
       DisplayWidth = 8
       FieldName = 'TARA'
       Precision = 15
+      Size = 8
     end
     object cdsNaklotVALUTA: TFMTBCDField
       DisplayLabel = #1042#1072#1083#1102#1090#1072
       DisplayWidth = 8
       FieldName = 'VALUTA'
       Precision = 15
+      Size = 8
     end
     object cdsNaklotTAMOGNYA: TFMTBCDField
       DisplayLabel = #1058#1072#1084#1086#1078#1085#1103
@@ -869,6 +875,7 @@ object frmUslPostavkaChange: TfrmUslPostavkaChange
       DisplayWidth = 3
       FieldName = 'PROCENT_PREDOPL'
       Precision = 15
+      Size = 8
     end
     object cdsNaklotOTSROCHKA: TSmallintField
       DisplayLabel = #1054#1090#1089#1088#1086#1095#1082#1072' '#1087#1083#1072#1090#1077#1078#1072', '#1076#1085#1080
@@ -880,6 +887,7 @@ object frmUslPostavkaChange: TfrmUslPostavkaChange
       DisplayWidth = 5
       FieldName = 'STAVKA_BANKA'
       Precision = 15
+      Size = 8
     end
     object cdsNaklotID_USL_POSTAVKA: TIntegerField
       FieldName = 'ID_USL_POSTAVKA'

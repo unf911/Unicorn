@@ -264,6 +264,7 @@ object frmNNakl: TfrmNNakl
     Anchors = [akRight, akBottom]
     BevelOuter = bvNone
     TabOrder = 6
+    Visible = False
     DesignSize = (
       373
       57)

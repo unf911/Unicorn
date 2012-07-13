@@ -695,17 +695,14 @@ object frmSravnPriceList: TfrmSravnPriceList
     object sdsNaklotKOLOTP_PROGNOZ: TFMTBCDField
       FieldName = 'KOLOTP_PROGNOZ'
       Precision = 15
-      Size = 4
     end
     object sdsNaklotKOEF: TFMTBCDField
       FieldName = 'KOEF'
       Precision = 15
-      Size = 4
     end
     object sdsNaklotPROCENT: TFMTBCDField
       FieldName = 'PROCENT'
       Precision = 15
-      Size = 4
     end
     object sdsNaklotID_POST: TIntegerField
       FieldName = 'ID_POST'
@@ -716,12 +713,10 @@ object frmSravnPriceList: TfrmSravnPriceList
     object sdsNaklotCENA_FROM: TFMTBCDField
       FieldName = 'CENA_FROM'
       Precision = 15
-      Size = 4
     end
     object sdsNaklotCENA: TFMTBCDField
       FieldName = 'CENA'
       Precision = 15
-      Size = 4
     end
   end
   object dspNaklot: TDataSetProvider
@@ -868,25 +863,21 @@ object frmSravnPriceList: TfrmSravnPriceList
     object cdsNaklotKOLOTP_PROGNOZ: TFMTBCDField
       FieldName = 'KOLOTP_PROGNOZ'
       Precision = 15
-      Size = 4
     end
     object cdsNaklotCENA: TFMTBCDField
       DisplayLabel = #1062#1077#1085#1072
       FieldName = 'CENA'
       DisplayFormat = '0.0000'
       Precision = 15
-      Size = 4
     end
     object cdsNaklotKOEF: TFMTBCDField
       DisplayLabel = #1050#1086#1101#1092#1080#1094#1080#1077#1085#1090
       FieldName = 'KOEF'
       Precision = 15
-      Size = 4
     end
     object cdsNaklotPROCENT: TFMTBCDField
       FieldName = 'PROCENT'
       Precision = 15
-      Size = 4
     end
     object cdsNaklotID_POST: TIntegerField
       FieldName = 'ID_POST'
@@ -910,7 +901,6 @@ object frmSravnPriceList: TfrmSravnPriceList
       FieldName = 'CENA_FROM'
       DisplayFormat = '0.0000'
       Precision = 15
-      Size = 4
     end
   end
   object dsNaklot: TDataSource

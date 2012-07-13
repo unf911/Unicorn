@@ -329,6 +329,7 @@ object frmRepSkladFactDet: TfrmRepSkladFactDet
       FieldName = 'NDS'
       Required = True
       Precision = 15
+      Size = 8
     end
     object cdsSklostdetDEBET: TFloatField
       DisplayLabel = #1044#1077#1073#1077#1090

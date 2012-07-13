@@ -573,12 +573,11 @@ procedure TfrmSklost.actPriceCalcExecute(Sender: TObject);
 var
   frmPriceCalc : TfrmPriceCalc;
   dPrice :double;
-  id_currency : integer;
 begin
   dPrice:=0;
   GetPrice(dmdEx.cdsTemp,1,
     dsSklost.DataSet.FieldByName('id_tovar').asinteger,Now,false,
-    id_currency,dPrice);
+    0,dPrice);
 
   frmPriceCalc :=  TfrmPriceCalc.Create(Application);
 

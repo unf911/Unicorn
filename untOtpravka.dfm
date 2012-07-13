@@ -509,7 +509,6 @@ object frmOtpravka: TfrmOtpravka
     object sdsSklosttNDS: TFMTBCDField
       FieldName = 'NDS'
       Precision = 15
-      Size = 4
     end
   end
   object dspSklost: TDataSetProvider
@@ -688,7 +687,6 @@ object frmOtpravka: TfrmOtpravka
       FieldName = 'NDS'
       DisplayFormat = '0.00'
       Precision = 15
-      Size = 4
     end
     object cdsSklosttID_NAKL: TIntegerField
       FieldName = 'ID_NAKL'
@@ -1019,6 +1017,7 @@ object frmOtpravka: TfrmOtpravka
     object cdsReportKOLOTP: TFMTBCDField
       FieldName = 'KOLOTP'
       Precision = 15
+      Size = 8
     end
     object cdsReportKOLBUXT: TIntegerField
       FieldName = 'KOLBUXT'
@@ -1029,6 +1028,7 @@ object frmOtpravka: TfrmOtpravka
     object cdsReportKOLOTP_ITOG: TFMTBCDField
       FieldName = 'KOLOTP_ITOG'
       Precision = 15
+      Size = 8
     end
     object cdsReportID_TARA_ITOG: TIntegerField
       FieldName = 'ID_TARA_ITOG'
@@ -1257,6 +1257,7 @@ object frmOtpravka: TfrmOtpravka
     object cdsReportActKOLOTP: TFMTBCDField
       FieldName = 'KOLOTP'
       Precision = 15
+      Size = 8
     end
     object cdsReportActKOLBUXT: TIntegerField
       FieldName = 'KOLBUXT'
@@ -1267,6 +1268,7 @@ object frmOtpravka: TfrmOtpravka
     object cdsReportActKOLOTP_ITOG: TFMTBCDField
       FieldName = 'KOLOTP_ITOG'
       Precision = 15
+      Size = 8
     end
     object cdsReportActID_TARA_ITOG: TIntegerField
       FieldName = 'ID_TARA_ITOG'

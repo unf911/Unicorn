@@ -372,6 +372,7 @@ object frmManagerSpr: TfrmManagerSpr
     Left = 224
     Top = 56
     object MemTableEh1ID: TIntegerField
+      DisplayLabel = #8470
       FieldName = 'ID'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True

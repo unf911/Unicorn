@@ -181,10 +181,10 @@ type
     cdsNakloREYS_NOMER_PRITSEPA: TStringField;
     cdsNakloREYS_POKUPATEL_PLATIT: TIntegerField;
     actPreviewTtn: TAction;
-    frTtn: TfrxReport;
     actPreviewTtn1: TMenuItem;
     actDebug: TAction;
     N9: TMenuItem;
+    frTtn: TfrxReport;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure actSettingsExecute(Sender: TObject);
 		procedure actGrid1ListShowExecute(Sender: TObject);
@@ -694,7 +694,7 @@ end;
 procedure TfrmNaklPeremBux.actUndeleteNaklExecute(Sender: TObject);
 begin
   if actShowDeleted.Checked then begin
-    dmdEx.UndeleteNakl(TintegerField(dsNaklo.DataSet.FieldByName('delmarked')),actRefresh);
+    dmdEx.UndeleteNaklo(TintegerField(dsNaklo.DataSet.FieldByName('delmarked')),actRefresh);
   end;
 end;
 

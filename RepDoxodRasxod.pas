@@ -19,8 +19,15 @@ type
     sdsDolgBux2: TSQLDataSet;
     dspDolgBux2: TDataSetProvider;
     cdsDolgBux2: TClientDataSet;
+    MainMenu2: TMainMenu;
+    mnuAction2: TMenuItem;
+    ActionList2: TActionList;
+    actSpisanieSebestRecount: TAction;
+    N1: TMenuItem;
+    sdsSpisanieSebestRecount: TSQLDataSet;
 
     procedure FormCreate(Sender: TObject);
+    procedure actSpisanieSebestRecountExecute(Sender: TObject);
 
   private
     { Private declarations }
@@ -46,6 +53,7 @@ type
     procedure UpdateCaption;
     procedure Debug;override;
     procedure ProcessColumns(DataSet:TDataSet; iMode :integer);
+    procedure AddMenuItemSpisanieSebestRecount;
   public
     procedure  DefaultStartup; override;
 
@@ -71,6 +79,12 @@ procedure TfrmRepDoxodRasxod.FormCreate(Sender: TObject);
 begin
   SetDatasets;
   FillSettings;
+  AddMenuItemSpisanieSebestRecount;
+end;
+
+procedure TfrmRepDoxodRasxod.AddMenuItemSpisanieSebestRecount;
+begin
+
 end;
 
 procedure TfrmRepDoxodRasxod.FillSettings;
@@ -322,13 +336,13 @@ begin
     //'По статье, документу'
     qeDolgBux.setsql(
       'select',
-      '(select id from naklo o where o.id_nakl=r.id_nakl) as id, r.id_nakl',
+      '(select id from naklo o where o.id_nakl=r.id_nakl) as id, r.id_nakl, r.dat',
       0);
     qeDolgBux.setsql(
-      'group by','r.id_nakl',
+      'group by','r.id_nakl, r.dat',
       0);
     qeDolgBux.setsql(
-      'order by','3,4,2', //sub1_name,sub2_name,id_nakl
+      'order by','4,5,3,1', //sub1_name,sub2_name,dat,id
       0);
     PropStorageEh1.section := 'TfrmRepDoxodRasxod_group2';
   end;
@@ -337,15 +351,15 @@ begin
     qeDolgBux.setsql(
       'select',
       '(select id from naklo o where o.id_nakl=r.id_nakl) as id, r.id_nakl, '+
-      '(select name from objects o where o.oid=r.sub3) as sub3_name, r.sub3',
+      '(select name from objects o where o.oid=r.sub3) as sub3_name, r.sub3, r.dat',
       0);
     qeDolgBux.setsql(
-      'group by','r.id_nakl, r.sub3',
+      'group by','r.id_nakl, r.sub3, r.dat',
       0);
     qeDolgBux.setsql(
-      'order by','5,6,2,3', //sub1_name,sub2_name,id_nakl, sub3_name
+      'order by','6,7,5,1,3', //sub1_name,sub2_name,dat,id, sub3_name
       0);
-    PropStorageEh1.section := 'TfrmRepDoxodRasxod_group2';
+    PropStorageEh1.section := 'TfrmRepDoxodRasxod_group3';
   end;
 end;
 
@@ -385,12 +399,19 @@ begin
       FindField('ID').DisplayLabel := '№ док';
       FindField('ID').DisplayWidth := 5;
       FindField('ID').Index := 5;
+      TSqlTimeStampField(FindField('DAT')).DisplayFormat := 'dd.mm.yy';
+      FindField('DAT').DisplayLabel := 'Дата';
+      FindField('DAT').DisplayWidth := 8;
+      FindField('DAT').Index := 5;
     end;
     if iMode in [3] then begin
+      FindField('ID').Index := 6;
+      FindField('DAT').Index := 6;
+      
       FindField('SUB3').Visible := false;
       FindField('SUB3_NAME').DisplayLabel := 'Валюта';
       FindField('SUB3_NAME').DisplayWidth := 5;
-      FindField('SUB3_NAME').Index := 5;
+      FindField('SUB3_NAME').Index := 6;
     end;
   end;//with
   if iMode in [0,1,2,3] then begin
@@ -410,5 +431,15 @@ begin
   DBGridEh1.ColumnDefValues.Title.TitleButton := true;
 end;
 
+
+procedure TfrmRepDoxodRasxod.actSpisanieSebestRecountExecute(
+  Sender: TObject);
+begin
+  inherited;
+  sdsSpisanieSebestRecount.Params.ParamByName('dat_from').AsDate := setT.DateFrom;
+  sdsSpisanieSebestRecount.Params.ParamByName('dat_to').AsDate := setT.DateTo;
+  dmdEx.OpenQuery(sdsSpisanieSebestRecount);
+  dmdEx.CloseQuery(sdsSpisanieSebestRecount);
+end;
 
 end.

@@ -363,6 +363,7 @@ object frmNNaklp: TfrmNNaklp
       DisplayFormat = '0.00'
       EditFormat = '0.00'
       Precision = 32
+      Size = 8
     end
     object cdsNakloDELMARKED: TSmallintField
       FieldName = 'DELMARKED'
@@ -425,6 +426,7 @@ object frmNNaklp: TfrmNNaklp
       FieldName = 'NDS'
       Required = True
       Precision = 32
+      Size = 8
     end
     object sdsNakloDAT: TSQLTimeStampField
       FieldName = 'DAT'

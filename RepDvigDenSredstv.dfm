@@ -87,13 +87,11 @@ object frmRepDvigDenSredstv: TfrmRepDvigDenSredstv
       FieldName = 'KURS'
       Required = True
       Precision = 15
-      Size = 4
     end
     object cdsDolgBux2KURS_INDIRECT: TFMTBCDField
       FieldName = 'KURS_INDIRECT'
       Required = True
       Precision = 15
-      Size = 4
     end
     object cdsDolgBux2DEBET: TFloatField
       FieldName = 'DEBET'
@@ -104,7 +102,6 @@ object frmRepDvigDenSredstv: TfrmRepDvigDenSredstv
     object cdsDolgBux2SUM_FINAL: TFMTBCDField
       FieldName = 'SUM_FINAL'
       Precision = 15
-      Size = 4
     end
     object cdsDolgBux2SUB1: TIntegerField
       FieldName = 'SUB1'

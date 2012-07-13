@@ -489,11 +489,13 @@ object frmRealPriceMake: TfrmRealPriceMake
     object SQLDataSet1CENA: TFMTBCDField
       FieldName = 'CENA'
       Precision = 15
+      Size = 8
     end
     object SQLDataSet1KOLOTP: TFMTBCDField
       FieldName = 'KOLOTP'
       ProviderFlags = []
       Precision = 15
+      Size = 8
     end
     object SQLDataSet1ID_NAKLD: TIntegerField
       FieldName = 'ID_NAKLD'
@@ -559,11 +561,13 @@ object frmRealPriceMake: TfrmRealPriceMake
     object SQLDataSet2CENA: TFMTBCDField
       FieldName = 'CENA'
       Precision = 15
+      Size = 8
     end
     object SQLDataSet2KOLOTP: TFMTBCDField
       FieldName = 'KOLOTP'
       ProviderFlags = []
       Precision = 15
+      Size = 8
     end
     object SQLDataSet2ID_NAKLD: TIntegerField
       FieldName = 'ID_NAKLD'
@@ -660,6 +664,7 @@ object frmRealPriceMake: TfrmRealPriceMake
       OnChange = cdsPaperCENAChange
       DisplayFormat = '0.00'
       Precision = 15
+      Size = 8
     end
     object cdsPaperID_TOVAR: TIntegerField
       FieldName = 'ID_TOVAR'
@@ -675,6 +680,7 @@ object frmRealPriceMake: TfrmRealPriceMake
       ReadOnly = True
       DisplayFormat = '0.000'
       Precision = 15
+      Size = 8
     end
     object cdsPaperID_NAKLD: TIntegerField
       FieldName = 'ID_NAKLD'
@@ -771,6 +777,7 @@ object frmRealPriceMake: TfrmRealPriceMake
       OnChange = cdsRealCENAChange
       DisplayFormat = '0.00'
       Precision = 15
+      Size = 8
     end
     object cdsRealKOLOTP: TFMTBCDField
       DisplayLabel = #1050#1086#1083'-'#1074#1086
@@ -780,6 +787,7 @@ object frmRealPriceMake: TfrmRealPriceMake
       ReadOnly = True
       DisplayFormat = '0.000'
       Precision = 15
+      Size = 8
     end
     object cdsRealID_NAKLD: TIntegerField
       FieldName = 'ID_NAKLD'
@@ -925,6 +933,7 @@ object frmRealPriceMake: TfrmRealPriceMake
       Required = True
       DisplayFormat = '0.00'
       Precision = 15
+      Size = 8
     end
   end
   object PropStorageEh1: TPropStorageEh

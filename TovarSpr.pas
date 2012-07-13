@@ -193,7 +193,7 @@ procedure TfrmTovarSpr.cdsTovarReconcileError(
   UpdateKind: TUpdateKind; var Action: TReconcileAction);
 begin
 	showmessage (e.message);
-	Action := raCancel;
+	Action := raSkip;
 end;
 
 procedure TfrmTovarSpr.actRefreshExecute(Sender: TObject);

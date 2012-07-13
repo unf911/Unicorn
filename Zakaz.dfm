@@ -693,7 +693,6 @@ object frmZakaz: TfrmZakaz
     object sdsNaklotCENA: TFMTBCDField
       FieldName = 'CENA'
       Precision = 15
-      Size = 4
     end
     object sdsNaklotTOVAR_TEXT: TStringField
       FieldName = 'TOVAR_TEXT'
@@ -834,7 +833,6 @@ object frmZakaz: TfrmZakaz
       FieldName = 'CENA'
       DisplayFormat = '0.00'
       Precision = 15
-      Size = 4
     end
     object cdsNaklotKOLOTP: TFMTBCDField
       DisplayLabel = #1050#1086#1083'-'#1074#1086

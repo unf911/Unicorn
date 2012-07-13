@@ -105,6 +105,7 @@ object frmSkladSpr: TfrmSkladSpr
         EditButtons = <>
         FieldName = 'OID'
         Footers = <>
+        Width = 109
       end
       item
         EditButtons = <>
@@ -144,12 +145,6 @@ object frmSkladSpr: TfrmSkladSpr
         FieldName = 'FULLNAME'
         Footers = <>
         Width = 93
-      end
-      item
-        EditButtons = <>
-        FieldName = 'PARENT_SKLAD'
-        Footers = <>
-        Width = 304
       end>
   end
   object sdsSklad: TSQLDataSet
@@ -202,7 +197,6 @@ object frmSkladSpr: TfrmSkladSpr
     Params = <>
     ProviderName = 'dspSklad'
     AfterInsert = cdsSkladAfterInsert
-    BeforePost = cdsSkladBeforePost
     OnReconcileError = cdsSkladReconcileError
     Left = 72
     Top = 120
@@ -266,7 +260,7 @@ object frmSkladSpr: TfrmSkladSpr
     end
   end
   object dsSklad: TDataSource
-    DataSet = cdsSklad
+    DataSet = MemTableEh1
     Left = 72
     Top = 152
   end
@@ -316,7 +310,7 @@ object frmSkladSpr: TfrmSkladSpr
     Left = 104
     Top = 152
   end
-  object qeKlient: TQueryExtender
+  object qeSklad: TQueryExtender
     Query = cdsSklad
     KeyField = 'OID'
     Left = 72
@@ -334,6 +328,130 @@ object frmSkladSpr: TfrmSkladSpr
       object N3: TMenuItem
         Action = actShowDeleted
       end
+    end
+  end
+  object DataSetDriverEh1: TDataSetDriverEh
+    KeyFields = 'OID'
+    ProviderDataSet = cdsSklad
+    Left = 192
+    Top = 56
+  end
+  object MemTableEh1: TMemTableEh
+    FieldDefs = <
+      item
+        Name = 'OID'
+        Attributes = [faRequired]
+        DataType = ftInteger
+      end
+      item
+        Name = 'NAME'
+        Attributes = [faRequired]
+        DataType = ftString
+        Size = 50
+      end
+      item
+        Name = 'DELMARKED'
+        Attributes = [faRequired]
+        DataType = ftSmallint
+      end
+      item
+        Name = 'ID_MANAGER'
+        DataType = ftInteger
+      end
+      item
+        Name = 'FULLNAME'
+        DataType = ftString
+        Size = 250
+      end
+      item
+        Name = 'ISDEFAULT'
+        DataType = ftSmallint
+      end
+      item
+        Name = 'POID'
+        DataType = ftInteger
+      end>
+    FetchAllOnOpen = True
+    IndexDefs = <
+      item
+        Name = 'MemTableEh1Index1'
+        Fields = 'OID'
+        Options = [ixPrimary]
+      end>
+    Params = <>
+    DataDriver = DataSetDriverEh1
+    StoreDefs = True
+    TreeList.Active = True
+    TreeList.KeyFieldName = 'OID'
+    TreeList.RefParentFieldName = 'POID'
+    TreeList.DefaultNodeExpanded = True
+    BeforeInsert = MemTableEh1BeforeInsert
+    AfterInsert = MemTableEh1AfterInsert
+    BeforePost = MemTableEh1BeforePost
+    Left = 224
+    Top = 56
+    object MemTableEh1OID: TIntegerField
+      DisplayLabel = #8470
+      DisplayWidth = 5
+      FieldName = 'OID'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object MemTableEh1NAME: TStringField
+      DisplayLabel = #1053#1072#1079#1074#1072#1085#1080#1077' '#1089#1082#1083#1072#1076#1072
+      FieldName = 'NAME'
+      Required = True
+      Size = 50
+    end
+    object MemTableEh1DELMARKED: TSmallintField
+      DisplayLabel = #1059#1076#1072#1083#1105#1085
+      FieldName = 'DELMARKED'
+      Required = True
+    end
+    object MemTableEh1MANAGER: TStringField
+      DisplayLabel = #1052#1077#1085#1077#1076#1078#1077#1088
+      FieldKind = fkLookup
+      FieldName = 'MANAGER'
+      LookupDataSet = dmdEx.cdsManager
+      LookupKeyFields = 'ID'
+      LookupResultField = 'NAME'
+      KeyFields = 'ID_MANAGER'
+      Size = 30
+      Lookup = True
+    end
+    object MemTableEh1ID_MANAGER: TIntegerField
+      FieldName = 'ID_MANAGER'
+      Visible = False
+    end
+    object MemTableEh1FULLNAME: TStringField
+      DisplayLabel = #1055#1086#1083#1085#1086#1077' '#1085#1072#1079#1074#1072#1085#1080#1077' '#1089#1082#1083#1072#1076#1072
+      DisplayWidth = 30
+      FieldName = 'FULLNAME'
+      Size = 250
+    end
+    object MemTableEh1ISDEFAULT: TSmallintField
+      DisplayLabel = #1055#1086' '#1091#1084#1086#1083#1095#1072#1085#1080#1102
+      FieldName = 'ISDEFAULT'
+    end
+    object MemTableEh1PARENT_SKLAD: TStringField
+      DisplayLabel = #1056#1086#1076#1080#1090#1077#1083#1100#1089#1082#1080#1081' '#1089#1082#1083#1072#1076
+      DisplayWidth = 20
+      FieldKind = fkLookup
+      FieldName = 'PARENT_SKLAD'
+      LookupDataSet = dmdEx.cdsSklads
+      LookupKeyFields = 'OID'
+      LookupResultField = 'NAME'
+      KeyFields = 'POID'
+      Size = 50
+      Lookup = True
+    end
+    object MemTableEh1POID: TIntegerField
+      FieldName = 'POID'
+    end
+    object MemTableEh1ExpCount: TAggregateField
+      FieldName = 'ExpCount'
+      Active = True
+      Expression = 'SUM(Expanded)'
     end
   end
 end

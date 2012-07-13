@@ -993,7 +993,7 @@ object frmNaklPeremBux: TfrmNaklPeremBux
     object cdsRepNakloKOLOTP: TFMTBCDField
       FieldName = 'KOLOTP'
       Precision = 15
-      Size = 4
+      Size = 8
     end
     object cdsRepNakloCENA: TFloatField
       FieldName = 'CENA'
@@ -1065,6 +1065,7 @@ object frmNaklPeremBux: TfrmNaklPeremBux
     object sdsNaklotKOLOTP: TFMTBCDField
       FieldName = 'KOLOTP'
       Precision = 15
+      Size = 8
     end
   end
   object dspNaklot: TDataSetProvider
@@ -1161,6 +1162,7 @@ object frmNaklPeremBux: TfrmNaklPeremBux
       FieldName = 'KOLOTP'
       DisplayFormat = '0.000'
       Precision = 15
+      Size = 8
     end
     object cdsNaklotTOVAR: TStringField
       DisplayLabel = #1058#1086#1074#1072#1088
@@ -1375,54 +1377,12 @@ object frmNaklPeremBux: TfrmNaklPeremBux
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
     PreviewOptions.Zoom = 1.000000000000000000
     PrintOptions.Printer = 'Default'
-    ReportOptions.CreateDate = 38982.467101585700000000
-    ReportOptions.LastChange = 40756.736308773200000000
+    ReportOptions.CreateDate = 38985.429352754600000000
+    ReportOptions.LastChange = 38988.754264537000000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
-      'procedure Memo19OnBeforePrint(Sender: TfrxComponent);'
       'begin'
-      '  with Memo19, Engine do'
-      '  begin'
-      '    if <frdbNaklot."KOLOTP"> > 0 then'
-      '      Font.Color := clBlack'
-      '    else'
-      '      Font.Color := clWhite;'
-      '  end'
-      'end;'
       ''
-      ''
-      ''
-      'procedure Memo20OnBeforePrint(Sender: TfrxComponent);'
-      'begin'
-      '  with Memo20, Engine do  begin'
-      '    if <frdbNaklot."KOLOTP"> > 0 then'
-      '      Font.Color := clBlack'
-      '    else'
-      '      Font.Color := clWhite;'
-      '  end'
-      'end;'
-      ''
-      'procedure Memo37OnBeforePrint(Sender: TfrxComponent);'
-      'begin'
-      '  with Memo37, Engine do begin'
-      '    if <frdbNaklot."KOLOTP"> > 0 then'
-      '      Font.Color := clBlack'
-      '    else'
-      '      Font.Color := clWhite;'
-      '  end'
-      'end;'
-      ''
-      'procedure Memo38OnBeforePrint(Sender: TfrxComponent);'
-      'begin'
-      '  with Memo38, Engine do begin'
-      '    if <frdbNaklot."KOLOTP"> > 0 then'
-      '      Font.Color := clBlack'
-      '    else'
-      '      Font.Color := clWhite;'
-      '  end'
-      'end;'
-      ''
-      'begin'
       'end.')
     StoreInDFM = False
     Left = 520
@@ -1431,6 +1391,10 @@ object frmNaklPeremBux: TfrmNaklPeremBux
       item
         DataSet = frDBNaklo
         DataSetName = 'frDBNaklo'
+      end
+      item
+        DataSet = frDBNaklot
+        DataSetName = 'frDBNaklot'
       end>
     Variables = <
       item
@@ -1439,10 +1403,6 @@ object frmNaklPeremBux: TfrmNaklPeremBux
       end
       item
         Name = 'NDSTEXT'
-        Value = Null
-      end
-      item
-        Name = 'VSEGO'
         Value = Null
       end>
     Style = <>

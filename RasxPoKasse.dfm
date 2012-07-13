@@ -497,7 +497,6 @@ object frmRasxPoKasse: TfrmRasxPoKasse
     object sdsPlatNDS: TFMTBCDField
       FieldName = 'NDS'
       Precision = 15
-      Size = 4
     end
     object sdsPlatCOMMENT: TStringField
       FieldName = 'COMMENT'
@@ -519,7 +518,6 @@ object frmRasxPoKasse: TfrmRasxPoKasse
     object sdsPlatZATRATY: TFMTBCDField
       FieldName = 'ZATRATY'
       Precision = 15
-      Size = 4
     end
     object sdsPlatKURS: TFloatField
       FieldName = 'KURS'
@@ -543,7 +541,6 @@ object frmRasxPoKasse: TfrmRasxPoKasse
     object sdsPlatNDS_FROM: TFMTBCDField
       FieldName = 'NDS_FROM'
       Precision = 15
-      Size = 4
     end
     object sdsPlatID_XOZ_OPER: TIntegerField
       FieldName = 'ID_XOZ_OPER'
@@ -645,6 +642,7 @@ object frmRasxPoKasse: TfrmRasxPoKasse
       DisplayFormat = '0.00'
       EditFormat = '0.00'
       Precision = 15
+      Size = 8
     end
     object cdsNakloPRIM: TStringField
       DisplayLabel = #1050#1086#1084#1084#1077#1085#1090#1072#1088#1080#1081
@@ -671,6 +669,7 @@ object frmRasxPoKasse: TfrmRasxPoKasse
       FieldName = 'ZATRATY'
       DisplayFormat = '0.00'
       Precision = 15
+      Size = 8
     end
     object cdsNakloKURS: TFloatField
       DisplayLabel = #1050#1091#1088#1089
@@ -739,7 +738,6 @@ object frmRasxPoKasse: TfrmRasxPoKasse
       FieldName = 'NDS_FROM'
       DisplayFormat = '0.00'
       Precision = 15
-      Size = 4
     end
     object cdsNakloID_XOZ_OPER: TIntegerField
       FieldName = 'ID_XOZ_OPER'
@@ -889,7 +887,6 @@ object frmRasxPoKasse: TfrmRasxPoKasse
     object sdsNaklrNDS: TFMTBCDField
       FieldName = 'NDS'
       Precision = 15
-      Size = 4
     end
   end
   object stpTransh: TSQLDataSet

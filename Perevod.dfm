@@ -361,6 +361,7 @@ object frmPerevod: TfrmPerevod
       FieldName = 'NDS'
       Required = True
       Precision = 15
+      Size = 8
     end
     object sdsPlatCOMMENT: TStringField
       FieldName = 'COMMENT'
@@ -372,6 +373,7 @@ object frmPerevod: TfrmPerevod
     object sdsPlatZATRATY: TFMTBCDField
       FieldName = 'ZATRATY'
       Precision = 15
+      Size = 8
     end
     object sdsPlatKURS: TFloatField
       FieldName = 'KURS'
@@ -390,6 +392,7 @@ object frmPerevod: TfrmPerevod
     object sdsPlatNDS_FROM: TFMTBCDField
       FieldName = 'NDS_FROM'
       Precision = 15
+      Size = 8
     end
     object sdsPlatBLOCKED: TSmallintField
       FieldName = 'BLOCKED'
@@ -504,6 +507,7 @@ object frmPerevod: TfrmPerevod
       DisplayFormat = '0.00'
       EditFormat = '0.00'
       Precision = 64
+      Size = 8
     end
     object cdsNakloPRIM: TStringField
       DisplayLabel = #1055#1088#1080#1084#1077#1095#1072#1085#1080#1077
@@ -529,6 +533,7 @@ object frmPerevod: TfrmPerevod
       FieldName = 'ZATRATY'
       DisplayFormat = '0.00'
       Precision = 15
+      Size = 8
     end
     object cdsNakloKURS: TFloatField
       DisplayLabel = #1050#1091#1088#1089
@@ -573,6 +578,7 @@ object frmPerevod: TfrmPerevod
       FieldName = 'NDS_FROM'
       DisplayFormat = '0.00'
       Precision = 64
+      Size = 8
     end
     object cdsNakloBLOCKED: TSmallintField
       FieldName = 'BLOCKED'

@@ -1,6 +1,6 @@
 object frmNaklodet: TfrmNaklodet
-  Left = 477
-  Top = 383
+  Left = 205
+  Top = 297
   Width = 640
   Height = 458
   Caption = #1042#1099#1073#1086#1088' '#1086#1090#1075#1088#1091#1079#1086#1082' '#1089#1086' '#1089#1082#1083#1072#1076#1072
@@ -18,8 +18,8 @@ object frmNaklodet: TfrmNaklodet
   OnCreate = FormCreate
   OnShow = FormShow
   DesignSize = (
-    632
-    410)
+    624
+    383)
   PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel
@@ -478,11 +478,13 @@ object frmNaklodet: TfrmNaklodet
       FieldName = 'KOLOTP'
       Required = True
       Precision = 15
+      Size = 8
     end
     object sdsSklostdetKOLREZERV: TFMTBCDField
       FieldName = 'KOLREZERV'
       Required = True
       Precision = 15
+      Size = 8
     end
     object sdsSklostdetNOMER_TARY: TStringField
       FieldName = 'NOMER_TARY'
@@ -552,6 +554,7 @@ object frmNaklodet: TfrmNaklodet
       Required = True
       DisplayFormat = '0.000'
       Precision = 15
+      Size = 8
     end
     object cdsSklostdetKOLREZERV: TFMTBCDField
       DisplayLabel = #1047#1072#1088#1077#1079' '#1082#1086#1083'-'#1074#1086
@@ -559,6 +562,7 @@ object frmNaklodet: TfrmNaklodet
       Required = True
       DisplayFormat = '0.000'
       Precision = 15
+      Size = 8
     end
     object cdsSklostdetNOMER_TARY: TStringField
       DisplayLabel = #1053#1086#1084#1077#1088' '#1090#1072#1088#1099
@@ -698,6 +702,7 @@ object frmNaklodet: TfrmNaklodet
     object sdsNaklodetKOLOTP: TFMTBCDField
       FieldName = 'KOLOTP'
       Precision = 15
+      Size = 8
     end
     object sdsNaklodetNOMER_TARY: TStringField
       FieldName = 'NOMER_TARY'
@@ -749,6 +754,7 @@ object frmNaklodet: TfrmNaklodet
       FieldName = 'KOLOTP'
       DisplayFormat = '0.000'
       Precision = 15
+      Size = 8
     end
     object cdsNaklodetCOMMENT: TStringField
       DisplayLabel = #1050#1086#1084#1084#1077#1085#1090#1072#1088#1080#1081

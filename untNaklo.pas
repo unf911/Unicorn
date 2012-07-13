@@ -808,7 +808,7 @@ end;
 procedure TfrmNaklo.actUndeleteNaklExecute(Sender: TObject);
 begin
   if actShowDeleted.Checked then begin
-    dmdEx.UndeleteNakl(TintegerField(dsNaklo.DataSet.FieldByName('delmarked')),actRefresh);
+    dmdEx.UndeleteNaklo(TintegerField(dsNaklo.DataSet.FieldByName('delmarked')),actRefresh);
   end;
 end;
 
