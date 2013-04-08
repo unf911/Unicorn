@@ -1,0 +1,81 @@
+select * from provodki pr where pr.sub4=605050
+
+
+select sum(r.kreditafter),sum(r.debetafter)
+from rep_ostatki_pc(:id_schet,:dat_report,
+:id_izg,:id_zak,
+        null,:id_nakl,
+        null,null,
+        null,null,
+        null,null) r
+
+execute procedure naklpbux_post_pc(107308, 9043);
+26 s  - 9 s
+17 s old version no opt. 8 opt.
+
+
+select 
+  * from provodki pr
+  where pr.sub4=17903
+  order by pr.dat
+
+delete from provodki pr where pr.id_prov=6059774
+delete closing transh=1.8s
+
+delete from provodki pr where pr.id_prov=2038882
+delete oldest query=16s
+
+
+INSERT INTO PROVODKI (ID_PROV, ID_SCHET, DAT, TIP, DEBET, KREDIT, DEBET_KOLOTP, KREDIT_KOLOTP, ID_NAKL, SUB1, SUB2, SUB3, SUB4, SUB5, SUB6, SUB7, SUB8, SUB9, SUB10, ATTR1, ATTR2) VALUES (6059774, 8211, '30-OCT-2008 00:00:00', 8294, -12, NULL, NULL, NULL, 240373, 1268, 551, 3100, 17903, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+insert closing transh=1.9s
+-------
+opmitized
+delete from provodki pr where pr.id_prov=6059774
+delete closing transh=1.2s
+
+delete from provodki pr where pr.id_prov=2038882
+delete oldest query=14,7s
+
+INSERT INTO PROVODKI (ID_PROV, ID_SCHET, DAT, TIP, DEBET, KREDIT, DEBET_KOLOTP, KREDIT_KOLOTP, ID_NAKL, SUB1, SUB2, SUB3, SUB4, SUB5, SUB6, SUB7, SUB8, SUB9, SUB10, ATTR1, ATTR2) VALUES (6059774, 8211, '30-OCT-2008 00:00:00', 8294, -12, NULL, NULL, NULL, 240373, 1268, 551, 3100, 17903, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+insert closing transh=1.2s
+
+-----------
+
+
+============================
+Старый первичный ключ проводок тест.
+
+execute procedure provodki_ostatki_force_pc (9043,'01.01.08',null,null,null,null,null,null,null,null,null,null)
+
+-------------------
+231 record(s) was(were) deleted from PROVODKI
+
+231 record(s) was(were) inserted into PROVODKI
+
+------ Информация о производительности ------
+Время подготовки запроса = 16ms
+Время выполнения запроса = 5m 38s 109ms
+Current memory = 59 285 688
+Max memory = 60 454 968
+Memory buffers = 90
+Reads from disk to cache = 3 359 432
+Writes from cache to disk = 3 074
+Fetches from cache = 3 425 240
+
+
+После оптимизации
+
+
+231 record(s) was(were) deleted from PROVODKI
+
+231 record(s) was(were) inserted into PROVODKI
+
+------ Информация о производительности ------
+Время подготовки запроса = 0ms
+Время выполнения запроса = 3m 1s 188ms
+Current memory = 52 140 772
+Max memory = 53 329 064
+Memory buffers = 90
+Reads from disk to cache = 2 658 495
+Writes from cache to disk = 2 692
+Fetches from cache = 2 680 864
