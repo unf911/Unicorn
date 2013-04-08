@@ -1,6 +1,6 @@
 object frmRepReestrPolychNNakl: TfrmRepReestrPolychNNakl
-  Left = 323
-  Top = 369
+  Left = 247
+  Top = 282
   BorderStyle = bsDialog
   Caption = #1056#1077#1077#1089#1090#1088' '#1087#1086#1083#1091#1095#1077#1085#1085#1099#1093' '#1085#1072#1083#1086#1075#1086#1074#1099#1093' '#1085#1072#1082#1083#1072#1076#1085#1099#1093
   ClientHeight = 184

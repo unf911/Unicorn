@@ -17,11 +17,11 @@ uses
   untEx, DateUtils,
   ATSAssert,
   untSkladRasxDetEx,
-	DBCtrls,   
+	DBCtrls,
   SettingsPlugin, //TfmSettingPlugin
   untSettings, xmldom,
   XMLIntf, msxmldom, XMLDoc,
-  J1201505, //J1201505 IXMLDeclarContent
+  J1201506, //J1201506 IXMLDeclarContent
   XmlHelper, //WriteNode
   RepReestrPolychNNakl //TfrmRepReestrPolychNNakl
 
@@ -65,6 +65,8 @@ type
     SaveDialog: TSaveDialog;
     cdsRasxF11_BEZOBLOGENIYA: TFMTBCDField;
     frRasx: TfrxReport;
+    cdsRasxF42_VIDDOC: TStringField;
+    cdsRasxF43_VIDDOC: TStringField;
     procedure FormCreate(Sender: TObject);
 		procedure FormClose(Sender: TObject; var Action: TCloseAction);
 		procedure actSettingsExecute(Sender: TObject);
@@ -195,7 +197,7 @@ begin
     TIN:=GetOKPO;
     C_DOC:='J12';
     C_DOC_SUB:='015';
-    C_DOC_VER:='5';//
+    C_DOC_VER:='6';//
     C_DOC_TYPE:=0;//тип документа. 0-основной
     C_DOC_CNT := GetNumDocZaPeriod;//1; //номер документа за период
     C_REG := GetOblastKod;//15;//код области
@@ -213,7 +215,7 @@ procedure TfrmRepReestrVydanNnakl.CleanUpXml(var XMLDocument1 : TXMLDocument);
 begin
   XMLDocument1.XML.Text := AnsiReplaceStr(XMLDocument1.XML.Text,'<DECLAR>',
     '<DECLAR xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" '+
-    'xsi:noNamespaceSchemaLocation="J1201505.xsd">');
+    'xsi:noNamespaceSchemaLocation="J1201506.xsd">');
   XMLDocument1.active := true;
 end;
 
@@ -233,10 +235,18 @@ begin
     'T1RXXXXG3S',
     FormatNodeString,
     cdsRasx.FieldByName('F3_ID'));
-  WriteNode(XMLDeclarContent.DECLARBODY.T1RXXXXG4S,
-    'T1RXXXXG4S',
+  WriteNode(XMLDeclarContent.DECLARBODY.T1RXXXXG41S,
+    'T1RXXXXG41S',
     FormatNodeString,
     cdsRasx.FieldByName('F4_VIDDOC'));
+  WriteNode(XMLDeclarContent.DECLARBODY.T1RXXXXG42S,
+    'T1RXXXXG42S',
+    FormatNodeString,
+    cdsRasx.FieldByName('F42_VIDDOC'));
+  WriteNode(XMLDeclarContent.DECLARBODY.T1RXXXXG43S,
+    'T1RXXXXG43S',
+    FormatNodeString,
+    cdsRasx.FieldByName('F43_VIDDOC'));
   WriteNode(XMLDeclarContent.DECLARBODY.T1RXXXXG5S,
     'T1RXXXXG5S',
     FormatNodeString,
@@ -325,7 +335,7 @@ begin
     FormatFloat('00',GetOblastKod ) +
     FormatFloat('00',GetRajonKod ) +
     FormatFloat('0000000000',strtoint(GetOKPO)) +
-    'J1201505'+'100'+
+    'J1201506'+'100'+
     FormatFloat('0000000',GetNumDocZaPeriod) +
     '1' +
     FormatFloat('00', MonthOf(setT.dateFrom))+

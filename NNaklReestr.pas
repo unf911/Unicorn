@@ -21,7 +21,7 @@ uses
   SettingsPlugin, //TfmSettingPlugin
   untSettings, xmldom,
   XMLIntf, msxmldom, XMLDoc,
-  J0215103, UnfFilter// IXMLDeclarContent
+  J0215104, UnfFilter// IXMLDeclarContent
 
   ;
 
@@ -197,7 +197,7 @@ begin
     TIN:=GetOKPO;
     C_DOC:='J02';
     C_DOC_SUB:='151';
-    C_DOC_VER:='3';//
+    C_DOC_VER:='4';//
     C_DOC_TYPE:=0;//тип документа. 0-основной
     C_DOC_CNT := GetNumDocZaPeriod;//1; //номер документа за период
     C_REG:=GetOblastKod;//15;//код области
@@ -214,7 +214,7 @@ procedure TfrmNnaklReestr.CleanUpXml(var XMLDocument1 : TXMLDocument);
 begin
   XMLDocument1.XML.Text := AnsiReplaceStr(XMLDocument1.XML.Text,'<DECLAR>',
     '<DECLAR xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" '+
-    'xsi:noNamespaceSchemaLocation="J0215103.xsd">'
+    'xsi:noNamespaceSchemaLocation="J0215104.xsd">'
     );
   XMLDocument1.active := true;
 end;
@@ -376,7 +376,7 @@ begin
     FormatFloat('00',GetOblastKod ) +
     FormatFloat('00',GetRajonKod ) +
     FormatFloat('0000000000',strtoint(GetOKPO)) +
-    'J0215103'+'100'+
+    'J0215104'+'100'+
     FormatFloat('0000000',GetNumDocZaPeriod ) +
     '1' +
     FormatFloat('00', MonthOf(setT.dateFrom))+

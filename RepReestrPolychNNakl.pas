@@ -21,7 +21,7 @@ uses
 	DBCtrls, 
   SettingsPlugin, //TfmSettingsPlugin
   untSettings,
-  J1201505, //J1201505 IXMLDeclarContent
+  J1201506, //J1201506 IXMLDeclarContent
   XmlHelper //WriteNode
   ;
 
@@ -211,15 +211,18 @@ begin
     'T2RXXXXG3D',
     FormatNodeDateTime,
     cdsRasx.FieldByName('F3_DAT_VYPISKI'));
-
   WriteNode(XMLDeclarContent.DECLARBODY.T2RXXXXG4S,
     'T2RXXXXG4S',
     FormatNodeString,
     cdsRasx.FieldByName('F4_ID'));
-  WriteNode(XMLDeclarContent.DECLARBODY.T2RXXXXG5S,
-    'T2RXXXXG5S',
+  WriteNode(XMLDeclarContent.DECLARBODY.T1RXXXXG41S,
+    'T1RXXXXG41S',
     FormatNodeString,
     cdsRasx.FieldByName('F5_VIDDOC'));
+  WriteNode(XMLDeclarContent.DECLARBODY.T1RXXXXG43S,
+    'T1RXXXXG43S',
+    FormatNodeString,
+    cdsRasx.FieldByName('F51_VIDDOC')); 
   WriteNode(XMLDeclarContent.DECLARBODY.T2RXXXXG6S,
     'T2RXXXXG6S',
     FormatNodeString,

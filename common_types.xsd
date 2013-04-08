@@ -129,13 +129,13 @@
 	<xs:simpleType name="DGc_dpi">
 		<xs:restriction base="xs:integer">
 			<xs:minInclusive value="100"/>
-			<xs:maxInclusive value="2799"/>
+			<xs:maxInclusive value="2899"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<!--Загальний тип "Ім’я файлу, що містить пов’язаний документ"-->
 	<xs:simpleType name="DGFilename">
 		<xs:restriction base="xs:string">
-			<xs:pattern value="(([1-9][0-9])|(0[1-9])){2}(([0-9]{10})|(00[АБВГДЕЄЖЗИІКЛМНОПРСТУФХЦЧШЩЮЯ]{2}[0-9]{6}))([JF]((0[1-9])|([1-9][0-9])))(([0-9]{2}[1-9])|([0-9][1-9][0-9])|([1-9][0-9]{2}))(([1-9][0-9])|(0[1-9]))[1-3]([0-9]{2})([0-9]{7})([1-5])((0[1-9])|(1[1-2]))(20[0-9]{2})(([1-9][0-9])|(0[1-9])){2}\.xml"/>
+			<xs:pattern value="(([1-9][0-9])|(0[1-9])){2}(([0-9]{10})|(00[АБВГДЕЄЖЗИІКЛМНОПРСТУФХЦЧШЩЮЯ]{2}[0-9]{6}))([JF]((0[1-9])|([1-9][0-9])))(([0-9]{2}[1-9])|([0-9][1-9][0-9])|([1-9][0-9]{2}))(([1-9][0-9])|(0[1-9]))[1-3]([0-9]{2})([0-9]{7})([1-5])((0[1-9])|(1[0-2]))(20[0-9]{2})(([1-9][0-9])|(0[1-9])){2}\.xml"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<!--Загальний тип "Число від 1 до ..." використовується для вказання кількості	номеру (HEXPL, HPAGES, №п/п)-->
@@ -203,7 +203,7 @@
 			<xs:pattern value="(ПН((0[1-9])|(1[0-4]))*[У]*)|(РК[У]*)|(ВМД[У]*)|(БО[У]*)"/>
 		</xs:restriction>
 	</xs:simpleType>
-	<!--Загальний тип "вид(код) документа" Розділ IІ. Отримані податкові накладні" версія документа 5-->
+		<!--Загальний тип "вид(код) документа" Розділ IІ. Отримані податкові накладні" версія документа 5-->
 	<xs:simpleType name="DGKodDocROVPD5_2">
 		<xs:annotation>
 			<xs:documentation>
@@ -227,6 +227,135 @@
 			<xs:pattern value="(ПН[Р]*[У]*)|(РК[Р]*[У]*)|(ВМД[Р]*[У]*)|(ЧК[Р]*[У]*)|(ТК[Р]*[У]*)|(ГР[Р]*[У]*)|(ПЗ[Р]*[У]*)|(ПО[Р]*[У]*)|(ЗП[Р]*[У]*)|(НП[Р]*[У]*)|(БО[Р]*[У]*)"/>
 		</xs:restriction>
 	</xs:simpleType>
+	<!--Загальні типи для "Реєстру виданих та отриманих податкових накладних " версія реєстру 6-->
+<!--"Вид(код) документа "Розділ I. Видані податкові накладні" -->
+	<xs:simpleType name="DGKodTypeDoc6_1">
+		<xs:annotation>
+			<xs:documentation>
+			Види документів для Розділ I. Видані податкові накладні
+			ПНП - податкова накладна, складена на паперових носіях;
+			ПНЕ - податкова накладна, електронна;
+			РКП – розрахунок коригування кількісних і вартісних показників до податкової накладної (додаток 2 до податкової накладної), складена на паперових носіях; 
+			РКЕ – розрахунок коригування кількісних і вартісних показників до податкової накладної (додаток 2 до податкової накладної), електронна; 
+			МДП – митна декларація, складена на паперових носіях;
+			МДЕ – електронна митна декларація; 
+			БО – документ бухгалтерського обліку.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="((ПН(П|Е)+)|(РК(П|Е)+)|(МД(П|Е)+)|(БО))"/>
+		</xs:restriction>
+	</xs:simpleType>
+		<!--Загальний тип "вид(код) документа "Розділ IІ. Отримані податкові накладні" версія документа 6-->
+	<xs:simpleType name="DGKodDocROVPD6_2">
+		<xs:annotation>
+			<xs:documentation>
+			Види документів для Розділ ІІ Реєстру
+			ПНП – податкова накладна, складена на паперових носіях;
+			ПНЕ  – електронна податкова накладна; 
+			РКП – розрахунок коригування кількісних і вартісних показників до податкової накладної (додаток 2 до податкової накладної), складений на паперових носіях; 
+			РКЕ – електронний розрахунок коригування кількісних і вартісних показників до податкової накладної (додаток 2 до податкової накладної); 
+			МДП – митна декларація, складена на паперових носіях;
+			МДЕ – електронна митна декларація; 
+			ЧК – касовий чек. 
+			ТК – транспортний квиток; 
+			ГР – готельний рахунок; 
+			ПЗ – рахунок за послуги зв’язку; 
+			ПО – послуги, вартість яких визначається за показниками приладів обліку; 
+			ЗП – заява платника та копії товарних чеків або інших розрахункових документів, що засвідчують факт сплати податку у зв’язку з придбанням таких товарів/послуг, або копії первинних документів, складених відповідно до Закону України „Про бухгалтерський облік та фінансову звітність в Україні”, що підтверджують факт отримання таких товарів/послуг відповідно до		  пункту 201.10 статті 201 розділу V Кодексу;
+			НП – документ, що засвідчує придбання товарів/послуг на митній території України в осіб, які не зареєстровані як платники податку на додану вартість;
+			БО – документ бухгалтерського обліку, в тому числі бухгалтерська довідка
+			
+			БОПНП – документ бухгалтерського обліку, яким підтверджується операція з постачання на основі податкової накладної, що складена на паперових носіях;
+			БОПНЕ – документ бухгалтерського обліку, яким підтверджується операція з постачання на основі електронної податкової накладної; 
+			БОРКП – документ бухгалтерського обліку, яким підтверджується операція з постачання на основі розрахунку коригування кількісних і вартісних показників до податкової накладної (додаток 2 до податкової накладної), складений на паперових носіях; 
+			БОРКЕ – документ бухгалтерського обліку, яким підтверджується операція з постачання на основі електронного розрахуноку коригування кількісних і вартісних показників до податкової накладної (додаток 2 до податкової накладної); 
+			БОМДП – документ бухгалтерського обліку, яким підтверджується операція з постачання на основі митної декларації, складеної на паперових носіях;
+			БОМДЕ – документ бухгалтерського обліку, яким підтверджується операція з постачання на основі електронної митної декларації; 
+			БОЧК – документ бухгалтерського обліку, яким підтверджується операція з постачання на основі касового чеку. 
+			БОТК – документ бухгалтерського обліку, яким підтверджується операція з постачання на основі транспортного квитка; 
+			БОГР – документ бухгалтерського обліку, яким підтверджується операція з постачання на основі готельного рахунку; 
+			БОПЗ – документ бухгалтерського обліку, яким підтверджується операція з постачання на основі рахунку за послуги зв’язку; 
+			БОПО – документ бухгалтерського обліку, яким підтверджується операція з постачання на основі послуги, вартість яких визначається за показниками приладів обліку; 
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value='ПНП'/>
+			<xs:enumeration value='ПНЕ'/>
+			<xs:enumeration value='РКП'/>
+			<xs:enumeration value='РКЕ'/>
+			<xs:enumeration value='МДП'/>
+			<xs:enumeration value='МДЕ'/>
+			<xs:enumeration value='ЧК'/>
+			<xs:enumeration value='ТК'/>
+			<xs:enumeration value='ГР'/>
+			<xs:enumeration value='ПЗ'/>
+			<xs:enumeration value='ПО'/>
+			<xs:enumeration value='ЗП'/>
+			<xs:enumeration value='НП'/>
+			<xs:enumeration value='БО'/>
+			<xs:enumeration value='БОПНП'/>
+			<xs:enumeration value='БОПНЕ'/>
+			<xs:enumeration value='БОРКП'/>
+			<xs:enumeration value='БОРКЕ'/>
+			<xs:enumeration value='БОМДП'/>
+			<xs:enumeration value='БОМДЕ'/>
+			<xs:enumeration value='БОЧК'/>
+			<xs:enumeration value='БОТК'/>
+			<xs:enumeration value='БОГР'/>
+			<xs:enumeration value='БОПЗ'/>
+			<xs:enumeration value='БОПО'/>
+		</xs:restriction>
+	</xs:simpleType>
+<!--Причини, складання податкової накладної за окремими операціями версія реєстру 6-->
+	<xs:simpleType name="DGKodСausesOperation6">
+		<xs:annotation>
+			<xs:documentation>
+			Причини, складання податкової накладної за окремими операціями для Розділ I та для Розділ II
+			01 – Складена на суму перевищення звичайної ціни над фактичною; 
+			02 – Постачання неплатнику податку; 
+			03 – Постачання товарів/послуг у рахунок оплати праці фізичним особам, які перебувають у трудових відносинах із платником податку; 
+			04 – Постачання у межах балансу для невиробничого використання; 
+			05 – Ліквідація основних засобів за самостійним рішенням платника податку;
+			06 – Переведення виробничих основних засобів до складу невиробничих;
+			07 – Експортні постачання;
+			08 – Постачання для операцій, які не є об'єктом оподаткування податком на додану вартість;
+			09 – Постачання для операцій, які звільнені від оподаткування податком на додану вартість;
+			10 – Визначення при анулюванні платника податку податкових зобов'язань по товарах/послугах, необоротних активах, суми податку по яких були включені до складу податкового кредиту, не були використані в оподатковуваних операціях у межах господарської діяльності;
+			11 – Складена за щоденними підсумками операцій;
+			12 – Складена на вартість безоплатно поставлених товарів/послуг, обчислену виходячи з рівня звичайних цін;
+			13 – Використання виробничих або невиробничих засобів, інших товарів/послуг не у господарській діяльності;
+			14 – Складена покупцем (отримувачем) послуг від нерезидента.
+			15 – Складена на суму перевищення митної вартості над фактичною ціною постачання.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="((0[1-9])|(1[0-5]))"/>
+		</xs:restriction>
+	</xs:simpleType>
+<!--Признак, - дані документа включаються до уточнюючих розрахунків за звітний (податковий) період „У” -->
+	<xs:simpleType name="DGKodRectification6">
+		<xs:annotation>
+			<xs:documentation>
+			Признак, що дані документа включаються до уточнюючих розрахунків за звітний (податковий) період „У” 
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="(У)"/>
+		</xs:restriction>
+	</xs:simpleType>
+<!--Признак, - проведено розподіл суми податкового кредиту додається літера „Р” -->
+	<xs:simpleType name="DGKodAssignment6">
+		<xs:annotation>
+			<xs:documentation>
+			Признак, що було проведено розподіл суми податкового кредиту додається літера „Р” 
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="(Р)"/>
+		</xs:restriction>
+	</xs:simpleType>
+
 	<!--Загальний тип "Признак спеціальної податкової накладної" -->
 	<xs:simpleType name="DGspecNom">
 		<xs:annotation>
@@ -252,6 +381,50 @@
 			</xs:extension>
 		</xs:simpleContent>
 	</xs:complexType>
+		       
+	<!--Загальний тип "вид(код) документа" Реєстру отриманих та виданих податкових накладних" версія 6 розділ 1 строка 1-->
+	<xs:complexType name="DGKodTypeDoc6_1Column">
+		<xs:simpleContent>
+			<xs:extension base="DGKodTypeDoc6_1">
+				<xs:attribute name="ROWNUM" type="rowInt" use="required"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<!--Загальний тип "вид(код) документа" Реєстру отриманих та виданих податкових накладних" версія 6 розділ 2 строка 1-->
+	<xs:complexType name="DGKodDocROVPD6_2Column">
+		<xs:simpleContent>
+			<xs:extension base="DGKodDocROVPD6_2">
+				<xs:attribute name="ROWNUM" type="rowInt" use="required"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+
+       <!--Загальний тип "вид(код) документа" Реєстру отриманих та виданих податкових накладних" версія 6 розділ 1 строка 2-->
+	<xs:complexType name="DGKodСausesOperation6Column">
+		<xs:simpleContent>
+			<xs:extension base="DGKodСausesOperation6">
+				<xs:attribute name="ROWNUM" type="rowInt" use="required"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<!--Загальний тип "вид(код) документа" Реєстру отриманих та виданих податкових накладних" версія 6 розділ 2 строка 2-->
+	<xs:complexType name="DGKodAssignment6Column">
+		<xs:simpleContent>
+			<xs:extension base="DGKodAssignment6">
+				<xs:attribute name="ROWNUM" type="rowInt" use="required"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+
+       <!--Загальний тип "вид(код) документа" Реєстру отриманих та виданих податкових накладних" версія 6 розділ 1,2 строка 3-->
+	<xs:complexType name="DGKodRectification6Column">
+		<xs:simpleContent>
+			<xs:extension base="DGKodRectification6">
+				<xs:attribute name="ROWNUM" type="rowInt" use="required"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+
 	<!--Загальний тип "(тип причини) коли Оригінал ПОДАТКОВА НАКЛАДНА залишається у продавця" (HTYPR)-->
 	<xs:simpleType name="DGPNtypr">
 		<xs:annotation>
@@ -260,48 +433,104 @@
  Можливі значення значення 01, 02, ..., 14</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
-			<xs:enumeration value="01"><xs:annotation><xs:documentation>
+			<xs:enumeration value="01">
+				<xs:annotation>
+					<xs:documentation>
 				Виписана на суму перевищення звичайної ціни над фактичною
-			</xs:documentation></xs:annotation></xs:enumeration>
-			<xs:enumeration value="02"><xs:annotation><xs:documentation>
+			</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="02">
+				<xs:annotation>
+					<xs:documentation>
 				Постачання неплатнику податку
-			</xs:documentation></xs:annotation></xs:enumeration>
-			<xs:enumeration value="03"><xs:annotation><xs:documentation>
+			</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="03">
+				<xs:annotation>
+					<xs:documentation>
 				Натуральна виплата в рахунок оплати праці фізичним особам
-			</xs:documentation></xs:annotation></xs:enumeration>
-			<xs:enumeration value="04"><xs:annotation><xs:documentation>
+			</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="04">
+				<xs:annotation>
+					<xs:documentation>
 				Постачання у межах балансу для невиробничого використанн
-			</xs:documentation></xs:annotation></xs:enumeration>
-			<xs:enumeration value="05"><xs:annotation><xs:documentation>
+			</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="05">
+				<xs:annotation>
+					<xs:documentation>
 				Ліквідація основних засобів за самостійним рішенням платника податку
-			</xs:documentation></xs:annotation></xs:enumeration>
-			<xs:enumeration value="06"><xs:annotation><xs:documentation>
+			</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="06">
+				<xs:annotation>
+					<xs:documentation>
 				Переведення виробничих основних засобів до складу невиробничих
-			</xs:documentation></xs:annotation></xs:enumeration>
-			<xs:enumeration value="07"><xs:annotation><xs:documentation>
+			</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="07">
+				<xs:annotation>
+					<xs:documentation>
 				Експортні постачанн
-			</xs:documentation></xs:annotation></xs:enumeration>
-			<xs:enumeration value="08"><xs:annotation><xs:documentation>
+			</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="08">
+				<xs:annotation>
+					<xs:documentation>
 				Постачання для операцій, які не є об'єктом оподаткування податком на додану вартість
-			</xs:documentation></xs:annotation></xs:enumeration>
-			<xs:enumeration value="09"><xs:annotation><xs:documentation>
+			</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="09">
+				<xs:annotation>
+					<xs:documentation>
 				Постачання для операцій, які звільнені від оподаткування податком на додану вартість
-			</xs:documentation></xs:annotation></xs:enumeration>
-			<xs:enumeration value="10"><xs:annotation><xs:documentation>
+			</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="10">
+				<xs:annotation>
+					<xs:documentation>
 				Визнання умовного постачання товарних залишків та/або необоротних активів, що перебувають в обліку платника податку на день анулювання його реєстрації як платника податку на додану вартість, щодо яких був нарахований податковий кредит у минулих або поточному податкових періодах при анулюванні реєстрації платника податку на додану вартість
-			</xs:documentation></xs:annotation></xs:enumeration>
-			<xs:enumeration value="11"><xs:annotation><xs:documentation>
+			</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="11">
+				<xs:annotation>
+					<xs:documentation>
 				 Виписана за щоденними підсумками операцій
-			</xs:documentation></xs:annotation></xs:enumeration>
-			<xs:enumeration value="12"><xs:annotation><xs:documentation>
+			</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="12">
+				<xs:annotation>
+					<xs:documentation>
 				Виписана на вартість безоплатно поставлених товарів/послуг, обчислену виходячи з рівня звичайних цін
-			</xs:documentation></xs:annotation></xs:enumeration>
-			<xs:enumeration value="13"><xs:annotation><xs:documentation>
+			</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="13">
+				<xs:annotation>
+					<xs:documentation>
 				Використання виробничих або невиробничих засобів, інших товарів/послуг не у господарській діяльності
-			</xs:documentation></xs:annotation></xs:enumeration>
-			<xs:enumeration value="14"><xs:annotation><xs:documentation>
+			</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="14">
+				<xs:annotation>
+					<xs:documentation>
 				Виписана покупцем (отримувачем) послуг від нерезидента
-			</xs:documentation></xs:annotation></xs:enumeration>
+			</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
 		</xs:restriction>
 	</xs:simpleType>
 	<!-- Нові типи необхідні для проекту -->
@@ -712,6 +941,13 @@
 			<xs:maxInclusive value="12"/>
 		</xs:restriction>
 	</xs:simpleType>
+	<!--Загальний тип "День місяця"-->
+	<xs:simpleType name="DGDM">
+		<xs:restriction base="xs:integer">
+			<xs:minInclusive value="1"/>
+			<xs:maxInclusive value="31"/>
+		</xs:restriction>
+	</xs:simpleType>
 	<!--Загальний тип "Квартал"-->
 	<xs:simpleType name="DGKv">
 		<xs:restriction base="xs:integer">
@@ -869,6 +1105,21 @@
 		<xs:restriction base="xs:string">
 			<xs:maxLength value="10"/>
 			<xs:pattern value="([0-9]{5,10}|[АБВГДЕЄЖЗИІКЛМНОПРСТУФХЦЧШЩЮЯ]{2}[0-9]{6})"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--Загальний тип "Номер облікової картки застрахованої особи (номер ЗО)(Пенсійний Фонд України)"-->
+	<xs:simpleType name="DGNUMZO">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="10"/>
+			<xs:minLength value="10"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--Загальний тип "Ознака сезон (Пенсійний Фонд України)"-->
+	<xs:simpleType name="DGSEAZON">
+		<xs:restriction base="xs:integer">
+			<xs:enumeration value="1"/>
+			<xs:enumeration value="2"/>
+			<xs:enumeration value="3"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<!--Загальний тип "серія та № паспорта" (HPASS)-->
@@ -1392,6 +1643,54 @@
 	<xs:complexType name="DGSignColumn">
 		<xs:simpleContent>
 			<xs:extension base="DGSign">
+				<xs:attribute name="ROWNUM" type="rowInt" use="required"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<!--Загальний тип колонки "Податкової декларації з податку на нерухоме майно, відмінне	від земельної  ділянки"   Тип об'єкта житлової нерухомості 1 - квартира; 2 - житловий будинок; 3 - інше. -->
+	<xs:complexType name="TOColumn">
+		<xs:simpleContent>
+			<xs:extension base="DGSTAN">
+				<xs:attribute name="ROWNUM" type="rowInt" use="required"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<!--Загальний тип КОАТУУ в колонці -->
+	<xs:complexType name="KOATUUColumn">
+		<xs:simpleContent>
+			<xs:extension base="DGKOATUU">
+				<xs:attribute name="ROWNUM" type="rowInt" use="required"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+		<!--Загальний тип Ознака сезону в колонці (Пенсійний Фонд України)-->
+	<xs:complexType name="SeazonColumn">
+		<xs:simpleContent>
+			<xs:extension base="DGSEAZON">
+				<xs:attribute name="ROWNUM" type="rowInt" use="required"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<!--Загальний тип Номер облікової картки застрахованої особи (номер ЗО) в колонці (Пенсійний Фонд України)-->
+	<xs:complexType name="NumZOColumn">
+		<xs:simpleContent>
+			<xs:extension base="DGNUMZO">
+				<xs:attribute name="ROWNUM" type="rowInt" use="required"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<!--Загальний тип "Число від 1 до 99" в колонці-->
+	<xs:complexType name="I2inomColumn">
+		<xs:simpleContent>
+			<xs:extension base="DGI2inom">
+				<xs:attribute name="ROWNUM" type="rowInt" use="required"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<!--Загальний тип "День місяця" в колонці-->
+	<xs:complexType name="DMColumn">
+		<xs:simpleContent>
+			<xs:extension base="DGDM">
 				<xs:attribute name="ROWNUM" type="rowInt" use="required"/>
 			</xs:extension>
 		</xs:simpleContent>

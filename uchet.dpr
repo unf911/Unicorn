@@ -188,7 +188,6 @@ uses
   VozvratPost in 'VozvratPost.pas' {frmVozvratPost},
   VozvratPostEdit in 'VozvratPostEdit.pas' {frmVozvratPostEdit},
   VozvratPostDet in 'VozvratPostDet.pas' {frmVozvratPostDet},
-  J1201505 in 'J1201505.pas',
   J0215102 in 'J0215102.pas',
   ReysSpr in 'ReysSpr.pas' {frmReysSpr},
   ReysSprEdit in 'ReysSprEdit.pas' {frmReysSprEdit},
@@ -198,9 +197,10 @@ uses
   RepReysDet in 'RepReysDet.pas' {frmRepReysDet},
   RepPribylPrilogEdnal in 'RepPribylPrilogEdnal.pas' {frmRepPribylPrilogEdnal},
   J1201004 in 'J1201004.pas',
-  J0215103 in 'J0215103.pas',
   J0111901 in 'J0111901.pas',
-  RepNNaklXml in 'RepNNaklXml.pas' {frmRepNnaklXml};
+  RepNNaklXml in 'RepNNaklXml.pas' {frmRepNnaklXml},
+  J0215104 in 'J0215104.pas',
+  J1201506 in 'J1201506.pas';
 
 {$R *.RES}
 begin

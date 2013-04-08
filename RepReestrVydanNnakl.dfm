@@ -1,6 +1,6 @@
 object frmRepReestrVydanNnakl: TfrmRepReestrVydanNnakl
-  Left = 288
-  Top = 407
+  Left = 220
+  Top = 311
   BorderStyle = bsDialog
   Caption = #1056#1077#1077#1089#1090#1088' '#1074#1099#1076#1072#1085#1085#1099#1093' '#1085#1072#1083#1086#1075#1086#1074#1099#1093' '#1085#1072#1082#1083#1072#1076#1085#1099#1093
   ClientHeight = 285
@@ -71,6 +71,18 @@ object frmRepReestrVydanNnakl: TfrmRepReestrVydanNnakl
         EditButtons = <>
         FieldName = 'F4_VIDDOC'
         Footers = <>
+      end
+      item
+        EditButtons = <>
+        FieldName = 'F42_VIDDOC'
+        Footers = <>
+        Width = 59
+      end
+      item
+        EditButtons = <>
+        FieldName = 'F43_VIDDOC'
+        Footers = <>
+        Width = 60
       end
       item
         EditButtons = <>
@@ -224,13 +236,13 @@ object frmRepReestrVydanNnakl: TfrmRepReestrVydanNnakl
         DataType = ftDate
         Name = 'date_from'
         ParamType = ptInput
-        Value = 37622d
+        Value = 40909d
       end
       item
         DataType = ftDate
         Name = 'date_to'
         ParamType = ptInput
-        Value = 37681d
+        Value = 40969d
       end>
     SQLConnection = dmdEx.scUchet
     Left = 40
@@ -257,13 +269,13 @@ object frmRepReestrVydanNnakl: TfrmRepReestrVydanNnakl
         DataType = ftDate
         Name = 'date_from'
         ParamType = ptInput
-        Value = 37622d
+        Value = 40909d
       end
       item
         DataType = ftDate
         Name = 'date_to'
         ParamType = ptInput
-        Value = 37681d
+        Value = 40969d
       end>
     ProviderName = 'dspRasx'
     Left = 40
@@ -282,6 +294,14 @@ object frmRepReestrVydanNnakl: TfrmRepReestrVydanNnakl
     object cdsRasxF4_VIDDOC: TStringField
       FieldName = 'F4_VIDDOC'
     end
+    object cdsRasxF42_VIDDOC: TStringField
+      FieldName = 'F42_VIDDOC'
+      Size = 2
+    end
+    object cdsRasxF43_VIDDOC: TStringField
+      FieldName = 'F43_VIDDOC'
+      Size = 2
+    end
     object cdsRasxF5_ZAK: TStringField
       FieldName = 'F5_ZAK'
       Size = 250
@@ -293,27 +313,27 @@ object frmRepReestrVydanNnakl: TfrmRepReestrVydanNnakl
     object cdsRasxF7_SUMWITHNDS: TFMTBCDField
       FieldName = 'F7_SUMWITHNDS'
       Precision = 15
-      Size = 4
+      Size = 8
     end
     object cdsRasxF8_BAZANDS: TFMTBCDField
       FieldName = 'F8_BAZANDS'
       Precision = 15
-      Size = 4
+      Size = 8
     end
     object cdsRasxF9_NDS: TFMTBCDField
       FieldName = 'F9_NDS'
       Precision = 15
-      Size = 4
+      Size = 8
     end
     object cdsRasxF11_BEZOBLOGENIYA: TFMTBCDField
       FieldName = 'F11_BEZOBLOGENIYA'
       Precision = 15
-      Size = 4
+      Size = 8
     end
     object cdsRasxF12_BAZANDSEXPORT: TFMTBCDField
       FieldName = 'F12_BAZANDSEXPORT'
       Precision = 15
-      Size = 4
+      Size = 8
     end
     object cdsRasxTIP: TIntegerField
       FieldName = 'TIP'
