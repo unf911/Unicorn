@@ -654,7 +654,7 @@ function TfrmRepNnaklXml.GenerateXML(id: integer): integer;
 begin
   dmdEx.CloseQuery(cdsNNakl);
   qeNNakl.SetSQL('where',
-    'om.id_schet=' + inttostr(id),
+    'om.schet=' + inttostr(id),
     0);
   qeNNakl.Refresh;
   //cdsNNakl.Params.ParamByName('id_schet').asInteger := id;

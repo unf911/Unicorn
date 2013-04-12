@@ -199,11 +199,11 @@ end;
 procedure TfrmRepReestrPolychNNakl.FillNNaklp(XMLDeclarContent: IXMLDeclarContent;
   cdsRasx :TDataSet);
 begin
-  WriteNode(XMLDeclarContent.DECLARBODY.T2RXXXXG2D,
+  WriteNode(XMLDeclarContent.DECLARBODY.T2RXXXXG1,
     'T2RXXXXG1',
     FormatInteger,
     cdsRasx.FieldByName('F1_NPP'));
-  WriteNode(XMLDeclarContent.DECLARBODY.T2RXXXXG1,
+  WriteNode(XMLDeclarContent.DECLARBODY.T2RXXXXG2D,
     'T2RXXXXG2D',
     FormatNodeDateTime,
     cdsRasx.FieldByName('F2_DAT'));
@@ -215,14 +215,14 @@ begin
     'T2RXXXXG4S',
     FormatNodeString,
     cdsRasx.FieldByName('F4_ID'));
-  WriteNode(XMLDeclarContent.DECLARBODY.T1RXXXXG41S,
-    'T1RXXXXG41S',
+  WriteNode(XMLDeclarContent.DECLARBODY.T2RXXXXG51S,
+    'T2RXXXXG51S',
     FormatNodeString,
     cdsRasx.FieldByName('F5_VIDDOC'));
-  WriteNode(XMLDeclarContent.DECLARBODY.T1RXXXXG43S,
-    'T1RXXXXG43S',
+  WriteNode(XMLDeclarContent.DECLARBODY.T2RXXXXG53S,
+    'T2RXXXXG53S',
     FormatNodeString,
-    cdsRasx.FieldByName('F51_VIDDOC')); 
+    cdsRasx.FieldByName('F53_VIDDOC'));
   WriteNode(XMLDeclarContent.DECLARBODY.T2RXXXXG6S,
     'T2RXXXXG6S',
     FormatNodeString,
