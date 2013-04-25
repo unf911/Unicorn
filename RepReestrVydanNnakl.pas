@@ -67,6 +67,8 @@ type
     frRasx: TfrxReport;
     cdsRasxF42_VIDDOC: TStringField;
     cdsRasxF43_VIDDOC: TStringField;
+    cdsRasxF10: TFMTBCDField;
+    cdsRasxF13: TFMTBCDField;
     procedure FormCreate(Sender: TObject);
 		procedure FormClose(Sender: TObject; var Action: TCloseAction);
 		procedure actSettingsExecute(Sender: TObject);
@@ -267,14 +269,22 @@ begin
     'T1RXXXXG9',
     FormatNodeFloat,
     cdsRasx.FieldByName('F9_NDS'));
+  WriteNode(XMLDeclarContent.DECLARBODY.T1RXXXXG10,
+    'T1RXXXXG10',
+    FormatNodeFloat,
+    cdsRasx.FieldByName('F10'));
   WriteNode(XMLDeclarContent.DECLARBODY.T1RXXXXG11,
     'T1RXXXXG11',
     FormatNodeFloat,
     cdsRasx.FieldByName('F11_BEZOBLOGENIYA'));
-  WriteNode(XMLDeclarContent.DECLARBODY.T1RXXXXG11,
+  WriteNode(XMLDeclarContent.DECLARBODY.T1RXXXXG12,
     'T1RXXXXG12',
     FormatNodeFloat,
     cdsRasx.FieldByName('F12_BAZANDSEXPORT'));
+  WriteNode(XMLDeclarContent.DECLARBODY.T1RXXXXG13,
+    'T1RXXXXG13',
+    FormatNodeFloat,
+    cdsRasx.FieldByName('F13'));
 end;
 
 procedure TfrmRepReestrVydanNnakl.FillNNaklrFooter(XMLDeclarContent: IXMLDeclarContent;

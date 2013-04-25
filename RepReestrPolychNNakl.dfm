@@ -275,6 +275,73 @@ object frmRepReestrPolychNNakl: TfrmRepReestrPolychNNakl
     ProviderName = 'dspRasx'
     Left = 40
     Top = 128
+    object cdsRasxF1_NPP: TIntegerField
+      FieldName = 'F1_NPP'
+    end
+    object cdsRasxF2_DAT: TSQLTimeStampField
+      FieldName = 'F2_DAT'
+    end
+    object cdsRasxF3_DAT_VYPISKI: TSQLTimeStampField
+      FieldName = 'F3_DAT_VYPISKI'
+    end
+    object cdsRasxF4_ID: TStringField
+      FieldName = 'F4_ID'
+      Size = 30
+    end
+    object cdsRasxF5_VIDDOC: TStringField
+      FieldName = 'F5_VIDDOC'
+    end
+    object cdsRasxF53_VIDDOC: TStringField
+      FieldName = 'F53_VIDDOC'
+      Size = 1
+    end
+    object cdsRasxF6_IZG: TStringField
+      FieldName = 'F6_IZG'
+      Size = 250
+    end
+    object cdsRasxF7_IPN: TStringField
+      FieldName = 'F7_IPN'
+      Size = 12
+    end
+    object cdsRasxF8_SUMWITHNDS: TFMTBCDField
+      FieldName = 'F8_SUMWITHNDS'
+      Precision = 15
+    end
+    object cdsRasxF9_BAZANDS: TFMTBCDField
+      FieldName = 'F9_BAZANDS'
+      Precision = 15
+    end
+    object cdsRasxF10_NDS: TFMTBCDField
+      FieldName = 'F10_NDS'
+      Precision = 15
+    end
+    object cdsRasxF11: TFMTBCDField
+      FieldName = 'F11'
+      Precision = 15
+    end
+    object cdsRasxF12_NDS: TFMTBCDField
+      FieldName = 'F12_NDS'
+      Precision = 15
+    end
+    object cdsRasxF13_BAZANDS: TFMTBCDField
+      FieldName = 'F13_BAZANDS'
+      Precision = 15
+    end
+    object cdsRasxF14_NDS: TFMTBCDField
+      FieldName = 'F14_NDS'
+      Precision = 15
+    end
+    object cdsRasxF15: TFMTBCDField
+      FieldName = 'F15'
+      Precision = 15
+    end
+    object cdsRasxF16_NDS: TFMTBCDField
+      FieldName = 'F16_NDS'
+      Precision = 15
+    end
+    object cdsRasxTIP: TIntegerField
+      FieldName = 'TIP'
+    end
   end
   object qeRasx: TQueryExtender
     Query = cdsRasx

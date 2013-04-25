@@ -325,6 +325,10 @@ object frmRepReestrVydanNnakl: TfrmRepReestrVydanNnakl
       Precision = 15
       Size = 8
     end
+    object cdsRasxF10: TFMTBCDField
+      FieldName = 'F10'
+      Precision = 15
+    end
     object cdsRasxF11_BEZOBLOGENIYA: TFMTBCDField
       FieldName = 'F11_BEZOBLOGENIYA'
       Precision = 15
@@ -334,6 +338,10 @@ object frmRepReestrVydanNnakl: TfrmRepReestrVydanNnakl
       FieldName = 'F12_BAZANDSEXPORT'
       Precision = 15
       Size = 8
+    end
+    object cdsRasxF13: TFMTBCDField
+      FieldName = 'F13'
+      Precision = 15
     end
     object cdsRasxTIP: TIntegerField
       FieldName = 'TIP'

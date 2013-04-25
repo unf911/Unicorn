@@ -43,6 +43,24 @@ type
     actRefresh: TAction;
     actBrowse: TAction;
     frRasx: TfrxReport;
+    cdsRasxF1_NPP: TIntegerField;
+    cdsRasxF2_DAT: TSQLTimeStampField;
+    cdsRasxF3_DAT_VYPISKI: TSQLTimeStampField;
+    cdsRasxF4_ID: TStringField;
+    cdsRasxF5_VIDDOC: TStringField;
+    cdsRasxF53_VIDDOC: TStringField;
+    cdsRasxF6_IZG: TStringField;
+    cdsRasxF7_IPN: TStringField;
+    cdsRasxF8_SUMWITHNDS: TFMTBCDField;
+    cdsRasxF9_BAZANDS: TFMTBCDField;
+    cdsRasxF10_NDS: TFMTBCDField;
+    cdsRasxF11: TFMTBCDField;
+    cdsRasxF12_NDS: TFMTBCDField;
+    cdsRasxF13_BAZANDS: TFMTBCDField;
+    cdsRasxF14_NDS: TFMTBCDField;
+    cdsRasxF15: TFMTBCDField;
+    cdsRasxF16_NDS: TFMTBCDField;
+    cdsRasxTIP: TIntegerField;
     procedure FormCreate(Sender: TObject);
 		procedure FormClose(Sender: TObject; var Action: TCloseAction);
 		procedure actSettingsExecute(Sender: TObject);
@@ -243,6 +261,10 @@ begin
     'T2RXXXXG10',
     FormatNodeFloat,
     cdsRasx.FieldByName('F10_NDS'));
+  WriteNode(XMLDeclarContent.DECLARBODY.T2RXXXXG11,
+    'T2RXXXXG11',
+    FormatNodeFloat,
+    cdsRasx.FieldByName('F11'));
   WriteNode(XMLDeclarContent.DECLARBODY.T2RXXXXG12,
     'T2RXXXXG12',
     FormatNodeFloat,
@@ -255,7 +277,11 @@ begin
     'T2RXXXXG14',
     FormatNodeFloat,
     cdsRasx.FieldByName('F14_NDS'));
-   WriteNode(XMLDeclarContent.DECLARBODY.T2RXXXXG14,
+   WriteNode(XMLDeclarContent.DECLARBODY.T2RXXXXG15,
+    'T2RXXXXG15',
+    FormatNodeFloat,
+    cdsRasx.FieldByName('F15'));
+   WriteNode(XMLDeclarContent.DECLARBODY.T2RXXXXG16,
     'T2RXXXXG16',
     FormatNodeFloat,
     cdsRasx.FieldByName('F16_NDS'));
