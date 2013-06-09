@@ -125,7 +125,12 @@ object frmDogovorEdit: TfrmDogovorEdit
       Top = 130
       Width = 69
       Height = 13
+      Hint = 
+        #1048#1089#1087#1086#1083#1100#1079#1091#1077#1090#1089#1103' '#1074' '#1088#1072#1089#1087#1077#1095#1072#1090#1082#1077' '#1085#1072#1083#1086#1075#1086#1074#1099#1093' '#1085#1072#1082#1083#1072#1076#1085#1099#1093', '#1082#1072#1082' '#1074#1080#1076' '#1075#1088#1072#1078#1076#1072#1085#1089#1082 +
+        #1086'-'#1087#1088#1072#1074#1086#1074#1086#1075#1086' '#1076#1086#1075#1086#1074#1086#1088#1072
       Caption = #1042#1080#1076' '#1076#1086#1075#1086#1074#1086#1088#1072
+      ParentShowHint = False
+      ShowHint = True
       WordWrap = True
     end
     object dbeID: TDBEdit
@@ -228,6 +233,8 @@ object frmDogovorEdit: TfrmDogovorEdit
       Anchors = [akLeft, akTop, akRight]
       DataField = 'TIP_DOGOVORA'
       DataSource = dsEdit
+      ParentShowHint = False
+      ShowHint = True
       TabOrder = 7
     end
   end

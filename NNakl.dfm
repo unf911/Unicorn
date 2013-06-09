@@ -491,7 +491,7 @@ object frmNNakl: TfrmNNakl
     PreviewOptions.Zoom = 1.000000000000000000
     PrintOptions.Printer = 'Default'
     ReportOptions.CreateDate = 38985.430610532400000000
-    ReportOptions.LastChange = 40961.893837094900000000
+    ReportOptions.LastChange = 41434.942259363420000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       'procedure Memo23OnBeforePrint(Sender: TfrxComponent);'
@@ -960,12 +960,14 @@ object frmNNakl: TfrmNNakl
       Lookup = True
     end
     object cdsNaklrTIP_DOGOVORA: TStringField
+      DisplayWidth = 20
       FieldKind = fkLookup
       FieldName = 'TIP_DOGOVORA'
       LookupDataSet = cdsDogovor
       LookupKeyFields = 'ID_DOGOVOR'
       LookupResultField = 'TIP_DOGOVORA'
       KeyFields = 'ID_DOGOVOR'
+      Size = 250
       Lookup = True
     end
     object cdsNaklrTIP_CODE: TStringField
