@@ -35,7 +35,6 @@ type
     qeNaklot: TQueryExtender;
     actCalculateSum: TAction;
     actShowAll: TAction;
-    Curr2StrUA_old: TCurr2StrRU;
     MainMenu1: TMainMenu;
     mnuActions: TMenuItem;
     N1: TMenuItem;
@@ -235,9 +234,9 @@ type
     cdsNakloID_VYGRUZKA: TIntegerField;
     cdsNakloREYS_POKUPATEL_PLATIT: TIntegerField;
     frTtn: TfrxReport;
+    Curr2StrUA1: TCurr2StrUA;
     frNaklr2: TfrxReport;
     frNaklr: TfrxReport;
-    Curr2StrUA1: TCurr2StrUA;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure actSettingsExecute(Sender: TObject);
     procedure dbgNaklrDblClick(Sender: TObject);

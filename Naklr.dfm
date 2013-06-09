@@ -493,13 +493,6 @@ object frmNaklr: TfrmNaklr
     Left = 80
     Top = 232
   end
-  object Curr2StrUA_old: TCurr2StrRU
-    Active = False
-    MoneyType = mtUAH
-    FullString = False
-    Left = 328
-    Top = 112
-  end
   object MainMenu1: TMainMenu
     Left = 328
     Top = 144
