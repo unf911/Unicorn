@@ -69,7 +69,7 @@ uses
   DateUtils, // Today, StartOfTheMonth
   untRound, //InIde
   ReysSpr, //TfrmReysSpr
-  Naklr2, //TfrmNaklr2
+  Naklr, //TfrmNaklr
   RepReysDet //TfrmRepReysDet
 ;
 

@@ -301,13 +301,11 @@ type
     FIdNakl : integer;// Номер следующей накладной, до её попадания в базу
     Semaphore : boolean; //Для разрешения/запрещения редактирования цен
     
-    //frmDet : TfrmNaklr2Det;
     SettingsManager : TfmSettingsPlugin;
     SettingsVlad : TfmSettingsPlugin ;
     SettingsClient : TfmSettingsPlugin;
     Rect2 : TRect;
     procedure MakeNakl (intSchet : integer);
-//    function GetOrientation :integer;
     procedure Order;
     procedure FillSettings;
     function FillSlHead(DataSet:TDataSet):TStringList;

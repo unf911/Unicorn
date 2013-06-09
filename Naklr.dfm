@@ -1,4 +1,4 @@
-object frmNaklr2: TfrmNaklr2
+object frmNaklr: TfrmNaklr
   Left = 412
   Top = 327
   BorderStyle = bsDialog
@@ -493,7 +493,7 @@ object frmNaklr2: TfrmNaklr2
     Left = 80
     Top = 232
   end
-  object Curr2StrUA1: TCurr2StrRU
+  object Curr2StrUA_old: TCurr2StrRU
     Active = False
     MoneyType = mtUAH
     FullString = False
@@ -1444,7 +1444,7 @@ object frmNaklr2: TfrmNaklr2
     PreviewOptions.Zoom = 1.000000000000000000
     PrintOptions.Printer = 'Default'
     ReportOptions.CreateDate = 38982.467101585700000000
-    ReportOptions.LastChange = 40968.945025162040000000
+    ReportOptions.LastChange = 41435.031026273150000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       'procedure Memo19OnBeforePrint(Sender: TfrxComponent);'
@@ -1533,7 +1533,7 @@ object frmNaklr2: TfrmNaklr2
       end
       item
         Name = 'Z_ADRP'
-        Value = ''
+        Value = Null
       end>
     Style = <>
   end
@@ -1942,5 +1942,12 @@ object frmNaklr2: TfrmNaklr2
         Value = Null
       end>
     Style = <>
+  end
+  object Curr2StrUA1: TCurr2StrUA
+    Active = False
+    MoneyType = mtUAH
+    FullString = False
+    Left = 360
+    Top = 112
   end
 end

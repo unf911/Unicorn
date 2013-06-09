@@ -1,4 +1,4 @@
-unit Naklr2;
+unit Naklr;
 
 interface
 
@@ -16,14 +16,14 @@ uses
   untRound,
   untSpecif,
   SettingsPlugin, // TfmSettingsPlugin
-  Naklr2Edit, //TfrmNaklr2Edit
+  NaklrEdit, //TfrmNaklr2Edit
   untEx,   DBGridEh,
   UnfFilter,
-  frxDesgn, GridsEh, Buttons
+  frxDesgn, GridsEh, Buttons, Curr2StrUA
   ;
 
 type
-  TfrmNaklr2 = class(TForm)
+  TfrmNaklr = class(TForm)
     dbgNaklrt: TDbGridEh;
     ActionList1: TActionList;
     actSettings: TAction;
@@ -35,7 +35,7 @@ type
     qeNaklot: TQueryExtender;
     actCalculateSum: TAction;
     actShowAll: TAction;
-    Curr2StrUA1: TCurr2StrRU;
+    Curr2StrUA_old: TCurr2StrRU;
     MainMenu1: TMainMenu;
     mnuActions: TMenuItem;
     N1: TMenuItem;
@@ -237,6 +237,7 @@ type
     frTtn: TfrxReport;
     frNaklr2: TfrxReport;
     frNaklr: TfrxReport;
+    Curr2StrUA1: TCurr2StrUA;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure actSettingsExecute(Sender: TObject);
     procedure dbgNaklrDblClick(Sender: TObject);
@@ -324,7 +325,7 @@ type
     FIdNakl : integer;// Номер следующей накладной, до её попадания в базу
     FiVidDostavki : integer;
     Semaphore : boolean; //Для разрешения/запрещения редактирования цен
-    frmEdit : TfrmNaklr2Edit;
+    frmEdit : TfrmNaklrEdit;
     SettingsManager : TfmSettingsPlugin;
     SettingsVlad : TfmSettingsPlugin ;
     SettingsClient : TfmSettingsPlugin;
@@ -351,7 +352,7 @@ type
 
   end;
 var
-  frmNaklr2: TfrmNaklr2;
+  frmNaklr: TfrmNaklr;
 
 implementation
 
@@ -365,7 +366,7 @@ uses AtsAssert,
 
 {$R *.dfm}
 
-procedure TfrmNaklr2.FormClose(Sender: TObject; var Action: TCloseAction);
+procedure TfrmNaklr.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   { DONE : Избавиться от qurNaklrCommit и продумать стратегию ответа на ошибки ввода }
   if ApplyOrCancel(dsNaklo.DataSet) then begin
@@ -374,17 +375,17 @@ begin
   Action := caFree;
 end;
 
-procedure TfrmNaklr2.actSettingsExecute(Sender: TObject);
+procedure TfrmNaklr.actSettingsExecute(Sender: TObject);
 begin
   actSettings.checked := setT.ProcessSettingsChange2(DefaultOpen);
 end;
 
-procedure TfrmNaklr2.dbgNaklrDblClick(Sender: TObject);
+procedure TfrmNaklr.dbgNaklrDblClick(Sender: TObject);
 begin
   actGrid1ListShow.Execute;
 end;
 
-procedure TfrmNaklr2.FormCreate(Sender: TObject);
+procedure TfrmNaklr.FormCreate(Sender: TObject);
 begin
 try
   qeNaklo.DefSql := sdsNaklo.CommandText;
@@ -392,8 +393,8 @@ try
 
   FOidNakl := dmdEx.GetOidObjects('РАСХОДНЫЕ НАКЛАДНЫЕ',-100);
   FIdNakl := -1;
-  MonthToStrInit;
-  FillSettings;   
+  MonthToStrInitUa;
+  FillSettings;
   ProcessSettings(true);
   //Конец инициализации настроек
   qeNaklot.SetSQL('order by','id_pos',0);
@@ -403,7 +404,7 @@ try
   dmdEx.OpenQuery (dmdEx.cdsVidDostavki);
   dmdEx.OpenQuery (dmdEx.cdsVygruzka);
 
-  frmEdit := TfrmNaklr2Edit.Create(self);
+  frmEdit := TfrmNaklrEdit.Create(self);
   frmEdit.dsNakloEdit.DataSet := cdsNaklo;
 
   FiVidDostavki := dmdEx.cdsVidDostavki.Lookup('isdefault','1','oid');
@@ -424,7 +425,7 @@ except
 end;
 end;
 
-procedure TfrmNaklr2.actRefreshExecute(Sender: TObject);
+procedure TfrmNaklr.actRefreshExecute(Sender: TObject);
 begin
   dmdEx.startWaiting;
 	ApplyOrCancel(dsNaklot.Dataset);
@@ -433,7 +434,7 @@ begin
   dmdEx.StopWaiting;
 end;
 
-procedure TfrmNaklr2.FormDestroy(Sender: TObject);
+procedure TfrmNaklr.FormDestroy(Sender: TObject);
 begin
   dmdEx.CloseQuery(dmdEx.cdsClient, false);
   dmdEx.CloseQuery(dmdEx.cdsVlad, false);
@@ -445,13 +446,13 @@ begin
   setT.Free;
 end;
 
-procedure TfrmNaklr2.dbgNaklrtDblClick(Sender: TObject);
+procedure TfrmNaklr.dbgNaklrtDblClick(Sender: TObject);
 begin
   actGrid2listshow.Execute;
 end;
 
 
-procedure TfrmNaklr2.qurNaklrtBeforeScroll(DataSet: TDataSet);
+procedure TfrmNaklr.qurNaklrtBeforeScroll(DataSet: TDataSet);
 begin
 	ApplyOrCancel(DataSet);
 end;
@@ -459,7 +460,7 @@ end;
 //////////////////////////////////////////////
 //  Процедура упорядочивания
 ///
-procedure TfrmNaklr2.Order;
+procedure TfrmNaklr.Order;
 begin
   sdsOrder.Params.ParamByName('id_nakl').asInteger :=
     dsNaklo.Dataset.FieldByName('id_nakl').asInteger;
@@ -471,7 +472,7 @@ end;
 ////////////////////////////////////////////////////////////
 // 1- portrait orientation
 // 0-landscape orientation (default)
-function TfrmNaklr2.GetOrientation: integer;
+function TfrmNaklr.GetOrientation: integer;
 var
   intRes : integer;
   intMax : integer;
@@ -497,7 +498,7 @@ begin
   end;
 end;
 
-procedure TfrmNaklr2.actSchetExecute(Sender: TObject);
+procedure TfrmNaklr.actSchetExecute(Sender: TObject);
 var
   frmSchetList : TfrmNaklrList;
   intTemp : integer;
@@ -515,7 +516,7 @@ end;
 ///////////////////////////////////////////////////
 ///  create nakl from schet. intSchet = schet.schet
 ///
-procedure TfrmNaklr2.MakeNakl(intSchet: integer);
+procedure TfrmNaklr.MakeNakl(intSchet: integer);
 var
   dtNaklr : TDataSet;
   dtNaklrt : TDataSet;
@@ -596,7 +597,7 @@ except
 end;
 end;
 
-procedure TfrmNaklr2.qurNaklrBeforeDelete(DataSet: TDataSet);
+procedure TfrmNaklr.qurNaklrBeforeDelete(DataSet: TDataSet);
 begin
   dsNaklot.DataSet.first;
   while (not dsNaklot.DataSet.Eof) do begin
@@ -604,7 +605,7 @@ begin
   end;
 end;
 
-procedure TfrmNaklr2.actCalculateSumExecute(Sender: TObject);
+procedure TfrmNaklr.actCalculateSumExecute(Sender: TObject);
 begin
   SumRecount(dsNaklo.DataSet,cdsNaklot);
   PostAndApply(dsNaklot.Dataset);
@@ -612,13 +613,13 @@ begin
   Order;
 end;
 
-procedure TfrmNaklr2.cbxShowAllClick(Sender: TObject);
+procedure TfrmNaklr.cbxShowAllClick(Sender: TObject);
 begin
   actShowAll.Execute;
   qeNaklo.Refresh;
 end;
 
-procedure TfrmNaklr2.frNaklrGetValue(const ParName: String;
+procedure TfrmNaklr.frNaklrGetValue(const ParName: String;
   var ParValue: Variant);
 begin
   if AnsiUpperCase(ParName)='SUMA2GRN' then begin
@@ -645,7 +646,7 @@ begin
 
 end;
 
-procedure TfrmNaklr2.actCreateSpecifExecute(Sender: TObject);
+procedure TfrmNaklr.actCreateSpecifExecute(Sender: TObject);
 var
   frmSpecif : TfrmSpecif;
 begin
@@ -663,12 +664,12 @@ begin
   frmSpecif.Free;
 end;
 
-procedure TfrmNaklr2.qurNaklrtAfterDelete(DataSet: TDataSet);
+procedure TfrmNaklr.qurNaklrtAfterDelete(DataSet: TDataSet);
 begin
 	ApplyOrCancel(DataSet);
 end;
 
-procedure TfrmNaklr2.DBGridEh1KeyUp(Sender: TObject; var Key: Word;
+procedure TfrmNaklr.DBGridEh1KeyUp(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
   case key of
@@ -686,20 +687,20 @@ begin
   end;//case
 end;
 
-function TfrmNaklr2.DefaultOpen:boolean;
+function TfrmNaklr.DefaultOpen:boolean;
 begin
   ProcessSettings;
   Result:=DefaultOpenInputForm(qeNaklo);
 end;
 
-procedure TfrmNaklr2.DefaultStartup;
+procedure TfrmNaklr.DefaultStartup;
 begin
   SettingsManager.SetKeyValue(dmdEx.GetIdManager);
   setT.SetPeriod(2);
   ProcessSettings;
 end;
 
-procedure TfrmNaklr2.ShowReys(id_reys: integer);
+procedure TfrmNaklr.ShowReys(id_reys: integer);
 begin
   try
     //instead of date_from
@@ -713,7 +714,7 @@ begin
   end
 end;
 
-procedure TfrmNaklr2.ShowNaklr(id_nakl: integer; id_nakld: integer);
+procedure TfrmNaklr.ShowNaklr(id_nakl: integer; id_nakld: integer);
 begin
   try
     //instead of date_from
@@ -731,7 +732,7 @@ begin
   end
 end;
 
-procedure TfrmNaklr2.ProcessSettings(ProcessOnlySecurityMeasures:boolean=false);
+procedure TfrmNaklr.ProcessSettings(ProcessOnlySecurityMeasures:boolean=false);
 begin
 try
   ProcessSettingsVladClientManager(qeNaklo,setT,ProcessOnlySecurityMeasures);
@@ -744,7 +745,7 @@ except
 end;
 end;
 
-procedure TfrmNaklr2.cdsNakloAfterInsert(DataSet: TDataSet);
+procedure TfrmNaklr.cdsNakloAfterInsert(DataSet: TDataSet);
 begin
   DataSet.FieldByName('id_nakl').AsString :=
     inttostr(dmdEx.GetGenValue('naklo_gen'));
@@ -768,7 +769,7 @@ begin
 end;
 
 
-procedure TfrmNaklr2.dspNakloBeforeUpdateRecord(Sender: TObject;
+procedure TfrmNaklr.dspNakloBeforeUpdateRecord(Sender: TObject;
   SourceDS: TDataSet; DeltaDS: TCustomClientDataSet;
   UpdateKind: TUpdateKind; var Applied: Boolean);
 var
@@ -792,7 +793,7 @@ begin
   end;
 end;
 
-procedure TfrmNaklr2.cdsNakloBeforePost(DataSet: TDataSet);
+procedure TfrmNaklr.cdsNakloBeforePost(DataSet: TDataSet);
 begin
 	if DataSet.FieldByName('dat').IsNull then begin
 		showmessage ('Заполните поле ''Дата''');
@@ -820,7 +821,7 @@ begin
 	end;
 end;
 
-procedure TfrmNaklr2.actShowDeletedExecute(Sender: TObject);
+procedure TfrmNaklr.actShowDeletedExecute(Sender: TObject);
 begin
   dmdEx.StartWaiting;
 	actShowDeleted.Checked := not actShowDeleted.Checked;
@@ -835,7 +836,7 @@ begin
   dmdEx.StopWaiting;
 end;
 
-procedure TfrmNaklr2.ProcessShowDeleted;
+procedure TfrmNaklr.ProcessShowDeleted;
 begin
   if actShowDeleted.Checked then begin
 		qeNaklo.SetSQL ('where','delmarked=1',5);
@@ -846,7 +847,7 @@ begin
   qeNaklo.prepare;
 end;
 
-procedure TfrmNaklr2.cdsNaklotAfterOpen(DataSet: TDataSet);
+procedure TfrmNaklr.cdsNaklotAfterOpen(DataSet: TDataSet);
 begin
   with  cdsNaklot do begin
     DisableControls;
@@ -865,7 +866,7 @@ begin
   end;
 end;
 
-procedure TfrmNaklr2.cdsNaklotAfterInsert(DataSet: TDataSet);
+procedure TfrmNaklr.cdsNaklotAfterInsert(DataSet: TDataSet);
 begin
   if cdsNaklo.FieldByName('id_nakl').AsInteger=0 then begin
     if cdsNaklo.Eof and cdsNaklo.Bof then begin
@@ -882,7 +883,7 @@ begin
 //  ShowDetail2;
 end;
 
-procedure TfrmNaklr2.cdsNaklotBeforeInsert(DataSet: TDataSet);
+procedure TfrmNaklr.cdsNaklotBeforeInsert(DataSet: TDataSet);
 begin
   if (dsNaklo.DataSet.Tag=0) then begin
     if (PostAndApply(dsNaklo.DataSet)<>0) then begin
@@ -898,7 +899,7 @@ begin
   end;
 end;
 
-procedure TfrmNaklr2.cdsNaklotBeforePost(DataSet: TDataSet);
+procedure TfrmNaklr.cdsNaklotBeforePost(DataSet: TDataSet);
 begin
  { DONE : Tovar is not null }
 	if DataSet.FieldByName('id_tovar').IsNull then begin
@@ -907,12 +908,12 @@ begin
 	end;
 end;
 
-procedure TfrmNaklr2.FormShow(Sender: TObject);
+procedure TfrmNaklr.FormShow(Sender: TObject);
 begin
   Semaphore := false;
 end;
 
-procedure TfrmNaklr2.cdsNaklotCENANDSChange(Sender: TField);
+procedure TfrmNaklr.cdsNaklotCENANDSChange(Sender: TField);
 begin
   if not Semaphore then begin
     Semaphore := true;
@@ -921,7 +922,7 @@ begin
   end;
 end;
 
-procedure TfrmNaklr2.cdsNaklotKOLOTPChange(Sender: TField);
+procedure TfrmNaklr.cdsNaklotKOLOTPChange(Sender: TField);
 begin
   if not Semaphore then begin
     Semaphore := true;
@@ -930,7 +931,7 @@ begin
   end;
 end;
 
-procedure TfrmNaklr2.cdsNaklotSUMAChange(Sender: TField);
+procedure TfrmNaklr.cdsNaklotSUMAChange(Sender: TField);
 begin
   if not Semaphore then begin
     Semaphore := true;
@@ -939,7 +940,7 @@ begin
   end;
 end;
 
-procedure TfrmNaklr2.cdsNaklotSUMANDSChange(Sender: TField);
+procedure TfrmNaklr.cdsNaklotSUMANDSChange(Sender: TField);
 begin
   if not Semaphore then begin
     Semaphore := true;
@@ -948,7 +949,7 @@ begin
   end;
 end;
 
-procedure TfrmNaklr2.cdsNaklotCENAChange(Sender: TField);
+procedure TfrmNaklr.cdsNaklotCENAChange(Sender: TField);
 begin
   if not Semaphore then begin
     Semaphore := true;
@@ -957,7 +958,7 @@ begin
   end;
 end;
 
-procedure TfrmNaklr2.cdsNaklotSKIDKAChange(Sender: TField);
+procedure TfrmNaklr.cdsNaklotSKIDKAChange(Sender: TField);
 begin
   if not Semaphore then begin
     Semaphore := true;
@@ -966,14 +967,14 @@ begin
   end;
 end;
 
-procedure TfrmNaklr2.FormHide(Sender: TObject);
+procedure TfrmNaklr.FormHide(Sender: TObject);
 begin
   Semaphore := false;
 end;
 
 
 
-procedure TfrmNaklr2.cdsNaklotAfterRefresh(DataSet: TDataSet);
+procedure TfrmNaklr.cdsNaklotAfterRefresh(DataSet: TDataSet);
 begin
   with  cdsNaklot do begin
     DisableControls;
@@ -992,7 +993,7 @@ begin
   end;
 end;
 
-procedure TfrmNaklr2.cdsNaklotAfterDelete(DataSet: TDataSet);
+procedure TfrmNaklr.cdsNaklotAfterDelete(DataSet: TDataSet);
 begin
   ApplyOrCancel(DataSet);
   //По просебе Тани из ТПП убрал, чтобы позиции
@@ -1000,12 +1001,12 @@ begin
   //  SumRecount(dsNaklr.Dataset,dsNaklrt.Dataset);
 end;
 
-procedure TfrmNaklr2.cdsNakloBeforeScroll(DataSet: TDataSet);
+procedure TfrmNaklr.cdsNakloBeforeScroll(DataSet: TDataSet);
 begin
   //ApplyOrCancel(DataSet);
 end;
 
-procedure TfrmNaklr2.cdsNaklotCalcFields(DataSet: TDataSet);
+procedure TfrmNaklr.cdsNaklotCalcFields(DataSet: TDataSet);
 begin
   if not Semaphore and (DataSet.state =dsInternalCalc) then begin
     Semaphore := true;
@@ -1014,7 +1015,7 @@ begin
   end;
 end;
 
-procedure TfrmNaklr2.cdsNaklotBeforeEdit(DataSet: TDataSet);
+procedure TfrmNaklr.cdsNaklotBeforeEdit(DataSet: TDataSet);
 begin
 	if PostAndApply(dsNaklo.DataSet)<>0 then begin
     Abort;
@@ -1022,7 +1023,7 @@ begin
 end;
 
 
-procedure TfrmNaklr2.actPreviewExecute(Sender: TObject);
+procedure TfrmNaklr.actPreviewExecute(Sender: TObject);
 begin
 try
   dsNaklot.dataset.DisableControls;
@@ -1033,7 +1034,7 @@ try
   if cdsNaklo.FieldByName('posted').AsInteger=0 then begin
     actPost.Execute;
   end;
-  MonthToStrInit;
+  MonthToStrInitUa;
   Curr2StrUA1.Active := false;
   Curr2StrUA1.Summa := dsNaklo.DataSet.FieldByName('nds').AsCurrency;
   Curr2StrUA1.Active := true;
@@ -1053,7 +1054,7 @@ finally
 end;
 end;
 
-procedure TfrmNaklr2.actPrintExecute(Sender: TObject);
+procedure TfrmNaklr.actPrintExecute(Sender: TObject);
 begin
   curSum := SumRecount(dsNaklo.Dataset,dsNaklot.Dataset);
   PostAndApply(dsNaklot.Dataset);
@@ -1061,7 +1062,7 @@ begin
   if cdsNaklo.FieldByName('posted').AsInteger=0 then begin
     actPost.Execute;
   end;
-  MonthToStrInit;
+  MonthToStrInitUa;
   Curr2StrUA1.Active := false;
   Curr2StrUA1.Summa := dsNaklo.DataSet.FieldByName('nds').AsCurrency;
   Curr2StrUA1.Active := true;
@@ -1081,19 +1082,19 @@ begin
   Curr2StrUA1.Active := false;
 end;
 
-procedure TfrmNaklr2.cdsNaklotBeforeScroll(DataSet: TDataSet);
+procedure TfrmNaklr.cdsNaklotBeforeScroll(DataSet: TDataSet);
 begin
   ApplyOrCancel(DataSet);
 end;
 
-procedure TfrmNaklr2.actUndeleteNaklExecute(Sender: TObject);
+procedure TfrmNaklr.actUndeleteNaklExecute(Sender: TObject);
 begin
   if actShowDeleted.Checked then begin
     dmdEx.UndeleteNaklo(TintegerField(dsNaklo.DataSet.FieldByName('delmarked')),actRefresh);
   end;
 end;
 
-procedure TfrmNaklr2.cdsNakloReconcileError(DataSet: TCustomClientDataSet;
+procedure TfrmNaklr.cdsNakloReconcileError(DataSet: TCustomClientDataSet;
   E: EReconcileError; UpdateKind: TUpdateKind;
   var Action: TReconcileAction);
 begin
@@ -1101,7 +1102,7 @@ begin
   Action := raAbort;
 end;
 
-procedure TfrmNaklr2.cdsNaklotReconcileError(DataSet: TCustomClientDataSet;
+procedure TfrmNaklr.cdsNaklotReconcileError(DataSet: TCustomClientDataSet;
   E: EReconcileError; UpdateKind: TUpdateKind;
   var Action: TReconcileAction);
 begin
@@ -1109,7 +1110,7 @@ begin
   Action := raAbort;
 end;
 
-procedure TfrmNaklr2.actNaklrPostExecute(Sender: TObject);
+procedure TfrmNaklr.actNaklrPostExecute(Sender: TObject);
 begin
   dmdEx.StartWaiting;
   sdsNaklrPost.Params.ParamByName('id_nakl').asInteger :=
@@ -1118,7 +1119,7 @@ begin
   dmdEx.StopWaiting;
 end;
 
-procedure TfrmNaklr2.actRealPriceExecute(Sender: TObject);
+procedure TfrmNaklr.actRealPriceExecute(Sender: TObject);
 var
   frmRealPrice : TfrmRealPrice;
 begin
@@ -1131,7 +1132,7 @@ begin
   frmRealPrice.actRefresh.execute;
 end;
 
-procedure TfrmNaklr2.actDebugExecute(Sender: TObject);
+procedure TfrmNaklr.actDebugExecute(Sender: TObject);
 begin
   actDebug.Checked := not actDebug.Checked;
   if actDebug.Checked then begin
@@ -1141,7 +1142,7 @@ begin
   end;  //if actDebug checked
 end;
 
-procedure TfrmNaklr2.actShowNakloExecute(Sender: TObject);
+procedure TfrmNaklr.actShowNakloExecute(Sender: TObject);
 var
   iTip : integer;
 begin
@@ -1153,13 +1154,13 @@ begin
   OpenDocument(self,dsNaklo.DataSet.FieldByName('id_nakl').asInteger,iTip,0,true);
 end;
 
-procedure TfrmNaklr2.actDesignerExecute(Sender: TObject);
+procedure TfrmNaklr.actDesignerExecute(Sender: TObject);
 begin
   dmdEx.GetReport('Naklr.fr3',frNaklr);
   frNaklr.DesignReport;
 end;
 
-procedure TfrmNaklr2.actMakeVozvratExecute(Sender: TObject);
+procedure TfrmNaklr.actMakeVozvratExecute(Sender: TObject);
 begin
   if  cdsNaklo.Eof and cdsNaklo.Bof then begin
     exit;
@@ -1178,7 +1179,7 @@ except
 end;
 end;
 
-procedure TfrmNaklr2.actPostExecute(Sender: TObject);
+procedure TfrmNaklr.actPostExecute(Sender: TObject);
 begin
   actCalculateSum.execute;
   dmdEx.PostNakl(
@@ -1188,7 +1189,7 @@ begin
     not actPost.Checked);
 end;
 
-procedure TfrmNaklr2.actUnpostExecute(Sender: TObject);
+procedure TfrmNaklr.actUnpostExecute(Sender: TObject);
 begin
   dmdEx.UnPostNakl(
     TIntegerField(cdsNaklo.FieldByName('posted')),
@@ -1197,13 +1198,13 @@ begin
     not actUnpost.Checked);
 end;
 
-procedure TfrmNaklr2.actDefaultopenExecute(Sender: TObject);
+procedure TfrmNaklr.actDefaultopenExecute(Sender: TObject);
 begin
   ProcessSettings;
   actDefaultopen.Checked:=DefaultOpenInputForm(qeNaklo);
 end;
 
-procedure TfrmNaklr2.FillSettings;
+procedure TfrmNaklr.FillSettings;
 begin
   //Инициализация настроек
   setT := TfrmSettings.Create(self);
@@ -1223,7 +1224,7 @@ begin
   setT.addplugin(SettingsClient);
 end;
 
-procedure TfrmNaklr2.actGrid1ListShowExecute(Sender: TObject);
+procedure TfrmNaklr.actGrid1ListShowExecute(Sender: TObject);
 begin
   if (cdsNaklo.FieldByName('ID_NAKL').AsInteger = 0) then  begin
     cdsNaklo.Insert;
@@ -1236,17 +1237,17 @@ begin
   end;
 end;
 
-function TfrmNaklr2.ShowDetail1:integer;
+function TfrmNaklr.ShowDetail1:integer;
 begin
   Result := dmdEx.ShowDetail1(dsNaklo.DataSet,frmEdit,actRecountNakl);
 end;
 
-procedure TfrmNaklr2.actRecountNaklExecute(Sender: TObject);
+procedure TfrmNaklr.actRecountNaklExecute(Sender: TObject);
 begin
   SumRecount(dsNaklo.DataSet,cdsNaklot);
 end;
 
-procedure TfrmNaklr2.actGrid2ListShowExecute(Sender: TObject);
+procedure TfrmNaklr.actGrid2ListShowExecute(Sender: TObject);
 begin
 {
   if (cdsNaklot.FieldByName('ID_NAKLD').AsInteger = 0) then begin
@@ -1262,7 +1263,7 @@ begin
 	end; //tovar
 end;
 
-procedure TfrmNaklr2.actColumnSetValueExecute(Sender: TObject);
+procedure TfrmNaklr.actColumnSetValueExecute(Sender: TObject);
 begin
   if dbgNaklrt.SelectedField.FieldName='SKIDKA' then begin
     dmdEx.ColumnSet(dbgNaklrt);
@@ -1272,7 +1273,7 @@ begin
   end;
 end;
 
-procedure TfrmNaklr2.dbgNaklrKeyDown(Sender: TObject; var Key: Word;
+procedure TfrmNaklr.dbgNaklrKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
   case key of
@@ -1301,7 +1302,7 @@ begin
 end;
 
 
-procedure TfrmNaklr2.cdsNaklotID_TOVARChange(Sender: TField);
+procedure TfrmNaklr.cdsNaklotID_TOVARChange(Sender: TField);
 begin
   if not Semaphore then begin
     Semaphore := true;
@@ -1310,7 +1311,7 @@ begin
   end;
 end;
 
-procedure TfrmNaklr2.actCopyDoverExecute(Sender: TObject);
+procedure TfrmNaklr.actCopyDoverExecute(Sender: TObject);
 begin
   slDover := TStringList.Create;
   slDover.Add('dov='+dsNaklo.DataSet.FieldByName('dov').asString);
@@ -1318,7 +1319,7 @@ begin
   slDover.Add('ddo='+dsNaklo.DataSet.FieldByName('ddo').asString);
 end;
 
-procedure TfrmNaklr2.actPasteDoverExecute(Sender: TObject);
+procedure TfrmNaklr.actPasteDoverExecute(Sender: TObject);
 begin
   if Assigned(slDover) then begin
     dsNaklo.DataSet.Tag:=1;
@@ -1336,18 +1337,18 @@ begin
   end;
 end;
 
-procedure TfrmNaklr2.ulbListBox2DblClick(Sender: TObject);
+procedure TfrmNaklr.ulbListBox2DblClick(Sender: TObject);
 begin
   LookupBoxExitOkEh (ulbListBox2 , dbgNaklrt, Rect2);
   actPostIf2.Execute;
 end;
 
-procedure TfrmNaklr2.ulbListBox2Exit(Sender: TObject);
+procedure TfrmNaklr.ulbListBox2Exit(Sender: TObject);
 begin
   LookupBoxExitCancel (ulbListBox2, dbgNaklrt, Rect2);
 end;
 
-procedure TfrmNaklr2.ulbListBox2KeyUp(Sender: TObject; var Key: Word;
+procedure TfrmNaklr.ulbListBox2KeyUp(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
   case key of
@@ -1361,14 +1362,14 @@ begin
   end;
 end;
 
-procedure TfrmNaklr2.actPostIf2Execute(Sender: TObject);
+procedure TfrmNaklr.actPostIf2Execute(Sender: TObject);
 begin
   Semaphore :=true;
   FromCenaRecount(5,dsNaklo.DataSet,cdsNaklot);
   semaphore := false;
 end;
 
-procedure TfrmNaklr2.dbgNaklrtKeyUp(Sender: TObject; var Key: Word;
+procedure TfrmNaklr.dbgNaklrtKeyUp(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
   case key of
@@ -1389,7 +1390,7 @@ begin
   end; //case
 end;
 
-function TfrmNaklr2.GetDefXozOper: integer;
+function TfrmNaklr.GetDefXozOper: integer;
 var
   iXozOper : integer;
 begin
@@ -1403,16 +1404,16 @@ begin
     'oid');
 end;
 
-procedure TfrmNaklr2.actPreviewTtnExecute(Sender: TObject);
+procedure TfrmNaklr.actPreviewTtnExecute(Sender: TObject);
 begin
-  MonthToStrInit;
+  MonthToStrInitUa;
   dmdEx.GetReport('Ttn.fr3',frTtn);
   frTtn.PrintOptions.ShowDialog := true;
   frTtn.PrepareReport;
   frTtn.ShowReport;
 end;    
 
-procedure TfrmNaklr2.frNaklrBeginDoc(Sender: TObject);
+procedure TfrmNaklr.frNaklrBeginDoc(Sender: TObject);
 begin
   cdIzg :=  dmdEx.GetClientDetail(cdsNaklo.FieldByName('id_izg').asInteger);
 end;

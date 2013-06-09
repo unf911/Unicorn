@@ -34,7 +34,7 @@ procedure SetManager(Field: TIntegerField;
 
 implementation
 
-uses AtsAssert, Naklr2, NaklpBux,SysUtils, PlategyVxod, PlategyIsx, NaklPeremBux,
+uses AtsAssert, Naklr, NaklpBux,SysUtils, PlategyVxod, PlategyIsx, NaklPeremBux,
   untNaklp,untNaklo, Vozvrat, RasxPoKasse, Perevod, Naklru, Naklpu2,
   Naklrf, VozvratPost;
  { TODO : Вынести для всех форм процедуру OpenDocument из этой процедуры }
@@ -42,7 +42,7 @@ uses AtsAssert, Naklr2, NaklpBux,SysUtils, PlategyVxod, PlategyIsx, NaklPeremBux
 procedure OpenDocument(ParentWindow :TComponent; Nakl : integer;
   Tip: integer;Mode : integer;ShowDepended:boolean=false);
 var
-  frmNaklr : TfrmNaklr2;
+  frmNaklr : TfrmNaklr;
   frmNaklpBux: TfrmNaklpBux;
   frmPrix :TfrmPlategyVxod;
   frmPlategy:TfrmPlategyIsx;
@@ -98,7 +98,7 @@ try
 
   if (sName= 'РАСХОДНЫЕ НАКЛАДНЫЕ') then begin
 
-    frmNaklr := TfrmNaklr2.Create (ParentWindow);
+    frmNaklr := TfrmNaklr.Create (ParentWindow);
     frmNaklr.ShowNaklr(Nakl, mode);
     exit;
   end; //Расходные накладные

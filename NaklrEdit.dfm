@@ -1,4 +1,4 @@
-object frmNaklr2Edit: TfrmNaklr2Edit
+object frmNaklrEdit: TfrmNaklrEdit
   Left = 486
   Top = 199
   Width = 354
@@ -20,13 +20,13 @@ object frmNaklr2Edit: TfrmNaklr2Edit
   object GroupBox2: TGroupBox
     Left = 0
     Top = 0
-    Width = 346
-    Height = 458
+    Width = 338
+    Height = 448
     Align = alClient
     TabOrder = 0
     DesignSize = (
-      346
-      458)
+      338
+      448)
     object Label3: TLabel
       Left = 8
       Top = 136

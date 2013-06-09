@@ -317,7 +317,7 @@ implementation
     SkladAux, //ProcessSettingsVladClientManager
     DesignReport, //ProcessReportDesigner
     RepNNaklXml  //TfrmRepNNaklXml
-  , Naklr2;
+  , Naklr;
 {$R *.dfm}
 
 procedure TfrmNNakl.dbgNaklrKeyUp(Sender: TObject; var Key: Word;

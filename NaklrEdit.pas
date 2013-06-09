@@ -1,4 +1,4 @@
-unit Naklr2Edit;
+unit NaklrEdit;
 
 interface
 
@@ -17,7 +17,7 @@ uses
     ;
 
 type
-  TfrmNaklr2Edit = class(TForm)
+  TfrmNaklrEdit = class(TForm)
     GroupBox2: TGroupBox;
     Label3: TLabel;
     Label4: TLabel;
@@ -106,7 +106,7 @@ type
   end;
 
 var
-  frmNaklr2Edit: TfrmNaklr2Edit;
+  frmNaklrEdit: TfrmNaklrEdit;
 
 implementation
 
@@ -114,7 +114,7 @@ uses untNaklrList, untEx;
 
 {$R *.dfm}
 
-procedure TfrmNaklr2Edit.actOkExecute(Sender: TObject);
+procedure TfrmNaklrEdit.actOkExecute(Sender: TObject);
 begin
   actApply.Execute;
   if  actApply.Checked then begin
@@ -122,19 +122,19 @@ begin
   end;
 end;
 
-procedure TfrmNaklr2Edit.actCancelExecute(Sender: TObject);
+procedure TfrmNaklrEdit.actCancelExecute(Sender: TObject);
 begin
   Close;
 end;
 
-procedure TfrmNaklr2Edit.FormClose(Sender: TObject;
+procedure TfrmNaklrEdit.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
   CloseEditForm(self,dsNakloEdit.DataSet,semaphore);
 end; 
 
 
-procedure TfrmNaklr2Edit.actApplyExecute(Sender: TObject);
+procedure TfrmNaklrEdit.actApplyExecute(Sender: TObject);
 begin
   actApply.Checked := false;
 	if dsNakloEdit.DataSet.FieldByName('dat').IsNull then begin
@@ -175,7 +175,7 @@ begin
   actApply.Checked := true;
 end;
 
-procedure TfrmNaklr2Edit.ShowNaklrList;
+procedure TfrmNaklrEdit.ShowNaklrList;
 var
   intTemp : integer;
   strIdTemp : string;
@@ -219,14 +219,14 @@ begin
   end;
 end;
 
-procedure TfrmNaklr2Edit.lcdParentIdNaklEditButtons0Click(
+procedure TfrmNaklrEdit.lcdParentIdNaklEditButtons0Click(
   Sender: TObject; var Handled: Boolean);
 begin
   ShowNaklrList;
   Handled := true;
 end;
 
-procedure TfrmNaklr2Edit.FormShow(Sender: TObject);
+procedure TfrmNaklrEdit.FormShow(Sender: TObject);
 begin
   dbeId.SetFocus;
   //можно дальше редактировать
@@ -235,7 +235,7 @@ end;
 
 
 
-procedure TfrmNaklr2Edit.lcdParentIdNaklKeyPress(Sender: TObject;
+procedure TfrmNaklrEdit.lcdParentIdNaklKeyPress(Sender: TObject;
   var Key: Char);
 begin
   if Ord(key) <> 13 then begin
@@ -243,13 +243,13 @@ begin
   end;
 end;
 
-procedure TfrmNaklr2Edit.dspKursGetTableName(Sender: TObject;
+procedure TfrmNaklrEdit.dspKursGetTableName(Sender: TObject;
   DataSet: TDataSet; var TableName: String);
 begin
   TableName:= 'KURS';
 end;
 
-procedure TfrmNaklr2Edit.cdsKursAfterInsert(DataSet: TDataSet);
+procedure TfrmNaklrEdit.cdsKursAfterInsert(DataSet: TDataSet);
 begin
   DataSet.FieldByName('id').asInteger := dmdEx.GetGenValue('kurs_gen');
   DataSet.FieldByName('id_currency_from').asInteger :=
@@ -261,7 +261,7 @@ begin
     cdsKurs.Params.ParamByName('dat1').asDateTime;
 end;
 
-procedure TfrmNaklr2Edit.cdsKursBeforePost(DataSet: TDataSet);
+procedure TfrmNaklrEdit.cdsKursBeforePost(DataSet: TDataSet);
 begin
   if DataSet.State = dsInsert then begin
     if DataSet.FieldByName('kurs_indirect').asInteger=1 then begin
@@ -273,7 +273,7 @@ begin
   end;
 end;
 
-procedure TfrmNaklr2Edit.cdsKursKURS_INDIRECTChange(Sender: TField);
+procedure TfrmNaklrEdit.cdsKursKURS_INDIRECTChange(Sender: TField);
 var
   iCurTemp : integer;
 begin
@@ -286,7 +286,7 @@ begin
 end;
 
 
-procedure TfrmNaklr2Edit.dbeIDNAKLKeyPress(Sender: TObject;
+procedure TfrmNaklrEdit.dbeIDNAKLKeyPress(Sender: TObject;
   var Key: Char);
 begin
   If Key = #13 Then Begin

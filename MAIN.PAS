@@ -14,7 +14,7 @@ uses
   RepDolgBux,
   ClientSpr,
   TovarSpr,
-  untSchet,
+  Schet,
   NNakl,
   untSqlLog,
   untSklost,
@@ -68,7 +68,7 @@ uses
   RepDolgAgent, //TfrmRepDolgAgent
   untNaklp, //TfrmNaklp
   RepBalans, //TfrmRepBalans
-  Naklr2,  //TfrmNaklr2
+  Naklr,  //TfrmNaklr
   NNaklReestr, // TfrmNNaklReestr
   Naklru, //TfrmNaklru
   //Naklpu, //TfrmNaklpu
@@ -153,7 +153,6 @@ type
     actRepDolgBux1: TMenuItem;
     actClient: TAction;
     actKlient1: TMenuItem;
-    actNaklr: TAction;
     N3: TMenuItem;
     mnuTovar: TMenuItem;
     actTovar: TAction;
@@ -273,7 +272,7 @@ type
     N58: TMenuItem;
     actShowAnyDocByNum: TAction;
     N52: TMenuItem;
-    actNaklr2: TAction;
+    actNaklr: TAction;
     N59: TMenuItem;
     ArrangeAll1: TMenuItem;
     Cascade1: TMenuItem;
@@ -387,7 +386,7 @@ type
     procedure actRepBalansExecute(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure actShowAnyDocByNumExecute(Sender: TObject);
-    procedure actNaklr2Execute(Sender: TObject);
+    procedure actNaklrExecute(Sender: TObject);
 
     procedure actNNaklrReestrExecute(Sender: TObject);
     procedure actNaklruExecute(Sender: TObject);
@@ -1701,11 +1700,11 @@ end;
 
 procedure TMainForm.TestVozvratMakeFromNaklr;
 var
-  Naklr : TfrmNaklr2;
+  Naklr : TfrmNaklr;
   Vozvrat : TfrmVozvrat;
   iNakl : integer;
 begin
-  Naklr := TfrmNaklr2.Create(Application);
+  Naklr := TfrmNaklr.Create(Application);
   with Naklr do begin
   try
     DefaultOpen;
@@ -2237,13 +2236,13 @@ begin
   frmRasxPoKasse.Free;
 end;
 
-procedure TMainForm.actNaklr2Execute(Sender: TObject);
+procedure TMainForm.actNaklrExecute(Sender: TObject);
 var
-  frmNaklr2 : TfrmNaklr2;
+  frmNaklr : TfrmNaklr;
 begin
 try
-  frmNaklr2 := TfrmNaklr2.Create (Application);
-  with  frmNaklr2 do begin
+  frmNaklr := TfrmNaklr.Create (Application);
+  with  frmNaklr do begin
     DefaultStartup;
     actSettings.Execute;
     if not actSettings.Checked then begin
@@ -2257,10 +2256,10 @@ end;
 
 procedure TMainForm.TestNaklr2;
 var
-  Naklr :TfrmNaklr2;
+  Naklr :TfrmNaklr;
   bQueryOpened:boolean;
 begin
-  Naklr := TfrmNaklr2.Create (Application);
+  Naklr := TfrmNaklr.Create (Application);
   Naklr.DefaultStartup;
   bQueryOpened :=Naklr.actDefaultOpen.Execute;
   if not bQueryOpened then begin
@@ -2550,5 +2549,7 @@ except
 	AssertInternal ('4F5CF63D-B83F-4A89-93C7-E782F43802BD');
 end;
 end;
+
+
 
 end.

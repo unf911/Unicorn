@@ -334,7 +334,7 @@ uses
 
 untRealPrice, //frmRealPrice
 //Naklr,  //TfrmNaklr
-untSchet, //TfrmSchet
+Schet, //TfrmSchet
 SkladAux, //OpenDocument
 untOtpravka, //actShowOtpravka.TfrmOtpravka
 DesignReport //ProcessReportDesigner
