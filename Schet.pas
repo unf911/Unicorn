@@ -1,4 +1,4 @@
-unit untSchet;
+unit Schet;
 
 interface
 
@@ -335,7 +335,7 @@ procedure TfrmSchet.FormCreate(Sender: TObject);
 begin
   qeNaklo.DefSql := sdsNaklr.CommandText;
   qeNaklot.DefSql := sdsNaklrt.CommandText;
-  MonthToStrInit;
+  MonthToStrInitUkr;
   //Инициализация настроек
   setT := TfrmSettings.Create(self);
   setT.actManagerOff.execute;
@@ -959,7 +959,7 @@ begin
   actCalculateSum.Execute;
   PostAndApply(dsNaklr.Dataset);
   Order;
-  MonthToStrInit;
+  MonthToStrInitUkr;
   dmdEx.GetReport(sReportName,frNaklr);
   frNaklr.PrepareReport;
 end;
