@@ -217,8 +217,8 @@ type
     qeDogovor: TQueryExtender;
     actMakeNnakl: TAction;
     N11: TMenuItem;
-    frNaklr: TfrxReport;
     frNaklr2: TfrxReport;
+    frNaklr: TfrxReport;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure actSettingsExecute(Sender: TObject);
     procedure dbgNaklrDblClick(Sender: TObject);

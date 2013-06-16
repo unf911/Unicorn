@@ -1289,7 +1289,7 @@ object frmNaklru: TfrmNaklru
     PrintOptions.Printer = 'Default'
     PrintOptions.ShowDialog = False
     ReportOptions.CreateDate = 38982.467101585700000000
-    ReportOptions.LastChange = 40766.564886064800000000
+    ReportOptions.LastChange = 41441.874770891200000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       'begin'
