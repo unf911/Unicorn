@@ -607,6 +607,7 @@ object frmPlategyVxod: TfrmPlategyVxod
       FieldName = 'NDS'
       Required = True
       Precision = 15
+      Size = 8
     end
     object sdsPlatCOMMENT: TStringField
       FieldName = 'COMMENT'
@@ -627,12 +628,10 @@ object frmPlategyVxod: TfrmPlategyVxod
     object sdsPlatNDS_FROM: TFMTBCDField
       FieldName = 'NDS_FROM'
       Precision = 15
-      Size = 4
     end
     object sdsPlatZATRATY: TFMTBCDField
       FieldName = 'ZATRATY'
       Precision = 15
-      Size = 4
     end
     object sdsPlatID_CURRENCY: TSmallintField
       FieldName = 'ID_CURRENCY'
@@ -739,6 +738,7 @@ object frmPlategyVxod: TfrmPlategyVxod
       DisplayFormat = '0.00'
       EditFormat = '0.00'
       Precision = 15
+      Size = 8
     end
     object cdsNakloID: TStringField
       DisplayLabel = #8470#1087#1083#1072#1090
@@ -816,6 +816,7 @@ object frmPlategyVxod: TfrmPlategyVxod
       OnChange = cdsNakloNDS_FROMChange
       DisplayFormat = '0.00'
       Precision = 15
+      Size = 8
     end
     object cdsNakloZATRATY: TFMTBCDField
       DisplayLabel = #1050#1086#1084#1080#1089#1089#1080#1103', %'
@@ -823,6 +824,7 @@ object frmPlategyVxod: TfrmPlategyVxod
       OnChange = cdsNakloZATRATYChange
       DisplayFormat = '0.00'
       Precision = 15
+      Size = 8
     end
     object cdsNakloID_CURRENCY: TSmallintField
       FieldName = 'ID_CURRENCY'

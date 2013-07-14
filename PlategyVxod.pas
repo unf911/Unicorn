@@ -252,7 +252,7 @@ type
     procedure TestInsert;
     procedure FillOidObjects;
     function GetTipForMakeTransh: integer;
-    procedure CreateFinNakl(sdsFinTranshUsl :TSqlDataSet);
+    procedure CreateFinNakl(sdsProc :TSqlDataSet);
   public
     { Public declarations }
     function DefaultOpen:boolean;
@@ -1114,14 +1114,14 @@ end;
 
 //создаЄт документ под остаток оплаты. »спользуетс€ дл€
 //быстрого получени€ расходных накладных
-procedure TfrmPlategyVxod.CreateFinNakl(sdsFinTranshUsl :TSqlDataSet);
+procedure TfrmPlategyVxod.CreateFinNakl(sdsProc :TSqlDataSet);
 begin
   qeQuery1.Refresh;
   if (cdsNaklo.FieldByName('ostatok').AsCurrency<>0) then begin
-    sdsFinTranshUsl.ParamByName('id').AsInteger :=
+    sdsProc.ParamByName('id').AsInteger :=
       cdsNaklo.FieldbyName('id_nakl').AsInteger;
-    dmdEx.execsql(sdsFinTranshFinusl);
-    OpenDocument(self,sdsFinTranshFinusl.ParamByName('id_nakl').AsInteger,0,0);
+    dmdEx.execsql(sdsProc);
+    OpenDocument(self,sdsProc.ParamByName('id_nakl').AsInteger,0,0);
     qeQuery1.Refresh;
     qeQuery2.Refresh;
   end else begin  //if
