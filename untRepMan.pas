@@ -355,38 +355,46 @@ end;
 
 procedure TfrmRepMan.actPremiyaVyplExecute(Sender: TObject);
 begin
-
   if MessageDlg('Вы уверены что хотите выплатить премию по всем накладным из '
-    +'данного отчёта',mtConfirmation, mbOKCancel,0)=mrOk then begin
-     try
-      cdsQuery2.Close;
-      cdsQuery3.Close;
-      cdsQuery1.first;
-      while not cdsQuery1.eof do begin
-{        if (RRoundTo (cdsQuery1.fieldByName('premiya').asFloat,-2) > 0) then begin}
-          sdsPremiyaVypl.Params.parambyName('id_nakl').asInteger :=
-            cdsQuery1.FieldByName('id_nakl').AsInteger;
+    +'данного отчёта',mtConfirmation, mbOKCancel,0)<>mrOk then begin
+    exit;
+  end;
+  if setT.DateTo != EndOfTheMonth(setT.DateTo) then begin
+    MessageDlg('Дата окончания периода отчёта не совпадает с концом месяца.');
+    exit;
+  end;
+  if setT.DateFrom != StartOfTheMonth(setT.DateFrom) then begin
+    MessageDlg('Дата начала периода отчёта не совпадает с началом месяца.');
+    exit;
+  end;
 
-          sdsPremiyaVypl.Params.parambyName('dat').AsSQLTimeStamp:=
-            DateTimeToSQLTimeStamp(
-            StartOfTheMonth(
-             IncMonth(cdsQuery1.Params.parambyname('date_to').AsDateTime,1)
-            ));
+  try
+  cdsQuery2.Close;
+  cdsQuery3.Close;
+  cdsQuery1.first;
+  while not cdsQuery1.eof do begin
+      sdsPremiyaVypl.Params.parambyName('id_nakl').asInteger :=
+        cdsQuery1.FieldByName('id_nakl').AsInteger;
 
-          sdsPremiyaVypl.Params.parambyName('premiya').AsCurrency :=
-            cdsQuery1.FieldByName('premiya').AsCurrency;
+      sdsPremiyaVypl.Params.parambyName('dat').AsSQLTimeStamp:=
+        DateTimeToSQLTimeStamp(
+        StartOfTheMonth(
+         IncMonth(cdsQuery1.Params.parambyname('date_to').AsDateTime,1)
+        ));
 
-          dmdEx.ExecSQL(sdsPremiyaVypl,false);
-{        end;//if premiya>0}
-        cdsQuery1.next;
-      end; //while
-     finally
-       begin
-         cdsQuery2.Open;
-         cdsQuery3.Open;
-       end;
-     end;//try finally
-  end; //if ok
+      sdsPremiyaVypl.Params.parambyName('premiya').AsCurrency :=
+        cdsQuery1.FieldByName('premiya').AsCurrency;
+
+      dmdEx.ExecSQL(sdsPremiyaVypl,false);
+    cdsQuery1.next;
+  end; //while
+  finally
+    begin
+      cdsQuery2.Open;
+      cdsQuery3.Open;
+    end;
+  end;//try finally
+
 end;
 
 procedure TfrmRepMan.DBGridEh1DblClick(Sender: TObject);
