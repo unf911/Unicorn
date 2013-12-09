@@ -216,6 +216,9 @@ begin
     '<DECLAR xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" '+
     'xsi:noNamespaceSchemaLocation="J0215104.xsd">'
     );
+  XMLDocument1.XML.Text := AnsiReplaceStr(XMLDocument1.XML.Text,'</D_FILL>',
+    '</D_FILL><LINKED_DOCS xsi:nil="true"/>'
+    );
   XMLDocument1.active := true;
 end;
 
@@ -470,13 +473,7 @@ end;
 
 procedure TfrmNnaklReestr.actGenerateXmlExecute(Sender: TObject);
 begin
-//  actSettings.checked := setT.ProcessSettingsChange(actRefresh);
-//  actRefreshNNaklp.Execute;
-//  if MessageDlg('Генерировать файл?',mtConfirmation, [mbOk,mbCancel],0)=mrOk then begin
-//    if (CheckIPN(cdsNNaklp)  and CheckIPN(cdsRasx)) then begin
-      CreateXMLFile;
-//    end;
-//  end;
+  CreateXMLFile;
 end;
 
 procedure TfrmNnaklReestr.CreateXMLFile;

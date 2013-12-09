@@ -218,6 +218,9 @@ begin
   XMLDocument1.XML.Text := AnsiReplaceStr(XMLDocument1.XML.Text,'<DECLAR>',
     '<DECLAR xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" '+
     'xsi:noNamespaceSchemaLocation="J1201506.xsd">');
+  XMLDocument1.XML.Text := AnsiReplaceStr(XMLDocument1.XML.Text,'</D_FILL>',
+    '</D_FILL><LINKED_DOCS xsi:nil="true"/>'
+    );    
   XMLDocument1.active := true;
 end;
 
