@@ -359,7 +359,7 @@ begin
     +'данного отчёта',mtConfirmation, mbOKCancel,0)<>mrOk then begin
     exit;
   end;
-  if (setT.DateTo <> EndOfTheMonth(setT.DateTo)) then begin
+  if (setT.DateTo <> StartOfTheDay(EndOfTheMonth(setT.DateTo))) then begin
     MessageDlg('Дата окончания периода отчёта не совпадает с концом месяца.',
       mtConfirmation, mbOKCancel,0);
     exit;
