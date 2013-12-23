@@ -148,8 +148,6 @@ type
     sdsMakeNaklpbux: TSQLDataSet;
     actMakeNaklpbux: TAction;
     N4: TMenuItem;
-    actSebestRecount: TAction;
-    sdsSebestRecount: TSQLDataSet;
     N5: TMenuItem;
     actNakloList: TAction;
     N6: TMenuItem;
@@ -157,9 +155,9 @@ type
     N8: TMenuItem;
     N9: TMenuItem;
     N10: TMenuItem;
-    actSebestRecount2: TAction;
+    actSebestRecount: TAction;
     N21: TMenuItem;
-    sdsSebestRecount2: TSQLDataSet;
+    sdsSebestRecount: TSQLDataSet;
     actShowRepNakloDepend: TAction;
     N11: TMenuItem;
     N12: TMenuItem;
@@ -207,9 +205,8 @@ type
       Shift: TShiftState);
     procedure actNaklpFilltovarNaklpbuxExecute(Sender: TObject);
     procedure actMakeNaklpbuxExecute(Sender: TObject);
-    procedure actSebestRecountExecute(Sender: TObject);
     procedure actNakloListExecute(Sender: TObject);
-    procedure actSebestRecount2Execute(Sender: TObject);
+    procedure actSebestRecountExecute(Sender: TObject);
     procedure actShowRepNakloDependExecute(Sender: TObject);
     procedure actPostExecute(Sender: TObject);
     procedure actGenerateTaraExecute(Sender: TObject);
@@ -690,22 +687,14 @@ begin
   dmdEx.ExecSQL(sdsMakeNaklpbux,true);
 end;
 
-procedure TfrmNaklp.actSebestRecountExecute(Sender: TObject);
-begin
-{  dmdEx.startwaiting;
-  sdsSebestRecount.Params.ParamByName('id_nakl').asInteger :=
-    cdsNaklp.FieldByName('id_nakl').asInteger;
-  sdsSebestRecount.Params.ParamByName('mode').asInteger := 1;
-  dmdEx.ExecSQL(sdsSebestRecount,false);
-  dmdEx.stopwaiting;}
-end;
-
 procedure TfrmNaklp.actNakloListExecute(Sender: TObject);
 begin
   if dsNaklp.DataSet.Eof and dsNaklp.DataSet.Bof then begin
      exit;
   end;
-  if dsNaklp.DataSet.FieldByName('TIP').AsInteger<>1 then begin
+  if ((dsNaklp.DataSet.FieldByName('TIP').AsInteger<>1) and
+     (dsNaklp.DataSet.FieldByName('TIP').AsInteger<>-110))
+   then begin
     MessageDlg('Тип накладной должен быть ''Приход''',mtWarning,[mbOk],0);
     exit;
   end;
@@ -721,21 +710,18 @@ end;
 
 
 
-procedure TfrmNaklp.actSebestRecount2Execute(Sender: TObject);
+procedure TfrmNaklp.actSebestRecountExecute(Sender: TObject);
 var
   iSchet : integer;
 begin
   dmdEx.startwaiting;
-  sdsSebestRecount2.Params.ParamByName('id_nakl').asInteger :=
+  sdsSebestRecount.Params.ParamByName('id_nakl').asInteger :=
     cdsNaklp.FieldByName('id_nakl').asInteger;
 	//заполняем
   iSchet:=dmdex.GetOidObjects('ТИП СЧЕТА',-100);
   iSchet:=dmdex.GetOidObjects('СЕБЕСТОИМОСТЬ СКЛАД',iSchet);
-  sdsSebestRecount2.Params.ParamByName('id_schet').asInteger := iSchet;
-  {sdsSebestRecount2.Params.ParamByName('tip').asInteger :=
-    cdsNaklp.FieldByName('tip').asInteger;
-  sdsSebestRecount2.Params.ParamByName('mode').asInteger:=1;}
-  dmdEx.ExecSQL(sdsSebestRecount2,false);
+  sdsSebestRecount.Params.ParamByName('id_schet').asInteger := iSchet;
+  dmdEx.ExecSQL(sdsSebestRecount,false);
   dmdEx.stopwaiting;
 end;
 

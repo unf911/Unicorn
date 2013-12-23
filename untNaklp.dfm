@@ -444,18 +444,13 @@ object frmNaklp: TfrmNaklp
         #1081
       OnExecute = actMakeNaklpbuxExecute
     end
-    object actSebestRecount: TAction
-      Caption = #1055#1077#1088#1077#1089#1095#1080#1090#1072#1090#1100' '#1089#1077#1073#1077#1089#1090#1086#1080#1084#1086#1089#1090#1100
-      Visible = False
-      OnExecute = actSebestRecountExecute
-    end
     object actNakloList: TAction
       Caption = #1055#1086#1082#1072#1079#1072#1090#1100' '#1088#1086#1076#1080#1090#1077#1083#1100#1089#1082#1091#1102' '#1087#1088#1080#1093#1086#1076#1085#1091#1102' '#1085#1072#1082#1083#1072#1076#1085#1091#1102
       OnExecute = actNakloListExecute
     end
-    object actSebestRecount2: TAction
+    object actSebestRecount: TAction
       Caption = #1055#1077#1088#1077#1089#1095#1080#1090#1072#1090#1100' '#1089#1077#1073#1077#1089#1090#1086#1080#1084#1086#1089#1090#1100
-      OnExecute = actSebestRecount2Execute
+      OnExecute = actSebestRecountExecute
     end
     object actShowRepNakloDepend: TAction
       Caption = #1055#1086#1082#1072#1079#1072#1090#1100' '#1079#1072#1074#1080#1089#1080#1084#1099#1077' '#1089#1082#1083#1072#1076#1089#1082#1080#1077' '#1085#1072#1082#1083#1072#1076#1085#1099#1077
@@ -478,7 +473,7 @@ object frmNaklp: TfrmNaklp
       '  id_sklad_to,'#13#10'  parent_id_nakl,'#13#10'  zatraty,'#13#10'  (select om2.id ' +
       'from NAKLO om2 where om2.id_nakl=om.parent_id_nakl) as parent_id' +
       #13#10#13#10'from '#13#10'  NAKLO om'#13#10'where'#13#10'  om.delmarked=0 and om.tip in (1,' +
-      '2)'#13#10'order by'#13#10'  om.dat'
+      '2,-110)'#13#10'order by'#13#10'  om.dat'
     MaxBlobSize = -1
     Params = <>
     SQLConnection = dmdEx.scUchet
@@ -514,7 +509,7 @@ object frmNaklp: TfrmNaklp
     end
     object sdsNaklpNDS: TFMTBCDField
       FieldName = 'NDS'
-      Precision = 15
+      Precision = 15      
     end
     object sdsNaklpID_SKLAD: TIntegerField
       FieldName = 'ID_SKLAD'
@@ -716,7 +711,7 @@ object frmNaklp: TfrmNaklp
       DefaultExpression = '0'
       FieldName = 'ZATRATY'
       Required = True
-      Precision = 15
+      Precision = 15      
     end
     object cdsNaklpPARENT_ID_NAKL: TIntegerField
       FieldName = 'PARENT_ID_NAKL'
@@ -811,13 +806,14 @@ object frmNaklp: TfrmNaklp
       DisplayLabel = #1062#1077#1085#1072
       FieldName = 'CENA'
       DisplayFormat = '0.00'
-      Precision = 15
+      Precision = 15      
     end
     object cdsNaklptKOLOTP: TFMTBCDField
       DisplayLabel = #1050#1086#1083'-'#1074#1086
       FieldName = 'KOLOTP'
       DisplayFormat = '0.000'
       Precision = 15
+      Size = 8
     end
     object cdsNaklptID_NAKLD: TIntegerField
       FieldName = 'ID_NAKLD'
@@ -903,10 +899,12 @@ object frmNaklp: TfrmNaklp
         Action = actNakloList
       end
       object N5: TMenuItem
-        Action = actSebestRecount
+        Caption = #1055#1077#1088#1077#1089#1095#1080#1090#1072#1090#1100' '#1089#1077#1073#1077#1089#1090#1086#1080#1084#1086#1089#1090#1100
+        Visible = False
+        OnClick = actSebestRecountExecute
       end
       object N21: TMenuItem
-        Action = actSebestRecount2
+        Action = actSebestRecount
       end
       object N11: TMenuItem
         Action = actShowRepNakloDepend
@@ -990,7 +988,9 @@ object frmNaklp: TfrmNaklp
       Action = actNakloList
     end
     object N10: TMenuItem
-      Action = actSebestRecount
+      Caption = #1055#1077#1088#1077#1089#1095#1080#1090#1072#1090#1100' '#1089#1077#1073#1077#1089#1090#1086#1080#1084#1086#1089#1090#1100
+      Visible = False
+      OnClick = actSebestRecountExecute
     end
     object N12: TMenuItem
       Action = actShowRepNakloDepend
@@ -1031,25 +1031,6 @@ object frmNaklp: TfrmNaklp
     Top = 208
   end
   object sdsSebestRecount: TSQLDataSet
-    CommandText = 'NAKLP_SEBEST_RECOUNT_PC'
-    CommandType = ctStoredProc
-    MaxBlobSize = -1
-    Params = <
-      item
-        DataType = ftInteger
-        Name = 'ID_NAKL'
-        ParamType = ptInput
-      end
-      item
-        DataType = ftInteger
-        Name = 'MODE'
-        ParamType = ptInput
-      end>
-    SQLConnection = dmdEx.scUchet
-    Left = 520
-    Top = 176
-  end
-  object sdsSebestRecount2: TSQLDataSet
     CommandText = 'NAKLP_POST_PC'
     CommandType = ctStoredProc
     MaxBlobSize = -1

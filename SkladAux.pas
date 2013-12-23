@@ -78,7 +78,8 @@ try
     frmNaklo.Show;
     exit;
   end;
-  if (tip in [1,2]) then begin
+  //приходы, излишки и возвраты
+  if ((tip in [1,2]) or (tip=-110)) then begin
     //приходы на склад не модальные
     frmNaklp := TfrmNaklp.Create(ParentWindow);
     if not ShowDepended then begin
@@ -86,8 +87,6 @@ try
     end else begin
       frmNaklp.qeNaklo.AddSQL('where','parent_id_nakl='+ inttostr(Nakl));
     end;
-    //frmNaklp.qeNaklo.Prepare;
-    //frmNaklp.DefaultOpen;
     frmNaklp.actRefresh.Execute;
     if mode>0 then begin
       frmNaklp.cdsNaklpt.Locate('id_nakld',mode,[]);
@@ -97,7 +96,6 @@ try
   end;
 
   if (sName= 'РАСХОДНЫЕ НАКЛАДНЫЕ') then begin
-
     frmNaklr := TfrmNaklr.Create (ParentWindow);
     frmNaklr.ShowNaklr(Nakl, mode);
     exit;
