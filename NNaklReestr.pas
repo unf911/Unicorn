@@ -94,6 +94,7 @@ type
     procedure FillFooter(XMLDeclarContent: IXMLDeclarContent);
 
     function GetXmlFileName:string;
+    function GetReportFileName(DocumentType : string; Date: TDate):string;
     function GetOblastKod :integer;
     function GetRajonKod: integer;
     function GetOKPO : string;
@@ -191,6 +192,8 @@ begin
 end;
 
 procedure TfrmNnaklReestr.FillHeadXml(XMLDeclarContent:IXMLDeclarContent);
+var
+  doc: IXMLDOC;
 begin
   //И tin брать оттуда
   with XMLDeclarContent.DECLARHEAD do begin
@@ -206,6 +209,18 @@ begin
     PERIOD_TYPE:=1; //тип месяц
     PERIOD_YEAR:=YearOf(setT.dateFrom);
     C_DOC_STAN := 1;//отчётный документ
+
+    doc := XMLDeclarContent.DECLARHEAD.LINKED_DOCS.Add;
+    doc.TYPE_ := 2;
+    doc.NUM := 1;
+    doc.C_DOC:= 'J02';
+    doc.C_DOC_SUB := '001';
+    doc.C_DOC_VER := '13';
+    doc.C_DOC_TYPE := 0;
+    doc.C_DOC_CNT := 1;
+    doc.C_DOC_STAN := 1;
+    //doc.FILENAME := '15520031595602J0200113100000000111120131552.xml';
+    doc.FILENAME := GetReportFileName('J0200113', setT.dateFrom);
     D_FILL:=FormatDateTime('ddmmyyyy',Today);//дата заполнения
   end;
 end;
@@ -216,9 +231,11 @@ begin
     '<DECLAR xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" '+
     'xsi:noNamespaceSchemaLocation="J0215104.xsd">'
     );
-  XMLDocument1.XML.Text := AnsiReplaceStr(XMLDocument1.XML.Text,'</D_FILL>',
-    '</D_FILL><LINKED_DOCS xsi:nil="true"/>'
-    );
+  
+  //XMLDocument1.XML.Text := AnsiReplaceStr(XMLDocument1.XML.Text,'</D_FILL>',
+  //  '</D_FILL><LINKED_DOCS xsi:nil="true"/>'
+  //  );
+
   XMLDocument1.active := true;
 end;
 
@@ -375,8 +392,8 @@ end;
 function TfrmNnaklReestr.GetXmlFileName: string;
 begin
   Result :=
-    dmdex.GetReportPath +
-    FormatFloat('00',GetOblastKod ) +
+    dmdex.GetReportPath + GetReportFileName('J0215104', setT.dateFrom);
+    {FormatFloat('00',GetOblastKod ) +
     FormatFloat('00',GetRajonKod ) +
     FormatFloat('0000000000',strtoint(GetOKPO)) +
     'J0215104'+'100'+
@@ -384,6 +401,22 @@ begin
     '1' +
     FormatFloat('00', MonthOf(setT.dateFrom))+
     FormatFloat('0000', YearOf(setT.dateFrom))+
+    FormatFloat('00',GetOblastKod ) +
+    FormatFloat('00',GetRajonKod ) +
+    '.xml';}
+end;
+
+function TfrmNnaklReestr.GetReportFileName(DocumentType : string; Date: TDate):string;
+begin
+  Result :=
+    FormatFloat('00',GetOblastKod ) +
+    FormatFloat('00',GetRajonKod ) +
+    FormatFloat('0000000000',strtoint(GetOKPO)) +
+    DocumentType +'100'+
+    FormatFloat('0000000',GetNumDocZaPeriod ) +
+    '1' +
+    FormatFloat('00', MonthOf(Date))+
+    FormatFloat('0000', YearOf(Date))+
     FormatFloat('00',GetOblastKod ) +
     FormatFloat('00',GetRajonKod ) +
     '.xml';
