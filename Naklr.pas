@@ -19,7 +19,7 @@ uses
   NaklrEdit, //TfrmNaklr2Edit
   untEx,   DBGridEh,
   UnfFilter,
-  frxDesgn, GridsEh, Buttons, Curr2StrUA
+  frxDesgn, GridsEh, Buttons, Curr2StrUA, frxRich
   ;
 
 type
@@ -233,10 +233,11 @@ type
     sdsNakloID_VYGRUZKA: TIntegerField;
     cdsNakloID_VYGRUZKA: TIntegerField;
     cdsNakloREYS_POKUPATEL_PLATIT: TIntegerField;
-    frTtn: TfrxReport;
     Curr2StrUA1: TCurr2StrUA;
     frNaklr2: TfrxReport;
     frNaklr: TfrxReport;
+    frxRichObject1: TfrxRichObject;
+    frTtn: TfrxReport;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure actSettingsExecute(Sender: TObject);
     procedure dbgNaklrDblClick(Sender: TObject);

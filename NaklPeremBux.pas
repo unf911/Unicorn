@@ -30,7 +30,7 @@ uses
 	Registry, NaklPeremBuxEdit,
   NaklPeremBuxDet,
   Variants,
-  Naklpbux;
+  Naklpbux, frxRich;
 
 
 type
@@ -69,7 +69,6 @@ type
     PopupMenu1: TPopupMenu;
     actShowDeleted: TAction;
 		sdsRepNaklo: TSQLDataSet;
-    frRepNaklo: TfrxReport;
     frDBNaklot: TfrxDBDataset;
     dspRepNaklo: TDataSetProvider;
     cdsRepNaklo: TClientDataSet;
@@ -184,6 +183,8 @@ type
     actPreviewTtn1: TMenuItem;
     actDebug: TAction;
     N9: TMenuItem;
+    frRepNaklo: TfrxReport;
+    frxRichObject1: TfrxRichObject;
     frTtn: TfrxReport;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure actSettingsExecute(Sender: TObject);

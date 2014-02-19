@@ -1863,54 +1863,12 @@ object frmNaklr: TfrmNaklr
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
     PreviewOptions.Zoom = 1.000000000000000000
     PrintOptions.Printer = 'Default'
-    ReportOptions.CreateDate = 38982.467101585700000000
-    ReportOptions.LastChange = 40756.736308773200000000
+    ReportOptions.CreateDate = 41663.681350335600000000
+    ReportOptions.LastChange = 41689.729306307870000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
-      'procedure Memo19OnBeforePrint(Sender: TfrxComponent);'
       'begin'
-      '  with Memo19, Engine do'
-      '  begin'
-      '    if <frdbNaklot."KOLOTP"> > 0 then'
-      '      Font.Color := clBlack'
-      '    else'
-      '      Font.Color := clWhite;'
-      '  end'
-      'end;'
       ''
-      ''
-      ''
-      'procedure Memo20OnBeforePrint(Sender: TfrxComponent);'
-      'begin'
-      '  with Memo20, Engine do  begin'
-      '    if <frdbNaklot."KOLOTP"> > 0 then'
-      '      Font.Color := clBlack'
-      '    else'
-      '      Font.Color := clWhite;'
-      '  end'
-      'end;'
-      ''
-      'procedure Memo37OnBeforePrint(Sender: TfrxComponent);'
-      'begin'
-      '  with Memo37, Engine do begin'
-      '    if <frdbNaklot."KOLOTP"> > 0 then'
-      '      Font.Color := clBlack'
-      '    else'
-      '      Font.Color := clWhite;'
-      '  end'
-      'end;'
-      ''
-      'procedure Memo38OnBeforePrint(Sender: TfrxComponent);'
-      'begin'
-      '  with Memo38, Engine do begin'
-      '    if <frdbNaklot."KOLOTP"> > 0 then'
-      '      Font.Color := clBlack'
-      '    else'
-      '      Font.Color := clWhite;'
-      '  end'
-      'end;'
-      ''
-      'begin'
       'end.')
     StoreInDFM = False
     OnGetValue = frNaklrGetValue
@@ -1942,5 +1900,9 @@ object frmNaklr: TfrmNaklr
     FullString = False
     Left = 360
     Top = 112
+  end
+  object frxRichObject1: TfrxRichObject
+    Left = 264
+    Top = 80
   end
 end

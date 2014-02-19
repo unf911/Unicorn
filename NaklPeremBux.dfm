@@ -887,35 +887,41 @@ object frmNaklPeremBux: TfrmNaklPeremBux
   end
   object frRepNaklo: TfrxReport
     Version = '3.23.7'
-    DataSet = frDBNaklot
-    DataSetName = 'frDBNaklot'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
     PreviewOptions.Zoom = 1.000000000000000000
     PrintOptions.Printer = 'Default'
-    ReportOptions.CreateDate = 38981.610688993050000000
-    ReportOptions.LastChange = 38981.610688993050000000
+    ReportOptions.CreateDate = 41663.681350335600000000
+    ReportOptions.LastChange = 41689.723316226850000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       'begin'
       ''
       'end.')
+    StoreInDFM = False
     OnGetValue = frRepNakloGetValue
     Left = 488
     Top = 336
-    Datasets = <>
-    Variables = <>
+    Datasets = <
+      item
+        DataSet = frDBNaklo
+        DataSetName = 'frDBNaklo'
+      end>
+    Variables = <
+      item
+        Name = ' AllVars'
+        Value = Null
+      end
+      item
+        Name = 'NDSTEXT'
+        Value = Null
+      end
+      item
+        Name = 'VSEGO'
+        Value = Null
+      end>
     Style = <>
-    object Page1: TfrxReportPage
-      PaperWidth = 210.000000000000000000
-      PaperHeight = 297.000000000000000000
-      PaperSize = 9
-      LeftMargin = 10.000000000000000000
-      RightMargin = 10.000000000000000000
-      TopMargin = 10.000000000000000000
-      BottomMargin = 10.000000000000000000
-    end
   end
   object frDBNaklot: TfrxDBDataset
     UserName = 'frDBNaklot'
@@ -1377,8 +1383,8 @@ object frmNaklPeremBux: TfrmNaklPeremBux
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
     PreviewOptions.Zoom = 1.000000000000000000
     PrintOptions.Printer = 'Default'
-    ReportOptions.CreateDate = 38985.429352754600000000
-    ReportOptions.LastChange = 38988.754264537000000000
+    ReportOptions.CreateDate = 41663.681350335600000000
+    ReportOptions.LastChange = 41689.765455636570000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       'begin'
@@ -1391,10 +1397,6 @@ object frmNaklPeremBux: TfrmNaklPeremBux
       item
         DataSet = frDBNaklo
         DataSetName = 'frDBNaklo'
-      end
-      item
-        DataSet = frDBNaklot
-        DataSetName = 'frDBNaklot'
       end>
     Variables = <
       item
@@ -1404,7 +1406,15 @@ object frmNaklPeremBux: TfrmNaklPeremBux
       item
         Name = 'NDSTEXT'
         Value = Null
+      end
+      item
+        Name = 'VSEGO'
+        Value = Null
       end>
     Style = <>
+  end
+  object frxRichObject1: TfrxRichObject
+    Left = 520
+    Top = 368
   end
 end
