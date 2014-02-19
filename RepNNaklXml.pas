@@ -401,7 +401,7 @@ end;
 procedure TfrmRepNnaklXml.FillBodyXML(XMLDeclarContent:IXMLDeclarContent; dsNNakl: TDataSet);
 begin
   with XMLDeclarContent.DECLARBODY do begin
-    HCOPY := 1; //Копия.
+    HORIG := 1; //Оригинал выдаеться покупцю
     HERPN := 1; //Включено в ЕРПН
     HORIG1 := GetOriginalOstaetsyUProdavtsa;//0. оригинал остаётся у продавца
     HTYPR := GetOrigUProdTipPrichiny;
