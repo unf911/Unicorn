@@ -693,7 +693,7 @@ var
   bReadyToPrint : boolean;
 begin
   frmNNakl := TfrmNNakl(Object1);
-  bReadyToPrint := frmNNakl.PrepareReport('NNakl111214.fr3');
+  bReadyToPrint := frmNNakl.PrepareReport('NNakl140114.fr3');
   if bReadyToPrint then begin
     frmNNakl.frNaklr.PrintOptions.ShowDialog :=false;
     frmNNakl.frNaklr.Print;
@@ -860,7 +860,7 @@ begin
     if (cdZAK.lgoty <>KlientTipNeplNds) and (cdZAK.lgoty <> KlientTipExport) then begin
       ParValue := cdZAK.ipn;
     end else begin
-      ParValue := '0';
+      ParValue := '400000000000';
     end;
   end; //if parname
   if AnsiUpperCase(ParName)='Z_ADRP' then begin
@@ -1505,15 +1505,7 @@ end;
 
 procedure TfrmNNakl.actPreviewOldExecute(Sender: TObject);
 begin
-  PreviewNNakl('NNakl110110.fr3');
-{  dmdEx.StartWaiting;
-  actCalculateSum.Execute;
-  MonthToStrInit;
-  dmdEx.GetReport('NNakl110110.fr3',frNaklr);
-  frNaklr.PrepareReport;
-  frNaklr.ShowReport;
-  dmdEx.StopWaiting;
-}  
+  PreviewNNakl('NNakl111214.fr3');
 end;
 
 procedure TfrmNNakl.PreviewNNakl( reportName :String);
@@ -1538,7 +1530,7 @@ procedure TfrmNNakl.actPreviewCopyExecute(Sender: TObject);
 begin
   try
     actPreviewCopy.Checked := true;
-    PreviewNNakl('NNakl111214.fr3');
+    PreviewNNakl('NNakl140114.fr3');
   finally
     actPreviewCopy.Checked := false;
   end;
@@ -1546,7 +1538,7 @@ end;
 
 procedure TfrmNNakl.actPreviewExecute(Sender: TObject);
 begin
-  PreviewNNakl('NNakl111214.fr3');
+  PreviewNNakl('NNakl140114.fr3');
 end;
 
 procedure TfrmNNakl.OpenDogovorForClient;

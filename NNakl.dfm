@@ -1,6 +1,6 @@
 object frmNNakl: TfrmNNakl
-  Left = 64
-  Top = 210
+  Left = 104
+  Top = 242
   BorderStyle = bsDialog
   Caption = #1053#1072#1083#1086#1075#1086#1074#1099#1077' '#1085#1072#1082#1083#1072#1076#1085#1099#1077
   ClientHeight = 409
@@ -491,7 +491,7 @@ object frmNNakl: TfrmNNakl
     PreviewOptions.Zoom = 1.000000000000000000
     PrintOptions.Printer = 'Default'
     ReportOptions.CreateDate = 38985.430610532400000000
-    ReportOptions.LastChange = 41434.942259363420000000
+    ReportOptions.LastChange = 41702.844444907410000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       'procedure Memo23OnBeforePrint(Sender: TfrxComponent);'
