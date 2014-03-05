@@ -161,7 +161,6 @@ uses
   PerevodEdit in 'PerevodEdit.pas' {frmPerevodEdit},
   AgentSpr in 'AgentSpr.pas' {frmAgentSpr},
   AgentSprEdit in 'AgentSprEdit.pas' {frmAgentSprEdit},
-  J1201501 in 'J1201501.pas',
   RepDvigDenSredstv in 'RepDvigDenSredstv.pas' {frmRepDvigDenSredstv},
   PlategyVxodEdit in 'PlategyVxodEdit.pas' {frmPlategyVxodEdit},
   RepReestrVydanNnakl in 'RepReestrVydanNnakl.pas' {frmRepReestrVydanNnakl},
@@ -196,11 +195,9 @@ uses
   RepReys in 'RepReys.pas' {frmRepReys},
   RepReysDet in 'RepReysDet.pas' {frmRepReysDet},
   RepPribylPrilogEdnal in 'RepPribylPrilogEdnal.pas' {frmRepPribylPrilogEdnal},
-  J1201004 in 'J1201004.pas',
   J0111901 in 'J0111901.pas',
   RepNNaklXml in 'RepNNaklXml.pas' {frmRepNnaklXml},
   J0215104 in 'J0215104.pas',
-  J1201506 in 'J1201506.pas',
   J1201005 in 'J1201005.pas',
   J1201507 in 'J1201507.pas';
 
