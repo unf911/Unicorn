@@ -21,7 +21,7 @@ uses
   SettingsPlugin, //TfmSettingPlugin
   untSettings, xmldom,
   XMLIntf, msxmldom, XMLDoc,
-  J1201506, //J1201506 IXMLDeclarContent
+  J1201507, //J1201507 IXMLDeclarContent
   XmlHelper, //WriteNode
   RepReestrPolychNNakl //TfrmRepReestrPolychNNakl
 
@@ -199,7 +199,7 @@ begin
     TIN:=GetOKPO;
     C_DOC:='J12';
     C_DOC_SUB:='015';
-    C_DOC_VER:='6';//
+    C_DOC_VER:='7';//
     C_DOC_TYPE:=0;//тип документа. 0-основной
     C_DOC_CNT := GetNumDocZaPeriod;//1; //номер документа за период
     C_REG := GetOblastKod;//15;//код области
@@ -348,7 +348,7 @@ begin
     FormatFloat('00',GetOblastKod ) +
     FormatFloat('00',GetRajonKod ) +
     FormatFloat('0000000000',strtoint(GetOKPO)) +
-    'J1201506'+'100'+
+    'J1201507'+'100'+
     FormatFloat('0000000',GetNumDocZaPeriod) +
     '1' +
     FormatFloat('00', MonthOf(setT.dateFrom))+

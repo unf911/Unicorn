@@ -2,7 +2,7 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 	<xs:annotation>
 		<xs:documentation>Реєстр виданих та отриманих податкових накладних до загальної декларації з податку на додану вартість
-		(ЗАТВЕРДЖЕНО Наказ Міністерства фінансів України 17 грудня 2012 року № 1340 )  </xs:documentation>
+		(ЗАТВЕРДЖЕНО Наказ Міністерства доходів і зборів України 25 листопада 2013 року № 708 )  </xs:documentation>
 	</xs:annotation>
 	<xs:include schemaLocation="common_types.xsd"/>
 	<xs:element name="DECLAR" type="DeclarContent"/>
@@ -52,7 +52,7 @@
 			<xs:element name="TIN" type="DGLong"/>
 			<xs:element name="C_DOC" type="xs:string" fixed="J12"/>
 			<xs:element name="C_DOC_SUB" type="xs:string" fixed="015"/>
-			<xs:element name="C_DOC_VER" type="xs:string" fixed="6"/>
+			<xs:element name="C_DOC_VER" type="xs:string" fixed="7"/>
 			<xs:element name="C_DOC_TYPE" type="xs:nonNegativeInteger"/>
 			<xs:element name="C_DOC_CNT" type="xs:nonNegativeInteger"/>
 			<xs:element name="C_REG" type="DGsti"/>
@@ -105,24 +105,24 @@
 
 			<xs:element name="HNAME" type="DGHNAME"/>
 			<xs:element name="HNPDV" type="DGHIPN"/>
-			<xs:element name="HNSPDV" type="DGHNSPDV"/>
+			<xs:element name="HNSPDV" type="DGHNSPDV" nillable="true" minOccurs="0"/>
 			<!--BODY-->
 			<!--TABLE №1-->
-			<xs:element name="T1RXXXXG1" type="IntColumn" nillable="true" minOccurs="0" maxOccurs="999999"/>
-			<xs:element name="T1RXXXXG2D" type="DateColumn" nillable="true" minOccurs="0" maxOccurs="999999"/>
-			<xs:element name="T1RXXXXG3S" type="StrColumn" nillable="true" minOccurs="0" maxOccurs="999999"/>
-			<xs:element name="T1RXXXXG41S" type="DGKodTypeDoc6_1Column" nillable="true" minOccurs="0" maxOccurs="999999"/>
-			<xs:element name="T1RXXXXG42S" type="DGKodСausesOperation6Column" nillable="true" minOccurs="0" maxOccurs="999999"/>
-			<xs:element name="T1RXXXXG43S" type="DGKodRectification6Column" nillable="true" minOccurs="0" maxOccurs="999999"/>
-			<xs:element name="T1RXXXXG5S" type="StrColumn" nillable="true" minOccurs="0" maxOccurs="999999"/>
-			<xs:element name="T1RXXXXG6" type="HIPNColumn0" nillable="true" minOccurs="0" maxOccurs="999999"/>
-			<xs:element name="T1RXXXXG7" type="Decimal2Column" nillable="true" minOccurs="0" maxOccurs="999999"/>
-			<xs:element name="T1RXXXXG8" type="Decimal2Column" nillable="true" minOccurs="0" maxOccurs="999999"/>
-			<xs:element name="T1RXXXXG9" type="Decimal2Column" nillable="true" minOccurs="0" maxOccurs="999999"/>
-			<xs:element name="T1RXXXXG10" type="Decimal2Column" nillable="true" minOccurs="0" maxOccurs="999999"/>
-			<xs:element name="T1RXXXXG11" type="Decimal2Column" nillable="true" minOccurs="0" maxOccurs="999999"/>
-			<xs:element name="T1RXXXXG12" type="Decimal2Column" nillable="true" minOccurs="0" maxOccurs="999999"/>
-			<xs:element name="T1RXXXXG13" type="Decimal2Column" nillable="true" minOccurs="0" maxOccurs="999999"/>
+			<xs:element name="T1RXXXXG1" type="IntColumn" nillable="true" minOccurs="0" maxOccurs="20000"/>
+			<xs:element name="T1RXXXXG2D" type="DateColumn" nillable="true" minOccurs="0" maxOccurs="20000"/>
+			<xs:element name="T1RXXXXG3S" type="StrColumn" nillable="true" minOccurs="0" maxOccurs="20000"/>
+			<xs:element name="T1RXXXXG41S" type="DGKodTypeDoc6_1Column" nillable="true" minOccurs="0" maxOccurs="20000"/>
+			<xs:element name="T1RXXXXG42S" type="DGKodСausesOperation6Column" nillable="true" minOccurs="0" maxOccurs="20000"/>
+			<xs:element name="T1RXXXXG43S" type="DGKodRectification6Column" nillable="true" minOccurs="0" maxOccurs="20000"/>
+			<xs:element name="T1RXXXXG5S" type="StrColumn" nillable="true" minOccurs="0" maxOccurs="20000"/>
+			<xs:element name="T1RXXXXG6" type="HIPNColumn0" nillable="true" minOccurs="0" maxOccurs="20000"/>
+			<xs:element name="T1RXXXXG7" type="Decimal2Column" nillable="true" minOccurs="0" maxOccurs="20000"/>
+			<xs:element name="T1RXXXXG8" type="Decimal2Column" nillable="true" minOccurs="0" maxOccurs="20000"/>
+			<xs:element name="T1RXXXXG9" type="Decimal2Column" nillable="true" minOccurs="0" maxOccurs="20000"/>
+			<xs:element name="T1RXXXXG10" type="Decimal2Column" nillable="true" minOccurs="0" maxOccurs="20000"/>
+			<xs:element name="T1RXXXXG11" type="Decimal2Column" nillable="true" minOccurs="0" maxOccurs="20000"/>
+			<xs:element name="T1RXXXXG12" type="Decimal2Column" nillable="true" minOccurs="0" maxOccurs="20000"/>
+			<xs:element name="T1RXXXXG13" type="Decimal2Column" nillable="true" minOccurs="0" maxOccurs="20000"/>
 			<!--/TABLE №1-->
 			<xs:element name="R011G7" type="DGdecimal2" nillable="true" minOccurs="0"/>
 			<xs:element name="R011G8" type="DGdecimal2" nillable="true" minOccurs="0"/>
@@ -140,24 +140,24 @@
 			<xs:element name="R012G13" type="DGdecimal2" nillable="true" minOccurs="0"/>
 
 			<!--TABLE №2-->
-			<xs:element name="T2RXXXXG1" type="IntColumn" nillable="true" minOccurs="0" maxOccurs="999999"/>
-			<xs:element name="T2RXXXXG2D" type="DateColumn" nillable="true" minOccurs="0" maxOccurs="999999"/>
-			<xs:element name="T2RXXXXG3D" type="DateColumn" nillable="true" minOccurs="0" maxOccurs="999999"/>
-			<xs:element name="T2RXXXXG4S" type="StrColumn" nillable="true" minOccurs="0" maxOccurs="999999"/>
-			<xs:element name="T2RXXXXG51S" type="DGKodDocROVPD6_2Column" nillable="true" minOccurs="0" maxOccurs="999999"/>
-			<xs:element name="T2RXXXXG52S" type="DGKodAssignment6Column" nillable="true" minOccurs="0" maxOccurs="999999"/>
-			<xs:element name="T2RXXXXG53S" type="DGKodRectification6Column" nillable="true" minOccurs="0" maxOccurs="999999"/>
-			<xs:element name="T2RXXXXG6S" type="StrColumn" nillable="true" minOccurs="0" maxOccurs="999999"/>
-			<xs:element name="T2RXXXXG7" type="HIPNColumn0" nillable="true" minOccurs="0" maxOccurs="999999"/>
-			<xs:element name="T2RXXXXG8" type="Decimal2Column" nillable="true" minOccurs="0" maxOccurs="999999"/>
-			<xs:element name="T2RXXXXG9" type="Decimal2Column" nillable="true" minOccurs="0" maxOccurs="999999"/>
-			<xs:element name="T2RXXXXG10" type="Decimal2Column" nillable="true" minOccurs="0" maxOccurs="999999"/>
-			<xs:element name="T2RXXXXG11" type="Decimal2Column" nillable="true" minOccurs="0" maxOccurs="999999"/>
-			<xs:element name="T2RXXXXG12" type="Decimal2Column" nillable="true" minOccurs="0" maxOccurs="999999"/>
-			<xs:element name="T2RXXXXG13" type="Decimal2Column" nillable="true" minOccurs="0" maxOccurs="999999"/>
-			<xs:element name="T2RXXXXG14" type="Decimal2Column" nillable="true" minOccurs="0" maxOccurs="999999"/>
-			<xs:element name="T2RXXXXG15" type="Decimal2Column" nillable="true" minOccurs="0" maxOccurs="999999"/>
-			<xs:element name="T2RXXXXG16" type="Decimal2Column" nillable="true" minOccurs="0" maxOccurs="999999"/>
+			<xs:element name="T2RXXXXG1" type="IntColumn" nillable="true" minOccurs="0" maxOccurs="20000"/>
+			<xs:element name="T2RXXXXG2D" type="DateColumn" nillable="true" minOccurs="0" maxOccurs="20000"/>
+			<xs:element name="T2RXXXXG3D" type="DateColumn" nillable="true" minOccurs="0" maxOccurs="20000"/>
+			<xs:element name="T2RXXXXG4S" type="StrColumn" nillable="true" minOccurs="0" maxOccurs="20000"/>
+			<xs:element name="T2RXXXXG51S" type="DGKodDocROVPD6_2Column" nillable="true" minOccurs="0" maxOccurs="20000"/>
+			<xs:element name="T2RXXXXG52S" type="DGKodAssignment6Column" nillable="true" minOccurs="0" maxOccurs="20000"/>
+			<xs:element name="T2RXXXXG53S" type="DGKodRectification6Column" nillable="true" minOccurs="0" maxOccurs="20000"/>
+			<xs:element name="T2RXXXXG6S" type="StrColumn" nillable="true" minOccurs="0" maxOccurs="20000"/>
+			<xs:element name="T2RXXXXG7" type="HIPNColumn0" nillable="true" minOccurs="0" maxOccurs="20000"/>
+			<xs:element name="T2RXXXXG8" type="Decimal2Column" nillable="true" minOccurs="0" maxOccurs="20000"/>
+			<xs:element name="T2RXXXXG9" type="Decimal2Column" nillable="true" minOccurs="0" maxOccurs="20000"/>
+			<xs:element name="T2RXXXXG10" type="Decimal2Column" nillable="true" minOccurs="0" maxOccurs="20000"/>
+			<xs:element name="T2RXXXXG11" type="Decimal2Column" nillable="true" minOccurs="0" maxOccurs="20000"/>
+			<xs:element name="T2RXXXXG12" type="Decimal2Column" nillable="true" minOccurs="0" maxOccurs="20000"/>
+			<xs:element name="T2RXXXXG13" type="Decimal2Column" nillable="true" minOccurs="0" maxOccurs="20000"/>
+			<xs:element name="T2RXXXXG14" type="Decimal2Column" nillable="true" minOccurs="0" maxOccurs="20000"/>
+			<xs:element name="T2RXXXXG15" type="Decimal2Column" nillable="true" minOccurs="0" maxOccurs="20000"/>
+			<xs:element name="T2RXXXXG16" type="Decimal2Column" nillable="true" minOccurs="0" maxOccurs="20000"/>
 			<!--/TABLE №2-->
 			<xs:element name="R021G8" type="DGdecimal2" nillable="true" minOccurs="0"/>
 			<xs:element name="R021G9" type="DGdecimal2" nillable="true" minOccurs="0"/>

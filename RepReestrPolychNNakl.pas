@@ -21,7 +21,7 @@ uses
 	DBCtrls, 
   SettingsPlugin, //TfmSettingsPlugin
   untSettings,
-  J1201506, //J1201506 IXMLDeclarContent
+  J1201507, //J1201507 IXMLDeclarContent
   XmlHelper //WriteNode
   ;
 

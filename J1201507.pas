@@ -1,15 +1,15 @@
 
-{*************************************************************}
-{                                                             }
-{                      XML Data Binding                       }
-{                                                             }
-{         Generated on: 13.02.2011 21:31:30                   }
-{       Generated from: D:\data\work\UniSebest\J1201505.xsd   }
-{   Settings stored in: D:\data\work\UniSebest\J1201505.xdb   }
-{                                                             }
-{*************************************************************}
+{*************************************************************************}
+{                                                                         }
+{                            XML Data Binding                             }
+{                                                                         }
+{         Generated on: 05.03.2014 22:40:45                               }
+{       Generated from: D:\data\work\UniSebest_git\Unicorn\J1201507.xsd   }
+{   Settings stored in: D:\data\work\UniSebest_git\Unicorn\J1201507.xdb   }
+{                                                                         }
+{*************************************************************************}
 
-unit J1201505;
+unit J1201507;
 
 interface
 
@@ -30,19 +30,25 @@ type
   IXMLDateColumnList = interface;
   IXMLStrColumn = interface;
   IXMLStrColumnList = interface;
-  IXMLDGKodDocROVPD5_1Column = interface;
-  IXMLDGKodDocROVPD5_1ColumnList = interface;
-  IXMLIndTaxNumColumn = interface;
-  IXMLIndTaxNumColumnList = interface;
+  IXMLDGKodTypeDoc6_1Column = interface;
+  IXMLDGKodTypeDoc6_1ColumnList = interface;
+  IXMLDGKodausesOperation6Column = interface;
+  IXMLDGKodausesOperation6ColumnList = interface;
+  IXMLDGKodRectification6Column = interface;
+  IXMLDGKodRectification6ColumnList = interface;
+  IXMLHIPNColumn0 = interface;
+  IXMLHIPNColumn0List = interface;
   IXMLDecimal2Column = interface;
   IXMLDecimal2ColumnList = interface;
-  IXMLDGKodDocROVPD5_2Column = interface;
-  IXMLDGKodDocROVPD5_2ColumnList = interface;
+  IXMLDGKodDocROVPD6_2Column = interface;
+  IXMLDGKodDocROVPD6_2ColumnList = interface;
+  IXMLDGKodAssignment6Column = interface;
+  IXMLDGKodAssignment6ColumnList = interface;
 
 { IXMLDeclarContent }
 
   IXMLDeclarContent = interface(IXMLNode)
-    ['{CAFF5F8D-C57C-4306-A67A-6068E429E593}']
+    ['{15A56CA2-AA71-49B2-8EE3-359A148D4C91}']
     { Property Accessors }
     function Get_DECLARHEAD: IXMLDHead;
     function Get_DECLARBODY: IXMLDBody;
@@ -54,7 +60,7 @@ type
 { IXMLDHead }
 
   IXMLDHead = interface(IXMLNode)
-    ['{B6A392F8-FFD2-4CE8-A08F-DA73EC33E8FE}']
+    ['{D81C864B-3E35-48F8-86DD-4DE6B3921BA9}']
     { Property Accessors }
     function Get_TIN: WideString;
     function Get_C_DOC: WideString;
@@ -109,7 +115,7 @@ type
 { IXMLLINKED_DOCS }
 
   IXMLLINKED_DOCS = interface(IXMLNodeCollection)
-    ['{17C424FE-01C3-46F4-9132-257A44B6C848}']
+    ['{5D62AE75-A8F5-4ABE-8708-5E7A241B9132}']
     { Property Accessors }
     function Get_DOC(Index: Integer): IXMLDOC;
     { Methods & Properties }
@@ -121,7 +127,7 @@ type
 { IXMLDOC }
 
   IXMLDOC = interface(IXMLNode)
-    ['{492683FD-6C55-4D6E-8073-D46B07D7ACDE}']
+    ['{B0513367-AD58-427A-94A5-5E835A08F17B}']
     { Property Accessors }
     function Get_NUM: LongWord;
     function Get_TYPE_: LongWord;
@@ -156,48 +162,55 @@ type
 { IXMLDBody }
 
   IXMLDBody = interface(IXMLNode)
-    ['{E0E2A5A9-05D0-4A57-8417-D2627920DF25}']
+    ['{4186A522-9A66-4E2C-9ABC-B1A3108363E2}']
     { Property Accessors }
     function Get_HZ: Integer;
     function Get_HZN: Integer;
     function Get_HNP: Int64;
     function Get_HZY: Integer;
-    function Get_HZKV: Integer;
     function Get_HZM: Integer;
+    function Get_HKV: Integer;
     function Get_HNAME: WideString;
     function Get_HNPDV: WideString;
     function Get_HNSPDV: Int64;
     function Get_T1RXXXXG1: IXMLIntColumnList;
     function Get_T1RXXXXG2D: IXMLDateColumnList;
     function Get_T1RXXXXG3S: IXMLStrColumnList;
-    function Get_T1RXXXXG4S: IXMLDGKodDocROVPD5_1ColumnList;
+    function Get_T1RXXXXG41S: IXMLDGKodTypeDoc6_1ColumnList;
+    function Get_T1RXXXXG42S: IXMLDGKodausesOperation6ColumnList;
+    function Get_T1RXXXXG43S: IXMLDGKodRectification6ColumnList;
     function Get_T1RXXXXG5S: IXMLStrColumnList;
-    function Get_T1RXXXXG6: IXMLIndTaxNumColumnList;
+    function Get_T1RXXXXG6: IXMLHIPNColumn0List;
     function Get_T1RXXXXG7: IXMLDecimal2ColumnList;
     function Get_T1RXXXXG8: IXMLDecimal2ColumnList;
     function Get_T1RXXXXG9: IXMLDecimal2ColumnList;
     function Get_T1RXXXXG10: IXMLDecimal2ColumnList;
     function Get_T1RXXXXG11: IXMLDecimal2ColumnList;
     function Get_T1RXXXXG12: IXMLDecimal2ColumnList;
+    function Get_T1RXXXXG13: IXMLDecimal2ColumnList;
     function Get_R011G7: WideString;
     function Get_R011G8: WideString;
     function Get_R011G9: WideString;
     function Get_R011G10: WideString;
     function Get_R011G11: WideString;
     function Get_R011G12: WideString;
+    function Get_R011G13: WideString;
     function Get_R012G7: WideString;
     function Get_R012G8: WideString;
     function Get_R012G9: WideString;
     function Get_R012G10: WideString;
     function Get_R012G11: WideString;
     function Get_R012G12: WideString;
+    function Get_R012G13: WideString;
     function Get_T2RXXXXG1: IXMLIntColumnList;
     function Get_T2RXXXXG2D: IXMLDateColumnList;
     function Get_T2RXXXXG3D: IXMLDateColumnList;
     function Get_T2RXXXXG4S: IXMLStrColumnList;
-    function Get_T2RXXXXG5S: IXMLDGKodDocROVPD5_2ColumnList;
+    function Get_T2RXXXXG51S: IXMLDGKodDocROVPD6_2ColumnList;
+    function Get_T2RXXXXG52S: IXMLDGKodAssignment6ColumnList;
+    function Get_T2RXXXXG53S: IXMLDGKodRectification6ColumnList;
     function Get_T2RXXXXG6S: IXMLStrColumnList;
-    function Get_T2RXXXXG7: IXMLIndTaxNumColumnList;
+    function Get_T2RXXXXG7: IXMLHIPNColumn0List;
     function Get_T2RXXXXG8: IXMLDecimal2ColumnList;
     function Get_T2RXXXXG9: IXMLDecimal2ColumnList;
     function Get_T2RXXXXG10: IXMLDecimal2ColumnList;
@@ -234,8 +247,8 @@ type
     procedure Set_HZN(Value: Integer);
     procedure Set_HNP(Value: Int64);
     procedure Set_HZY(Value: Integer);
-    procedure Set_HZKV(Value: Integer);
     procedure Set_HZM(Value: Integer);
+    procedure Set_HKV(Value: Integer);
     procedure Set_HNAME(Value: WideString);
     procedure Set_HNPDV(Value: WideString);
     procedure Set_HNSPDV(Value: Int64);
@@ -245,12 +258,14 @@ type
     procedure Set_R011G10(Value: WideString);
     procedure Set_R011G11(Value: WideString);
     procedure Set_R011G12(Value: WideString);
+    procedure Set_R011G13(Value: WideString);
     procedure Set_R012G7(Value: WideString);
     procedure Set_R012G8(Value: WideString);
     procedure Set_R012G9(Value: WideString);
     procedure Set_R012G10(Value: WideString);
     procedure Set_R012G11(Value: WideString);
     procedure Set_R012G12(Value: WideString);
+    procedure Set_R012G13(Value: WideString);
     procedure Set_R021G8(Value: WideString);
     procedure Set_R021G9(Value: WideString);
     procedure Set_R021G10(Value: WideString);
@@ -279,42 +294,49 @@ type
     property HZN: Integer read Get_HZN write Set_HZN;
     property HNP: Int64 read Get_HNP write Set_HNP;
     property HZY: Integer read Get_HZY write Set_HZY;
-    property HZKV: Integer read Get_HZKV write Set_HZKV;
     property HZM: Integer read Get_HZM write Set_HZM;
+    property HKV: Integer read Get_HKV write Set_HKV;
     property HNAME: WideString read Get_HNAME write Set_HNAME;
     property HNPDV: WideString read Get_HNPDV write Set_HNPDV;
     property HNSPDV: Int64 read Get_HNSPDV write Set_HNSPDV;
     property T1RXXXXG1: IXMLIntColumnList read Get_T1RXXXXG1;
     property T1RXXXXG2D: IXMLDateColumnList read Get_T1RXXXXG2D;
     property T1RXXXXG3S: IXMLStrColumnList read Get_T1RXXXXG3S;
-    property T1RXXXXG4S: IXMLDGKodDocROVPD5_1ColumnList read Get_T1RXXXXG4S;
+    property T1RXXXXG41S: IXMLDGKodTypeDoc6_1ColumnList read Get_T1RXXXXG41S;
+    property T1RXXXXG42S: IXMLDGKodausesOperation6ColumnList read Get_T1RXXXXG42S;
+    property T1RXXXXG43S: IXMLDGKodRectification6ColumnList read Get_T1RXXXXG43S;
     property T1RXXXXG5S: IXMLStrColumnList read Get_T1RXXXXG5S;
-    property T1RXXXXG6: IXMLIndTaxNumColumnList read Get_T1RXXXXG6;
+    property T1RXXXXG6: IXMLHIPNColumn0List read Get_T1RXXXXG6;
     property T1RXXXXG7: IXMLDecimal2ColumnList read Get_T1RXXXXG7;
     property T1RXXXXG8: IXMLDecimal2ColumnList read Get_T1RXXXXG8;
     property T1RXXXXG9: IXMLDecimal2ColumnList read Get_T1RXXXXG9;
     property T1RXXXXG10: IXMLDecimal2ColumnList read Get_T1RXXXXG10;
     property T1RXXXXG11: IXMLDecimal2ColumnList read Get_T1RXXXXG11;
     property T1RXXXXG12: IXMLDecimal2ColumnList read Get_T1RXXXXG12;
+    property T1RXXXXG13: IXMLDecimal2ColumnList read Get_T1RXXXXG13;
     property R011G7: WideString read Get_R011G7 write Set_R011G7;
     property R011G8: WideString read Get_R011G8 write Set_R011G8;
     property R011G9: WideString read Get_R011G9 write Set_R011G9;
     property R011G10: WideString read Get_R011G10 write Set_R011G10;
     property R011G11: WideString read Get_R011G11 write Set_R011G11;
     property R011G12: WideString read Get_R011G12 write Set_R011G12;
+    property R011G13: WideString read Get_R011G13 write Set_R011G13;
     property R012G7: WideString read Get_R012G7 write Set_R012G7;
     property R012G8: WideString read Get_R012G8 write Set_R012G8;
     property R012G9: WideString read Get_R012G9 write Set_R012G9;
     property R012G10: WideString read Get_R012G10 write Set_R012G10;
     property R012G11: WideString read Get_R012G11 write Set_R012G11;
     property R012G12: WideString read Get_R012G12 write Set_R012G12;
+    property R012G13: WideString read Get_R012G13 write Set_R012G13;
     property T2RXXXXG1: IXMLIntColumnList read Get_T2RXXXXG1;
     property T2RXXXXG2D: IXMLDateColumnList read Get_T2RXXXXG2D;
     property T2RXXXXG3D: IXMLDateColumnList read Get_T2RXXXXG3D;
     property T2RXXXXG4S: IXMLStrColumnList read Get_T2RXXXXG4S;
-    property T2RXXXXG5S: IXMLDGKodDocROVPD5_2ColumnList read Get_T2RXXXXG5S;
+    property T2RXXXXG51S: IXMLDGKodDocROVPD6_2ColumnList read Get_T2RXXXXG51S;
+    property T2RXXXXG52S: IXMLDGKodAssignment6ColumnList read Get_T2RXXXXG52S;
+    property T2RXXXXG53S: IXMLDGKodRectification6ColumnList read Get_T2RXXXXG53S;
     property T2RXXXXG6S: IXMLStrColumnList read Get_T2RXXXXG6S;
-    property T2RXXXXG7: IXMLIndTaxNumColumnList read Get_T2RXXXXG7;
+    property T2RXXXXG7: IXMLHIPNColumn0List read Get_T2RXXXXG7;
     property T2RXXXXG8: IXMLDecimal2ColumnList read Get_T2RXXXXG8;
     property T2RXXXXG9: IXMLDecimal2ColumnList read Get_T2RXXXXG9;
     property T2RXXXXG10: IXMLDecimal2ColumnList read Get_T2RXXXXG10;
@@ -352,7 +374,7 @@ type
 { IXMLIntColumn }
 
   IXMLIntColumn = interface(IXMLNode)
-    ['{43DE03EB-55FA-428B-B705-5A60D66CA5C2}']
+    ['{6E573E06-E6BA-4F01-8243-91A2C9425E05}']
     { Property Accessors }
     function Get_ROWNUM: Integer;
     procedure Set_ROWNUM(Value: Integer);
@@ -363,7 +385,7 @@ type
 { IXMLIntColumnList }
 
   IXMLIntColumnList = interface(IXMLNodeCollection)
-    ['{608164E2-C43C-473D-9A23-37030D290D01}']
+    ['{BA7331EF-8A5B-4403-924F-8536D4DA2AD2}']
     { Methods & Properties }
     function Add: IXMLIntColumn;
     function Insert(const Index: Integer): IXMLIntColumn;
@@ -374,7 +396,7 @@ type
 { IXMLDateColumn }
 
   IXMLDateColumn = interface(IXMLNode)
-    ['{E198580B-654E-4408-BC45-CD9D89A6303C}']
+    ['{A2FAA152-0076-4B1E-8DC5-FDDA74E77848}']
     { Property Accessors }
     function Get_ROWNUM: Integer;
     procedure Set_ROWNUM(Value: Integer);
@@ -385,7 +407,7 @@ type
 { IXMLDateColumnList }
 
   IXMLDateColumnList = interface(IXMLNodeCollection)
-    ['{2769190D-3825-4BFE-8425-A834F42A6CBD}']
+    ['{8952538C-B28F-42F4-B414-6613100A4E21}']
     { Methods & Properties }
     function Add: IXMLDateColumn;
     function Insert(const Index: Integer): IXMLDateColumn;
@@ -396,7 +418,7 @@ type
 { IXMLStrColumn }
 
   IXMLStrColumn = interface(IXMLNode)
-    ['{546F92FD-3A7B-4DD4-AF14-93A8487AA7E3}']
+    ['{462DE955-9801-474E-B033-8146BDC59DEA}']
     { Property Accessors }
     function Get_ROWNUM: Integer;
     procedure Set_ROWNUM(Value: Integer);
@@ -407,7 +429,7 @@ type
 { IXMLStrColumnList }
 
   IXMLStrColumnList = interface(IXMLNodeCollection)
-    ['{D4786BFD-0F3C-4FEA-A4E9-94B08DAACFE7}']
+    ['{BFF50D5F-E53C-44E2-A846-52E93EC06581}']
     { Methods & Properties }
     function Add: IXMLStrColumn;
     function Insert(const Index: Integer): IXMLStrColumn;
@@ -415,10 +437,10 @@ type
     property Items[Index: Integer]: IXMLStrColumn read Get_Item; default;
   end;
 
-{ IXMLDGKodDocROVPD5_1Column }
+{ IXMLDGKodTypeDoc6_1Column }
 
-  IXMLDGKodDocROVPD5_1Column = interface(IXMLNode)
-    ['{D4E762F0-F092-464E-9114-E1A377A49BBC}']
+  IXMLDGKodTypeDoc6_1Column = interface(IXMLNode)
+    ['{CD707330-4F09-4EE6-AA55-4D06B60EE009}']
     { Property Accessors }
     function Get_ROWNUM: Integer;
     procedure Set_ROWNUM(Value: Integer);
@@ -426,21 +448,21 @@ type
     property ROWNUM: Integer read Get_ROWNUM write Set_ROWNUM;
   end;
 
-{ IXMLDGKodDocROVPD5_1ColumnList }
+{ IXMLDGKodTypeDoc6_1ColumnList }
 
-  IXMLDGKodDocROVPD5_1ColumnList = interface(IXMLNodeCollection)
-    ['{B66A714B-F744-4697-AD1A-4C5A8B520BBA}']
+  IXMLDGKodTypeDoc6_1ColumnList = interface(IXMLNodeCollection)
+    ['{C0C29C5C-08C8-4267-87EF-EA62777E3EF4}']
     { Methods & Properties }
-    function Add: IXMLDGKodDocROVPD5_1Column;
-    function Insert(const Index: Integer): IXMLDGKodDocROVPD5_1Column;
-    function Get_Item(Index: Integer): IXMLDGKodDocROVPD5_1Column;
-    property Items[Index: Integer]: IXMLDGKodDocROVPD5_1Column read Get_Item; default;
+    function Add: IXMLDGKodTypeDoc6_1Column;
+    function Insert(const Index: Integer): IXMLDGKodTypeDoc6_1Column;
+    function Get_Item(Index: Integer): IXMLDGKodTypeDoc6_1Column;
+    property Items[Index: Integer]: IXMLDGKodTypeDoc6_1Column read Get_Item; default;
   end;
 
-{ IXMLIndTaxNumColumn }
+{ IXMLDGKodausesOperation6Column }
 
-  IXMLIndTaxNumColumn = interface(IXMLNode)
-    ['{F4F534EB-3855-4A75-82D5-826C3798DA4D}']
+  IXMLDGKodausesOperation6Column = interface(IXMLNode)
+    ['{84A1E964-0B59-46FD-844E-82D20BC1BB80}']
     { Property Accessors }
     function Get_ROWNUM: Integer;
     procedure Set_ROWNUM(Value: Integer);
@@ -448,21 +470,65 @@ type
     property ROWNUM: Integer read Get_ROWNUM write Set_ROWNUM;
   end;
 
-{ IXMLIndTaxNumColumnList }
+{ IXMLDGKodausesOperation6ColumnList }
 
-  IXMLIndTaxNumColumnList = interface(IXMLNodeCollection)
-    ['{138CA924-1480-4EAA-8EE4-744DFFEA3E79}']
+  IXMLDGKodausesOperation6ColumnList = interface(IXMLNodeCollection)
+    ['{E45F981F-FEE4-42D0-B5A9-2708602187FD}']
     { Methods & Properties }
-    function Add: IXMLIndTaxNumColumn;
-    function Insert(const Index: Integer): IXMLIndTaxNumColumn;
-    function Get_Item(Index: Integer): IXMLIndTaxNumColumn;
-    property Items[Index: Integer]: IXMLIndTaxNumColumn read Get_Item; default;
+    function Add: IXMLDGKodausesOperation6Column;
+    function Insert(const Index: Integer): IXMLDGKodausesOperation6Column;
+    function Get_Item(Index: Integer): IXMLDGKodausesOperation6Column;
+    property Items[Index: Integer]: IXMLDGKodausesOperation6Column read Get_Item; default;
+  end;
+
+{ IXMLDGKodRectification6Column }
+
+  IXMLDGKodRectification6Column = interface(IXMLNode)
+    ['{0A049477-0D2B-4C71-8D62-C6B8EED06FD1}']
+    { Property Accessors }
+    function Get_ROWNUM: Integer;
+    procedure Set_ROWNUM(Value: Integer);
+    { Methods & Properties }
+    property ROWNUM: Integer read Get_ROWNUM write Set_ROWNUM;
+  end;
+
+{ IXMLDGKodRectification6ColumnList }
+
+  IXMLDGKodRectification6ColumnList = interface(IXMLNodeCollection)
+    ['{7741AD4E-35D4-466F-810D-1984CC2927B4}']
+    { Methods & Properties }
+    function Add: IXMLDGKodRectification6Column;
+    function Insert(const Index: Integer): IXMLDGKodRectification6Column;
+    function Get_Item(Index: Integer): IXMLDGKodRectification6Column;
+    property Items[Index: Integer]: IXMLDGKodRectification6Column read Get_Item; default;
+  end;
+
+{ IXMLHIPNColumn0 }
+
+  IXMLHIPNColumn0 = interface(IXMLNode)
+    ['{611F9970-4A4E-4D92-9028-C64873109709}']
+    { Property Accessors }
+    function Get_ROWNUM: Integer;
+    procedure Set_ROWNUM(Value: Integer);
+    { Methods & Properties }
+    property ROWNUM: Integer read Get_ROWNUM write Set_ROWNUM;
+  end;
+
+{ IXMLHIPNColumn0List }
+
+  IXMLHIPNColumn0List = interface(IXMLNodeCollection)
+    ['{D74DD805-E7A8-4825-9594-91C974A3F986}']
+    { Methods & Properties }
+    function Add: IXMLHIPNColumn0;
+    function Insert(const Index: Integer): IXMLHIPNColumn0;
+    function Get_Item(Index: Integer): IXMLHIPNColumn0;
+    property Items[Index: Integer]: IXMLHIPNColumn0 read Get_Item; default;
   end;
 
 { IXMLDecimal2Column }
 
   IXMLDecimal2Column = interface(IXMLNode)
-    ['{C955CB80-157F-4514-9FAB-66897C9A74E7}']
+    ['{56A1747F-4EB1-4C36-8BA8-47E610A1B3A1}']
     { Property Accessors }
     function Get_ROWNUM: Integer;
     procedure Set_ROWNUM(Value: Integer);
@@ -473,7 +539,7 @@ type
 { IXMLDecimal2ColumnList }
 
   IXMLDecimal2ColumnList = interface(IXMLNodeCollection)
-    ['{104EF0AA-42E3-4280-AF2F-FEF813D6284F}']
+    ['{DA444FB4-E201-47FC-ABAC-33A4CDB1D43F}']
     { Methods & Properties }
     function Add: IXMLDecimal2Column;
     function Insert(const Index: Integer): IXMLDecimal2Column;
@@ -481,10 +547,10 @@ type
     property Items[Index: Integer]: IXMLDecimal2Column read Get_Item; default;
   end;
 
-{ IXMLDGKodDocROVPD5_2Column }
+{ IXMLDGKodDocROVPD6_2Column }
 
-  IXMLDGKodDocROVPD5_2Column = interface(IXMLNode)
-    ['{3044EA3B-2FC2-4454-A799-A70EECD7C0C9}']
+  IXMLDGKodDocROVPD6_2Column = interface(IXMLNode)
+    ['{4B20D1A6-620F-4B64-B3A4-7E49067E4408}']
     { Property Accessors }
     function Get_ROWNUM: Integer;
     procedure Set_ROWNUM(Value: Integer);
@@ -492,15 +558,37 @@ type
     property ROWNUM: Integer read Get_ROWNUM write Set_ROWNUM;
   end;
 
-{ IXMLDGKodDocROVPD5_2ColumnList }
+{ IXMLDGKodDocROVPD6_2ColumnList }
 
-  IXMLDGKodDocROVPD5_2ColumnList = interface(IXMLNodeCollection)
-    ['{D29EA8E6-1E18-445D-8E38-57DBCD83FC6E}']
+  IXMLDGKodDocROVPD6_2ColumnList = interface(IXMLNodeCollection)
+    ['{4581814C-E86D-4C58-A185-0A39CB4D9F62}']
     { Methods & Properties }
-    function Add: IXMLDGKodDocROVPD5_2Column;
-    function Insert(const Index: Integer): IXMLDGKodDocROVPD5_2Column;
-    function Get_Item(Index: Integer): IXMLDGKodDocROVPD5_2Column;
-    property Items[Index: Integer]: IXMLDGKodDocROVPD5_2Column read Get_Item; default;
+    function Add: IXMLDGKodDocROVPD6_2Column;
+    function Insert(const Index: Integer): IXMLDGKodDocROVPD6_2Column;
+    function Get_Item(Index: Integer): IXMLDGKodDocROVPD6_2Column;
+    property Items[Index: Integer]: IXMLDGKodDocROVPD6_2Column read Get_Item; default;
+  end;
+
+{ IXMLDGKodAssignment6Column }
+
+  IXMLDGKodAssignment6Column = interface(IXMLNode)
+    ['{C1B2A001-C518-4D35-98A7-CACBC80AEFD1}']
+    { Property Accessors }
+    function Get_ROWNUM: Integer;
+    procedure Set_ROWNUM(Value: Integer);
+    { Methods & Properties }
+    property ROWNUM: Integer read Get_ROWNUM write Set_ROWNUM;
+  end;
+
+{ IXMLDGKodAssignment6ColumnList }
+
+  IXMLDGKodAssignment6ColumnList = interface(IXMLNodeCollection)
+    ['{B1C8A82C-8241-41B6-98DB-FCD4FCAF661E}']
+    { Methods & Properties }
+    function Add: IXMLDGKodAssignment6Column;
+    function Insert(const Index: Integer): IXMLDGKodAssignment6Column;
+    function Get_Item(Index: Integer): IXMLDGKodAssignment6Column;
+    property Items[Index: Integer]: IXMLDGKodAssignment6Column read Get_Item; default;
   end;
 
 { Forward Decls }
@@ -516,14 +604,20 @@ type
   TXMLDateColumnList = class;
   TXMLStrColumn = class;
   TXMLStrColumnList = class;
-  TXMLDGKodDocROVPD5_1Column = class;
-  TXMLDGKodDocROVPD5_1ColumnList = class;
-  TXMLIndTaxNumColumn = class;
-  TXMLIndTaxNumColumnList = class;
+  TXMLDGKodTypeDoc6_1Column = class;
+  TXMLDGKodTypeDoc6_1ColumnList = class;
+  TXMLDGKodausesOperation6Column = class;
+  TXMLDGKodausesOperation6ColumnList = class;
+  TXMLDGKodRectification6Column = class;
+  TXMLDGKodRectification6ColumnList = class;
+  TXMLHIPNColumn0 = class;
+  TXMLHIPNColumn0List = class;
   TXMLDecimal2Column = class;
   TXMLDecimal2ColumnList = class;
-  TXMLDGKodDocROVPD5_2Column = class;
-  TXMLDGKodDocROVPD5_2ColumnList = class;
+  TXMLDGKodDocROVPD6_2Column = class;
+  TXMLDGKodDocROVPD6_2ColumnList = class;
+  TXMLDGKodAssignment6Column = class;
+  TXMLDGKodAssignment6ColumnList = class;
 
 { TXMLDeclarContent }
 
@@ -620,22 +714,27 @@ type
     FT1RXXXXG1: IXMLIntColumnList;
     FT1RXXXXG2D: IXMLDateColumnList;
     FT1RXXXXG3S: IXMLStrColumnList;
-    FT1RXXXXG4S: IXMLDGKodDocROVPD5_1ColumnList;
+    FT1RXXXXG41S: IXMLDGKodTypeDoc6_1ColumnList;
+    FT1RXXXXG42S: IXMLDGKodausesOperation6ColumnList;
+    FT1RXXXXG43S: IXMLDGKodRectification6ColumnList;
     FT1RXXXXG5S: IXMLStrColumnList;
-    FT1RXXXXG6: IXMLIndTaxNumColumnList;
+    FT1RXXXXG6: IXMLHIPNColumn0List;
     FT1RXXXXG7: IXMLDecimal2ColumnList;
     FT1RXXXXG8: IXMLDecimal2ColumnList;
     FT1RXXXXG9: IXMLDecimal2ColumnList;
     FT1RXXXXG10: IXMLDecimal2ColumnList;
     FT1RXXXXG11: IXMLDecimal2ColumnList;
     FT1RXXXXG12: IXMLDecimal2ColumnList;
+    FT1RXXXXG13: IXMLDecimal2ColumnList;
     FT2RXXXXG1: IXMLIntColumnList;
     FT2RXXXXG2D: IXMLDateColumnList;
     FT2RXXXXG3D: IXMLDateColumnList;
     FT2RXXXXG4S: IXMLStrColumnList;
-    FT2RXXXXG5S: IXMLDGKodDocROVPD5_2ColumnList;
+    FT2RXXXXG51S: IXMLDGKodDocROVPD6_2ColumnList;
+    FT2RXXXXG52S: IXMLDGKodAssignment6ColumnList;
+    FT2RXXXXG53S: IXMLDGKodRectification6ColumnList;
     FT2RXXXXG6S: IXMLStrColumnList;
-    FT2RXXXXG7: IXMLIndTaxNumColumnList;
+    FT2RXXXXG7: IXMLHIPNColumn0List;
     FT2RXXXXG8: IXMLDecimal2ColumnList;
     FT2RXXXXG9: IXMLDecimal2ColumnList;
     FT2RXXXXG10: IXMLDecimal2ColumnList;
@@ -651,42 +750,49 @@ type
     function Get_HZN: Integer;
     function Get_HNP: Int64;
     function Get_HZY: Integer;
-    function Get_HZKV: Integer;
     function Get_HZM: Integer;
+    function Get_HKV: Integer;
     function Get_HNAME: WideString;
     function Get_HNPDV: WideString;
     function Get_HNSPDV: Int64;
     function Get_T1RXXXXG1: IXMLIntColumnList;
     function Get_T1RXXXXG2D: IXMLDateColumnList;
     function Get_T1RXXXXG3S: IXMLStrColumnList;
-    function Get_T1RXXXXG4S: IXMLDGKodDocROVPD5_1ColumnList;
+    function Get_T1RXXXXG41S: IXMLDGKodTypeDoc6_1ColumnList;
+    function Get_T1RXXXXG42S: IXMLDGKodausesOperation6ColumnList;
+    function Get_T1RXXXXG43S: IXMLDGKodRectification6ColumnList;
     function Get_T1RXXXXG5S: IXMLStrColumnList;
-    function Get_T1RXXXXG6: IXMLIndTaxNumColumnList;
+    function Get_T1RXXXXG6: IXMLHIPNColumn0List;
     function Get_T1RXXXXG7: IXMLDecimal2ColumnList;
     function Get_T1RXXXXG8: IXMLDecimal2ColumnList;
     function Get_T1RXXXXG9: IXMLDecimal2ColumnList;
     function Get_T1RXXXXG10: IXMLDecimal2ColumnList;
     function Get_T1RXXXXG11: IXMLDecimal2ColumnList;
     function Get_T1RXXXXG12: IXMLDecimal2ColumnList;
+    function Get_T1RXXXXG13: IXMLDecimal2ColumnList;
     function Get_R011G7: WideString;
     function Get_R011G8: WideString;
     function Get_R011G9: WideString;
     function Get_R011G10: WideString;
     function Get_R011G11: WideString;
     function Get_R011G12: WideString;
+    function Get_R011G13: WideString;
     function Get_R012G7: WideString;
     function Get_R012G8: WideString;
     function Get_R012G9: WideString;
     function Get_R012G10: WideString;
     function Get_R012G11: WideString;
     function Get_R012G12: WideString;
+    function Get_R012G13: WideString;
     function Get_T2RXXXXG1: IXMLIntColumnList;
     function Get_T2RXXXXG2D: IXMLDateColumnList;
     function Get_T2RXXXXG3D: IXMLDateColumnList;
     function Get_T2RXXXXG4S: IXMLStrColumnList;
-    function Get_T2RXXXXG5S: IXMLDGKodDocROVPD5_2ColumnList;
+    function Get_T2RXXXXG51S: IXMLDGKodDocROVPD6_2ColumnList;
+    function Get_T2RXXXXG52S: IXMLDGKodAssignment6ColumnList;
+    function Get_T2RXXXXG53S: IXMLDGKodRectification6ColumnList;
     function Get_T2RXXXXG6S: IXMLStrColumnList;
-    function Get_T2RXXXXG7: IXMLIndTaxNumColumnList;
+    function Get_T2RXXXXG7: IXMLHIPNColumn0List;
     function Get_T2RXXXXG8: IXMLDecimal2ColumnList;
     function Get_T2RXXXXG9: IXMLDecimal2ColumnList;
     function Get_T2RXXXXG10: IXMLDecimal2ColumnList;
@@ -723,8 +829,8 @@ type
     procedure Set_HZN(Value: Integer);
     procedure Set_HNP(Value: Int64);
     procedure Set_HZY(Value: Integer);
-    procedure Set_HZKV(Value: Integer);
     procedure Set_HZM(Value: Integer);
+    procedure Set_HKV(Value: Integer);
     procedure Set_HNAME(Value: WideString);
     procedure Set_HNPDV(Value: WideString);
     procedure Set_HNSPDV(Value: Int64);
@@ -734,12 +840,14 @@ type
     procedure Set_R011G10(Value: WideString);
     procedure Set_R011G11(Value: WideString);
     procedure Set_R011G12(Value: WideString);
+    procedure Set_R011G13(Value: WideString);
     procedure Set_R012G7(Value: WideString);
     procedure Set_R012G8(Value: WideString);
     procedure Set_R012G9(Value: WideString);
     procedure Set_R012G10(Value: WideString);
     procedure Set_R012G11(Value: WideString);
     procedure Set_R012G12(Value: WideString);
+    procedure Set_R012G13(Value: WideString);
     procedure Set_R021G8(Value: WideString);
     procedure Set_R021G9(Value: WideString);
     procedure Set_R021G10(Value: WideString);
@@ -824,42 +932,80 @@ type
     function Get_Item(Index: Integer): IXMLStrColumn;
   end;
 
-{ TXMLDGKodDocROVPD5_1Column }
+{ TXMLDGKodTypeDoc6_1Column }
 
-  TXMLDGKodDocROVPD5_1Column = class(TXMLNode, IXMLDGKodDocROVPD5_1Column)
+  TXMLDGKodTypeDoc6_1Column = class(TXMLNode, IXMLDGKodTypeDoc6_1Column)
   protected
-    { IXMLDGKodDocROVPD5_1Column }
+    { IXMLDGKodTypeDoc6_1Column }
     function Get_ROWNUM: Integer;
     procedure Set_ROWNUM(Value: Integer);
   end;
 
-{ TXMLDGKodDocROVPD5_1ColumnList }
+{ TXMLDGKodTypeDoc6_1ColumnList }
 
-  TXMLDGKodDocROVPD5_1ColumnList = class(TXMLNodeCollection, IXMLDGKodDocROVPD5_1ColumnList)
+  TXMLDGKodTypeDoc6_1ColumnList = class(TXMLNodeCollection, IXMLDGKodTypeDoc6_1ColumnList)
   protected
-    { IXMLDGKodDocROVPD5_1ColumnList }
-    function Add: IXMLDGKodDocROVPD5_1Column;
-    function Insert(const Index: Integer): IXMLDGKodDocROVPD5_1Column;
-    function Get_Item(Index: Integer): IXMLDGKodDocROVPD5_1Column;
+    { IXMLDGKodTypeDoc6_1ColumnList }
+    function Add: IXMLDGKodTypeDoc6_1Column;
+    function Insert(const Index: Integer): IXMLDGKodTypeDoc6_1Column;
+    function Get_Item(Index: Integer): IXMLDGKodTypeDoc6_1Column;
   end;
 
-{ TXMLIndTaxNumColumn }
+{ TXMLDGKodausesOperation6Column }
 
-  TXMLIndTaxNumColumn = class(TXMLNode, IXMLIndTaxNumColumn)
+  TXMLDGKodausesOperation6Column = class(TXMLNode, IXMLDGKodausesOperation6Column)
   protected
-    { IXMLIndTaxNumColumn }
+    { IXMLDGKodausesOperation6Column }
     function Get_ROWNUM: Integer;
     procedure Set_ROWNUM(Value: Integer);
   end;
 
-{ TXMLIndTaxNumColumnList }
+{ TXMLDGKodausesOperation6ColumnList }
 
-  TXMLIndTaxNumColumnList = class(TXMLNodeCollection, IXMLIndTaxNumColumnList)
+  TXMLDGKodausesOperation6ColumnList = class(TXMLNodeCollection, IXMLDGKodausesOperation6ColumnList)
   protected
-    { IXMLIndTaxNumColumnList }
-    function Add: IXMLIndTaxNumColumn;
-    function Insert(const Index: Integer): IXMLIndTaxNumColumn;
-    function Get_Item(Index: Integer): IXMLIndTaxNumColumn;
+    { IXMLDGKodausesOperation6ColumnList }
+    function Add: IXMLDGKodausesOperation6Column;
+    function Insert(const Index: Integer): IXMLDGKodausesOperation6Column;
+    function Get_Item(Index: Integer): IXMLDGKodausesOperation6Column;
+  end;
+
+{ TXMLDGKodRectification6Column }
+
+  TXMLDGKodRectification6Column = class(TXMLNode, IXMLDGKodRectification6Column)
+  protected
+    { IXMLDGKodRectification6Column }
+    function Get_ROWNUM: Integer;
+    procedure Set_ROWNUM(Value: Integer);
+  end;
+
+{ TXMLDGKodRectification6ColumnList }
+
+  TXMLDGKodRectification6ColumnList = class(TXMLNodeCollection, IXMLDGKodRectification6ColumnList)
+  protected
+    { IXMLDGKodRectification6ColumnList }
+    function Add: IXMLDGKodRectification6Column;
+    function Insert(const Index: Integer): IXMLDGKodRectification6Column;
+    function Get_Item(Index: Integer): IXMLDGKodRectification6Column;
+  end;
+
+{ TXMLHIPNColumn0 }
+
+  TXMLHIPNColumn0 = class(TXMLNode, IXMLHIPNColumn0)
+  protected
+    { IXMLHIPNColumn0 }
+    function Get_ROWNUM: Integer;
+    procedure Set_ROWNUM(Value: Integer);
+  end;
+
+{ TXMLHIPNColumn0List }
+
+  TXMLHIPNColumn0List = class(TXMLNodeCollection, IXMLHIPNColumn0List)
+  protected
+    { IXMLHIPNColumn0List }
+    function Add: IXMLHIPNColumn0;
+    function Insert(const Index: Integer): IXMLHIPNColumn0;
+    function Get_Item(Index: Integer): IXMLHIPNColumn0;
   end;
 
 { TXMLDecimal2Column }
@@ -881,23 +1027,42 @@ type
     function Get_Item(Index: Integer): IXMLDecimal2Column;
   end;
 
-{ TXMLDGKodDocROVPD5_2Column }
+{ TXMLDGKodDocROVPD6_2Column }
 
-  TXMLDGKodDocROVPD5_2Column = class(TXMLNode, IXMLDGKodDocROVPD5_2Column)
+  TXMLDGKodDocROVPD6_2Column = class(TXMLNode, IXMLDGKodDocROVPD6_2Column)
   protected
-    { IXMLDGKodDocROVPD5_2Column }
+    { IXMLDGKodDocROVPD6_2Column }
     function Get_ROWNUM: Integer;
     procedure Set_ROWNUM(Value: Integer);
   end;
 
-{ TXMLDGKodDocROVPD5_2ColumnList }
+{ TXMLDGKodDocROVPD6_2ColumnList }
 
-  TXMLDGKodDocROVPD5_2ColumnList = class(TXMLNodeCollection, IXMLDGKodDocROVPD5_2ColumnList)
+  TXMLDGKodDocROVPD6_2ColumnList = class(TXMLNodeCollection, IXMLDGKodDocROVPD6_2ColumnList)
   protected
-    { IXMLDGKodDocROVPD5_2ColumnList }
-    function Add: IXMLDGKodDocROVPD5_2Column;
-    function Insert(const Index: Integer): IXMLDGKodDocROVPD5_2Column;
-    function Get_Item(Index: Integer): IXMLDGKodDocROVPD5_2Column;
+    { IXMLDGKodDocROVPD6_2ColumnList }
+    function Add: IXMLDGKodDocROVPD6_2Column;
+    function Insert(const Index: Integer): IXMLDGKodDocROVPD6_2Column;
+    function Get_Item(Index: Integer): IXMLDGKodDocROVPD6_2Column;
+  end;
+
+{ TXMLDGKodAssignment6Column }
+
+  TXMLDGKodAssignment6Column = class(TXMLNode, IXMLDGKodAssignment6Column)
+  protected
+    { IXMLDGKodAssignment6Column }
+    function Get_ROWNUM: Integer;
+    procedure Set_ROWNUM(Value: Integer);
+  end;
+
+{ TXMLDGKodAssignment6ColumnList }
+
+  TXMLDGKodAssignment6ColumnList = class(TXMLNodeCollection, IXMLDGKodAssignment6ColumnList)
+  protected
+    { IXMLDGKodAssignment6ColumnList }
+    function Add: IXMLDGKodAssignment6Column;
+    function Insert(const Index: Integer): IXMLDGKodAssignment6Column;
+    function Get_Item(Index: Integer): IXMLDGKodAssignment6Column;
   end;
 
 { Global Functions }
@@ -1234,22 +1399,27 @@ begin
   RegisterChildNode('T1RXXXXG1', TXMLIntColumn);
   RegisterChildNode('T1RXXXXG2D', TXMLDateColumn);
   RegisterChildNode('T1RXXXXG3S', TXMLStrColumn);
-  RegisterChildNode('T1RXXXXG4S', TXMLDGKodDocROVPD5_1Column);
+  RegisterChildNode('T1RXXXXG41S', TXMLDGKodTypeDoc6_1Column);
+  RegisterChildNode('T1RXXXXG42S', TXMLDGKodausesOperation6Column);
+  RegisterChildNode('T1RXXXXG43S', TXMLDGKodRectification6Column);
   RegisterChildNode('T1RXXXXG5S', TXMLStrColumn);
-  RegisterChildNode('T1RXXXXG6', TXMLIndTaxNumColumn);
+  RegisterChildNode('T1RXXXXG6', TXMLHIPNColumn0);
   RegisterChildNode('T1RXXXXG7', TXMLDecimal2Column);
   RegisterChildNode('T1RXXXXG8', TXMLDecimal2Column);
   RegisterChildNode('T1RXXXXG9', TXMLDecimal2Column);
   RegisterChildNode('T1RXXXXG10', TXMLDecimal2Column);
   RegisterChildNode('T1RXXXXG11', TXMLDecimal2Column);
   RegisterChildNode('T1RXXXXG12', TXMLDecimal2Column);
+  RegisterChildNode('T1RXXXXG13', TXMLDecimal2Column);
   RegisterChildNode('T2RXXXXG1', TXMLIntColumn);
   RegisterChildNode('T2RXXXXG2D', TXMLDateColumn);
   RegisterChildNode('T2RXXXXG3D', TXMLDateColumn);
   RegisterChildNode('T2RXXXXG4S', TXMLStrColumn);
-  RegisterChildNode('T2RXXXXG5S', TXMLDGKodDocROVPD5_2Column);
+  RegisterChildNode('T2RXXXXG51S', TXMLDGKodDocROVPD6_2Column);
+  RegisterChildNode('T2RXXXXG52S', TXMLDGKodAssignment6Column);
+  RegisterChildNode('T2RXXXXG53S', TXMLDGKodRectification6Column);
   RegisterChildNode('T2RXXXXG6S', TXMLStrColumn);
-  RegisterChildNode('T2RXXXXG7', TXMLIndTaxNumColumn);
+  RegisterChildNode('T2RXXXXG7', TXMLHIPNColumn0);
   RegisterChildNode('T2RXXXXG8', TXMLDecimal2Column);
   RegisterChildNode('T2RXXXXG9', TXMLDecimal2Column);
   RegisterChildNode('T2RXXXXG10', TXMLDecimal2Column);
@@ -1262,22 +1432,27 @@ begin
   FT1RXXXXG1 := CreateCollection(TXMLIntColumnList, IXMLIntColumn, 'T1RXXXXG1') as IXMLIntColumnList;
   FT1RXXXXG2D := CreateCollection(TXMLDateColumnList, IXMLDateColumn, 'T1RXXXXG2D') as IXMLDateColumnList;
   FT1RXXXXG3S := CreateCollection(TXMLStrColumnList, IXMLStrColumn, 'T1RXXXXG3S') as IXMLStrColumnList;
-  FT1RXXXXG4S := CreateCollection(TXMLDGKodDocROVPD5_1ColumnList, IXMLDGKodDocROVPD5_1Column, 'T1RXXXXG4S') as IXMLDGKodDocROVPD5_1ColumnList;
+  FT1RXXXXG41S := CreateCollection(TXMLDGKodTypeDoc6_1ColumnList, IXMLDGKodTypeDoc6_1Column, 'T1RXXXXG41S') as IXMLDGKodTypeDoc6_1ColumnList;
+  FT1RXXXXG42S := CreateCollection(TXMLDGKodausesOperation6ColumnList, IXMLDGKodausesOperation6Column, 'T1RXXXXG42S') as IXMLDGKodausesOperation6ColumnList;
+  FT1RXXXXG43S := CreateCollection(TXMLDGKodRectification6ColumnList, IXMLDGKodRectification6Column, 'T1RXXXXG43S') as IXMLDGKodRectification6ColumnList;
   FT1RXXXXG5S := CreateCollection(TXMLStrColumnList, IXMLStrColumn, 'T1RXXXXG5S') as IXMLStrColumnList;
-  FT1RXXXXG6 := CreateCollection(TXMLIndTaxNumColumnList, IXMLIndTaxNumColumn, 'T1RXXXXG6') as IXMLIndTaxNumColumnList;
+  FT1RXXXXG6 := CreateCollection(TXMLHIPNColumn0List, IXMLHIPNColumn0, 'T1RXXXXG6') as IXMLHIPNColumn0List;
   FT1RXXXXG7 := CreateCollection(TXMLDecimal2ColumnList, IXMLDecimal2Column, 'T1RXXXXG7') as IXMLDecimal2ColumnList;
   FT1RXXXXG8 := CreateCollection(TXMLDecimal2ColumnList, IXMLDecimal2Column, 'T1RXXXXG8') as IXMLDecimal2ColumnList;
   FT1RXXXXG9 := CreateCollection(TXMLDecimal2ColumnList, IXMLDecimal2Column, 'T1RXXXXG9') as IXMLDecimal2ColumnList;
   FT1RXXXXG10 := CreateCollection(TXMLDecimal2ColumnList, IXMLDecimal2Column, 'T1RXXXXG10') as IXMLDecimal2ColumnList;
   FT1RXXXXG11 := CreateCollection(TXMLDecimal2ColumnList, IXMLDecimal2Column, 'T1RXXXXG11') as IXMLDecimal2ColumnList;
   FT1RXXXXG12 := CreateCollection(TXMLDecimal2ColumnList, IXMLDecimal2Column, 'T1RXXXXG12') as IXMLDecimal2ColumnList;
+  FT1RXXXXG13 := CreateCollection(TXMLDecimal2ColumnList, IXMLDecimal2Column, 'T1RXXXXG13') as IXMLDecimal2ColumnList;
   FT2RXXXXG1 := CreateCollection(TXMLIntColumnList, IXMLIntColumn, 'T2RXXXXG1') as IXMLIntColumnList;
   FT2RXXXXG2D := CreateCollection(TXMLDateColumnList, IXMLDateColumn, 'T2RXXXXG2D') as IXMLDateColumnList;
   FT2RXXXXG3D := CreateCollection(TXMLDateColumnList, IXMLDateColumn, 'T2RXXXXG3D') as IXMLDateColumnList;
   FT2RXXXXG4S := CreateCollection(TXMLStrColumnList, IXMLStrColumn, 'T2RXXXXG4S') as IXMLStrColumnList;
-  FT2RXXXXG5S := CreateCollection(TXMLDGKodDocROVPD5_2ColumnList, IXMLDGKodDocROVPD5_2Column, 'T2RXXXXG5S') as IXMLDGKodDocROVPD5_2ColumnList;
+  FT2RXXXXG51S := CreateCollection(TXMLDGKodDocROVPD6_2ColumnList, IXMLDGKodDocROVPD6_2Column, 'T2RXXXXG51S') as IXMLDGKodDocROVPD6_2ColumnList;
+  FT2RXXXXG52S := CreateCollection(TXMLDGKodAssignment6ColumnList, IXMLDGKodAssignment6Column, 'T2RXXXXG52S') as IXMLDGKodAssignment6ColumnList;
+  FT2RXXXXG53S := CreateCollection(TXMLDGKodRectification6ColumnList, IXMLDGKodRectification6Column, 'T2RXXXXG53S') as IXMLDGKodRectification6ColumnList;
   FT2RXXXXG6S := CreateCollection(TXMLStrColumnList, IXMLStrColumn, 'T2RXXXXG6S') as IXMLStrColumnList;
-  FT2RXXXXG7 := CreateCollection(TXMLIndTaxNumColumnList, IXMLIndTaxNumColumn, 'T2RXXXXG7') as IXMLIndTaxNumColumnList;
+  FT2RXXXXG7 := CreateCollection(TXMLHIPNColumn0List, IXMLHIPNColumn0, 'T2RXXXXG7') as IXMLHIPNColumn0List;
   FT2RXXXXG8 := CreateCollection(TXMLDecimal2ColumnList, IXMLDecimal2Column, 'T2RXXXXG8') as IXMLDecimal2ColumnList;
   FT2RXXXXG9 := CreateCollection(TXMLDecimal2ColumnList, IXMLDecimal2Column, 'T2RXXXXG9') as IXMLDecimal2ColumnList;
   FT2RXXXXG10 := CreateCollection(TXMLDecimal2ColumnList, IXMLDecimal2Column, 'T2RXXXXG10') as IXMLDecimal2ColumnList;
@@ -1330,16 +1505,6 @@ begin
   ChildNodes['HZY'].NodeValue := Value;
 end;
 
-function TXMLDBody.Get_HZKV: Integer;
-begin
-  Result := ChildNodes['HZKV'].NodeValue;
-end;
-
-procedure TXMLDBody.Set_HZKV(Value: Integer);
-begin
-  ChildNodes['HZKV'].NodeValue := Value;
-end;
-
 function TXMLDBody.Get_HZM: Integer;
 begin
   Result := ChildNodes['HZM'].NodeValue;
@@ -1348,6 +1513,16 @@ end;
 procedure TXMLDBody.Set_HZM(Value: Integer);
 begin
   ChildNodes['HZM'].NodeValue := Value;
+end;
+
+function TXMLDBody.Get_HKV: Integer;
+begin
+  Result := ChildNodes['HKV'].NodeValue;
+end;
+
+procedure TXMLDBody.Set_HKV(Value: Integer);
+begin
+  ChildNodes['HKV'].NodeValue := Value;
 end;
 
 function TXMLDBody.Get_HNAME: WideString;
@@ -1395,9 +1570,19 @@ begin
   Result := FT1RXXXXG3S;
 end;
 
-function TXMLDBody.Get_T1RXXXXG4S: IXMLDGKodDocROVPD5_1ColumnList;
+function TXMLDBody.Get_T1RXXXXG41S: IXMLDGKodTypeDoc6_1ColumnList;
 begin
-  Result := FT1RXXXXG4S;
+  Result := FT1RXXXXG41S;
+end;
+
+function TXMLDBody.Get_T1RXXXXG42S: IXMLDGKodausesOperation6ColumnList;
+begin
+  Result := FT1RXXXXG42S;
+end;
+
+function TXMLDBody.Get_T1RXXXXG43S: IXMLDGKodRectification6ColumnList;
+begin
+  Result := FT1RXXXXG43S;
 end;
 
 function TXMLDBody.Get_T1RXXXXG5S: IXMLStrColumnList;
@@ -1405,7 +1590,7 @@ begin
   Result := FT1RXXXXG5S;
 end;
 
-function TXMLDBody.Get_T1RXXXXG6: IXMLIndTaxNumColumnList;
+function TXMLDBody.Get_T1RXXXXG6: IXMLHIPNColumn0List;
 begin
   Result := FT1RXXXXG6;
 end;
@@ -1438,6 +1623,11 @@ end;
 function TXMLDBody.Get_T1RXXXXG12: IXMLDecimal2ColumnList;
 begin
   Result := FT1RXXXXG12;
+end;
+
+function TXMLDBody.Get_T1RXXXXG13: IXMLDecimal2ColumnList;
+begin
+  Result := FT1RXXXXG13;
 end;
 
 function TXMLDBody.Get_R011G7: WideString;
@@ -1500,6 +1690,16 @@ begin
   ChildNodes['R011G12'].NodeValue := Value;
 end;
 
+function TXMLDBody.Get_R011G13: WideString;
+begin
+  Result := ChildNodes['R011G13'].Text;
+end;
+
+procedure TXMLDBody.Set_R011G13(Value: WideString);
+begin
+  ChildNodes['R011G13'].NodeValue := Value;
+end;
+
 function TXMLDBody.Get_R012G7: WideString;
 begin
   Result := ChildNodes['R012G7'].Text;
@@ -1560,6 +1760,16 @@ begin
   ChildNodes['R012G12'].NodeValue := Value;
 end;
 
+function TXMLDBody.Get_R012G13: WideString;
+begin
+  Result := ChildNodes['R012G13'].Text;
+end;
+
+procedure TXMLDBody.Set_R012G13(Value: WideString);
+begin
+  ChildNodes['R012G13'].NodeValue := Value;
+end;
+
 function TXMLDBody.Get_T2RXXXXG1: IXMLIntColumnList;
 begin
   Result := FT2RXXXXG1;
@@ -1580,9 +1790,19 @@ begin
   Result := FT2RXXXXG4S;
 end;
 
-function TXMLDBody.Get_T2RXXXXG5S: IXMLDGKodDocROVPD5_2ColumnList;
+function TXMLDBody.Get_T2RXXXXG51S: IXMLDGKodDocROVPD6_2ColumnList;
 begin
-  Result := FT2RXXXXG5S;
+  Result := FT2RXXXXG51S;
+end;
+
+function TXMLDBody.Get_T2RXXXXG52S: IXMLDGKodAssignment6ColumnList;
+begin
+  Result := FT2RXXXXG52S;
+end;
+
+function TXMLDBody.Get_T2RXXXXG53S: IXMLDGKodRectification6ColumnList;
+begin
+  Result := FT2RXXXXG53S;
 end;
 
 function TXMLDBody.Get_T2RXXXXG6S: IXMLStrColumnList;
@@ -1590,7 +1810,7 @@ begin
   Result := FT2RXXXXG6S;
 end;
 
-function TXMLDBody.Get_T2RXXXXG7: IXMLIndTaxNumColumnList;
+function TXMLDBody.Get_T2RXXXXG7: IXMLHIPNColumn0List;
 begin
   Result := FT2RXXXXG7;
 end;
@@ -1954,60 +2174,116 @@ begin
   Result := List[Index] as IXMLStrColumn;
 end;
 
-{ TXMLDGKodDocROVPD5_1Column }
+{ TXMLDGKodTypeDoc6_1Column }
 
-function TXMLDGKodDocROVPD5_1Column.Get_ROWNUM: Integer;
+function TXMLDGKodTypeDoc6_1Column.Get_ROWNUM: Integer;
 begin
   Result := AttributeNodes['ROWNUM'].NodeValue;
 end;
 
-procedure TXMLDGKodDocROVPD5_1Column.Set_ROWNUM(Value: Integer);
+procedure TXMLDGKodTypeDoc6_1Column.Set_ROWNUM(Value: Integer);
 begin
   SetAttribute('ROWNUM', Value);
 end;
 
-{ TXMLDGKodDocROVPD5_1ColumnList }
+{ TXMLDGKodTypeDoc6_1ColumnList }
 
-function TXMLDGKodDocROVPD5_1ColumnList.Add: IXMLDGKodDocROVPD5_1Column;
+function TXMLDGKodTypeDoc6_1ColumnList.Add: IXMLDGKodTypeDoc6_1Column;
 begin
-  Result := AddItem(-1) as IXMLDGKodDocROVPD5_1Column;
+  Result := AddItem(-1) as IXMLDGKodTypeDoc6_1Column;
 end;
 
-function TXMLDGKodDocROVPD5_1ColumnList.Insert(const Index: Integer): IXMLDGKodDocROVPD5_1Column;
+function TXMLDGKodTypeDoc6_1ColumnList.Insert(const Index: Integer): IXMLDGKodTypeDoc6_1Column;
 begin
-  Result := AddItem(Index) as IXMLDGKodDocROVPD5_1Column;
+  Result := AddItem(Index) as IXMLDGKodTypeDoc6_1Column;
 end;
-function TXMLDGKodDocROVPD5_1ColumnList.Get_Item(Index: Integer): IXMLDGKodDocROVPD5_1Column;
+function TXMLDGKodTypeDoc6_1ColumnList.Get_Item(Index: Integer): IXMLDGKodTypeDoc6_1Column;
 begin
-  Result := List[Index] as IXMLDGKodDocROVPD5_1Column;
+  Result := List[Index] as IXMLDGKodTypeDoc6_1Column;
 end;
 
-{ TXMLIndTaxNumColumn }
+{ TXMLDGKodausesOperation6Column }
 
-function TXMLIndTaxNumColumn.Get_ROWNUM: Integer;
+function TXMLDGKodausesOperation6Column.Get_ROWNUM: Integer;
 begin
   Result := AttributeNodes['ROWNUM'].NodeValue;
 end;
 
-procedure TXMLIndTaxNumColumn.Set_ROWNUM(Value: Integer);
+procedure TXMLDGKodausesOperation6Column.Set_ROWNUM(Value: Integer);
 begin
   SetAttribute('ROWNUM', Value);
 end;
 
-{ TXMLIndTaxNumColumnList }
+{ TXMLDGKodausesOperation6ColumnList }
 
-function TXMLIndTaxNumColumnList.Add: IXMLIndTaxNumColumn;
+function TXMLDGKodausesOperation6ColumnList.Add: IXMLDGKodausesOperation6Column;
 begin
-  Result := AddItem(-1) as IXMLIndTaxNumColumn;
+  Result := AddItem(-1) as IXMLDGKodausesOperation6Column;
 end;
 
-function TXMLIndTaxNumColumnList.Insert(const Index: Integer): IXMLIndTaxNumColumn;
+function TXMLDGKodausesOperation6ColumnList.Insert(const Index: Integer): IXMLDGKodausesOperation6Column;
 begin
-  Result := AddItem(Index) as IXMLIndTaxNumColumn;
+  Result := AddItem(Index) as IXMLDGKodausesOperation6Column;
 end;
-function TXMLIndTaxNumColumnList.Get_Item(Index: Integer): IXMLIndTaxNumColumn;
+function TXMLDGKodausesOperation6ColumnList.Get_Item(Index: Integer): IXMLDGKodausesOperation6Column;
 begin
-  Result := List[Index] as IXMLIndTaxNumColumn;
+  Result := List[Index] as IXMLDGKodausesOperation6Column;
+end;
+
+{ TXMLDGKodRectification6Column }
+
+function TXMLDGKodRectification6Column.Get_ROWNUM: Integer;
+begin
+  Result := AttributeNodes['ROWNUM'].NodeValue;
+end;
+
+procedure TXMLDGKodRectification6Column.Set_ROWNUM(Value: Integer);
+begin
+  SetAttribute('ROWNUM', Value);
+end;
+
+{ TXMLDGKodRectification6ColumnList }
+
+function TXMLDGKodRectification6ColumnList.Add: IXMLDGKodRectification6Column;
+begin
+  Result := AddItem(-1) as IXMLDGKodRectification6Column;
+end;
+
+function TXMLDGKodRectification6ColumnList.Insert(const Index: Integer): IXMLDGKodRectification6Column;
+begin
+  Result := AddItem(Index) as IXMLDGKodRectification6Column;
+end;
+function TXMLDGKodRectification6ColumnList.Get_Item(Index: Integer): IXMLDGKodRectification6Column;
+begin
+  Result := List[Index] as IXMLDGKodRectification6Column;
+end;
+
+{ TXMLHIPNColumn0 }
+
+function TXMLHIPNColumn0.Get_ROWNUM: Integer;
+begin
+  Result := AttributeNodes['ROWNUM'].NodeValue;
+end;
+
+procedure TXMLHIPNColumn0.Set_ROWNUM(Value: Integer);
+begin
+  SetAttribute('ROWNUM', Value);
+end;
+
+{ TXMLHIPNColumn0List }
+
+function TXMLHIPNColumn0List.Add: IXMLHIPNColumn0;
+begin
+  Result := AddItem(-1) as IXMLHIPNColumn0;
+end;
+
+function TXMLHIPNColumn0List.Insert(const Index: Integer): IXMLHIPNColumn0;
+begin
+  Result := AddItem(Index) as IXMLHIPNColumn0;
+end;
+function TXMLHIPNColumn0List.Get_Item(Index: Integer): IXMLHIPNColumn0;
+begin
+  Result := List[Index] as IXMLHIPNColumn0;
 end;
 
 { TXMLDecimal2Column }
@@ -2038,32 +2314,60 @@ begin
   Result := List[Index] as IXMLDecimal2Column;
 end;
 
-{ TXMLDGKodDocROVPD5_2Column }
+{ TXMLDGKodDocROVPD6_2Column }
 
-function TXMLDGKodDocROVPD5_2Column.Get_ROWNUM: Integer;
+function TXMLDGKodDocROVPD6_2Column.Get_ROWNUM: Integer;
 begin
   Result := AttributeNodes['ROWNUM'].NodeValue;
 end;
 
-procedure TXMLDGKodDocROVPD5_2Column.Set_ROWNUM(Value: Integer);
+procedure TXMLDGKodDocROVPD6_2Column.Set_ROWNUM(Value: Integer);
 begin
   SetAttribute('ROWNUM', Value);
 end;
 
-{ TXMLDGKodDocROVPD5_2ColumnList }
+{ TXMLDGKodDocROVPD6_2ColumnList }
 
-function TXMLDGKodDocROVPD5_2ColumnList.Add: IXMLDGKodDocROVPD5_2Column;
+function TXMLDGKodDocROVPD6_2ColumnList.Add: IXMLDGKodDocROVPD6_2Column;
 begin
-  Result := AddItem(-1) as IXMLDGKodDocROVPD5_2Column;
+  Result := AddItem(-1) as IXMLDGKodDocROVPD6_2Column;
 end;
 
-function TXMLDGKodDocROVPD5_2ColumnList.Insert(const Index: Integer): IXMLDGKodDocROVPD5_2Column;
+function TXMLDGKodDocROVPD6_2ColumnList.Insert(const Index: Integer): IXMLDGKodDocROVPD6_2Column;
 begin
-  Result := AddItem(Index) as IXMLDGKodDocROVPD5_2Column;
+  Result := AddItem(Index) as IXMLDGKodDocROVPD6_2Column;
 end;
-function TXMLDGKodDocROVPD5_2ColumnList.Get_Item(Index: Integer): IXMLDGKodDocROVPD5_2Column;
+function TXMLDGKodDocROVPD6_2ColumnList.Get_Item(Index: Integer): IXMLDGKodDocROVPD6_2Column;
 begin
-  Result := List[Index] as IXMLDGKodDocROVPD5_2Column;
+  Result := List[Index] as IXMLDGKodDocROVPD6_2Column;
+end;
+
+{ TXMLDGKodAssignment6Column }
+
+function TXMLDGKodAssignment6Column.Get_ROWNUM: Integer;
+begin
+  Result := AttributeNodes['ROWNUM'].NodeValue;
+end;
+
+procedure TXMLDGKodAssignment6Column.Set_ROWNUM(Value: Integer);
+begin
+  SetAttribute('ROWNUM', Value);
+end;
+
+{ TXMLDGKodAssignment6ColumnList }
+
+function TXMLDGKodAssignment6ColumnList.Add: IXMLDGKodAssignment6Column;
+begin
+  Result := AddItem(-1) as IXMLDGKodAssignment6Column;
+end;
+
+function TXMLDGKodAssignment6ColumnList.Insert(const Index: Integer): IXMLDGKodAssignment6Column;
+begin
+  Result := AddItem(Index) as IXMLDGKodAssignment6Column;
+end;
+function TXMLDGKodAssignment6ColumnList.Get_Item(Index: Integer): IXMLDGKodAssignment6Column;
+begin
+  Result := List[Index] as IXMLDGKodAssignment6Column;
 end;
 
 end. 

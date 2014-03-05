@@ -201,7 +201,8 @@ uses
   RepNNaklXml in 'RepNNaklXml.pas' {frmRepNnaklXml},
   J0215104 in 'J0215104.pas',
   J1201506 in 'J1201506.pas',
-  J1201005 in 'J1201005.pas';
+  J1201005 in 'J1201005.pas',
+  J1201507 in 'J1201507.pas';
 
 {$R *.RES}
 begin
