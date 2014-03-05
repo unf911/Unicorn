@@ -21,7 +21,7 @@ uses
   SettingsPlugin, //TfmSettingPlugin
   untSettings, xmldom,
   XMLIntf, msxmldom, XMLDoc,
-  J1201004, UnfFilter,  // IXMLDeclarContent
+  J1201005, UnfFilter,  // IXMLDeclarContent
   XMLHelper, PropFilerEh, PropStorageEh;
 
 const KlientTipExport: integer = 1;
@@ -270,7 +270,7 @@ begin
     TIN:=GetOKPO;
     C_DOC:='J12';
     C_DOC_SUB:='010';
-    C_DOC_VER:='4';//
+    C_DOC_VER:='5';//
     C_DOC_TYPE:=0;//тип документа. 0-основной
     C_DOC_CNT := GetNumDocZaPeriod; //номер документа за период = номеру налоговой
     C_REG:=GetOblastKod;//15;//код области
@@ -417,22 +417,6 @@ begin
     HTELSEL := cdIzg.tel;
     HTELBUY := cdZak.tel;
 
-    try
-      XMLDeclarContent.DECLARBODY.HNSPDVSEL :=strtoint64(cdIzg.svreg);
-    except
-      on EConvertError do begin
-        XMLDeclarContent.DECLARBODY.HNSPDVSEL := 0;
-      end;
-    end;
-
-    try
-      HNSPDVBUY := strtoint64(cdZak.svreg);
-    except
-      on EConvertError do begin
-        HNSPDVBUY := 0;
-      end;
-    end;
-
     H01G1S := cdsNnakl.FieldByName('tip_dogovora').AsString;
     H01G2D := FormatDateTime('ddmmyyyy', dsNNakl.FieldByName('dat_dogovora').AsDateTime);
     H01G3S := cdsNnakl.FieldByName('nomer_dogovora').AsString;
@@ -473,7 +457,7 @@ begin
     FormatFloat('00', GetOblastKod ) +
     FormatFloat('00', GetRajonKod ) +
     FormatFloat('0000000000',strtoint(GetOKPO)) +
-    'J1201004'+'100'+
+    'J1201005'+'100'+
     FormatFloat('0000000', GetNumDocZaPeriod ) +
     '1' +
     FormatFloat('00', MonthOf(dat))+

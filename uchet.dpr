@@ -200,7 +200,8 @@ uses
   J0111901 in 'J0111901.pas',
   RepNNaklXml in 'RepNNaklXml.pas' {frmRepNnaklXml},
   J0215104 in 'J0215104.pas',
-  J1201506 in 'J1201506.pas';
+  J1201506 in 'J1201506.pas',
+  J1201005 in 'J1201005.pas';
 
 {$R *.RES}
 begin
