@@ -10,7 +10,8 @@ uses
   ActnList, //TActionList
   Menus, //TMainMenu
   frxClass,
-  frxDesgn
+  frxDesgn,
+  untEx
 
   ;
 
@@ -55,7 +56,7 @@ var
   DesignerMenuItem : TMenuItem;
   ReportDesigerProxy: TReportDesigerProxy;
 begin
-  if inIDE then begin
+  if ((inIDE) or (dmdEx.GetUser='SYSDBA')) then begin
     ReportDesigerProxy:= TReportDesigerProxy.Create(frNaklr);
     actDesigner := TAction.Create(ActionList1);
     actDesigner.ActionList := ActionList1;

@@ -235,9 +235,11 @@ type
     cdsNakloREYS_POKUPATEL_PLATIT: TIntegerField;
     Curr2StrUA1: TCurr2StrUA;
     frNaklr2: TfrxReport;
-    frNaklr: TfrxReport;
     frxRichObject1: TfrxRichObject;
+    cdsNakloREYS_NOMER_PRAV: TStringField;
+    cdsNakloREYS_VID_PEREVOZOK: TStringField;
     frTtn: TfrxReport;
+    frNaklr: TfrxReport;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure actSettingsExecute(Sender: TObject);
     procedure dbgNaklrDblClick(Sender: TObject);
@@ -316,6 +318,7 @@ type
       Shift: TShiftState);
     procedure actPreviewTtnExecute(Sender: TObject);
     procedure frNaklrBeginDoc(Sender: TObject);
+    procedure frTtnBeginDoc(Sender: TObject);
 
   private
     curSum : currency;
@@ -332,6 +335,7 @@ type
     slDover : TStringList;
     Rect2 : TRect;
  		cdIzg : TClientDetail;
+    cdZak : TClientDetail;
     procedure MakeNakl (intSchet : integer);
     function GetOrientation :integer;
     procedure Order;
@@ -339,7 +343,9 @@ type
     procedure ProcessSettings(ProcessOnlySecurityMeasures:boolean=false);
     procedure ProcessShowDeleted;
     procedure FillSettings;
+    procedure CurrToStrInit;
     function GetDefXozOper: integer;
+
 
   public
     { Public declarations }
@@ -643,7 +649,14 @@ begin
   if AnsiUpperCase(ParName)='I_ADRP' then begin
     ParValue := cdIZG.adrp;
   end;
-
+  if AnsiUpperCase(ParName)='Z_ADRP' then begin
+    ParValue := cdZAK.adrp;
+  end; //if parname
+  if AnsiUpperCase(ParName)='NDS_SUMA_TTN' then begin
+    ParValue :=dsNaklo.DataSet.FieldByName('nds').AsCurrency /
+      (1+ dsNaklo.DataSet.FieldByName('nalog_nds').AsFloat) *
+      dsNaklo.DataSet.FieldByName('nalog_nds').AsFloat;
+  end;
 end;
 
 procedure TfrmNaklr.actCreateSpecifExecute(Sender: TObject);
@@ -1035,9 +1048,7 @@ try
     actPost.Execute;
   end;
   MonthToStrInitUa;
-  Curr2StrUA1.Active := false;
-  Curr2StrUA1.Summa := dsNaklo.DataSet.FieldByName('nds').AsCurrency;
-  Curr2StrUA1.Active := true;
+  CurrToStrInit;
   if (GetOrientation = 0) then begin
     dmdEx.GetReport('Naklr.fr3',frNaklr);
     frNaklr.PrepareReport;
@@ -1063,9 +1074,7 @@ begin
     actPost.Execute;
   end;
   MonthToStrInitUa;
-  Curr2StrUA1.Active := false;
-  Curr2StrUA1.Summa := dsNaklo.DataSet.FieldByName('nds').AsCurrency;
-  Curr2StrUA1.Active := true;
+  CurrToStrInit;
   curSum := SumRecount(dsNaklo.Dataset,dsNaklot.Dataset);
   if (GetOrientation = 0) then begin
     dmdEx.GetReport('Naklr.fr3',frNaklr);
@@ -1406,16 +1415,30 @@ end;
 
 procedure TfrmNaklr.actPreviewTtnExecute(Sender: TObject);
 begin
+  CurrToStrInit;
   MonthToStrInitUa;
-  dmdEx.GetReport('Ttn.fr3',frTtn);
+  dmdEx.GetReport('Ttn_140506.fr3',frTtn);
   frTtn.PrintOptions.ShowDialog := true;
   frTtn.PrepareReport;
   frTtn.ShowReport;
 end;    
 
+procedure TfrmNaklr.CurrToStrInit;
+begin
+  Curr2StrUA1.Active := false;
+  Curr2StrUA1.Summa := dsNaklo.DataSet.FieldByName('nds').AsCurrency;
+  Curr2StrUA1.Active := true;
+end;
+
 procedure TfrmNaklr.frNaklrBeginDoc(Sender: TObject);
 begin
   cdIzg :=  dmdEx.GetClientDetail(cdsNaklo.FieldByName('id_izg').asInteger);
+end;
+
+procedure TfrmNaklr.frTtnBeginDoc(Sender: TObject);
+begin
+  cdIzg :=  dmdEx.GetClientDetail(cdsNaklo.FieldByName('id_izg').asInteger);
+  cdZak :=  dmdEx.GetClientDetail(cdsNaklo.FieldByName('id_zak').asInteger);
 end;
 
 end.

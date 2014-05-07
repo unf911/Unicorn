@@ -39,6 +39,10 @@ type
     dneCena: TDBNumberEditEh;
     Label8: TLabel;
     dbeComment: TDBEdit;
+    dbeNomerPrav: TDBEdit;
+    Label9: TLabel;
+    Label10: TLabel;
+    dbeVidPerevozok: TDBEdit;
     procedure actOkExecute(Sender: TObject);
     procedure actCancelExecute(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);

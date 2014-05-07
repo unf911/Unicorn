@@ -67,6 +67,10 @@ type
     cdsSkladCENA_REYSA: TFMTBCDField;
     sdsSkladCOMMENT: TStringField;
     cdsSkladCOMMENT: TStringField;
+    sdsSkladNOMER_PRAV: TStringField;
+    sdsSkladVID_PEREVOZOK: TStringField;
+    cdsSkladNOMER_PRAV: TStringField;
+    cdsSkladVID_PEREVOZOK: TStringField;
     procedure btnDeleteClick(Sender: TObject);
     procedure btnInsertClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -241,6 +245,7 @@ try
   DataSet.FieldByName('pokupatel_platit').AsInteger := 0;
   DataSet.FieldByName('cena_reysa').AsFloat := 0;
   DataSet.FieldByName('delmarked').asInteger := 0;
+  DataSet.FieldByName('vid_perevozok').AsString := 'авто';
 except
   AssertInternal('294D416F-A6E1-4B2E-8A52-59D36EEFAEF6');
 end;

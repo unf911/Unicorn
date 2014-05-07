@@ -26,6 +26,7 @@ object dmdEx: TdmdEx
       'User_Name=sysdba'
       'WaitOnLocks=True')
     VendorLib = 'fbclient.dll'
+    Connected = True
     Left = 24
     Top = 9
   end
@@ -1864,11 +1865,11 @@ object dmdEx: TdmdEx
       'select '#13#10'  o.id_perevozchik,'#13#10'  o.fio_voditelya,'#13#10'  o.dat_reys,'#13 +
       #10'  o.punkt_zagruzki,'#13#10'  v.punkt_vygruzki,'#13#10'  o.nomer_avto,'#13#10'  o.' +
       'nomer_pritsepa,'#13#10'  o.delmarked,'#13#10'  o.POKUPATEL_PLATIT,'#13#10'  v.id_v' +
-      'ygruzka'#13#10'from'#13#10'  SPR_REYS_VW o inner join SPR_VYGRUZKA_VW v on'#13#10 +
-      '    o.id_reys=v.id_reys'#13#10'where o.dat_reys between incdate(curren' +
-      't_timestamp,0,0,-1) and incdate(current_timestamp,0,1,0) and'#13#10'  ' +
-      'o.delmarked=0 and v.delmarked=0'#13#10'order by'#13#10'  o.dat_reys desc,'#13#10' ' +
-      ' o.nomer_avto'#13#10
+      'ygruzka,'#13#10'  o.nomer_prav,'#13#10'  o.vid_perevozok'#13#10'from'#13#10'  SPR_REYS_V' +
+      'W o inner join SPR_VYGRUZKA_VW v on'#13#10'    o.id_reys=v.id_reys'#13#10'wh' +
+      'ere o.dat_reys between incdate(current_timestamp,0,0,-1) and inc' +
+      'date(current_timestamp,0,1,0) and'#13#10'  o.delmarked=0 and v.delmark' +
+      'ed=0'#13#10'order by'#13#10'  o.dat_reys desc,'#13#10'  o.nomer_avto'#13#10
     MaxBlobSize = -1
     Params = <>
     SQLConnection = scUchet
@@ -1909,6 +1910,14 @@ object dmdEx: TdmdEx
     object sdsVygruzkaID_VYGRUZKA: TIntegerField
       FieldName = 'ID_VYGRUZKA'
       Required = True
+    end
+    object sdsVygruzkaNOMER_PRAV: TStringField
+      FieldName = 'NOMER_PRAV'
+      Size = 250
+    end
+    object sdsVygruzkaVID_PEREVOZOK: TStringField
+      FieldName = 'VID_PEREVOZOK'
+      Size = 250
     end
   end
   object dsVygruzka: TDataSource
@@ -1981,6 +1990,14 @@ object dmdEx: TdmdEx
     object cdsVygruzkaID_VYGRUZKA: TIntegerField
       FieldName = 'ID_VYGRUZKA'
       Required = True
+    end
+    object cdsVygruzkaNOMER_PRAV: TStringField
+      FieldName = 'NOMER_PRAV'
+      Size = 250
+    end
+    object cdsVygruzkaVID_PEREVOZOK: TStringField
+      FieldName = 'VID_PEREVOZOK'
+      Size = 250
     end
   end
   object dspVygruzka: TDataSetProvider

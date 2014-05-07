@@ -294,6 +294,10 @@ type
     cdsVygruzkaPOKUPATEL_PLATIT: TSmallintField;
     cdsVygruzkaID_VYGRUZKA: TIntegerField;
     cdsPostID_PRICE: TIntegerField;
+    sdsVygruzkaNOMER_PRAV: TStringField;
+    sdsVygruzkaVID_PEREVOZOK: TStringField;
+    cdsVygruzkaNOMER_PRAV: TStringField;
+    cdsVygruzkaVID_PEREVOZOK: TStringField;
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);
 //    procedure scUchetBeforeConnect(Sender: TObject);

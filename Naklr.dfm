@@ -607,7 +607,6 @@ object frmNaklr: TfrmNaklr
       FieldName = 'NDS'
       Required = True
       Precision = 15
-      Size = 8
     end
     object sdsNakloDELMARKED: TSmallintField
       FieldName = 'DELMARKED'
@@ -1092,6 +1091,24 @@ object frmNaklr: TfrmNaklr
       KeyFields = 'ID_VYGRUZKA'
       Lookup = True
     end
+    object cdsNakloREYS_NOMER_PRAV: TStringField
+      FieldKind = fkLookup
+      FieldName = 'REYS_NOMER_PRAV'
+      LookupDataSet = dmdEx.cdsVygruzka
+      LookupKeyFields = 'ID_VYGRUZKA'
+      LookupResultField = 'NOMER_PRAV'
+      KeyFields = 'ID_VYGRUZKA'
+      Lookup = True
+    end
+    object cdsNakloREYS_VID_PEREVOZOK: TStringField
+      FieldKind = fkLookup
+      FieldName = 'REYS_VID_PEREVOZOK'
+      LookupDataSet = dmdEx.cdsVygruzka
+      LookupKeyFields = 'ID_VYGRUZKA'
+      LookupResultField = 'VID_PEREVOZOK'
+      KeyFields = 'ID_VYGRUZKA'
+      Lookup = True
+    end
   end
   object dsNaklo: TDataSource
     DataSet = cdsNaklo
@@ -1189,12 +1206,10 @@ object frmNaklr: TfrmNaklr
     object sdsNaklotCENA: TFMTBCDField
       FieldName = 'CENA'
       Precision = 15
-      Size = 8
     end
     object sdsNaklotKOLOTP: TFMTBCDField
       FieldName = 'KOLOTP'
       Precision = 15
-      Size = 8
     end
   end
   object dspNaklot: TDataSetProvider
@@ -1277,7 +1292,6 @@ object frmNaklr: TfrmNaklr
       DisplayFormat = '0.00'
       EditFormat = '0.00'
       Precision = 15
-      Size = 8
     end
     object cdsNaklotCENANDS: TFloatField
       DisplayLabel = #1062#1077#1085#1072' '#1089' '#1053#1044#1057
@@ -1296,7 +1310,6 @@ object frmNaklr: TfrmNaklr
       DisplayFormat = '0.000'
       EditFormat = '0.000'
       Precision = 15
-      Size = 8
     end
     object cdsNaklotSUMA: TFloatField
       DisplayLabel = #1057#1091#1084#1084#1072
@@ -1436,57 +1449,34 @@ object frmNaklr: TfrmNaklr
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
     PreviewOptions.Zoom = 1.000000000000000000
     PrintOptions.Printer = 'Default'
-    ReportOptions.CreateDate = 38982.467101585700000000
-    ReportOptions.LastChange = 41435.031026273150000000
+    ReportOptions.CreateDate = 38985.429628182900000000
+    ReportOptions.LastChange = 41505.334809803200000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
-      'procedure Memo19OnBeforePrint(Sender: TfrxComponent);'
+      'procedure Memo31OnBeforePrint(Sender: TfrxComponent);'
       'begin'
-      '  with Memo19, Engine do'
-      '  begin'
-      '    if <frdbNaklot."KOLOTP"> > 0 then'
-      '      Font.Color := clBlack'
-      '    else'
-      '      Font.Color := clWhite;'
+      '  with Memo31, Engine do begin'
+      '   if <frdbNaklot."KOLOTP"> > 0 then'
+      '     Font.Color := clBlack'
+      '   else'
+      '     Font.Color := clWhite;'
       '  end'
       'end;'
       ''
-      ''
-      ''
-      'procedure Memo20OnBeforePrint(Sender: TfrxComponent);'
+      'procedure Memo34OnBeforePrint(Sender: TfrxComponent);'
       'begin'
-      '  with Memo20, Engine do  begin'
-      '    if <frdbNaklot."KOLOTP"> > 0 then'
-      '      Font.Color := clBlack'
-      '    else'
-      '      Font.Color := clWhite;'
-      '  end'
-      'end;'
-      ''
-      'procedure Memo37OnBeforePrint(Sender: TfrxComponent);'
-      'begin'
-      '  with Memo37, Engine do begin'
-      '    if <frdbNaklot."KOLOTP"> > 0 then'
-      '      Font.Color := clBlack'
-      '    else'
-      '      Font.Color := clWhite;'
-      '  end'
-      'end;'
-      ''
-      'procedure Memo38OnBeforePrint(Sender: TfrxComponent);'
-      'begin'
-      '  with Memo38, Engine do begin'
-      '    if <frdbNaklot."KOLOTP"> > 0 then'
-      '      Font.Color := clBlack'
-      '    else'
-      '      Font.Color := clWhite;'
+      '  with Memo34, Engine do begin'
+      '   if <frdbNaklot."KOLOTP"> > 0 then'
+      '     Font.Color := clBlack'
+      '   else'
+      '     Font.Color := clWhite;'
       '  end'
       'end;'
       ''
       'begin'
+      ''
       'end.')
     StoreInDFM = False
-    OnBeginDoc = frNaklrBeginDoc
     OnGetValue = frNaklrGetValue
     Left = 328
     Top = 48
@@ -1513,7 +1503,7 @@ object frmNaklr: TfrmNaklr
         Value = Null
       end
       item
-        Name = 'I_IPN'
+        Name = 'I_OKPO'
         Value = Null
       end
       item
@@ -1525,7 +1515,7 @@ object frmNaklr: TfrmNaklr
         Value = Null
       end
       item
-        Name = 'Z_ADRP'
+        Name = 'New Variable1'
         Value = Null
       end>
     Style = <>
@@ -1583,12 +1573,10 @@ object frmNaklr: TfrmNaklr
     object FMTBCDField2: TFMTBCDField
       FieldName = 'CENA'
       Precision = 15
-      Size = 8
     end
     object FMTBCDField3: TFMTBCDField
       FieldName = 'KOLOTP'
       Precision = 15
-      Size = 8
     end
   end
   object sdsNaklrPost: TSQLDataSet
@@ -1639,12 +1627,10 @@ object frmNaklr: TfrmNaklr
     object FMTBCDField5: TFMTBCDField
       FieldName = 'CENA'
       Precision = 15
-      Size = 8
     end
     object FMTBCDField6: TFMTBCDField
       FieldName = 'KOLOTP'
       Precision = 15
-      Size = 8
     end
   end
   object ppmNaklr: TPopupMenu
@@ -1699,6 +1685,47 @@ object frmNaklr: TfrmNaklr
   object frdbNaklo: TfrxDBDataset
     UserName = 'frdbNaklo'
     CloseDataSource = False
+    FieldAliases.Strings = (
+      'ID=ID'
+      'DAT=DAT'
+      'IZG=IZG'
+      'ZAK=ZAK'
+      'MANAGER=MANAGER'
+      'KURS=KURS'
+      'NDS=NDS'
+      'NALOG_NDS=NALOG_NDS'
+      'POSTED=POSTED'
+      'BLOCKED=BLOCKED'
+      'DELMARKED=DELMARKED'
+      'DOV=DOV'
+      'DDO=DDO'
+      'LICO=LICO'
+      'FR=FR'
+      'SCH=SCH'
+      'ID_NAKL=ID_NAKL'
+      'ID_IZG=ID_IZG'
+      'ID_ZAK=ID_ZAK'
+      'ID_MANAGER=ID_MANAGER'
+      'ID_CURRENCY=ID_CURRENCY'
+      'IZGFULLNAME=IZGFULLNAME'
+      'ZAKFULLNAME=ZAKFULLNAME'
+      'SKLAD=SKLAD'
+      'ID_SKLAD=ID_SKLAD'
+      'ID_SKLAD_TO=ID_SKLAD_TO'
+      'VID_DOSTAVKI=VID_DOSTAVKI'
+      'ID_XOZ_OPER=ID_XOZ_OPER'
+      'XOZOPER=XOZOPER'
+      'ID_VYGRUZKA=ID_VYGRUZKA'
+      'REYS_NOMER_AVTO=REYS_NOMER_AVTO'
+      'REYS_FIO_VODITELYA=REYS_FIO_VODITELYA'
+      'REYS_DAT_REYS=REYS_DAT_REYS'
+      'REYS_PEREVOZCHIK=REYS_PEREVOZCHIK'
+      'REYS_PUNKT_ZAGRUZKI=REYS_PUNKT_ZAGRUZKI'
+      'REYS_PUNKT_VYGRUZKI=REYS_PUNKT_VYGRUZKI'
+      'REYS_NOMER_PRITSEPA=REYS_NOMER_PRITSEPA'
+      'REYS_POKUPATEL_PLATIT=REYS_POKUPATEL_PLATIT'
+      'REYS_NOMER_PRAV=REYS_NOMER_PRAV'
+      'REYS_VID_PEREVOZOK=REYS_VID_PEREVOZOK')
     DataSet = cdsNaklo
     Left = 392
     Top = 80
@@ -1794,12 +1821,10 @@ object frmNaklr: TfrmNaklr
     object FMTBCDField8: TFMTBCDField
       FieldName = 'CENA'
       Precision = 15
-      Size = 8
     end
     object FMTBCDField9: TFMTBCDField
       FieldName = 'KOLOTP'
       Precision = 15
-      Size = 8
     end
   end
   object ppmNaklrt: TPopupMenu
@@ -1864,13 +1889,14 @@ object frmNaklr: TfrmNaklr
     PreviewOptions.Zoom = 1.000000000000000000
     PrintOptions.Printer = 'Default'
     ReportOptions.CreateDate = 41663.681350335600000000
-    ReportOptions.LastChange = 41689.729306307870000000
+    ReportOptions.LastChange = 41689.765455636600000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       'begin'
       ''
       'end.')
     StoreInDFM = False
+    OnBeginDoc = frTtnBeginDoc
     OnGetValue = frNaklrGetValue
     Left = 264
     Top = 48

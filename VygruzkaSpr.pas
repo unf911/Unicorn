@@ -184,7 +184,7 @@ try
     dmdEx.GetGenValue('naklo_gen');
   DataSet.FieldByName('delmarked').asInteger := 0;
   DataSet.FieldByName('id_reys').asInteger := FIDReys;
-  DataSet.FieldByName('id_last').asInteger := 0;
+  DataSet.FieldByName('is_last').asInteger := 0;
 except
   AssertInternal('08E14B4A-27E3-4A8C-ADBC-240326840448');
 end;

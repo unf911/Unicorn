@@ -171,14 +171,25 @@ object frmReysSpr: TfrmReysSpr
         EditButtons = <>
         FieldName = 'COMMENT'
         Footers = <>
+      end
+      item
+        EditButtons = <>
+        FieldName = 'NOMER_PRAV'
+        Footers = <>
+      end
+      item
+        EditButtons = <>
+        FieldName = 'VID_PEREVOZOK'
+        Footers = <>
       end>
   end
   object sdsSklad: TSQLDataSet
     CommandText = 
       'select '#13#10'  id_reys,'#13#10'  id_perevozchik,'#13#10'  fio_voditelya,'#13#10'  dat_' +
       'reys,'#13#10'  punkt_zagruzki,'#13#10'  nomer_avto,'#13#10'  nomer_pritsepa,'#13#10'  PO' +
-      'KUPATEL_PLATIT,'#13#10'  CENA_REYSA,'#13#10'  delmarked,'#13#10'  comment'#13#10'from'#13#10' ' +
-      ' SPR_REYS_VW o'#13#10'order by'#13#10'  o.dat_reys,'#13#10'  o.nomer_avto'#13#10
+      'KUPATEL_PLATIT,'#13#10'  CENA_REYSA,'#13#10'  delmarked,'#13#10'  comment,'#13#10'  nome' +
+      'r_prav,'#13#10'  vid_perevozok'#13#10'from'#13#10'  SPR_REYS_VW o'#13#10'order by'#13#10'  o.d' +
+      'at_reys,'#13#10'  o.nomer_avto'#13#10
     MaxBlobSize = -1
     Params = <>
     SQLConnection = dmdEx.scUchet
@@ -225,6 +236,14 @@ object frmReysSpr: TfrmReysSpr
     object sdsSkladCOMMENT: TStringField
       FieldName = 'COMMENT'
       Size = 50
+    end
+    object sdsSkladNOMER_PRAV: TStringField
+      FieldName = 'NOMER_PRAV'
+      Size = 250
+    end
+    object sdsSkladVID_PEREVOZOK: TStringField
+      FieldName = 'VID_PEREVOZOK'
+      Size = 250
     end
   end
   object dspSklad: TDataSetProvider
@@ -313,6 +332,16 @@ object frmReysSpr: TfrmReysSpr
     end
     object cdsSkladDELMARKED: TSmallintField
       FieldName = 'DELMARKED'
+    end
+    object cdsSkladNOMER_PRAV: TStringField
+      DisplayLabel = #1053#1086#1084#1077#1088' '#1087#1088#1072#1074' '#1074#1086#1076#1080#1090#1077#1083#1103
+      DisplayWidth = 10
+      FieldName = 'NOMER_PRAV'
+    end
+    object cdsSkladVID_PEREVOZOK: TStringField
+      DisplayLabel = #1042#1080#1076' '#1087#1077#1088#1077#1074#1086#1079#1086#1082
+      DisplayWidth = 5
+      FieldName = 'VID_PEREVOZOK'
     end
   end
   object dsSklad: TDataSource
