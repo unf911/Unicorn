@@ -313,7 +313,7 @@ object frmSebestOstDet3: TfrmSebestOstDet3
     object cdsSklostdetSEBEST: TFloatField
       DisplayLabel = #1057'/'#1089', '#1091'.'#1077'.'
       FieldName = 'SEBEST'
-      DisplayFormat = '0.00'
+      DisplayFormat = '0.0000'
     end
     object cdsSklostdetCENA: TFloatField
       DisplayLabel = #1062#1077#1085#1072

@@ -403,7 +403,7 @@ object frmRepSkladFact: TfrmRepSkladFact
       'aving '#13#10'  (Round(sum(r.kolotp_before),3)<>0) or '#13#10'  (Round(sum(r' +
       '.debet_kolotp),3)<>0) or'#13#10'  (Round(sum(r.kredit_kolotp) ,3)<>0) ' +
       'or'#13#10'  (Round(sum(r.kolotp_after),3)<>0) or'#13#10'  (Round(sum(r.debet' +
-      'after),2)<>0) or'#13#10'  (Round(sum(r.kreditafter),2)<>0)'
+      'after),4)<>0) or'#13#10'  (Round(sum(r.kreditafter),4)<>0)'
     MaxBlobSize = -1
     Params = <
       item
@@ -656,22 +656,22 @@ object frmRepSkladFact: TfrmRepSkladFact
     object cdsRepDEBET: TFloatField
       DisplayLabel = #1044#1077#1073#1077#1090
       FieldName = 'DEBET'
-      DisplayFormat = '0.00'
+      DisplayFormat = '0.0000'
     end
     object cdsRepKREDIT: TFloatField
       DisplayLabel = #1050#1088#1077#1076#1080#1090
       FieldName = 'KREDIT'
-      DisplayFormat = '0.00'
+      DisplayFormat = '0.0000'
     end
     object cdsRepDEBETAFTER: TFloatField
       DisplayLabel = #1044#1077#1073#1077#1090' '#1085#1072' '#1082#1086#1085#1077#1094
       FieldName = 'DEBETAFTER'
-      DisplayFormat = '0.00'
+      DisplayFormat = '0.0000'
     end
     object cdsRepKREDITAFTER: TFloatField
       DisplayLabel = #1050#1088#1077#1076#1080#1090' '#1085#1072' '#1082#1086#1085#1077#1094
       FieldName = 'KREDITAFTER'
-      DisplayFormat = '0.00'
+      DisplayFormat = '0.0000'
     end
     object cdsRepKOLOTP_BEFORE: TFloatField
       DisplayLabel = #1050#1086#1083'-'#1074#1086' '#1085#1072' '#1085#1072#1095#1072#1083#1086
@@ -707,7 +707,7 @@ object frmRepSkladFact: TfrmRepSkladFact
       DisplayLabel = #1062#1077#1085#1072
       FieldKind = fkInternalCalc
       FieldName = 'CENA'
-      DisplayFormat = '0.00'
+      DisplayFormat = '0.0000'
     end
   end
   object dsRep: TDataSource

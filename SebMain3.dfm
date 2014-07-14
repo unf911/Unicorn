@@ -792,14 +792,14 @@ object frmSebMain3: TfrmSebMain3
       'select id_pos,id_nakld,id_tovar,id_sklad,tara,nalog_nds,'#13#10'  kurs' +
       ',kurs2,skidka,cena,kolotp,cena_sebest,'#13#10'  cena_grn, dat,'#13#10'  cena' +
       '_grn*(1+nalog_nds) as cena_grn_nds,'#13#10'  Round(cena_grn*(1+nalog_n' +
-      'ds),2)*kolotp as sum_grn_nds,'#13#10'  Round(cena_sebest*kolotp,2) as ' +
-      'ssum_ye_nds,'#13#10'  Round(cena_sebest*kurs2,2)*kolotp as nds_sebest,' +
-      '       Round(cena_grn*(1+nalog_nds),2)*kolotp -        Round(cen' +
-      'a_sebest*kurs2,2)*kolotp  as doxod,    100*dzero(   Round(cena_g' +
-      'rn*(1+nalog_nds),2)*kolotp -   Round(cena_sebest*kurs2,2)*kolotp' +
-      ', '#13#10'  Round(cena_sebest*kurs2,2)*kolotp, 0) as percent,'#13#10'  price' +
-      '_minus_18_compare,'#13#10'  id_analog '#13#10'from '#13#10'  rep_sebest4_rec_pc(:i' +
-      'd_nakl,null)'
+      'ds),2)*kolotp as sum_grn_nds,'#13#10'  Round(cena_sebest*kolotp,4) as ' +
+      'ssum_ye_nds,'#13#10'  Round(cena_sebest*kurs2,4)*kolotp as nds_sebest,' +
+      '       '#13#10'  Round(cena_grn*(1+nalog_nds),2)*kolotp - '#13#10'    Round(' +
+      'cena_sebest*kurs2,4)*kolotp  as doxod,    '#13#10'  100*dzero(   '#13#10'   ' +
+      '  Round(cena_grn*(1+nalog_nds),2)*kolotp - '#13#10'       Round(cena_s' +
+      'ebest*kurs2,4)*kolotp, '#13#10'     Round(cena_sebest*kurs2,4)*kolotp,' +
+      ' '#13#10'     0) as percent,'#13#10'  price_minus_18_compare,'#13#10'  id_analog '#13 +
+      #10'from '#13#10'  rep_sebest4_rec_pc(:id_nakl,null)'
     MaxBlobSize = -1
     Params = <
       item
@@ -1019,7 +1019,7 @@ object frmSebMain3: TfrmSebMain3
       DisplayWidth = 10
       FieldName = 'CENA_SEBEST'
       ProviderFlags = []
-      DisplayFormat = '0.00'
+      DisplayFormat = '0.0000'
       Precision = 15
     end
     object qurQuery3SSUM_YE_NDS: TFloatField
@@ -1027,7 +1027,7 @@ object frmSebMain3: TfrmSebMain3
       DisplayWidth = 10
       FieldName = 'SSUM_YE_NDS'
       ProviderFlags = []
-      DisplayFormat = '0.00'
+      DisplayFormat = '0.0000'
     end
     object qurQuery3NDS_SEBEST: TFloatField
       DisplayLabel = #1057#1091#1084#1084#1072' '#1089#1077#1073', '#1075#1088#1085

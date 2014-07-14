@@ -212,7 +212,7 @@ begin
     self,
     cdsSklostdet.FieldByName('id_nakl').asInteger,
     cdsSklostdet.FieldByName('tip').asInteger,
-    0);
+    cdsSklostdet.FieldByName('attr1').asInteger);
 end;
 
 function TfrmRepSkladFactDet.ShowDetailModal(id_ostt: integer): integer;
