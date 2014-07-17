@@ -607,6 +607,7 @@ object frmNaklr: TfrmNaklr
       FieldName = 'NDS'
       Required = True
       Precision = 15
+      Size = 8
     end
     object sdsNakloDELMARKED: TSmallintField
       FieldName = 'DELMARKED'
@@ -1206,10 +1207,12 @@ object frmNaklr: TfrmNaklr
     object sdsNaklotCENA: TFMTBCDField
       FieldName = 'CENA'
       Precision = 15
+      Size = 8
     end
     object sdsNaklotKOLOTP: TFMTBCDField
       FieldName = 'KOLOTP'
       Precision = 15
+      Size = 8
     end
   end
   object dspNaklot: TDataSetProvider
@@ -1292,6 +1295,7 @@ object frmNaklr: TfrmNaklr
       DisplayFormat = '0.00'
       EditFormat = '0.00'
       Precision = 15
+      Size = 8
     end
     object cdsNaklotCENANDS: TFloatField
       DisplayLabel = #1062#1077#1085#1072' '#1089' '#1053#1044#1057
@@ -1310,6 +1314,7 @@ object frmNaklr: TfrmNaklr
       DisplayFormat = '0.000'
       EditFormat = '0.000'
       Precision = 15
+      Size = 8
     end
     object cdsNaklotSUMA: TFloatField
       DisplayLabel = #1057#1091#1084#1084#1072
@@ -1410,7 +1415,6 @@ object frmNaklr: TfrmNaklr
       ''
       'end.')
     StoreInDFM = False
-    OnBeginDoc = frNaklrBeginDoc
     OnGetValue = frNaklrGetValue
     Left = 360
     Top = 48
@@ -1477,6 +1481,7 @@ object frmNaklr: TfrmNaklr
       ''
       'end.')
     StoreInDFM = False
+    OnBeginDoc = frNaklrBeginDoc
     OnGetValue = frNaklrGetValue
     Left = 328
     Top = 48
@@ -1573,10 +1578,12 @@ object frmNaklr: TfrmNaklr
     object FMTBCDField2: TFMTBCDField
       FieldName = 'CENA'
       Precision = 15
+      Size = 8
     end
     object FMTBCDField3: TFMTBCDField
       FieldName = 'KOLOTP'
       Precision = 15
+      Size = 8
     end
   end
   object sdsNaklrPost: TSQLDataSet
@@ -1627,10 +1634,12 @@ object frmNaklr: TfrmNaklr
     object FMTBCDField5: TFMTBCDField
       FieldName = 'CENA'
       Precision = 15
+      Size = 8
     end
     object FMTBCDField6: TFMTBCDField
       FieldName = 'KOLOTP'
       Precision = 15
+      Size = 8
     end
   end
   object ppmNaklr: TPopupMenu
@@ -1821,10 +1830,12 @@ object frmNaklr: TfrmNaklr
     object FMTBCDField8: TFMTBCDField
       FieldName = 'CENA'
       Precision = 15
+      Size = 8
     end
     object FMTBCDField9: TFMTBCDField
       FieldName = 'KOLOTP'
       Precision = 15
+      Size = 8
     end
   end
   object ppmNaklrt: TPopupMenu

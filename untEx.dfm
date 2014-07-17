@@ -26,7 +26,6 @@ object dmdEx: TdmdEx
       'User_Name=sysdba'
       'WaitOnLocks=True')
     VendorLib = 'fbclient.dll'
-    Connected = True
     Left = 24
     Top = 9
   end
