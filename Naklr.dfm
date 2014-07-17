@@ -1415,6 +1415,7 @@ object frmNaklr: TfrmNaklr
       ''
       'end.')
     StoreInDFM = False
+    OnBeginDoc = frNaklrBeginDoc
     OnGetValue = frNaklrGetValue
     Left = 360
     Top = 48
