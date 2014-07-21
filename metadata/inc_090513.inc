@@ -1,2 +1,0 @@
-INSERT INTO OBJECTS (OID, CLASSID, DELMARKED, NAME, FULLNAME )
-VALUES (-32, 3001, 0, 'НАЛОГОВАЯ ЭКСПОРТНАЯ', 'Экспорт');

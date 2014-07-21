@@ -1,4 +1,0 @@
-UPDATE OBJECTS
-SET PREDEFINED = 'бяе яйкюдш йкхемрнб',
-    ISDEFAULT = 0
-WHERE (OID = 8678);
