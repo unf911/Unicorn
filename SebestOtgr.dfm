@@ -579,7 +579,7 @@ object frmSebestOtgr: TfrmSebestOtgr
     object cdsRasxNDS_SEBEST_IN_CURRENCY: TFloatField
       DisplayLabel = #1057'/'#1089', '#1091'.'#1077'.'
       FieldName = 'NDS_SEBEST_IN_CURRENCY'
-      DisplayFormat = '0.0000'
+      DisplayFormat = '0.00000'
     end
     object cdsRasxDOXOD: TFloatField
       DisplayLabel = #1044#1086#1093#1086#1076', '#1075#1088#1085

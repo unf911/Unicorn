@@ -329,17 +329,16 @@ object frmRepSkladFactDet: TfrmRepSkladFactDet
       FieldName = 'NDS'
       Required = True
       Precision = 15
-      Size = 8
     end
     object cdsSklostdetDEBET: TFloatField
       DisplayLabel = #1044#1077#1073#1077#1090
       FieldName = 'DEBET'
-      DisplayFormat = '0.0000'
+      DisplayFormat = '0.00000'
     end
     object cdsSklostdetKREDIT: TFloatField
       DisplayLabel = #1050#1088#1077#1076#1080#1090
       FieldName = 'KREDIT'
-      DisplayFormat = '0.0000'
+      DisplayFormat = '0.00000'
     end
     object cdsSklostdetDEBET_KOLOTP: TFloatField
       DisplayLabel = #1050#1086#1083'-'#1074#1086' '#1076#1077#1073#1077#1090
@@ -369,7 +368,7 @@ object frmRepSkladFactDet: TfrmRepSkladFactDet
       DisplayLabel = #1062#1077#1085#1072
       FieldKind = fkInternalCalc
       FieldName = 'CENA'
-      DisplayFormat = '0.0000'
+      DisplayFormat = '0.00000'
     end
     object cdsSklostdetTIPCONST: TStringField
       DisplayLabel = #1058#1080#1087

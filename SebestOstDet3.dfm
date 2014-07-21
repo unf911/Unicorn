@@ -1,6 +1,6 @@
 object frmSebestOstDet3: TfrmSebestOstDet3
-  Left = 440
-  Top = 606
+  Left = 334
+  Top = 186
   BorderStyle = bsDialog
   Caption = #1044#1077#1090#1072#1083#1080#1079#1072#1094#1080#1103' '#1089#1077#1073#1077#1089#1090#1086#1080#1084#1086#1089#1090#1080
   ClientHeight = 333
@@ -313,7 +313,7 @@ object frmSebestOstDet3: TfrmSebestOstDet3
     object cdsSklostdetSEBEST: TFloatField
       DisplayLabel = #1057'/'#1089', '#1091'.'#1077'.'
       FieldName = 'SEBEST'
-      DisplayFormat = '0.0000'
+      DisplayFormat = '0.00000'
     end
     object cdsSklostdetCENA: TFloatField
       DisplayLabel = #1062#1077#1085#1072

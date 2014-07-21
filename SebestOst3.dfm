@@ -407,12 +407,12 @@ object frmSebestOst3: TfrmSebestOst3
     object cdsRasxSEBEST: TFloatField
       DisplayLabel = #1057#1077#1073#1077#1089#1090
       FieldName = 'SEBEST'
-      DisplayFormat = '0.0000'
+      DisplayFormat = '0.00000'
     end
     object cdsRasxSEBESTSUM: TFloatField
       DisplayLabel = #1057#1091#1084#1084#1072
       FieldName = 'SEBESTSUM'
-      DisplayFormat = '0.0000'
+      DisplayFormat = '0.00000'
     end
     object cdsRasxDAT: TSQLTimeStampField
       DisplayLabel = #1044#1072#1090#1072' '#1087#1086#1089#1090#1072#1074#1082#1080

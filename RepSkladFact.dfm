@@ -23,7 +23,7 @@ object frmRepSkladFact: TfrmRepSkladFact
   object GroupBox1: TGroupBox
     Left = 0
     Top = 0
-    Width = 579
+    Width = 571
     Height = 39
     Align = alTop
     TabOrder = 0
@@ -129,8 +129,8 @@ object frmRepSkladFact: TfrmRepSkladFact
   object AutoPanel1: TAutoPanel
     Left = 0
     Top = 39
-    Width = 579
-    Height = 281
+    Width = 571
+    Height = 271
     Align = alClient
     BevelInner = bvRaised
     BevelOuter = bvLowered
@@ -138,8 +138,8 @@ object frmRepSkladFact: TfrmRepSkladFact
     object dbgRep: TDBGridEh
       Left = 2
       Top = 2
-      Width = 575
-      Height = 277
+      Width = 567
+      Height = 267
       Align = alClient
       DataSource = dsRep
       EditActions = [geaCopyEh, geaSelectAllEh]
@@ -403,7 +403,7 @@ object frmRepSkladFact: TfrmRepSkladFact
       'aving '#13#10'  (Round(sum(r.kolotp_before),3)<>0) or '#13#10'  (Round(sum(r' +
       '.debet_kolotp),3)<>0) or'#13#10'  (Round(sum(r.kredit_kolotp) ,3)<>0) ' +
       'or'#13#10'  (Round(sum(r.kolotp_after),3)<>0) or'#13#10'  (Round(sum(r.debet' +
-      'after),4)<>0) or'#13#10'  (Round(sum(r.kreditafter),4)<>0)'
+      'after),5)<>0) or'#13#10'  (Round(sum(r.kreditafter),5)<>0)'
     MaxBlobSize = -1
     Params = <
       item
@@ -646,32 +646,32 @@ object frmRepSkladFact: TfrmRepSkladFact
     object cdsRepDEBETBEFORE: TFloatField
       DisplayLabel = #1044#1077#1073#1077#1090' '#1085#1072' '#1085#1072#1095#1072#1083#1086
       FieldName = 'DEBETBEFORE'
-      DisplayFormat = '0.00'
+      DisplayFormat = '0.00000'
     end
     object cdsRepKREDITBEFORE: TFloatField
       DisplayLabel = #1050#1088#1077#1076#1080#1090' '#1085#1072' '#1085#1072#1095#1072#1083#1086
       FieldName = 'KREDITBEFORE'
-      DisplayFormat = '0.00'
+      DisplayFormat = '0.00000'
     end
     object cdsRepDEBET: TFloatField
       DisplayLabel = #1044#1077#1073#1077#1090
       FieldName = 'DEBET'
-      DisplayFormat = '0.0000'
+      DisplayFormat = '0.00000'
     end
     object cdsRepKREDIT: TFloatField
       DisplayLabel = #1050#1088#1077#1076#1080#1090
       FieldName = 'KREDIT'
-      DisplayFormat = '0.0000'
+      DisplayFormat = '0.00000'
     end
     object cdsRepDEBETAFTER: TFloatField
       DisplayLabel = #1044#1077#1073#1077#1090' '#1085#1072' '#1082#1086#1085#1077#1094
       FieldName = 'DEBETAFTER'
-      DisplayFormat = '0.0000'
+      DisplayFormat = '0.00000'
     end
     object cdsRepKREDITAFTER: TFloatField
       DisplayLabel = #1050#1088#1077#1076#1080#1090' '#1085#1072' '#1082#1086#1085#1077#1094
       FieldName = 'KREDITAFTER'
-      DisplayFormat = '0.0000'
+      DisplayFormat = '0.00000'
     end
     object cdsRepKOLOTP_BEFORE: TFloatField
       DisplayLabel = #1050#1086#1083'-'#1074#1086' '#1085#1072' '#1085#1072#1095#1072#1083#1086
@@ -707,7 +707,7 @@ object frmRepSkladFact: TfrmRepSkladFact
       DisplayLabel = #1062#1077#1085#1072
       FieldKind = fkInternalCalc
       FieldName = 'CENA'
-      DisplayFormat = '0.0000'
+      DisplayFormat = '0.00000'
     end
   end
   object dsRep: TDataSource

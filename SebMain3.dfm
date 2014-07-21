@@ -515,8 +515,8 @@ object frmSebMain3: TfrmSebMain3
     Variables = <>
     Style = <>
     object Page1: TfrxReportPage
-      PaperWidth = 210.015666666666600000
-      PaperHeight = 297.010666666666700000
+      PaperWidth = 210.000000000000000000
+      PaperHeight = 297.000000000000000000
       PaperSize = 9
       LeftMargin = 10.000000000000000000
       RightMargin = 10.000000000000000000
@@ -561,8 +561,8 @@ object frmSebMain3: TfrmSebMain3
     Variables = <>
     Style = <>
     object Page1: TfrxReportPage
-      PaperWidth = 210.015666666666600000
-      PaperHeight = 297.010666666666700000
+      PaperWidth = 210.000000000000000000
+      PaperHeight = 297.000000000000000000
       PaperSize = 9
       LeftMargin = 10.000000000000000000
       RightMargin = 10.000000000000000000
@@ -792,21 +792,20 @@ object frmSebMain3: TfrmSebMain3
       'select id_pos,id_nakld,id_tovar,id_sklad,tara,nalog_nds,'#13#10'  kurs' +
       ',kurs2,skidka,cena,kolotp,cena_sebest,'#13#10'  cena_grn, dat,'#13#10'  cena' +
       '_grn*(1+nalog_nds) as cena_grn_nds,'#13#10'  Round(cena_grn*(1+nalog_n' +
-      'ds),2)*kolotp as sum_grn_nds,'#13#10'  Round(cena_sebest*kolotp,4) as ' +
-      'ssum_ye_nds,'#13#10'  Round(cena_sebest*kurs2,4)*kolotp as nds_sebest,' +
+      'ds),2)*kolotp as sum_grn_nds,'#13#10'  Round(cena_sebest*kolotp,5) as ' +
+      'ssum_ye_nds,'#13#10'  Round(cena_sebest*kurs2,5)*kolotp as nds_sebest,' +
       '       '#13#10'  Round(cena_grn*(1+nalog_nds),2)*kolotp - '#13#10'    Round(' +
-      'cena_sebest*kurs2,4)*kolotp  as doxod,    '#13#10'  100*dzero(   '#13#10'   ' +
+      'cena_sebest*kurs2,5)*kolotp  as doxod,    '#13#10'  100*dzero(   '#13#10'   ' +
       '  Round(cena_grn*(1+nalog_nds),2)*kolotp - '#13#10'       Round(cena_s' +
-      'ebest*kurs2,4)*kolotp, '#13#10'     Round(cena_sebest*kurs2,4)*kolotp,' +
+      'ebest*kurs2,5)*kolotp, '#13#10'     Round(cena_sebest*kurs2,5)*kolotp,' +
       ' '#13#10'     0) as percent,'#13#10'  price_minus_18_compare,'#13#10'  id_analog '#13 +
       #10'from '#13#10'  rep_sebest4_rec_pc(:id_nakl,null)'
     MaxBlobSize = -1
     Params = <
       item
-        DataType = ftInteger
+        DataType = ftUnknown
         Name = 'id_nakl'
         ParamType = ptInput
-        Value = 27736
       end>
     SQLConnection = dmdEx.scUchet
     Left = 360
@@ -1019,7 +1018,7 @@ object frmSebMain3: TfrmSebMain3
       DisplayWidth = 10
       FieldName = 'CENA_SEBEST'
       ProviderFlags = []
-      DisplayFormat = '0.0000'
+      DisplayFormat = '0.00000'
       Precision = 15
     end
     object qurQuery3SSUM_YE_NDS: TFloatField
@@ -1027,7 +1026,7 @@ object frmSebMain3: TfrmSebMain3
       DisplayWidth = 10
       FieldName = 'SSUM_YE_NDS'
       ProviderFlags = []
-      DisplayFormat = '0.0000'
+      DisplayFormat = '0.00000'
     end
     object qurQuery3NDS_SEBEST: TFloatField
       DisplayLabel = #1057#1091#1084#1084#1072' '#1089#1077#1073', '#1075#1088#1085
