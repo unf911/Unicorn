@@ -81,7 +81,6 @@ type
     procedure lcdParentIdNaklEditButtons1Click(Sender: TObject;
       var Handled: Boolean);
     procedure lcdParentIdNakl2Change(Sender: TObject);
-    procedure lcdParentIdNakl2CloseUp(Sender: TObject; Accept: Boolean);
     procedure lcdParentIdNakl2KeyPress(Sender: TObject; var Key: Char);
     procedure lcdParentIdNakl2EditButtons0Click(Sender: TObject;
       var Handled: Boolean);
@@ -172,7 +171,7 @@ begin
 		dsNakloEdit.DataSet.Post;
 	end;  //to avoid double apply 
 
-	if (TClientDataSet(dsNakloEdit.DataSet).ApplyUpdates(0)<>0) then begin
+  	if (TClientDataSet(dsNakloEdit.DataSet).ApplyUpdates(0)<>0) then begin
 		TClientDataSet(dsNakloEdit.DataSet).CancelUpdates;
 		abort;
 	end;
@@ -220,8 +219,9 @@ begin
   }
 
   lcdParentIdNakl2.Enabled := false;
-  //отгрузка, приход - показываем поле "на основании расх"
-  if (dsNakloEdit.DataSet.FieldByName('tip').asInteger in [5,1]) then begin
+  //отгрузка, приход, возврат - показываем поле "на основании расх"
+  if ((dsNakloEdit.DataSet.FieldByName('tip').asInteger in [5,1]) or
+  (dsNakloEdit.DataSet.FieldByName('tip').asInteger = -110))    then begin
     lcdParentIdNakl2.Enabled := true;
   end;
 end;
@@ -268,15 +268,22 @@ end;
 
 procedure TfrmNakloEdit.lcbTipConstKeyValueChanged(Sender: TObject);
 begin
-  //oid хранени€ = 103
-  if (lcbTipConst.KeyValue = 103) then begin
+  lcdParentIdNakl2.Enabled := false;
+  lcdParentIdNakl2.Visible := false;
+  lblParentIdNakl.Visible := false;
+  lcbSkladTo.Visible := false;
+  lblSkladTo.Visible := false;
+
+  //oid хранени€ = 103, излишек = 2
+  if ((lcbTipConst.KeyValue = 103)) then begin
     lcbSkladTo.Visible := true;
     lblSkladTo.Visible := true;
-    lcdParentIdNakl2.Enabled := false;
-  end else begin
-    lcbSkladTo.Visible := false;
-    lblSkladTo.Visible := false;
+  end;
+  if  (lcbTipConst.KeyValue = 1 ) or (lcbTipConst.KeyValue = -110 )
+  or (lcbTipConst.KeyValue = 5 ) then begin
     lcdParentIdNakl2.Enabled := true;
+    lcdParentIdNakl2.Visible := true;
+    lblParentIdNakl.Visible := true;
   end;
 end;
 
@@ -302,9 +309,10 @@ procedure TfrmNakloEdit.PrepareForRasxod;
 begin
   lcbIZG.ListSource := dmdEx.dsVlad;
   lcbZAK.ListSource := dmdEx.dsClient;
-  cdsNakloTip.Filter := '(id_field<>1) and (id_field <>2)';
+  cdsNakloTip.Filter := '(id_field<>1) and (id_field <>2) and (id_field<>-110)';
   cdsNakloTip.Filtered := true;
   lblParentIdNakl.Caption := 'Ќа основании расх. накл.';
+  lcbTipConstKeyValueChanged(self);
   //lcdParentIdNakl.DataField :='parent_id';
 end;
 
@@ -312,9 +320,10 @@ procedure TfrmNakloEdit.PrepareForPrixod;
 begin
   lcbIZG.ListSource := dmdEx.dsPost;
   lcbZAK.ListSource := dmdEx.dsVlad;
-  cdsNakloTip.Filter := '(id_field=1) or (id_field =2)';
+  cdsNakloTip.Filter := '(id_field=1) or (id_field =2) or (id_field=-110)';
   cdsNakloTip.Filtered := true;
   lblParentIdNakl.Caption := 'Ќа основании прих. накл.';
+  lcbTipConstKeyValueChanged(self);
   //lcdParentIdNakl.DataField :='parent_id';
 end;
 
@@ -394,11 +403,6 @@ begin
   //ShowNaklrList;
 end;
 
-procedure TfrmNakloEdit.lcdParentIdNakl2CloseUp(Sender: TObject;
-  Accept: Boolean);
-begin
-  ShowNaklrList;
-end;
 
 procedure TfrmNakloEdit.lcdParentIdNakl2KeyPress(Sender: TObject;
   var Key: Char);
@@ -429,10 +433,8 @@ procedure TfrmNakloEdit.lcdParentIdNakl2ButtonDown(Sender: TObject;
   TopButton: Boolean; var AutoRepeat, Handled: Boolean);
 begin
   FParentIdOldValue := dsNakloEdit.Dataset.FieldByName('parent_id').asString;
-  if dsNakloEdit.DataSet.FieldByName('tip').asInteger<>1 then begin
-    ShowNaklrList;
-    Handled := true;
-  end;
+  ShowNaklrList;
+  Handled := true;
 end;
 
 procedure TfrmNakloEdit.SelectNakl(out intTemp: integer;
@@ -441,17 +443,17 @@ begin
   frmNaklrList := TfrmNaklrList.Create(self);
   //если приходна€ накладна€ то выбирать родительскую
   if DataSet.FieldByName('tip').asInteger =1  then begin
-    if lcdParentIdNakl2.ItemIndex=1 then begin
-      frmNaklrList.ShowVozvrat;
-    end else begin
-      frmNaklrList.ShowNaklpbux;
-    end;
+    frmNaklrList.ShowNaklpbux;
     frmNaklrList.qeNaklr.SetSql('where','posted=1',5);
   end else begin  //if dsNakloEdit.DataSet.FieldByName('tip').asInteger =1
     //если отгрузка, то может быть прив€зана и к возврату поставщику
     if DataSet.FieldByName('tip').asInteger =5 then begin
       frmNaklrList.ShowNaklrAndVozvratPost;
     end;
+    if DataSet.FieldByName('tip').asInteger = -110 then begin
+      frmNaklrList.ShowVozvrat;
+      frmNaklrList.qeNaklr.SetSql('where','posted=1',5);
+    end
   end;
   //менеджер только этот дл€ всех накладных кроме приходных
   //приходные бухгалтерские могут быть выписаны альбиной, а
@@ -468,7 +470,7 @@ begin
   frmNaklrList.qeNaklr.SetSql('where','id_zak='+
     dataset.fieldbyname('id_zak').asString,4);
   //накладные с выданными откатами
-  if dsNakloEdit.DataSet.FieldByName('tip').asInteger <> 1 then begin
+  if dsNakloEdit.DataSet.FieldByName('tip').asInteger = 5 then begin
     frmNaklrList.qeNaklr.SetSql('where','((tip=3047 and trim(comment)='''') or (tip<>3047))',5);
   end;
   frmNaklrList.actSettings.Enabled:=false;
@@ -476,7 +478,7 @@ begin
   frmNaklrList.DefaultOpen;
 
   frmNaklrList.Locate(Dataset.FieldByName('parent_id_nakl').asInteger);
-  
+
   intTemp := frmNaklrList.GetSchet;
   strIdTemp := frmNaklrList.qeNaklr.Query.FieldByName('id').asString;
   frmNaklrList.Free;

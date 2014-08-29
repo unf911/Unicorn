@@ -1,6 +1,6 @@
 object frmNakloEdit: TfrmNakloEdit
-  Left = 542
-  Top = 218
+  Left = 632
+  Top = 246
   Anchors = [akLeft, akTop, akRight]
   BorderStyle = bsDialog
   Caption = #1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1085#1080#1077' '#1086#1090#1075#1088#1091#1079#1082#1080' '
@@ -403,13 +403,11 @@ object frmNakloEdit: TfrmNakloEdit
           OnClick = lcdParentIdNakl2EditButtons0Click
         end>
       Items.Strings = (
-        #1055#1088#1080#1093#1086#1076#1085#1072#1103' '#1073#1091#1093#1075#1072#1083#1090#1077#1088#1089#1082#1072#1103' '#1085#1072#1082#1083#1072#1076#1085#1072#1103
-        #1042#1086#1079#1074#1088#1072#1090#1085#1072#1103' '#1085#1072#1082#1083#1072#1076#1085#1072#1103)
+        '')
       TabOrder = 12
       Visible = True
       OnButtonDown = lcdParentIdNakl2ButtonDown
       OnChange = lcdParentIdNakl2Change
-      OnCloseUp = lcdParentIdNakl2CloseUp
       OnKeyPress = dbeIDKeyPress
     end
   end
