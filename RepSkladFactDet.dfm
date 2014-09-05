@@ -391,41 +391,42 @@ object frmRepSkladFactDet: TfrmRepSkladFactDet
       ' tipconst'#13#10'from rep_oborotka_det_pc(:id_schet,:dat_from,:dat_to,' +
       #13#10'  :sub1_in,:sub2_in,'#13#10'  :sub3_in,:sub4_in,'#13#10'  null,null,'#13#10'  nu' +
       'll,null,'#13#10'  null,null,'#13#10'  null,null,null) r inner join naklo om'#13 +
-      #10'    on om.id_nakl=r.id_nakl'#13#10'order by'#13#10'  r.dat'
+      #10'    on om.id_nakl=r.id_nakl'#13#10'order by'#13#10'  r.dat, r.debet_kolotp,' +
+      ' r.attr1'
     MaxBlobSize = -1
     Params = <
       item
-        DataType = ftInteger
+        DataType = ftUnknown
         Name = 'id_schet'
         ParamType = ptInput
       end
       item
-        DataType = ftDate
+        DataType = ftUnknown
         Name = 'dat_from'
         ParamType = ptInput
       end
       item
-        DataType = ftDate
+        DataType = ftUnknown
         Name = 'dat_to'
         ParamType = ptInput
       end
       item
-        DataType = ftInteger
+        DataType = ftUnknown
         Name = 'sub1_in'
         ParamType = ptInput
       end
       item
-        DataType = ftInteger
+        DataType = ftUnknown
         Name = 'sub2_in'
         ParamType = ptInput
       end
       item
-        DataType = ftInteger
+        DataType = ftUnknown
         Name = 'sub3_in'
         ParamType = ptInput
       end
       item
-        DataType = ftInteger
+        DataType = ftUnknown
         Name = 'sub4_in'
         ParamType = ptInput
       end>
