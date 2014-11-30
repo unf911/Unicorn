@@ -693,7 +693,7 @@ var
   bReadyToPrint : boolean;
 begin
   frmNNakl := TfrmNNakl(Object1);
-  bReadyToPrint := frmNNakl.PrepareReport('NNakl140114.fr3');
+  bReadyToPrint := frmNNakl.PrepareReport('NNakl141122.fr3');
   if bReadyToPrint then begin
     frmNNakl.frNaklr.PrintOptions.ShowDialog :=false;
     frmNNakl.frNaklr.Print;
@@ -1505,7 +1505,7 @@ end;
 
 procedure TfrmNNakl.actPreviewOldExecute(Sender: TObject);
 begin
-  PreviewNNakl('NNakl111214.fr3');
+  PreviewNNakl('NNakl140114.fr3');
 end;
 
 procedure TfrmNNakl.PreviewNNakl( reportName :String);
@@ -1530,7 +1530,7 @@ procedure TfrmNNakl.actPreviewCopyExecute(Sender: TObject);
 begin
   try
     actPreviewCopy.Checked := true;
-    PreviewNNakl('NNakl140114.fr3');
+    PreviewNNakl('NNakl141122.fr3');
   finally
     actPreviewCopy.Checked := false;
   end;
@@ -1538,7 +1538,7 @@ end;
 
 procedure TfrmNNakl.actPreviewExecute(Sender: TObject);
 begin
-  PreviewNNakl('NNakl140114.fr3');
+  PreviewNNakl('NNakl141122.fr3');
 end;
 
 procedure TfrmNNakl.OpenDogovorForClient;
