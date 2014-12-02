@@ -443,7 +443,7 @@ object frmNNakl: TfrmNNakl
       OnExecute = actMakeNNaklrFromNNaklrExecute
     end
     object actPreviewOld: TAction
-      Caption = #1055#1088#1086#1089#1084#1086#1090#1088' '#1089#1090#1072#1088#1086#1081' '#1085#1072#1082#1083#1072#1076#1085#1086#1081
+      Caption = #1055#1088#1086#1089#1084#1086#1090#1088' '#1053#1054#1042#1054#1049' '#1085#1072#1082#1083#1072#1076#1085#1086#1081
       OnExecute = actPreviewOldExecute
     end
     object actPreviewCopy: TAction
@@ -491,7 +491,7 @@ object frmNNakl: TfrmNNakl
     PreviewOptions.Zoom = 1.000000000000000000
     PrintOptions.Printer = 'Default'
     ReportOptions.CreateDate = 38985.430610532400000000
-    ReportOptions.LastChange = 41753.575087500000000000
+    ReportOptions.LastChange = 41975.945449988420000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       'procedure Memo23OnBeforePrint(Sender: TfrxComponent);'
@@ -674,6 +674,7 @@ object frmNNakl: TfrmNNakl
     object sdsNaklrKURS: TFMTBCDField
       FieldName = 'KURS'
       Precision = 15
+      Size = 8
     end
     object sdsNaklrVSEGO: TFMTBCDField
       FieldName = 'VSEGO'
@@ -760,6 +761,7 @@ object frmNNakl: TfrmNNakl
     object sdsNaklrtNDS: TFMTBCDField
       FieldName = 'NDS'
       Precision = 15
+      Size = 8
     end
     object sdsNaklrtKOLOTP: TFloatField
       FieldName = 'KOLOTP'
@@ -772,6 +774,7 @@ object frmNNakl: TfrmNNakl
     object sdsNaklrtVSEGO: TFMTBCDField
       FieldName = 'VSEGO'
       Precision = 15
+      Size = 8
     end
   end
   object dspNaklr: TDataSetProvider
@@ -831,6 +834,7 @@ object frmNNakl: TfrmNNakl
       DisplayFormat = '0.0000'
       EditFormat = '##########.0000'
       Precision = 15
+      Size = 8
     end
     object cdsNaklrVSEGO: TFMTBCDField
       FieldName = 'VSEGO'
@@ -1092,6 +1096,7 @@ object frmNNakl: TfrmNNakl
       OnChange = cdsNaklrtVSEGOChange
       DisplayFormat = '0.00'
       EditFormat = '##########.00'
+      Size = 8
     end
     object cdsNaklrtFULLNAME: TStringField
       FieldKind = fkLookup
