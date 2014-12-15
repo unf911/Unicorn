@@ -21,7 +21,7 @@ uses
   SettingsPlugin, //TfmSettingPlugin
   untSettings, xmldom,
   XMLIntf, msxmldom, XMLDoc,
-  J1201507, //J1201507 IXMLDeclarContent
+  J1201508, //J1201508 IXMLDeclarContent
   XmlHelper, //WriteNode
   RepReestrPolychNNakl //TfrmRepReestrPolychNNakl
 
@@ -199,7 +199,7 @@ begin
     TIN:=GetOKPO;
     C_DOC:='J12';
     C_DOC_SUB:='015';
-    C_DOC_VER:='7';//
+    C_DOC_VER:='8';//
     C_DOC_TYPE:=0;//тип документа. 0-основной
     C_DOC_CNT := GetNumDocZaPeriod;//1; //номер документа за период
     C_REG := GetOblastKod;//15;//код области
@@ -276,8 +276,8 @@ begin
     'T1RXXXXG10',
     FormatNodeFloat,
     cdsRasx.FieldByName('F10'));
-  WriteNode(XMLDeclarContent.DECLARBODY.T1RXXXXG11,
-    'T1RXXXXG11',
+  WriteNode(XMLDeclarContent.DECLARBODY.T1RXXXXG113,
+    'T1RXXXXG113',
     FormatNodeFloat,
     cdsRasx.FieldByName('F11_BEZOBLOGENIYA'));
   WriteNode(XMLDeclarContent.DECLARBODY.T1RXXXXG12,
@@ -299,10 +299,15 @@ begin
     FormatFloat('0.00',VarToDbl(Columnbyname(dbgRep.Columns,'F8_BAZANDS').Footer.SumValue),FormatSettings);
   XMLDeclarContent.DECLARBODY.R011G9 :=
     FormatFloat('0.00',VarToDbl(Columnbyname(dbgRep.Columns,'F9_NDS').Footer.SumValue),FormatSettings);
-  XMLDeclarContent.DECLARBODY.R011G11 :=
+  XMLDeclarContent.DECLARBODY.R011G10 :=
+    FormatFloat('0.00',VarToDbl(Columnbyname(dbgRep.Columns,'F10').Footer.SumValue),FormatSettings);  
+  XMLDeclarContent.DECLARBODY.R011G113 :=
     FormatFloat('0.00',VarToDbl(Columnbyname(dbgRep.Columns,'F11_BEZOBLOGENIYA').Footer.SumValue),FormatSettings);
   XMLDeclarContent.DECLARBODY.R011G12 :=
     FormatFloat('0.00',VarToDbl(Columnbyname(dbgRep.Columns,'F12_BAZANDSEXPORT').Footer.SumValue),FormatSettings);
+  XMLDeclarContent.DECLARBODY.R011G13 :=
+    FormatFloat('0.00',VarToDbl(Columnbyname(dbgRep.Columns,'F13').Footer.SumValue),FormatSettings);
+
   XMLDeclarContent.DECLARBODY.HFILL := FormatDateTime('ddmmyyyy',Today); //дата заполнения
   XMLDeclarContent.DECLARBODY.HBOS := dmdEx.GetBoss;
   XMLDeclarContent.DECLARBODY.HBUH := dmdEx.GetBux;
@@ -348,7 +353,7 @@ begin
     FormatFloat('00',GetOblastKod ) +
     FormatFloat('00',GetRajonKod ) +
     FormatFloat('0000000000',strtoint(GetOKPO)) +
-    'J1201507'+'100'+
+    'J1201508'+'100'+
     FormatFloat('0000000',GetNumDocZaPeriod) +
     '1' +
     FormatFloat('00', MonthOf(setT.dateFrom))+

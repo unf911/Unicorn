@@ -114,6 +114,12 @@ object frmRepReestrVydanNnakl: TfrmRepReestrVydanNnakl
       end
       item
         EditButtons = <>
+        FieldName = 'F10'
+        Footer.ValueType = fvtSum
+        Footers = <>
+      end
+      item
+        EditButtons = <>
         FieldName = 'F11_BEZOBLOGENIYA'
         Footer.ValueType = fvtSum
         Footers = <>
@@ -121,6 +127,12 @@ object frmRepReestrVydanNnakl: TfrmRepReestrVydanNnakl
       item
         EditButtons = <>
         FieldName = 'F12_BAZANDSEXPORT'
+        Footer.ValueType = fvtSum
+        Footers = <>
+      end
+      item
+        EditButtons = <>
+        FieldName = 'F13'
         Footer.ValueType = fvtSum
         Footers = <>
       end
@@ -328,6 +340,7 @@ object frmRepReestrVydanNnakl: TfrmRepReestrVydanNnakl
     object cdsRasxF10: TFMTBCDField
       FieldName = 'F10'
       Precision = 15
+      Size = 8
     end
     object cdsRasxF11_BEZOBLOGENIYA: TFMTBCDField
       FieldName = 'F11_BEZOBLOGENIYA'
@@ -342,6 +355,7 @@ object frmRepReestrVydanNnakl: TfrmRepReestrVydanNnakl
     object cdsRasxF13: TFMTBCDField
       FieldName = 'F13'
       Precision = 15
+      Size = 8
     end
     object cdsRasxTIP: TIntegerField
       FieldName = 'TIP'

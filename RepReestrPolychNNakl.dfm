@@ -107,6 +107,12 @@ object frmRepReestrPolychNNakl: TfrmRepReestrPolychNNakl
       end
       item
         EditButtons = <>
+        FieldName = 'F11'
+        Footer.ValueType = fvtSum
+        Footers = <>
+      end
+      item
+        EditButtons = <>
         FieldName = 'F12_NDS'
         Footer.ValueType = fvtSum
         Footers = <>
@@ -120,6 +126,12 @@ object frmRepReestrPolychNNakl: TfrmRepReestrPolychNNakl
       item
         EditButtons = <>
         FieldName = 'F14_NDS'
+        Footer.ValueType = fvtSum
+        Footers = <>
+      end
+      item
+        EditButtons = <>
+        FieldName = 'F15'
         Footer.ValueType = fvtSum
         Footers = <>
       end
@@ -306,38 +318,47 @@ object frmRepReestrPolychNNakl: TfrmRepReestrPolychNNakl
     object cdsRasxF8_SUMWITHNDS: TFMTBCDField
       FieldName = 'F8_SUMWITHNDS'
       Precision = 15
+      Size = 8
     end
     object cdsRasxF9_BAZANDS: TFMTBCDField
       FieldName = 'F9_BAZANDS'
       Precision = 15
+      Size = 8
     end
     object cdsRasxF10_NDS: TFMTBCDField
       FieldName = 'F10_NDS'
       Precision = 15
+      Size = 8
     end
     object cdsRasxF11: TFMTBCDField
       FieldName = 'F11'
       Precision = 15
+      Size = 8
     end
     object cdsRasxF12_NDS: TFMTBCDField
       FieldName = 'F12_NDS'
       Precision = 15
+      Size = 8
     end
     object cdsRasxF13_BAZANDS: TFMTBCDField
       FieldName = 'F13_BAZANDS'
       Precision = 15
+      Size = 8
     end
     object cdsRasxF14_NDS: TFMTBCDField
       FieldName = 'F14_NDS'
       Precision = 15
+      Size = 8
     end
     object cdsRasxF15: TFMTBCDField
       FieldName = 'F15'
       Precision = 15
+      Size = 8
     end
     object cdsRasxF16_NDS: TFMTBCDField
       FieldName = 'F16_NDS'
       Precision = 15
+      Size = 8
     end
     object cdsRasxTIP: TIntegerField
       FieldName = 'TIP'

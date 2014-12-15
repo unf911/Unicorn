@@ -21,7 +21,7 @@ uses
 	DBCtrls, 
   SettingsPlugin, //TfmSettingsPlugin
   untSettings,
-  J1201507, //J1201507 IXMLDeclarContent
+  J1201508, //J1201508 IXMLDeclarContent
   XmlHelper //WriteNode
   ;
 
@@ -207,7 +207,7 @@ begin
   XMLDeclarContent.DECLARBODY.ChildNodes['HNAME'].NodeValue := ShortString(GetKlientDetail.Values['FULLNAME']);
   XMLDeclarContent.DECLARBODY.ChildNodes['HLOC'].NodeValue :=ShortString	(GetKlientDetail.Values['ADRP']);
   XMLDeclarContent.DECLARBODY.HNPDV := GetKlientDetail.values['IPN'];  //налоговый номер 11 знаков ипн
-  XMLDeclarContent.DECLARBODY.HNSPDV := StrToInt(GetKlientDetail.values['SVREG']); //8 знаков свидетельство
+  //XMLDeclarContent.DECLARBODY.HNSPDV := StrToInt(GetKlientDetail.values['SVREG']); //8 знаков свидетельство
   //XMLDeclarContent.DECLARBODY.H01G01D := FormatDateTime('ddmmyyyy',setT.DateFrom);//реестр от
   //  XMLDeclarContent.DECLARBODY.H02G01D := FormatDateTime('ddmmyyyy',setT.DateTo); //реестр до
   //stringList.Free;
@@ -332,12 +332,16 @@ begin
     FormatFloat('0.00',VarToDbl(Columnbyname(dbgRasx.Columns,'F9_BAZANDS').Footer.SumValue),FormatSettings);
   XMLDeclarContent.DECLARBODY.R021G10 :=
     FormatFloat('0.00',VarToDbl(Columnbyname(dbgRasx.Columns,'F10_NDS').Footer.SumValue),FormatSettings);
+  XMLDeclarContent.DECLARBODY.R021G11 :=
+    FormatFloat('0.00',VarToDbl(Columnbyname(dbgRasx.Columns,'F11').Footer.SumValue),FormatSettings); 
   XMLDeclarContent.DECLARBODY.r021g12 :=
     FormatFloat('0.00',VarToDbl(Columnbyname(dbgRasx.Columns,'F12_NDS').Footer.SumValue),FormatSettings);
   XMLDeclarContent.DECLARBODY.r021g13 :=
     FormatFloat('0.00',VarToDbl(Columnbyname(dbgRasx.Columns,'F13_BAZANDS').Footer.SumValue),FormatSettings);
   XMLDeclarContent.DECLARBODY.R021G14 :=
     FormatFloat('0.00',VarToDbl(Columnbyname(dbgRasx.Columns,'F14_NDS').Footer.SumValue),FormatSettings);
+  XMLDeclarContent.DECLARBODY.R021G15 :=
+    FormatFloat('0.00',VarToDbl(Columnbyname(dbgRasx.Columns,'F15').Footer.SumValue),FormatSettings);
   XMLDeclarContent.DECLARBODY.R021G16 :=
     FormatFloat('0.00',VarToDbl(Columnbyname(dbgRasx.Columns,'F16_NDS').Footer.SumValue),FormatSettings);
 
