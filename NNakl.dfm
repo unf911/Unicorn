@@ -443,7 +443,7 @@ object frmNNakl: TfrmNNakl
       OnExecute = actMakeNNaklrFromNNaklrExecute
     end
     object actPreviewOld: TAction
-      Caption = #1055#1088#1086#1089#1084#1086#1090#1088' '#1053#1054#1042#1054#1049' '#1085#1072#1082#1083#1072#1076#1085#1086#1081
+      Caption = #1055#1088#1086#1089#1084#1086#1090#1088' '#1089#1090#1072#1088#1086#1081' '#1085#1072#1082#1083#1072#1076#1085#1086#1081
       OnExecute = actPreviewOldExecute
     end
     object actPreviewCopy: TAction
@@ -491,7 +491,7 @@ object frmNNakl: TfrmNNakl
     PreviewOptions.Zoom = 1.000000000000000000
     PrintOptions.Printer = 'Default'
     ReportOptions.CreateDate = 38985.430610532400000000
-    ReportOptions.LastChange = 41975.945449988420000000
+    ReportOptions.LastChange = 41981.914305902780000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       'procedure Memo23OnBeforePrint(Sender: TfrxComponent);'

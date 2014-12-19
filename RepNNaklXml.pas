@@ -21,7 +21,7 @@ uses
   SettingsPlugin, //TfmSettingPlugin
   untSettings, xmldom,
   XMLIntf, msxmldom, XMLDoc,
-  J1201005, UnfFilter,  // IXMLDeclarContent
+  J1201006, UnfFilter,  // IXMLDeclarContent
   XMLHelper, PropFilerEh, PropStorageEh;
 
 const KlientTipExport: integer = 1;
@@ -354,7 +354,7 @@ begin
 
     XMLDeclarContent.DECLARBODY.R01G9 := FormatFloat ('0.00',
       DataSet.fieldbyname('vsego').AsFloat , FormatSettings);
-    XMLDeclarContent.DECLARBODY.R03G9 := FormatFloat ('0.00',
+    XMLDeclarContent.DECLARBODY.R03G109 := FormatFloat ('0.00',
       DataSet.fieldbyname('vsego').AsFloat*
       DataSet.fieldbyname('NALOG_NDS').AsFloat , FormatSettings);
     XMLDeclarContent.DECLARBODY.R04G9 := FormatFloat ('0.00',
