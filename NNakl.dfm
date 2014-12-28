@@ -491,7 +491,7 @@ object frmNNakl: TfrmNNakl
     PreviewOptions.Zoom = 1.000000000000000000
     PrintOptions.Printer = 'Default'
     ReportOptions.CreateDate = 38985.430610532400000000
-    ReportOptions.LastChange = 41981.914305902780000000
+    ReportOptions.LastChange = 41994.747413622690000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       'procedure Memo23OnBeforePrint(Sender: TfrxComponent);'

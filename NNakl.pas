@@ -857,28 +857,62 @@ begin
     ParValue := Suma2Grn(dsNaklr.DataSet,dsNaklrt.DataSet);
   end; //if parname
   if AnsiUpperCase(ParName)='Z_IPN' then begin
-    if (cdZAK.lgoty <>KlientTipNeplNds) and (cdZAK.lgoty <> KlientTipExport) then begin
-      ParValue := cdZAK.ipn;
-    end else begin
+    if (cdZAK.lgoty =KlientTipNeplNds) then begin
       ParValue := '400000000000';
+    end else if (cdZAK.lgoty = KlientTipExport) then begin
+      ParValue := '300000000000';
+    end else begin
+      ParValue := cdZAK.ipn;
     end;
   end; //if parname
   if AnsiUpperCase(ParName)='Z_ADRP' then begin
-    ParValue := cdZAK.adrp;
+    if (cdZAK.lgoty <>KlientTipNeplNds) then begin
+      ParValue := cdZAK.adrp;
+    end else begin
+      ParValue := '';
+    end;
   end; //if parname
   if AnsiUpperCase(ParName)='Z_TEL' then begin
-    ParValue := cdZAK.tel;
+    if (cdZAK.lgoty <>KlientTipNeplNds) then begin
+      ParValue := cdZAK.tel;
+    end else begin
+      ParValue := '';
+    end;
   end; //if parname
   if AnsiUpperCase(ParName)='Z_SVREG' then begin
-    if (cdZAK.lgoty <>KlientTipNeplNds) and (cdZAK.lgoty <> KlientTipExport) then begin
+    if (cdZAK.lgoty <>KlientTipNeplNds) then begin
       ParValue := cdZAK.svreg;
     end else begin
       ParValue := '0';
     end;
   end; //if parname
   if AnsiUpperCase(ParName)='Z_FULLNAME' then begin
-    ParValue := cdZAK.fullname;
+    if (cdZAK.lgoty <>KlientTipNeplNds) then begin
+      ParValue := cdZAK.fullname;
+    end else begin
+      ParValue := '«Неплатник»';
+    end;
   end; //if parname
+
+  if AnsiUpperCase(ParName)='TIP_DOGOVORA' then begin
+    if (cdZAK.lgoty <>KlientTipNeplNds) and (cdZAK.lgoty <> KlientTipExport) then begin
+      ParValue := dsNaklr.DataSet.FieldByName('TIP_DOGOVORA').asString;
+    end;
+  end;
+  if AnsiUpperCase(ParName)='DOGOVOR_DAT' then begin
+    if (cdZAK.lgoty <>KlientTipNeplNds) and (cdZAK.lgoty <> KlientTipExport) then begin
+      ParValue := dsNaklr.DataSet.FieldByName('DOGOVOR_DAT').AsDateTime;
+    end else begin
+      ParValue := '';
+    end;
+  end;
+  if AnsiUpperCase(ParName)='DOGOVOR' then begin
+    if (cdZAK.lgoty <>KlientTipNeplNds) and (cdZAK.lgoty <> KlientTipExport) then begin
+      ParValue := dsNaklr.DataSet.FieldByName('DOGOVOR').AsString;
+    end;
+  end;
+
+
 
   if AnsiUpperCase(ParName)='I_IPN' then begin
     if (cdIZG.lgoty <>KlientTipNeplNds) and (cdIZG.lgoty <> KlientTipExport) then begin

@@ -252,73 +252,50 @@ begin
   WriteNode(XMLDeclarContent.DECLARBODY.T2RXXXXG8,
     'T2RXXXXG8',
     FormatNodeFloat,
-    cdsRasx.FieldByName('F8_SUMWITHNDS'));
+    cdsRasx.FieldByName('F8_SUMWITHNDS')); //8
+  WriteNode(XMLDeclarContent.DECLARBODY.T2RXXXXG110,
+    'T2RXXXXG110',
+    FormatNodeFloat,
+    cdsRasx.FieldByName('F9_BAZANDS')); //9
+  WriteNode(XMLDeclarContent.DECLARBODY.T2RXXXXG111,
+    'T2RXXXXG111',
+    FormatNodeFloat,
+    cdsRasx.FieldByName('F10_NDS')); //10
+
   WriteNode(XMLDeclarContent.DECLARBODY.T2RXXXXG9,
     'T2RXXXXG9',
     FormatNodeFloat,
-    cdsRasx.FieldByName('F9_BAZANDS'));
+    cdsRasx.FieldByName('F15'));//14
+
   WriteNode(XMLDeclarContent.DECLARBODY.T2RXXXXG10,
     'T2RXXXXG10',
     FormatNodeFloat,
-    cdsRasx.FieldByName('F10_NDS'));
+    cdsRasx.FieldByName('F16_NDS')); //15
+
   WriteNode(XMLDeclarContent.DECLARBODY.T2RXXXXG11,
     'T2RXXXXG11',
     FormatNodeFloat,
-    cdsRasx.FieldByName('F11'));
+    cdsRasx.FieldByName('F11')); //16
   WriteNode(XMLDeclarContent.DECLARBODY.T2RXXXXG12,
     'T2RXXXXG12',
     FormatNodeFloat,
-    cdsRasx.FieldByName('F12_NDS'));
+    cdsRasx.FieldByName('F12_NDS')); //17
   WriteNode(XMLDeclarContent.DECLARBODY.T2RXXXXG13,
     'T2RXXXXG13',
     FormatNodeFloat,
-    cdsRasx.FieldByName('F13_BAZANDS'));
+    cdsRasx.FieldByName('F13_BAZANDS')); //18
    WriteNode(XMLDeclarContent.DECLARBODY.T2RXXXXG14,
     'T2RXXXXG14',
     FormatNodeFloat,
-    cdsRasx.FieldByName('F14_NDS'));
+    cdsRasx.FieldByName('F14_NDS')); //19
    WriteNode(XMLDeclarContent.DECLARBODY.T2RXXXXG15,
     'T2RXXXXG15',
     FormatNodeFloat,
-    cdsRasx.FieldByName('F15'));
+    cdsRasx.FieldByName('F15')); //20
    WriteNode(XMLDeclarContent.DECLARBODY.T2RXXXXG16,
     'T2RXXXXG16',
     FormatNodeFloat,
-    cdsRasx.FieldByName('F16_NDS'));
-{
-  WriteNode(XMLDeclarContent.DECLARBODY.T1RXXXXG7,
-    'T1RXXXXG7',
-    FormatNodeFloat,
-    cdsRasx.FieldByName('F7_NDS'));
-  WriteNode(XMLDeclarContent.DECLARBODY.T1RXXXXG8,
-    'T1RXXXXG8',
-    FormatNodeFloat,
-    cdsRasx.FieldByName('F8_NDS'));
-  WriteNode(XMLDeclarContent.DECLARBODY.T1RXXXXG9,
-    'T1RXXXXG9',
-    FormatNodeFloatZero,
-    cdsRasx.FieldByName('F8_NDS'));
-  WriteNode(XMLDeclarContent.DECLARBODY.T1RXXXXG10,
-    'T1RXXXXG10',
-    FormatNodeFloatZero,
-    cdsRasx.FieldByName('F8_NDS'));
-  WriteNode(XMLDeclarContent.DECLARBODY.T1RXXXXG11,
-    'T1RXXXXG11',
-    FormatNodeFloat,
-    cdsRasx.FieldByName('f11'));
-  WriteNode(XMLDeclarContent.DECLARBODY.T1RXXXXG12,
-    'T1RXXXXG12',
-    FormatNodeFloat,
-    cdsRasx.FieldByName('f12'));
-  WriteNode(XMLDeclarContent.DECLARBODY.T1RXXXXG13,
-    'T1RXXXXG13',
-    FormatNodeFloatZero,
-    cdsRasx.FieldByName('f12'));
-  WriteNode(XMLDeclarContent.DECLARBODY.T1RXXXXG14,
-    'T1RXXXXG14',
-    FormatNodeFloatZero,
-    cdsRasx.FieldByName('f12'));
-}    
+    cdsRasx.FieldByName('F16_NDS')); //21
 end;
 
 
@@ -328,9 +305,9 @@ procedure TfrmRepReestrPolychNNakl.FillNNaklpFooter(
 begin
   XMLDeclarContent.DECLARBODY.R021G8 :=
     FormatFloat('0.00',VarToDbl(Columnbyname(dbgRasx.Columns,'F8_SUMWITHNDS').Footer.SumValue),FormatSettings);
-  XMLDeclarContent.DECLARBODY.R021G9 :=
+  XMLDeclarContent.DECLARBODY.R021G110 :=
     FormatFloat('0.00',VarToDbl(Columnbyname(dbgRasx.Columns,'F9_BAZANDS').Footer.SumValue),FormatSettings);
-  XMLDeclarContent.DECLARBODY.R021G10 :=
+  XMLDeclarContent.DECLARBODY.R021G111 :=
     FormatFloat('0.00',VarToDbl(Columnbyname(dbgRasx.Columns,'F10_NDS').Footer.SumValue),FormatSettings);
   XMLDeclarContent.DECLARBODY.R021G11 :=
     FormatFloat('0.00',VarToDbl(Columnbyname(dbgRasx.Columns,'F11').Footer.SumValue),FormatSettings); 

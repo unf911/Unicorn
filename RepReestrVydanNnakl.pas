@@ -275,19 +275,19 @@ begin
   WriteNode(XMLDeclarContent.DECLARBODY.T1RXXXXG10,
     'T1RXXXXG10',
     FormatNodeFloat,
-    cdsRasx.FieldByName('F10'));
+    cdsRasx.FieldByName('F10')); //12
   WriteNode(XMLDeclarContent.DECLARBODY.T1RXXXXG113,
     'T1RXXXXG113',
     FormatNodeFloat,
-    cdsRasx.FieldByName('F11_BEZOBLOGENIYA'));
+    cdsRasx.FieldByName('F11_BEZOBLOGENIYA')); //13
   WriteNode(XMLDeclarContent.DECLARBODY.T1RXXXXG12,
     'T1RXXXXG12',
     FormatNodeFloat,
-    cdsRasx.FieldByName('F12_BAZANDSEXPORT'));
+    cdsRasx.FieldByName('F12_BAZANDSEXPORT')); //15
   WriteNode(XMLDeclarContent.DECLARBODY.T1RXXXXG13,
     'T1RXXXXG13',
     FormatNodeFloat,
-    cdsRasx.FieldByName('F13'));
+    cdsRasx.FieldByName('F13'))  //16;
 end;
 
 procedure TfrmRepReestrVydanNnakl.FillNNaklrFooter(XMLDeclarContent: IXMLDeclarContent;
