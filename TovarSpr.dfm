@@ -117,6 +117,17 @@ object frmTovarSpr: TfrmTovarSpr
         EditButtons = <>
         FieldName = 'EDIZ'
         Footers = <>
+        Title.Caption = 
+          #1045#1076#1080#1085#1080#1094#1099' '#1080#1079#1084#1077#1088#1077#1085#1080#1103' ('#1087#1086#1076#1090#1103#1075#1080#1074#1072#1102#1090#1089#1103' '#1080#1079' '#1089#1087#1088#1072#1074#1086#1095#1085#1080#1082#1072' '#1077#1076#1080#1085#1080#1094' '#1080#1079#1084#1077#1088#1077#1085#1080#1103 +
+          ')'
+      end
+      item
+        EditButtons = <>
+        FieldName = 'EDIZ_OLD'
+        Footers = <>
+        Title.Hint = 
+          #1045#1076#1080#1085#1080#1094#1072' '#1080#1079#1084#1077#1088#1077#1085#1080#1103' ('#1091#1089#1090#1072#1088#1077#1074#1096#1077#1077', '#1089#1077#1081#1095#1072#1089' '#1080#1089#1087#1086#1083#1100#1079#1091#1077#1090#1089#1103' '#1077#1076#1080#1085#1080#1094#1099' '#1080#1079#1084#1077#1088 +
+          #1077#1085#1080#1103' '#1080#1079' '#1089#1087#1088#1072#1074#1086#1095#1085#1080#1082#1072' '#1077#1076#1080#1085#1080#1094' '#1080#1079#1084#1077#1088#1077#1085#1080#1103')'
         Width = 26
       end
       item
@@ -161,11 +172,11 @@ object frmTovarSpr: TfrmTovarSpr
   end
   object sdsTovar: TSQLDataSet
     CommandText = 
-      'select '#13#10'  t.id,'#13#10'  t.name,'#13#10'  t.ediz,'#13#10'  t.tara,'#13#10'  t.delmarked' +
-      ','#13#10'  t.id_analog,'#13#10'  t.skladskaya,'#13#10'  t.weight,'#13#10'  t.nothing,'#13#10' ' +
-      ' t.fullname,'#13#10'  t.gruppa1,'#13#10'  t.gruppa2,'#13#10'  t.gruppa3,'#13#10'  t.grup' +
-      'pa4,'#13#10'  t.COPPERPERKM,'#13#10'  t.kodved'#13#10'from '#13#10'  TOVAR_ALL_VW t'#13#10'ord' +
-      'er by'#13#10' t.name'#13#10
+      'select '#13#10'  t.id,'#13#10'  t.name,'#13#10'  t.ediz as ediz_old,'#13#10'  t.tara,'#13#10' ' +
+      ' t.delmarked,'#13#10'  t.id_analog,'#13#10'  t.skladskaya,'#13#10'  t.weight,'#13#10'  t' +
+      '.nothing,'#13#10'  t.fullname,'#13#10'  t.gruppa1,'#13#10'  t.gruppa2,'#13#10'  t.gruppa' +
+      '3,'#13#10'  t.gruppa4,'#13#10'  t.COPPERPERKM,'#13#10'  t.kodved,'#13#10'  t.id_ediz'#13#10'fr' +
+      'om '#13#10'  TOVAR_ALL_VW t'#13#10'order by'#13#10' t.name'#13#10
     MaxBlobSize = -1
     Params = <>
     SQLConnection = dmdEx.scUchet
@@ -180,10 +191,6 @@ object frmTovarSpr: TfrmTovarSpr
       FieldName = 'NAME'
       Required = True
       Size = 44
-    end
-    object sdsTovarEDIZ: TStringField
-      FieldName = 'EDIZ'
-      Size = 5
     end
     object sdsTovarTARA: TSmallintField
       FieldName = 'TARA'
@@ -231,6 +238,13 @@ object frmTovarSpr: TfrmTovarSpr
       Precision = 15
       Size = 0
     end
+    object sdsTovarID_EDIZ: TIntegerField
+      FieldName = 'ID_EDIZ'
+    end
+    object sdsTovarEDIZ_OLD: TStringField
+      FieldName = 'EDIZ_OLD'
+      Size = 5
+    end
   end
   object dspTovar: TDataSetProvider
     DataSet = sdsTovar
@@ -262,10 +276,10 @@ object frmTovarSpr: TfrmTovarSpr
       OnChange = cdsTovarNAMEChange
       Size = 48
     end
-    object cdsTovarEDIZ: TStringField
-      DisplayLabel = #1045#1076'.'#1080#1079
+    object cdsTovarEDIZ_OLD: TStringField
+      DisplayLabel = #1045#1076'.'#1080#1079' ('#1091#1089#1090#1072#1088')'
       DisplayWidth = 4
-      FieldName = 'EDIZ'
+      FieldName = 'EDIZ_OLD'
       Size = 9
     end
     object cdsTovarTARA: TSmallintField
@@ -325,6 +339,20 @@ object frmTovarSpr: TfrmTovarSpr
       EditFormat = '##########'
       Precision = 10
       Size = 0
+    end
+    object cdsTovarID_EDIZ: TIntegerField
+      FieldName = 'ID_EDIZ'
+    end
+    object cdsTovarEDIZ: TStringField
+      DisplayLabel = #1045#1076'. '#1080#1079#1084
+      DisplayWidth = 4
+      FieldKind = fkLookup
+      FieldName = 'EDIZ'
+      LookupDataSet = dmdEx.cdsEdiz
+      LookupKeyFields = 'OID'
+      LookupResultField = 'NAME'
+      KeyFields = 'ID_EDIZ'
+      Lookup = True
     end
   end
   object dsTovar: TDataSource

@@ -26,6 +26,7 @@ object dmdEx: TdmdEx
       'User_Name=sysdba'
       'WaitOnLocks=True')
     VendorLib = 'fbclient.dll'
+    Connected = True
     Left = 24
     Top = 9
   end
@@ -141,8 +142,8 @@ object dmdEx: TdmdEx
   end
   object sdsTovar: TSQLDataSet
     CommandText = 
-      'select'#13#10'  t.id, '#13#10'  t.name,'#13#10'  t.ediz'#13#10'from'#13#10'  tovar_all_vw t'#13#10'w' +
-      'here'#13#10'  t.delmarked=0 and '#13#10'  t.tara=2'#13#10'order by '#13#10'  t.name'
+      'select'#13#10'  t.id, '#13#10'  t.name,'#13#10'  t.id_ediz'#13#10'from'#13#10'  tovar_all_vw t' +
+      #13#10'where'#13#10'  t.delmarked=0 and '#13#10'  t.tara=2'#13#10'order by '#13#10'  t.name'
     MaxBlobSize = -1
     Params = <>
     SQLConnection = scUchet
@@ -160,6 +161,26 @@ object dmdEx: TdmdEx
     ProviderName = 'dspTovar'
     Left = 192
     Top = 165
+    object cdsTovarID: TIntegerField
+      FieldName = 'ID'
+      Required = True
+    end
+    object cdsTovarNAME: TStringField
+      FieldName = 'NAME'
+      Size = 100
+    end
+    object cdsTovarID_EDIZ: TIntegerField
+      FieldName = 'ID_EDIZ'
+    end
+    object cdsTovarEDIZ: TStringField
+      FieldKind = fkLookup
+      FieldName = 'EDIZ'
+      LookupDataSet = cdsEdiz
+      LookupKeyFields = 'OID'
+      LookupResultField = 'NAME'
+      KeyFields = 'ID'
+      Lookup = True
+    end
   end
   object sdsGen: TSQLDataSet
     MaxBlobSize = -1
@@ -436,10 +457,10 @@ object dmdEx: TdmdEx
   end
   object sdsTovarAll: TSQLDataSet
     CommandText = 
-      'select'#13#10'  t.id, '#13#10'  t.name,'#13#10'  t.ediz,'#13#10'  t.delmarked,'#13#10'  t.tara' +
-      ','#13#10'  t.fullname,'#13#10'  t.gruppa1,'#13#10'  t.gruppa2,'#13#10'  t.gruppa3,'#13#10'  t.' +
-      'gruppa4,'#13#10'  t.id_analog,'#13#10'  t.copperperkm,'#13#10'  t.kodved'#13#10'from'#13#10'  ' +
-      'tovar_all_vw t'#13#10'order by '#13#10'  t.name'
+      'select'#13#10'  t.id, '#13#10'  t.name,'#13#10'  t.ediz as ediz_old,'#13#10'  t.delmarke' +
+      'd,'#13#10'  t.tara,'#13#10'  t.fullname,'#13#10'  t.gruppa1,'#13#10'  t.gruppa2,'#13#10'  t.gr' +
+      'uppa3,'#13#10'  t.gruppa4,'#13#10'  t.id_analog,'#13#10'  t.copperperkm,'#13#10'  t.kodv' +
+      'ed,'#13#10'  t.id_ediz'#13#10'from'#13#10'  tovar_all_vw t'#13#10'order by '#13#10'  t.name'
     MaxBlobSize = -1
     Params = <>
     SQLConnection = scUchet
@@ -458,6 +479,73 @@ object dmdEx: TdmdEx
     ProviderName = 'dspTovarAll'
     Left = 656
     Top = 157
+    object cdsTovarAllID: TIntegerField
+      FieldName = 'ID'
+      Required = True
+    end
+    object cdsTovarAllNAME: TStringField
+      FieldName = 'NAME'
+      Size = 100
+    end
+    object cdsTovarAllEDIZ_OLD: TStringField
+      FieldName = 'EDIZ_OLD'
+      Size = 5
+    end
+    object cdsTovarAllDELMARKED: TSmallintField
+      FieldName = 'DELMARKED'
+    end
+    object cdsTovarAllTARA: TSmallintField
+      FieldName = 'TARA'
+    end
+    object cdsTovarAllFULLNAME: TStringField
+      FieldName = 'FULLNAME'
+      Size = 250
+    end
+    object cdsTovarAllGRUPPA1: TStringField
+      FieldName = 'GRUPPA1'
+      Size = 50
+    end
+    object cdsTovarAllGRUPPA2: TFloatField
+      FieldName = 'GRUPPA2'
+    end
+    object cdsTovarAllGRUPPA3: TFloatField
+      FieldName = 'GRUPPA3'
+    end
+    object cdsTovarAllGRUPPA4: TFloatField
+      FieldName = 'GRUPPA4'
+    end
+    object cdsTovarAllID_ANALOG: TIntegerField
+      FieldName = 'ID_ANALOG'
+    end
+    object cdsTovarAllCOPPERPERKM: TFloatField
+      FieldName = 'COPPERPERKM'
+    end
+    object cdsTovarAllKODVED: TFMTBCDField
+      FieldName = 'KODVED'
+      Precision = 15
+      Size = 0
+    end
+    object cdsTovarAllID_EDIZ: TIntegerField
+      FieldName = 'ID_EDIZ'
+    end
+    object cdsTovarAllEDIZ_KOD: TIntegerField
+      FieldKind = fkLookup
+      FieldName = 'EDIZ_KOD'
+      LookupDataSet = cdsEdiz
+      LookupKeyFields = 'OID'
+      LookupResultField = 'KOD'
+      KeyFields = 'ID_EDIZ'
+      Lookup = True
+    end
+    object cdsTovarAllEDIZ: TStringField
+      FieldKind = fkLookup
+      FieldName = 'EDIZ'
+      LookupDataSet = cdsEdiz
+      LookupKeyFields = 'OID'
+      LookupResultField = 'NAME'
+      KeyFields = 'ID_EDIZ'
+      Lookup = True
+    end
   end
   object dsTovarAll: TDataSource
     DataSet = cdsTovarAll
@@ -2005,5 +2093,50 @@ object dmdEx: TdmdEx
     UpdateMode = upWhereKeyOnly
     Left = 579
     Top = 496
+  end
+  object sdsEdiz: TSQLDataSet
+    CommandText = 
+      'select'#13#10'  *'#13#10'from '#13#10'  ediz t'#13#10'where'#13#10'  t.delmarked=0'#13#10'order by '#13 +
+      #10'  t.name'
+    MaxBlobSize = -1
+    Params = <>
+    SQLConnection = scUchet
+    Left = 632
+    Top = 453
+  end
+  object dspEdiz: TDataSetProvider
+    DataSet = sdsEdiz
+    Left = 632
+    Top = 501
+  end
+  object cdsEdiz: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'dspEdiz'
+    Left = 632
+    Top = 541
+    object cdsEdizOID: TIntegerField
+      FieldName = 'OID'
+      Required = True
+    end
+    object cdsEdizNAME: TStringField
+      FieldName = 'NAME'
+      Size = 50
+    end
+    object cdsEdizKOD: TIntegerField
+      FieldName = 'KOD'
+    end
+    object cdsEdizFULLNAME: TStringField
+      FieldName = 'FULLNAME'
+      Size = 100
+    end
+    object cdsEdizDELMARKED: TSmallintField
+      FieldName = 'DELMARKED'
+    end
+  end
+  object dsEdiz: TDataSource
+    DataSet = cdsEdiz
+    Left = 632
+    Top = 589
   end
 end

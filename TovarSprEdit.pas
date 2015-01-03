@@ -13,19 +13,9 @@ uses
 type
   TfrmTovarSprEdit = class(TForm)
     dbeName: TDBEdit;
-    dbeCena: TDBEdit;
-    dbeCenaVX: TDBEdit;
     dbeEdizm: TDBEdit;
-    dbeKod1: TDBEdit;
-    dbeKod2: TDBEdit;
-    dbeKod3: TDBEdit;
     Label1: TLabel;
-    Label2: TLabel;
-    Label3: TLabel;
     Label4: TLabel;
-    Label5: TLabel;
-    Label6: TLabel;
-    Label7: TLabel;
     btnOk: TBitBtn;
     btnCancel: TBitBtn;
     ActionList1: TActionList;
@@ -57,6 +47,9 @@ type
     dsMainAnalog: TDataSource;
     Label16: TLabel;
     dbeKodVed: TDBEdit;
+    dblEdiz: TDBLookupComboboxEh;
+    Label17: TLabel;
+    dsEdiz: TDataSource;
     procedure actOkExecute(Sender: TObject);
     procedure actCancelExecute(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);

@@ -86,7 +86,8 @@ uses
   DolgnostSpr, //TfrmDolgnostSpr
   RepReys, // TfrmRepReys
   RepNNaklXml, // TfrmRepNNaklXml
-  RepPribylPrilogEdnal //TfrmRepPribylPrilogEdnal
+  RepPribylPrilogEdnal, //TfrmRepPribylPrilogEdnal
+  EdizSpr //TfrmEdizSpr
   ;
 
 type
@@ -311,6 +312,8 @@ type
     N74: TMenuItem;
     actRepPribylPrilogEdnal: TAction;
     N75: TMenuItem;
+    actEdizSpr: TAction;
+    N76: TMenuItem;
 
     procedure FileNew1Execute(Sender: TObject);
     procedure FileOpen1Execute(Sender: TObject);
@@ -405,6 +408,7 @@ type
     procedure actTestShortExecute(Sender: TObject);
     procedure actRepReestrEDRPNExecute(Sender: TObject);
     procedure actRepPribylPrilogEdnalExecute(Sender: TObject);
+    procedure actEdizSprExecute(Sender: TObject);
   private
     { Private declarations }
     procedure CreateMDIChild(const Name: string);
@@ -1579,6 +1583,7 @@ begin
   Sklost := TfrmSklost.Create(Application);
 try
 try
+  dmdEx.OpenQuery(dmdEx.cdsEdiz);
   dmdEx.OpenQuery(dmdEx.cdsSklads);
   dmdEx.OpenQuery(dmdEx.cdsTovarAll);
 
@@ -2551,5 +2556,17 @@ end;
 end;
 
 
+
+procedure TMainForm.actEdizSprExecute(Sender: TObject);
+var
+  EdizSpr: TfrmEdizSpr;
+begin
+try
+	EdizSpr := TfrmEdizSpr.Create (Application);
+  EdizSpr.ShowSpr;
+except
+	AssertInternal ('E21E4A67-CB6F-4E92-A9D8-94AE3714004D');
+end
+end;
 
 end.

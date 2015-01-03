@@ -15,8 +15,8 @@ object frmDetSelect: TfrmDetSelect
   OldCreateOrder = False
   OnClose = FormClose
   DesignSize = (
-    395
-    272)
+    387
+    262)
   PixelsPerInch = 96
   TextHeight = 13
   object DBGridEh1: TDBGridEh

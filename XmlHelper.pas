@@ -22,6 +22,7 @@ type
   function FormatNodeFloat (XMLNode : IXMLNode;Field:TField):string;
   function FormatNodeFloatZero (XMLNode : IXMLNode;Field:TField):string;
   function FormatInteger (XMLNode : IXMLNode;Field:TField):string;
+  function FormatInteger4Digits (XMLNode : IXMLNode;Field:TField):string;
   function  CheckIPN(DataSet :TDataSet;
     FieldName:String ='f6_ipn';
     FieldNameForFullName:String='f5_zak';
@@ -58,6 +59,16 @@ end;
 function FormatInteger (XMLNode : IXMLNode;Field:TField):string;
 begin
   XMLNode.NodeValue := inttostr(Field.AsInteger);
+end;
+
+function AddLeadingZeroes(const aNumber, Length : integer) : string;
+ begin
+    result := SysUtils.Format('%.*d', [Length, aNumber]) ;
+ end;
+
+function FormatInteger4Digits (XMLNode : IXMLNode;Field:TField):string;
+begin
+  XMLNode.NodeValue := AddLeadingZeroes(Field.AsInteger, 4);
 end;
 
 function FormatNodeString (XMLNode : IXMLNode;Field:TField):string;

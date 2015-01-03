@@ -420,10 +420,7 @@ begin
   //поле "Обратный курс" должно быть в виде галочки
   if iMode in [1,3] then begin
     //поле "Обратный курс" должно быть в виде галочки
-    ColumnByName(DBGridEh1.Columns,'KURS_INDIRECT').KeyList.Clear;
-    ColumnByName(DBGridEh1.Columns,'KURS_INDIRECT').KeyList.Add('1');
-    ColumnByName(DBGridEh1.Columns,'KURS_INDIRECT').KeyList.Add('0');
-    ColumnByName(DBGridEh1.Columns,'KURS_INDIRECT').CheckBoxes := true;
+    ShowCheckboxForColumn(ColumnByName(DBGridEh1.Columns,'KURS_INDIRECT'));
     ColumnByName(DBGridEh1.Columns,'DEBET').Footer.ValueType:=fvtSum;
     ColumnByName(DBGridEh1.Columns,'KREDIT').Footer.ValueType:=fvtSum;
   end;

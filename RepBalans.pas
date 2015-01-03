@@ -392,11 +392,7 @@ begin
   end;//with
 
   ColumnByName(DBGridEh1.Columns,'SUM_FINAL').Footer.ValueType:=fvtSum;
-
-  ColumnByName(DBGridEh1.Columns,'KURS_INDIRECT').KeyList.Clear;
-  ColumnByName(DBGridEh1.Columns,'KURS_INDIRECT').KeyList.Add('1');
-  ColumnByName(DBGridEh1.Columns,'KURS_INDIRECT').KeyList.Add('0');
-  ColumnByName(DBGridEh1.Columns,'KURS_INDIRECT').CheckBoxes := true;
+  ShowCheckboxForColumn(ColumnByName(DBGridEh1.Columns,'KURS_INDIRECT'));
 end;
 
 end.

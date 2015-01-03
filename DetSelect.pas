@@ -201,10 +201,7 @@ begin
       qeQuery.Refresh;
     end;
   end;//case
-  ColumnByName(dbGridEh1.Columns,'CHECKED').KeyList.Clear;
-  ColumnByName(dbGridEh1.Columns,'CHECKED').KeyList.Add('1');
-  ColumnByName(dbGridEh1.Columns,'CHECKED').KeyList.Add('0');
-  ColumnByName(dbGridEh1.Columns,'CHECKED').CheckBoxes := true;
+  ShowCheckboxForColumn(ColumnByName(dbGridEh1.Columns,'CHECKED'));
   dmdEx.stopwaiting;
 end;
 

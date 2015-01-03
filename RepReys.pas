@@ -178,10 +178,7 @@ begin
   ColumnByName(DBGridEh1.Columns,'CENA_REYSA').Footer.ValueType:=fvtSum;
   ColumnByName(DBGridEh1.Columns,'SUM_NAKLR').Footer.ValueType:=fvtSum;
 
-  ColumnByName(DBGridEh1.Columns,'POKUPATEL_PLATIT').KeyList.Clear;
-  ColumnByName(DBGridEh1.Columns,'POKUPATEL_PLATIT').KeyList.Add('1');
-  ColumnByName(DBGridEh1.Columns,'POKUPATEL_PLATIT').KeyList.Add('0');
-  ColumnByName(DBGridEh1.Columns,'POKUPATEL_PLATIT').CheckBoxes := true;
+  ShowCheckboxForColumn(ColumnByName(DBGridEh1.Columns,'POKUPATEL_PLATIT'));
 end;
 
 procedure TfrmRepReys.actDetailReysExecute(Sender: TObject);

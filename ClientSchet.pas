@@ -49,6 +49,7 @@ type
   public
     { Public declarations }
     procedure ShowSchet(id_klient: integer);
+    function SchetEdit:integer; override;
   end;
 
 var
@@ -88,6 +89,14 @@ begin
     dmdEx.cdsAllClient.Lookup('id',FIdKlient,'name')+' Ñ÷¸ò';
   dmdEx.CloseQuery(dmdEx.cdsAllClient,false);
   DataSet.FieldByName('id_currency').asInteger := dmdEx.GetIdCurrencyUAH;
+end;
+
+function TfrmClientSchet.SchetEdit:integer;
+begin
+  frmClientSchetEdit := TfrmClientSchetEdit.Create(self);
+  frmClientSchetEdit.dtsEdit.DataSet := dsSprav.Dataset;
+  Result := frmClientSchetEdit.ShowModal;
+  frmClientSchetEdit.Free;
 end;
 
 

@@ -247,7 +247,6 @@ object frmRepNnaklXml: TfrmRepNnaklXml
     object cdsNaklrtSUMA2GRN: TFMTBCDField
       FieldKind = fkCalculated
       FieldName = 'SUMA2GRN'
-      Size = 8
       Calculated = True
     end
     object cdsNaklrtEDIZ: TStringField
@@ -259,6 +258,15 @@ object frmRepNnaklXml: TfrmRepNnaklXml
       LookupResultField = 'EDIZ'
       KeyFields = 'ID_TOVAR'
       ReadOnly = True
+      Lookup = True
+    end
+    object cdsNaklrtEDIZ_KOD: TIntegerField
+      FieldKind = fkLookup
+      FieldName = 'EDIZ_KOD'
+      LookupDataSet = dmdEx.cdsTovarAll
+      LookupKeyFields = 'ID'
+      LookupResultField = 'EDIZ_KOD'
+      KeyFields = 'ID_TOVAR'
       Lookup = True
     end
   end
@@ -336,7 +344,6 @@ object frmRepNnaklXml: TfrmRepNnaklXml
       FieldName = 'KURS'
       ProviderFlags = []
       Precision = 15
-      Size = 8
     end
     object sdsNNaklVSEGO: TFMTBCDField
       FieldName = 'VSEGO'
@@ -512,7 +519,6 @@ object frmRepNnaklXml: TfrmRepNnaklXml
       FieldName = 'KURS'
       ProviderFlags = []
       Precision = 15
-      Size = 8
     end
     object cdsNNaklVSEGO: TFMTBCDField
       FieldName = 'VSEGO'

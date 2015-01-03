@@ -2,10 +2,10 @@ object frmTovarSprEdit: TfrmTovarSprEdit
   Left = 289
   Top = 126
   Width = 375
-  Height = 512
+  Height = 420
   Caption = #1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1085#1080#1077' '#1090#1086#1074#1072#1088#1086#1074
   Color = clBtnFace
-  Constraints.MinHeight = 512
+  Constraints.MinHeight = 420
   Constraints.MinWidth = 375
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -15,8 +15,8 @@ object frmTovarSprEdit: TfrmTovarSprEdit
   OldCreateOrder = False
   OnClose = FormClose
   DesignSize = (
-    367
-    484)
+    359
+    382)
   PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel
@@ -26,63 +26,24 @@ object frmTovarSprEdit: TfrmTovarSprEdit
     Height = 13
     Caption = #1058#1086#1074#1072#1088
   end
-  object Label2: TLabel
-    Left = 12
-    Top = 156
-    Width = 26
-    Height = 13
-    Caption = #1062#1077#1085#1072
-    Visible = False
-  end
-  object Label3: TLabel
-    Left = 12
-    Top = 252
-    Width = 52
-    Height = 13
-    Caption = #1050#1086#1083#1086#1085#1082#1072' 4'
-    Visible = False
-  end
   object Label4: TLabel
     Left = 12
-    Top = 132
-    Width = 36
+    Top = 156
+    Width = 73
     Height = 13
-    Caption = #1045#1076'.'#1080#1079#1084
-  end
-  object Label5: TLabel
-    Left = 12
-    Top = 180
-    Width = 52
-    Height = 13
-    Caption = #1050#1086#1083#1086#1085#1082#1072' 1'
-    Visible = False
-  end
-  object Label6: TLabel
-    Left = 12
-    Top = 204
-    Width = 52
-    Height = 13
-    Caption = #1050#1086#1083#1086#1085#1082#1072' 2'
-    Visible = False
-  end
-  object Label7: TLabel
-    Left = 12
-    Top = 228
-    Width = 52
-    Height = 13
-    Caption = #1050#1086#1083#1086#1085#1082#1072' 3'
-    Visible = False
+    Hint = #1059#1089#1090#1072#1088#1077#1074#1096#1077#1077' '#1087#1086#1083#1077' '#1077#1076#1080#1085#1080#1094' '#1080#1079#1084#1077#1088#1077#1085#1080#1103'. '#1048#1089#1087#1086#1083#1100#1079#1091#1081#1090#1077' '#1085#1086#1074#1086#1077' '#1074#1084#1077#1089#1090#1086' '#1085#1077#1075#1086
+    Caption = #1045#1076'.'#1080#1079#1084' ('#1091#1089#1090#1072#1088')'
   end
   object Label8: TLabel
     Left = 12
-    Top = 343
+    Top = 247
     Width = 36
     Height = 13
     Caption = #1040#1085#1072#1083#1086#1075
   end
   object Label9: TLabel
     Left = 12
-    Top = 365
+    Top = 269
     Width = 19
     Height = 13
     Caption = #1042#1077#1089
@@ -96,42 +57,42 @@ object frmTovarSprEdit: TfrmTovarSprEdit
   end
   object Label11: TLabel
     Left = 12
-    Top = 300
+    Top = 204
     Width = 41
     Height = 13
     Caption = #1043#1088#1091#1087#1087#1072'1'
   end
   object Label12: TLabel
     Left = 188
-    Top = 300
+    Top = 204
     Width = 41
     Height = 13
     Caption = #1043#1088#1091#1087#1087#1072'2'
   end
   object Label13: TLabel
     Left = 12
-    Top = 324
+    Top = 228
     Width = 41
     Height = 13
     Caption = #1043#1088#1091#1087#1087#1072'3'
   end
   object Label14: TLabel
     Left = 188
-    Top = 316
+    Top = 220
     Width = 41
     Height = 13
     Caption = #1043#1088#1091#1087#1087#1072'4'
   end
   object Label15: TLabel
     Left = 12
-    Top = 389
+    Top = 293
     Width = 112
     Height = 13
     Caption = #1050#1075' '#1084#1077#1076#1080' '#1085#1072' '#1082#1084' '#1082#1072#1073#1077#1083#1103
   end
   object Label16: TLabel
     Left = 12
-    Top = 413
+    Top = 317
     Width = 38
     Height = 13
     Hint = 
@@ -141,6 +102,13 @@ object frmTovarSprEdit: TfrmTovarSprEdit
     Caption = #1058#1053#1042#1069#1044
     ParentShowHint = False
     ShowHint = True
+  end
+  object Label17: TLabel
+    Left = 12
+    Top = 132
+    Width = 36
+    Height = 13
+    Caption = #1045#1076'.'#1080#1079#1084
   end
   object dbeName: TDBEdit
     Left = 172
@@ -152,70 +120,25 @@ object frmTovarSprEdit: TfrmTovarSprEdit
     DataSource = dsTovarEdit
     TabOrder = 0
   end
-  object dbeCena: TDBEdit
+  object dbeEdizm: TDBEdit
     Left = 172
     Top = 156
     Width = 185
     Height = 21
     Anchors = [akLeft, akTop, akRight]
-    TabOrder = 4
-    Visible = False
-  end
-  object dbeCenaVX: TDBEdit
-    Left = 172
-    Top = 252
-    Width = 185
-    Height = 21
-    Anchors = [akLeft, akTop, akRight]
-    TabOrder = 8
-    Visible = False
-  end
-  object dbeEdizm: TDBEdit
-    Left = 172
-    Top = 132
-    Width = 185
-    Height = 21
-    Anchors = [akLeft, akTop, akRight]
-    DataField = 'EDIZ'
+    DataField = 'EDIZ_OLD'
     DataSource = dsTovarEdit
     TabOrder = 3
   end
-  object dbeKod1: TDBEdit
-    Left = 172
-    Top = 180
-    Width = 185
-    Height = 21
-    Anchors = [akLeft, akTop, akRight]
-    TabOrder = 5
-    Visible = False
-  end
-  object dbeKod2: TDBEdit
-    Left = 172
-    Top = 204
-    Width = 185
-    Height = 21
-    Anchors = [akLeft, akTop, akRight]
-    TabOrder = 6
-    Visible = False
-  end
-  object dbeKod3: TDBEdit
-    Left = 172
-    Top = 228
-    Width = 185
-    Height = 21
-    Anchors = [akLeft, akTop, akRight]
-    TabOrder = 7
-    Visible = False
-  end
   object btnOk: TBitBtn
     Left = 16
-    Top = 458
+    Top = 366
     Width = 129
     Height = 25
     Action = actOk
     Anchors = [akLeft, akBottom]
     Caption = 'OK'
-    TabOrder = 17
+    TabOrder = 12
     Glyph.Data = {
       DE010000424DDE01000000000000760000002800000024000000120000000100
       0400000000006801000000000000000000001000000000000000000000000000
@@ -237,13 +160,13 @@ object frmTovarSprEdit: TfrmTovarSprEdit
   end
   object btnCancel: TBitBtn
     Left = 224
-    Top = 458
+    Top = 366
     Width = 113
     Height = 25
     Action = actCancel
     Anchors = [akRight, akBottom]
     Caption = #1054#1090#1084#1077#1085#1072
-    TabOrder = 18
+    TabOrder = 13
     Glyph.Data = {
       DE010000424DDE01000000000000760000002800000024000000120000000100
       0400000000006801000000000000000000001000000000000000000000000000
@@ -284,20 +207,20 @@ object frmTovarSprEdit: TfrmTovarSprEdit
   end
   object dbcbDelmarked: TDBCheckBox
     Left = 12
-    Top = 276
+    Top = 180
     Width = 345
     Height = 17
     Anchors = [akLeft, akTop, akRight]
     Caption = #1055#1086#1084#1077#1090#1082#1072' '#1085#1072' '#1091#1076#1072#1083#1077#1085#1080#1077
     DataField = 'delmarked'
     DataSource = dsTovarEdit
-    TabOrder = 9
+    TabOrder = 4
     ValueChecked = '1'
     ValueUnchecked = '0'
   end
   object dblIdAnalog: TDBLookupComboboxEh
     Left = 172
-    Top = 341
+    Top = 245
     Width = 185
     Height = 21
     Anchors = [akLeft, akTop, akRight]
@@ -307,30 +230,30 @@ object frmTovarSprEdit: TfrmTovarSprEdit
     KeyField = 'OID'
     ListField = 'NAME'
     ListSource = dsMainAnalog
-    TabOrder = 14
+    TabOrder = 9
     Visible = True
   end
   object dbcSkladskaya: TDBCheckBoxEh
     Left = 12
-    Top = 441
+    Top = 345
     Width = 321
     Height = 17
     Caption = #1057#1082#1083#1072#1076#1089#1082#1072#1103
     DataField = 'skladskaya'
     DataSource = dsTovarEdit
-    TabOrder = 16
+    TabOrder = 11
     ValueChecked = '1'
     ValueUnchecked = '0;null'
   end
   object dbeWeight: TDBEdit
     Left = 172
-    Top = 365
+    Top = 269
     Width = 185
     Height = 21
     Anchors = [akLeft, akTop, akRight]
     DataField = 'WEIGHT'
     DataSource = dsTovarEdit
-    TabOrder = 15
+    TabOrder = 10
   end
   object dbeFullName: TDBEdit
     Left = 172
@@ -344,51 +267,51 @@ object frmTovarSprEdit: TfrmTovarSprEdit
   end
   object dbeGruppa1: TDBEdit
     Left = 68
-    Top = 296
+    Top = 200
     Width = 109
     Height = 21
     DataField = 'GRUPPA1'
     DataSource = dsTovarEdit
-    TabOrder = 10
+    TabOrder = 5
   end
   object dbnGruppa2: TDBNumberEditEh
     Left = 240
-    Top = 296
+    Top = 200
     Width = 117
     Height = 21
     Anchors = [akLeft, akTop, akRight]
     DataField = 'GRUPPA2'
     DataSource = dsTovarEdit
     EditButtons = <>
-    TabOrder = 11
+    TabOrder = 6
     Visible = True
   end
   object dbnGruppa3: TDBNumberEditEh
     Left = 68
-    Top = 317
+    Top = 221
     Width = 109
     Height = 21
     DataField = 'GRUPPA3'
     DataSource = dsTovarEdit
     EditButtons = <>
-    TabOrder = 12
+    TabOrder = 7
     Visible = True
   end
   object dbnGruppa4: TDBNumberEditEh
     Left = 240
-    Top = 317
+    Top = 221
     Width = 117
     Height = 21
     Anchors = [akLeft, akTop, akRight]
     DataField = 'GRUPPA4'
     DataSource = dsTovarEdit
     EditButtons = <>
-    TabOrder = 13
+    TabOrder = 8
     Visible = True
   end
   object dbeCopperPerKm: TDBNumberEditEh
     Left = 172
-    Top = 388
+    Top = 292
     Width = 185
     Height = 21
     Anchors = [akLeft, akTop, akRight]
@@ -396,12 +319,12 @@ object frmTovarSprEdit: TfrmTovarSprEdit
     DataSource = dsTovarEdit
     DecimalPlaces = 6
     EditButtons = <>
-    TabOrder = 19
+    TabOrder = 14
     Visible = True
   end
   object dbeKodVed: TDBEdit
     Left = 172
-    Top = 413
+    Top = 317
     Width = 185
     Height = 21
     Hint = 
@@ -413,11 +336,26 @@ object frmTovarSprEdit: TfrmTovarSprEdit
     DataSource = dsTovarEdit
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 20
+    TabOrder = 15
+  end
+  object dblEdiz: TDBLookupComboboxEh
+    Left = 172
+    Top = 133
+    Width = 185
+    Height = 21
+    Anchors = [akLeft, akTop, akRight]
+    DataField = 'id_ediz'
+    DataSource = dsTovarEdit
+    EditButtons = <>
+    KeyField = 'OID'
+    ListField = 'NAME'
+    ListSource = dsEdiz
+    TabOrder = 16
+    Visible = True
   end
   object ActionList1: TActionList
     Left = 84
-    Top = 212
+    Top = 236
     object actOk: TAction
       Caption = 'OK'
       ShortCut = 16397
@@ -434,7 +372,7 @@ object frmTovarSprEdit: TfrmTovarSprEdit
   end
   object dsTovarEdit: TDataSource
     Left = 84
-    Top = 172
+    Top = 196
   end
   object rpsTovarEdit: TRegPropStorageManEh
     Path = 'Software\Eurosystems\Uchet'
@@ -455,6 +393,11 @@ object frmTovarSprEdit: TfrmTovarSprEdit
   end
   object dsMainAnalog: TDataSource
     Left = 116
-    Top = 172
+    Top = 196
+  end
+  object dsEdiz: TDataSource
+    DataSet = dmdEx.cdsEdiz
+    Left = 148
+    Top = 196
   end
 end

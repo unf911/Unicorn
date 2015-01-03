@@ -1,12 +1,12 @@
-object frmClientSchetEdit: TfrmClientSchetEdit
+object frmEdizSprEdit: TfrmEdizSprEdit
   Left = 281
   Top = 244
-  Width = 309
-  Height = 246
+  Width = 314
+  Height = 222
   BorderIcons = [biSystemMenu]
   Caption = #1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1085#1080#1077' '#1089#1087#1088#1072#1074#1086#1095#1085#1080#1082#1072' '#1082#1083#1080#1077#1085#1090#1086#1074
   Color = clBtnFace
-  Constraints.MinHeight = 246
+  Constraints.MinHeight = 222
   Constraints.MinWidth = 309
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -15,15 +15,14 @@ object frmClientSchetEdit: TfrmClientSchetEdit
   Font.Style = []
   OldCreateOrder = False
   OnClose = FormClose
-  OnShow = FormShow
   DesignSize = (
-    276
-    208)
+    298
+    184)
   PixelsPerInch = 96
   TextHeight = 13
   object BitBtn1: TBitBtn
-    Left = 8
-    Top = 191
+    Left = 12
+    Top = 151
     Width = 97
     Height = 25
     Action = actOk
@@ -50,8 +49,8 @@ object frmClientSchetEdit: TfrmClientSchetEdit
     NumGlyphs = 2
   end
   object BitBtn2: TBitBtn
-    Left = 200
-    Top = 191
+    Left = 196
+    Top = 151
     Width = 97
     Height = 25
     Action = actCancel
@@ -81,136 +80,101 @@ object frmClientSchetEdit: TfrmClientSchetEdit
   object Panel2: TPanel
     Left = 0
     Top = 0
-    Width = 276
-    Height = 186
+    Width = 298
+    Height = 137
     Align = alTop
     BevelOuter = bvNone
     TabOrder = 0
     DesignSize = (
-      276
-      186)
+      298
+      137)
     object Label2: TLabel
       Left = 4
       Top = 52
-      Width = 40
+      Width = 19
       Height = 13
-      Caption = #1056#1072#1089#1095'/'#1089#1095
+      Caption = #1050#1086#1076
     end
     object Label3: TLabel
       Left = 4
       Top = 76
-      Width = 28
+      Width = 89
       Height = 13
-      Caption = #1052#1060#1054
+      Caption = #1055#1086#1083#1085#1086#1077' '#1085#1072#1079#1074#1072#1085#1080#1077
     end
     object Label8: TLabel
       Left = 4
       Top = 28
-      Width = 25
+      Width = 93
       Height = 13
-      Caption = #1041#1072#1085#1082
-    end
-    object Label1: TLabel
-      Left = 4
-      Top = 104
-      Width = 38
-      Height = 13
-      Caption = #1042#1072#1083#1102#1090#1072
+      Caption = #1050#1088#1072#1090#1082#1086#1077' '#1085#1072#1079#1074#1072#1085#1080#1077
     end
     object Label4: TLabel
       Left = 4
       Top = 4
-      Width = 81
+      Width = 23
       Height = 13
-      Caption = #1053#1072#1079#1074#1072#1085#1080#1077' '#1089#1095#1105#1090#1072
+      Caption = #8470#1087#1087
     end
-    object Label5: TLabel
-      Left = 4
-      Top = 128
-      Width = 53
-      Height = 13
-      Caption = #1052#1077#1085#1077#1076#1078#1077#1088
-    end
-    object dbeRS: TDBEdit
-      Left = 92
+    object dbeKod: TDBEdit
+      Left = 104
       Top = 52
-      Width = 202
+      Width = 190
       Height = 21
+      Hint = 
+        #1050#1086#1076' '#1077#1076#1080#1085#1080#1094#1099' '#1080#1079#1084#1077#1088#1077#1085#1080#1103'. '#1048#1089#1087#1086#1083#1100#1079#1091#1077#1090#1089#1103' '#1087#1088#1080' '#1101#1082#1089#1087#1086#1088#1090#1077' '#1085#1072#1083#1086#1075#1086#1074#1086#1081' '#1085#1072#1082#1083#1072 +
+        #1076#1085#1086#1081' '#1074' xml'
       Anchors = [akLeft, akTop, akRight]
-      DataField = 'RASCH'
+      DataField = 'KOD'
       DataSource = dtsEdit
+      ParentShowHint = False
+      ShowHint = True
       TabOrder = 2
     end
-    object dbeMfo: TDBEdit
-      Left = 92
+    object dbeFullname: TDBEdit
+      Left = 104
       Top = 76
-      Width = 202
-      Height = 21
-      Anchors = [akLeft, akTop, akRight]
-      DataField = 'MFO'
-      DataSource = dtsEdit
-      TabOrder = 3
-    end
-    object dbeBank: TDBEdit
-      Left = 92
-      Top = 28
-      Width = 202
-      Height = 21
-      Anchors = [akLeft, akTop, akRight]
-      DataField = 'BANK_NAME'
-      DataSource = dtsEdit
-      TabOrder = 1
-    end
-    object dlcCurrency: TDBLookupComboboxEh
-      Left = 92
-      Top = 100
-      Width = 202
-      Height = 21
-      Anchors = [akLeft, akTop, akRight]
-      DataField = 'CURRENCY'
-      DataSource = dtsEdit
-      DropDownBox.AutoDrop = True
-      EditButtons = <>
-      TabOrder = 4
-      Visible = True
-    end
-    object DBEdit1: TDBEdit
-      Left = 92
-      Top = 4
-      Width = 202
+      Width = 190
       Height = 21
       Anchors = [akLeft, akTop, akRight]
       DataField = 'FULLNAME'
       DataSource = dtsEdit
-      TabOrder = 0
+      TabOrder = 3
     end
-    object cbxFirm: TCheckBox
-      Left = 2
-      Top = 149
-      Width = 104
-      Height = 21
-      Alignment = taLeftJustify
-      BiDiMode = bdLeftToRight
-      Caption = #1050#1072#1089#1089#1072
-      ParentBiDiMode = False
-      TabOrder = 5
-    end
-    object dlcManager: TDBLookupComboboxEh
-      Left = 92
-      Top = 124
-      Width = 202
+    object dbeName: TDBEdit
+      Left = 104
+      Top = 28
+      Width = 190
       Height = 21
       Anchors = [akLeft, akTop, akRight]
-      DataField = 'MANAGER'
+      DataField = 'NAME'
       DataSource = dtsEdit
-      DropDownBox.AutoDrop = True
-      EditButtons = <
-        item
-          Style = ebsMinusEh
-          OnClick = DBLookupComboboxEh1EditButtons0Click
-        end>
-      TabOrder = 6
-      Visible = True
+      TabOrder = 1
+    end
+    object dbeOid: TDBEdit
+      Left = 104
+      Top = 4
+      Width = 190
+      Height = 21
+      Anchors = [akLeft, akTop, akRight]
+      DataField = 'OID'
+      DataSource = dtsEdit
+      Enabled = False
+      TabOrder = 0
+    end
+    object dbcbDelmarked: TDBCheckBox
+      Left = 1
+      Top = 104
+      Width = 296
+      Height = 17
+      Alignment = taLeftJustify
+      Anchors = [akLeft, akTop, akRight]
+      Caption = #1055#1086#1084#1077#1090#1082#1072' '#1085#1072' '#1091#1076#1072#1083#1077#1085#1080#1077
+      DataField = 'delmarked'
+      DataSource = dtsEdit
+      TabOrder = 4
+      ValueChecked = '1'
+      ValueUnchecked = '0'
     end
   end
   object ActionList1: TActionList
@@ -231,7 +195,7 @@ object frmClientSchetEdit: TfrmClientSchetEdit
     Left = 168
   end
   object PropStorageEh1: TPropStorageEh
-    Section = 'TfrmClientSchetEdit'
+    Section = 'TfrmEdizSprEdit'
     StorageManager = rpsClientEdit
     StoredProps.Strings = (
       '<P>.Height'

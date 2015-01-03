@@ -22,7 +22,7 @@ type
     actRefresh: TAction;
     cdsTovarTOVAR: TIntegerField;
     cdsTovarNAME: TStringField;
-    cdsTovarEDIZ: TStringField;
+    cdsTovarEDIZ_OLD: TStringField;
     cdsTovarTARA: TSmallintField;
     cdsTovarDELMARKED: TSmallintField;
     Panel1: TPanel;
@@ -31,7 +31,6 @@ type
     btnInsert: TButton;
     sdsTovarTOVAR: TIntegerField;
     sdsTovarNAME: TStringField;
-    sdsTovarEDIZ: TStringField;
     sdsTovarTARA: TSmallintField;
     sdsTovarDELMARKED: TSmallintField;
     sdsTovarID_ANALOG: TIntegerField;
@@ -71,6 +70,10 @@ type
     SQLDataSet1: TSQLDataSet;
     sdsTovarKODVED: TFMTBCDField;
     cdsTovarKODVED: TFMTBCDField;
+    sdsTovarID_EDIZ: TIntegerField;
+    cdsTovarID_EDIZ: TIntegerField;
+    cdsTovarEDIZ: TStringField;
+    sdsTovarEDIZ_OLD: TStringField;
     procedure btnDeleteClick(Sender: TObject);
     procedure btnInsertClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);

@@ -41,9 +41,9 @@ type
   private
     { Private declarations }
     FId : integer;
-    function SchetEdit: integer;
   public
     { Public declarations }
+    function SchetEdit: integer; virtual;abstract;
   end;
 
 var
@@ -122,19 +122,10 @@ begin
   ModalResult := mrOk;
 end;
 
-function TfrmSpravochnik.SchetEdit:integer;
-begin
-  frmClientSchetEdit := TfrmClientSchetEdit.Create(self);
-  frmClientSchetEdit.dtsEdit.DataSet := dsSprav.Dataset;
-  Result := frmClientSchetEdit.ShowModal;
-  frmClientSchetEdit.Free;
-end;
-
-
-
 procedure TfrmSpravochnik.dbgSchetDblClick(Sender: TObject);
 begin
   actEdit.Execute;
 end;
+
 
 end.

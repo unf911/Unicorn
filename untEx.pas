@@ -298,6 +298,35 @@ type
     sdsVygruzkaVID_PEREVOZOK: TStringField;
     cdsVygruzkaNOMER_PRAV: TStringField;
     cdsVygruzkaVID_PEREVOZOK: TStringField;
+    sdsEdiz: TSQLDataSet;
+    dspEdiz: TDataSetProvider;
+    cdsEdiz: TClientDataSet;
+    cdsEdizOID: TIntegerField;
+    cdsEdizNAME: TStringField;
+    cdsEdizKOD: TIntegerField;
+    cdsEdizFULLNAME: TStringField;
+    cdsEdizDELMARKED: TSmallintField;
+    dsEdiz: TDataSource;
+    cdsTovarAllID: TIntegerField;
+    cdsTovarAllNAME: TStringField;
+    cdsTovarAllDELMARKED: TSmallintField;
+    cdsTovarAllTARA: TSmallintField;
+    cdsTovarAllFULLNAME: TStringField;
+    cdsTovarAllGRUPPA1: TStringField;
+    cdsTovarAllGRUPPA2: TFloatField;
+    cdsTovarAllGRUPPA3: TFloatField;
+    cdsTovarAllGRUPPA4: TFloatField;
+    cdsTovarAllID_ANALOG: TIntegerField;
+    cdsTovarAllCOPPERPERKM: TFloatField;
+    cdsTovarAllKODVED: TFMTBCDField;
+    cdsTovarAllEDIZ_KOD: TIntegerField;
+    cdsTovarAllID_EDIZ: TIntegerField;
+    cdsTovarAllEDIZ_OLD: TStringField;
+    cdsTovarAllEDIZ: TStringField;
+    cdsTovarID: TIntegerField;
+    cdsTovarNAME: TStringField;
+    cdsTovarEDIZ: TStringField;
+    cdsTovarID_EDIZ: TIntegerField;
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);
 //    procedure scUchetBeforeConnect(Sender: TObject);
@@ -593,6 +622,7 @@ begin
   cdsTovarAll.Close;
 	cdsTara.Close;
 	cdsClient.Close;
+  cdsEdiz.Close;
 	scUchet.Close;
 
 	scUchet.CloseDataSets;
@@ -748,52 +778,6 @@ begin
   Result := 'Борисова М.Д.';
 end;
 
-
-{возвращает словесное описание позиции на складе из naklot.tip
-используется в детализации остатков по складу и
-возможно в отчёте по остаткам после накладной}
-{
-function TdmdEx.GetTipSkladPosit (iTip :integer):string;
-begin
-try
-  case iTip of
-    0: begin
-      Result := 'Ошибочный тип';
-    end;
-    1: begin
-      Result := 'Приход';
-    end;
-		2: begin
-      Result := 'Отложена целиком';
-    end;
-    3: begin
-      Result := 'Отложен кусок';
-    end;
-    4: begin
-      Result := 'Отложена намотка';
-    end;
-    5: begin
-      Result := 'Излишек';
-    end;
-    8: begin
-      Result := 'Отгрузка целиком';
-    end;
-    9: begin
-      Result := 'Отгрузка куска';
-    end;
-		10: begin
-      Result := 'Отгрузка намотки';
-    end;
-    else begin
-      Result := 'Неизвестный тип';
-    end;
-  end;
-except
-  AssertInternal('699D8D3A-C980-4965-9DF1-5DA369056A53');
-end;
-end;
-}
-
 procedure Tdmdex.StartWaiting;
 begin
   Save_Cursor := Screen.Cursor;
@@ -802,7 +786,6 @@ end;
 
 procedure TdmdEx.StopWaiting;
 begin
-  //Screen.Cursor :=Save_Cursor;
   Screen.Cursor := crDefault;
 end;
 

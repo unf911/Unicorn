@@ -23,7 +23,7 @@ object frmSravnSpec: TfrmSravnSpec
   object GroupBox1: TGroupBox
     Left = 0
     Top = 0
-    Width = 634
+    Width = 626
     Height = 39
     Align = alTop
     TabOrder = 0
@@ -131,8 +131,8 @@ object frmSravnSpec: TfrmSravnSpec
   object AutoPanel1: TAutoPanel
     Left = 0
     Top = 39
-    Width = 634
-    Height = 405
+    Width = 626
+    Height = 393
     Align = alClient
     BevelInner = bvRaised
     BevelOuter = bvLowered
@@ -140,8 +140,8 @@ object frmSravnSpec: TfrmSravnSpec
     object PageControl1: TPageControl
       Left = 2
       Top = 2
-      Width = 630
-      Height = 401
+      Width = 622
+      Height = 389
       ActivePage = tsAllPrices
       Align = alClient
       TabOrder = 0
@@ -270,8 +270,8 @@ object frmSravnSpec: TfrmSravnSpec
         object dbgRepFact: TDBGridEh
           Left = 0
           Top = 0
-          Width = 622
-          Height = 357
+          Width = 614
+          Height = 345
           Align = alClient
           DataSource = dsFactTable
           EditActions = [geaCopyEh, geaSelectAllEh]
@@ -298,8 +298,8 @@ object frmSravnSpec: TfrmSravnSpec
         end
         object pbAllPrices: TProgressBar
           Left = 0
-          Top = 357
-          Width = 622
+          Top = 345
+          Width = 614
           Height = 16
           Align = alBottom
           Step = 1
@@ -312,13 +312,13 @@ object frmSravnSpec: TfrmSravnSpec
         ImageIndex = 3
         OnShow = tsSravnPriceShow
         DesignSize = (
-          622
-          373)
+          614
+          361)
         object dbgRep: TDBGridEh
           Left = 0
           Top = 0
-          Width = 622
-          Height = 373
+          Width = 614
+          Height = 361
           Align = alClient
           DataSource = dsSravnPrice
           EditActions = [geaCopyEh, geaSelectAllEh]

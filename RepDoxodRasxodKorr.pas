@@ -401,10 +401,7 @@ begin
   end;  
   //поле "Обратный курс" должно быть в виде галочки
   if iMode in [1,3] then begin
-    ColumnByName(DBGridEh1.Columns,'KURS_INDIRECT').KeyList.Clear;
-    ColumnByName(DBGridEh1.Columns,'KURS_INDIRECT').KeyList.Add('1');
-    ColumnByName(DBGridEh1.Columns,'KURS_INDIRECT').KeyList.Add('0');
-    ColumnByName(DBGridEh1.Columns,'KURS_INDIRECT').CheckBoxes := true;
+    ShowCheckboxForColumn(ColumnByName(DBGridEh1.Columns,'KURS_INDIRECT'));
     ColumnByName(DBGridEh1.Columns,'SUM_FROM').Footer.ValueType:=fvtSum;
   end;
   DBGridEh1.ColumnDefValues.Title.TitleButton := true;

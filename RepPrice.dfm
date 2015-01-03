@@ -23,7 +23,7 @@ object frmRepPrice: TfrmRepPrice
   object GroupBox1: TGroupBox
     Left = 0
     Top = 0
-    Width = 579
+    Width = 571
     Height = 39
     Align = alTop
     TabOrder = 0
@@ -113,8 +113,8 @@ object frmRepPrice: TfrmRepPrice
   object AutoPanel1: TAutoPanel
     Left = 0
     Top = 39
-    Width = 579
-    Height = 283
+    Width = 571
+    Height = 271
     Align = alClient
     BevelInner = bvRaised
     BevelOuter = bvLowered
@@ -122,8 +122,8 @@ object frmRepPrice: TfrmRepPrice
     object dbgRep: TDBGridEh
       Left = 2
       Top = 2
-      Width = 575
-      Height = 279
+      Width = 567
+      Height = 267
       Align = alClient
       DataSource = dsRep
       EditActions = [geaCopyEh, geaSelectAllEh]

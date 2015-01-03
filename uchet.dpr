@@ -13,7 +13,7 @@ uses
   DolgBuxDet in 'DolgBuxDet.pas' {frmDolgBuxDet},
   untDolgDet in 'untDolgDet.pas' {frmDolgDet},
   ClientSpr in 'ClientSpr.pas' {frmClientSpr},
-  ClientSchetEdit in 'ClientSchetEdit.pas' {frmClientSchetEdit},
+  EdizSprEdit in 'EdizSprEdit.pas' {frmEdizSprEdit},
   untRealPriceMake in 'untRealPriceMake.pas' {frmRealPriceMake},
   Currency in 'Currency.pas' {frmCurrency},
   TovarSprEdit in 'TovarSprEdit.pas' {frmTovarSprEdit},
@@ -197,10 +197,12 @@ uses
   RepPribylPrilogEdnal in 'RepPribylPrilogEdnal.pas' {frmRepPribylPrilogEdnal},
   J0111901 in 'J0111901.pas',
   RepNNaklXml in 'RepNNaklXml.pas' {frmRepNnaklXml},
-  J0215104 in 'J0215104.pas',
   J1201005 in 'J1201005.pas',
   J1201006 in 'J1201006.pas',
-  J1201508 in 'J1201508.pas';
+  J1201007 in 'J1201007.pas',
+  J0215104 in 'J0215104.pas',
+  J1201508 in 'J1201508.pas',
+  EdizSpr in 'EdizSpr.pas' {frmEdizSpr};
 
 {$R *.RES}
 begin

@@ -21,7 +21,7 @@ uses
   SettingsPlugin, //TfmSettingPlugin
   untSettings, xmldom,
   XMLIntf, msxmldom, XMLDoc,
-  J1201006, UnfFilter,  // IXMLDeclarContent
+  J1201007, UnfFilter,  // IXMLDeclarContent
   XMLHelper, PropFilerEh, PropStorageEh;
 
 const KlientTipExport: integer = 1;
@@ -127,6 +127,7 @@ type
     sdsNNaklDAT_DOGOVORA: TSQLTimeStampField;
     sdsNNaklNOMER_DOGOVORA: TStringField;
     sdsNNaklTIP_DOGOVORA: TStringField;
+    cdsNaklrtEDIZ_KOD: TIntegerField;
     procedure FormCreate(Sender: TObject);
 		procedure FormClose(Sender: TObject; var Action: TCloseAction);
 		procedure actSettingsExecute(Sender: TObject);
@@ -270,7 +271,7 @@ begin
     TIN:=GetOKPO;
     C_DOC:='J12';
     C_DOC_SUB:='010';
-    C_DOC_VER:='6';//
+    C_DOC_VER:='7';//
     C_DOC_TYPE:=0;//тип документа. 0-основной
     C_DOC_CNT := GetNumDocZaPeriod; //номер документа за период = номеру налоговой
     C_REG:=GetOblastKod;//15;//код области
@@ -329,6 +330,10 @@ begin
     'RXXXXG4S',
     FormatNodeString,
     dsTovar.FieldByName('EDIZ'));
+  WriteNode(XMLDeclarContent.DECLARBODY.RXXXXG105_2S,
+    'RXXXXG105_2S',
+    FormatInteger4Digits,
+    dsTovar.FieldByName('EDIZ_KOD'));
   WriteNode(XMLDeclarContent.DECLARBODY.RXXXXG5,
     'RXXXXG5',
     FormatNodeFloat3Digits,
@@ -401,8 +406,7 @@ end;
 procedure TfrmRepNnaklXml.FillBodyXML(XMLDeclarContent:IXMLDeclarContent; dsNNakl: TDataSet);
 begin
   with XMLDeclarContent.DECLARBODY do begin
-    HORIG := 1; //Оригинал выдаеться покупцю
-    HERPN := 1; //Включено в ЕРПН
+    HORIG1 := 1; //Оригинал выдаеться покупцю
     HORIG1 := GetOriginalOstaetsyUProdavtsa;//0. оригинал остаётся у продавца
     HTYPR := GetOrigUProdTipPrichiny;
     HFILL := FormatDateTime('ddmmyyyy',dsNNakl.FieldByName('dat').AsDateTime);
@@ -457,7 +461,7 @@ begin
     FormatFloat('00', GetOblastKod ) +
     FormatFloat('00', GetRajonKod ) +
     FormatFloat('0000000000',strtoint(GetOKPO)) +
-    'J1201006'+'100'+
+    'J1201007'+'100'+
     FormatFloat('0000000', GetNumDocZaPeriod ) +
     '1' +
     FormatFloat('00', MonthOf(dat))+

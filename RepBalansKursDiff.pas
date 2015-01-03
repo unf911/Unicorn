@@ -200,10 +200,7 @@ end;
 procedure TfrmRepBalansKursDiff.ProcessColumns(DataSet: TDataSet);
 begin
   ColumnByName(DBGridEh1.Columns,'KURS_DIFF').Footer.ValueType:=fvtSum;
-  ColumnByName(DBGridEh1.Columns,'KURS_INDIRECT').KeyList.Clear;
-  ColumnByName(DBGridEh1.Columns,'KURS_INDIRECT').KeyList.Add('1');
-  ColumnByName(DBGridEh1.Columns,'KURS_INDIRECT').KeyList.Add('0');
-  ColumnByName(DBGridEh1.Columns,'KURS_INDIRECT').CheckBoxes := true;
+  ShowCheckboxForColumn(ColumnByName(DBGridEh1.Columns,'KURS_INDIRECT'));
 end;
 
 end.

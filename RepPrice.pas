@@ -473,15 +473,10 @@ begin
     cdsRep.FieldByName('STAVKA_BANKA').Visible := true;
     cdsRep.FieldByName('ZATRATY').Visible := true;
   end;
-  ColumnByName(dbgRep.Columns,'INCLUDE_NDS').KeyList.Clear;
-  ColumnByName(dbgRep.Columns,'INCLUDE_NDS').KeyList.Add('1');
-  ColumnByName(dbgRep.Columns,'INCLUDE_NDS').KeyList.Add('0');
-  ColumnByName(dbgRep.Columns,'INCLUDE_NDS').CheckBoxes := true;  
+  ShowCheckboxForColumn(ColumnByName(dbgRep.Columns,'INCLUDE_NDS'));
   //поле "Обратный курс" должно быть в виде галочки
-  ColumnByName(dbgRep.Columns,'KURS_INDIRECT').KeyList.Clear;
-  ColumnByName(dbgRep.Columns,'KURS_INDIRECT').KeyList.Add('1');
-  ColumnByName(dbgRep.Columns,'KURS_INDIRECT').KeyList.Add('0');
-  ColumnByName(dbgRep.Columns,'KURS_INDIRECT').CheckBoxes := true;
+  ShowCheckboxForColumn(ColumnByName(dbgRep.Columns,'KURS_INDIRECT'));
+
 
   ColumnByName(dbgRep.Columns,'POST').Footer.ValueType :=fvtStaticText;
   ColumnByName(dbgRep.Columns,'POST').Footer.value := 'Записей всего:';

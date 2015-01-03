@@ -116,7 +116,7 @@ procedure ShowCopyForRoleOrUser(DBGridEh1:TDBGridEh;RolesList:string;userList:st
 procedure GetStringListFromSqlRecord(sSql:string;cdsTemp:TClientDataSet;var StringList:TStringList);
 procedure CloseEditForm(Form:TForm;DataSet:TDataSet; var semaphore:boolean);
 function DefaultOpenInputForm(qeNaklo:TQueryExtender):boolean;
-
+procedure ShowCheckboxForColumn(Column: TColumnEh);
 
 
 implementation
@@ -1049,6 +1049,14 @@ begin
       exit;
     end;
   end;
+end;
+
+procedure ShowCheckboxForColumn(Column: TColumnEh);
+begin
+  Column.KeyList.Clear;
+  Column.KeyList.Add('1');
+  Column.KeyList.Add('0');
+  Column.CheckBoxes := true;
 end;
 
 //Группа процедур отвечающая за фильтр вверху справочника

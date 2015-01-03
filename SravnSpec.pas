@@ -1338,10 +1338,7 @@ var
 begin
 try
   //поле "Обратный курс" должно быть в виде галочки
-  ColumnByName(dbgRepFact.Columns,'KURS_INDIRECT').KeyList.Clear;
-  ColumnByName(dbgRepFact.Columns,'KURS_INDIRECT').KeyList.Add('1');
-  ColumnByName(dbgRepFact.Columns,'KURS_INDIRECT').KeyList.Add('0');
-  ColumnByName(dbgRepFact.Columns,'KURS_INDIRECT').CheckBoxes := true;
+  ShowCheckboxForColumn(ColumnByName(dbgRepFact.Columns,'KURS_INDIRECT'));
 except
   AssertInternal('DD9FB5C0-42FF-494F-9267-B24726E36141');
 end;

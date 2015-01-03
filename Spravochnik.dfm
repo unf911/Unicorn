@@ -13,8 +13,8 @@ object frmSpravochnik: TfrmSpravochnik
   OnClose = FormClose
   OnCreate = FormCreate
   DesignSize = (
-    519
-    152)
+    511
+    142)
   PixelsPerInch = 96
   TextHeight = 13
   object BitBtn1: TBitBtn
@@ -100,16 +100,16 @@ object frmSpravochnik: TfrmSpravochnik
     OnDblClick = dbgSchetDblClick
   end
   object Panel1: TPanel
-    Left = 454
+    Left = 446
     Top = 0
     Width = 65
-    Height = 152
+    Height = 142
     Align = alRight
     BevelOuter = bvNone
     TabOrder = 3
     DesignSize = (
       65
-      152)
+      142)
     object Button2: TButton
       Left = 7
       Top = 72
