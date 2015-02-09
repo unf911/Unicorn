@@ -413,9 +413,19 @@ begin
     HNUM := dsNNakl.FieldByName('id').AsInteger;
 
     HNAMESEL := cdIzg.fullname;
-    HNAMEBUY := cdZak.fullname;
+    if (cdZAK.lgoty <>KlientTipNeplNds) then begin
+      HNAMEBUY := cdZAK.fullname;
+    end else begin
+      HNAMEBUY := '«Неплатник»';
+    end;
     HKSEL := cdIzg.ipn;
-    HKBUY := cdZak.ipn;
+    if (cdZAK.lgoty =KlientTipNeplNds) then begin
+      HKBUY := '100000000000';
+    end else if (cdZAK.lgoty = KlientTipExport) then begin
+      HKBUY := '300000000000';
+    end else begin
+      HKBUY := cdZAK.ipn;
+    end;
     HLOCSEL := cdIzg.adrp;
     HLOCBUY := cdZak.adrp;
     HTELSEL := cdIzg.tel;

@@ -626,7 +626,7 @@ object frmRepNnaklXml: TfrmRepNnaklXml
     CommandText = 
       'select'#13#10'  o.oid,'#13#10'  o.name,'#13#10'  o.fullname,'#13#10'  trim(case when sub' +
       'str(o.predefined,1,2) ='#39#1055#1053#39#13#10'    then'#13#10'      case when strlen(su' +
-      'bstr(o.predefined,3,2))>=2'#13#10'      then substr(o.predefined,3,2)'#13 +
+      'bstr(o.predefined,4,2))>=2'#13#10'      then substr(o.predefined,4,2)'#13 +
       #10'      else '#39'00'#39' end'#13#10'    else '#39'00'#39' end) as tip_code'#13#10'from '#13#10'  o' +
       'bjects o'#13#10'where o.classid=('#13#10'  select oid from get_oid_objects_p' +
       'c('#39#1058#1048#1055' '#1053#1040#1051#1054#1043#1054#1042#1067#1061' '#1053#1040#1050#1051#1040#1044#1053#1067#1061#39',-100)'#13#10') and o.delmarked=0'#13#10

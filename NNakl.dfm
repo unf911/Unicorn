@@ -674,7 +674,6 @@ object frmNNakl: TfrmNNakl
     object sdsNaklrKURS: TFMTBCDField
       FieldName = 'KURS'
       Precision = 15
-      Size = 8
     end
     object sdsNaklrVSEGO: TFMTBCDField
       FieldName = 'VSEGO'
@@ -761,7 +760,6 @@ object frmNNakl: TfrmNNakl
     object sdsNaklrtNDS: TFMTBCDField
       FieldName = 'NDS'
       Precision = 15
-      Size = 8
     end
     object sdsNaklrtKOLOTP: TFloatField
       FieldName = 'KOLOTP'
@@ -774,7 +772,6 @@ object frmNNakl: TfrmNNakl
     object sdsNaklrtVSEGO: TFMTBCDField
       FieldName = 'VSEGO'
       Precision = 15
-      Size = 8
     end
   end
   object dspNaklr: TDataSetProvider
@@ -834,7 +831,6 @@ object frmNNakl: TfrmNNakl
       DisplayFormat = '0.0000'
       EditFormat = '##########.0000'
       Precision = 15
-      Size = 8
     end
     object cdsNaklrVSEGO: TFMTBCDField
       FieldName = 'VSEGO'
@@ -1096,7 +1092,6 @@ object frmNNakl: TfrmNNakl
       OnChange = cdsNaklrtVSEGOChange
       DisplayFormat = '0.00'
       EditFormat = '##########.00'
-      Size = 8
     end
     object cdsNaklrtFULLNAME: TStringField
       FieldKind = fkLookup
