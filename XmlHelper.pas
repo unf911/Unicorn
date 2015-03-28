@@ -68,7 +68,11 @@ function AddLeadingZeroes(const aNumber, Length : integer) : string;
 
 function FormatInteger4Digits (XMLNode : IXMLNode;Field:TField):string;
 begin
-  XMLNode.NodeValue := AddLeadingZeroes(Field.AsInteger, 4);
+  if Field.AsInteger=0 then begin
+    XMLNode.Attributes['xsi:nil']:='true';
+  end else begin
+    XMLNode.NodeValue := AddLeadingZeroes(Field.AsInteger, 4);
+  end;
 end;
 
 function FormatNodeString (XMLNode : IXMLNode;Field:TField):string;
