@@ -407,7 +407,7 @@ object frmClientSpr: TfrmClientSpr
     end
     object sdsKlientADRP: TStringField
       FieldName = 'ADRP'
-      Size = 100
+      Size = 130
     end
     object sdsKlientADRES: TStringField
       FieldName = 'ADRES'
@@ -467,7 +467,7 @@ object frmClientSpr: TfrmClientSpr
     object cdsKlientADRP: TStringField
       DisplayLabel = #1040#1076#1088#1077#1089
       FieldName = 'ADRP'
-      Size = 100
+      Size = 130
     end
     object cdsKlientIPN: TStringField
       DisplayLabel = #1048#1055#1053

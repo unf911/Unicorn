@@ -17,14 +17,14 @@ object frmClientEdit: TfrmClientEdit
   OnCreate = FormCreate
   OnShow = FormShow
   DesignSize = (
-    539
-    467)
+    531
+    456)
   PixelsPerInch = 96
   TextHeight = 13
   object PageControl1: TPageControl
     Left = 0
     Top = 0
-    Width = 539
+    Width = 531
     Height = 425
     ActivePage = TabSheet1
     Align = alTop
@@ -36,7 +36,7 @@ object frmClientEdit: TfrmClientEdit
       object AutoPanel1: TAutoPanel
         Left = 0
         Top = 0
-        Width = 531
+        Width = 523
         Height = 394
         AutoChildPosLeft = True
         AutoChildWidth = True
@@ -44,7 +44,7 @@ object frmClientEdit: TfrmClientEdit
         BevelOuter = bvNone
         TabOrder = 0
         DesignSize = (
-          531
+          523
           394)
         object Panel2: TPanel
           Left = 1
@@ -248,7 +248,7 @@ object frmClientEdit: TfrmClientEdit
             DataSource = dsKlientEdit
             TabOrder = 0
           end
-          object DBEdit22: TDBEdit
+          object dbeYurAdres: TDBEdit
             Left = 104
             Top = 32
             Width = 157
@@ -517,7 +517,7 @@ object frmClientEdit: TfrmClientEdit
       ImageIndex = 1
       OnShow = TabSheet2Show
       DesignSize = (
-        531
+        523
         394)
       object DBGridEh1: TDBGridEh
         Left = 0
@@ -661,7 +661,7 @@ object frmClientEdit: TfrmClientEdit
       Caption = #1040#1085#1082#1077#1090#1072'1'
       ImageIndex = 2
       DesignSize = (
-        531
+        523
         394)
       object Label5: TLabel
         Left = 2
@@ -866,7 +866,7 @@ object frmClientEdit: TfrmClientEdit
       Caption = #1040#1085#1082#1077#1090#1072'2'
       ImageIndex = 3
       DesignSize = (
-        531
+        523
         394)
       object Label29: TLabel
         Left = 2
@@ -1055,7 +1055,7 @@ object frmClientEdit: TfrmClientEdit
       ImageIndex = 4
       OnShow = TabSheet5Show
       DesignSize = (
-        531
+        523
         394)
       object DBGridEh2: TDBGridEh
         Left = 0
@@ -1161,7 +1161,7 @@ object frmClientEdit: TfrmClientEdit
       ImageIndex = 5
       OnShow = TabSheet6Show
       DesignSize = (
-        531
+        523
         394)
       object Label39: TLabel
         Left = 10
@@ -1361,7 +1361,7 @@ object frmClientEdit: TfrmClientEdit
     Left = 192
     Top = 68
   end
-  object SQLDataSet1: TSQLDataSet
+  object sdsContacts: TSQLDataSet
     CommandText = 
       'select * '#13#10'from CONTACTS_VW c'#13#10'where c.id_klient=:id_klient and'#13 +
       #10'  c.delmarked=0'
@@ -1375,89 +1375,89 @@ object frmClientEdit: TfrmClientEdit
     SQLConnection = dmdEx.scUchet
     Left = 160
     Top = 36
-    object SQLDataSet1OID: TIntegerField
+    object sdsContactsOID: TIntegerField
       FieldName = 'OID'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
-    object SQLDataSet1NAME: TStringField
+    object sdsContactsNAME: TStringField
       FieldName = 'NAME'
       Size = 50
     end
-    object SQLDataSet1FULLNAME: TStringField
+    object sdsContactsFULLNAME: TStringField
       FieldName = 'FULLNAME'
       Size = 250
     end
-    object SQLDataSet1DELMARKED: TSmallintField
+    object sdsContactsDELMARKED: TSmallintField
       FieldName = 'DELMARKED'
       Required = True
     end
-    object SQLDataSet1LASTNAME: TStringField
+    object sdsContactsLASTNAME: TStringField
       FieldName = 'LASTNAME'
       Size = 50
     end
-    object SQLDataSet1FIRSTNAME: TStringField
+    object sdsContactsFIRSTNAME: TStringField
       FieldName = 'FIRSTNAME'
       Size = 50
     end
-    object SQLDataSet1MIDDLENAME: TStringField
+    object sdsContactsMIDDLENAME: TStringField
       FieldName = 'MIDDLENAME'
       Size = 50
     end
-    object SQLDataSet1BIRTHDAY: TSQLTimeStampField
+    object sdsContactsBIRTHDAY: TSQLTimeStampField
       FieldName = 'BIRTHDAY'
     end
-    object SQLDataSet1BIRTHPLACE: TStringField
+    object sdsContactsBIRTHPLACE: TStringField
       FieldName = 'BIRTHPLACE'
       Size = 50
     end
-    object SQLDataSet1ID_MARRIAGE: TIntegerField
+    object sdsContactsID_MARRIAGE: TIntegerField
       FieldName = 'ID_MARRIAGE'
     end
-    object SQLDataSet1CHILDREN: TStringField
+    object sdsContactsCHILDREN: TStringField
       FieldName = 'CHILDREN'
       Size = 50
     end
-    object SQLDataSet1HOBBY: TStringField
+    object sdsContactsHOBBY: TStringField
       FieldName = 'HOBBY'
       Size = 50
     end
-    object SQLDataSet1WORKPHONE: TStringField
+    object sdsContactsWORKPHONE: TStringField
       FieldName = 'WORKPHONE'
       Size = 50
     end
-    object SQLDataSet1CELLPHONE: TStringField
+    object sdsContactsCELLPHONE: TStringField
       FieldName = 'CELLPHONE'
       Size = 50
     end
-    object SQLDataSet1ADDPHONE: TStringField
+    object sdsContactsADDPHONE: TStringField
       FieldName = 'ADDPHONE'
       Size = 50
     end
-    object SQLDataSet1EMAIL: TStringField
+    object sdsContactsEMAIL: TStringField
       FieldName = 'EMAIL'
       Size = 50
     end
-    object SQLDataSet1PERSONBYDEF: TSmallintField
+    object sdsContactsPERSONBYDEF: TSmallintField
       FieldName = 'PERSONBYDEF'
       Required = True
     end
-    object SQLDataSet1ID_KLIENT: TIntegerField
+    object sdsContactsID_KLIENT: TIntegerField
       FieldName = 'ID_KLIENT'
       Required = True
     end
-    object SQLDataSet1SEX: TSmallintField
+    object sdsContactsSEX: TSmallintField
       FieldName = 'SEX'
     end
-    object SQLDataSet1ID_DOLGNOST: TIntegerField
+    object sdsContactsID_DOLGNOST: TIntegerField
       FieldName = 'ID_DOLGNOST'
     end
-    object SQLDataSet1ID_MANAGER: TIntegerField
+    object sdsContactsID_MANAGER: TIntegerField
       FieldName = 'ID_MANAGER'
     end
   end
-  object DataSetProvider1: TDataSetProvider
-    DataSet = SQLDataSet1
+  object dspContacts: TDataSetProvider
+    DataSet = sdsContacts
     UpdateMode = upWhereKeyOnly
     Left = 160
     Top = 68
@@ -1471,7 +1471,7 @@ object frmClientEdit: TfrmClientEdit
         ParamType = ptInput
         Value = 0
       end>
-    ProviderName = 'DataSetProvider1'
+    ProviderName = 'dspContacts'
     BeforeInsert = cdsContactsBeforeInsert
     AfterInsert = cdsContactsAfterInsert
     BeforeEdit = cdsContactsBeforeEdit
@@ -1599,7 +1599,7 @@ object frmClientEdit: TfrmClientEdit
     Left = 160
     Top = 132
   end
-  object sdsKlient: TSQLDataSet
+  object ToDeletesdsKlient: TSQLDataSet
     CommandText = 'select * '#13#10'from klient k'#13#10'where k.id=:id_klient'
     MaxBlobSize = -1
     Params = <
@@ -1613,12 +1613,11 @@ object frmClientEdit: TfrmClientEdit
     Left = 256
     Top = 36
   end
-  object dspKlient: TDataSetProvider
-    DataSet = sdsKlient
+  object ToDeletedspKlient: TDataSetProvider
     Left = 256
     Top = 68
   end
-  object cdsKlient: TClientDataSet
+  object ToDeletecdsKlient: TClientDataSet
     Aggregates = <>
     Params = <
       item
@@ -1627,11 +1626,9 @@ object frmClientEdit: TfrmClientEdit
         ParamType = ptInput
         Value = 0
       end>
-    ProviderName = 'dspKlient'
-    AfterInsert = cdsKlientAfterInsert
     Left = 256
     Top = 100
-    object cdsKlientMANAGER: TStringField
+    object ToDeletecdsKlientMANAGER: TStringField
       DisplayLabel = #1052#1077#1085#1077#1076#1078#1077#1088
       FieldKind = fkLookup
       FieldName = 'MANAGER'
@@ -1642,166 +1639,166 @@ object frmClientEdit: TfrmClientEdit
       Size = 30
       Lookup = True
     end
-    object cdsKlientID: TIntegerField
+    object ToDeletecdsKlientID: TIntegerField
       FieldName = 'ID'
       Required = True
     end
-    object cdsKlientNAME: TStringField
+    object ToDeletecdsKlientNAME: TStringField
       FieldName = 'NAME'
       Size = 50
     end
-    object cdsKlientRSCH: TStringField
+    object ToDeletecdsKlientRSCH: TStringField
       FieldName = 'RSCH'
       Size = 14
     end
-    object cdsKlientCODB: TStringField
+    object ToDeletecdsKlientCODB: TStringField
       FieldName = 'CODB'
       Size = 8
     end
-    object cdsKlientNAMEB: TStringField
+    object ToDeletecdsKlientNAMEB: TStringField
       FieldName = 'NAMEB'
       Size = 40
     end
-    object cdsKlientOKPO: TStringField
+    object ToDeletecdsKlientOKPO: TStringField
       FieldName = 'OKPO'
       Size = 10
     end
-    object cdsKlientINDEXI: TFloatField
+    object ToDeletecdsKlientINDEXI: TFloatField
       FieldName = 'INDEXI'
     end
-    object cdsKlientOBLAST: TStringField
+    object ToDeletecdsKlientOBLAST: TStringField
       FieldName = 'OBLAST'
       Size = 4
     end
-    object cdsKlientTEL: TStringField
+    object ToDeletecdsKlientTEL: TStringField
       FieldName = 'TEL'
       Size = 30
     end
-    object cdsKlientFAX: TStringField
+    object ToDeletecdsKlientFAX: TStringField
       FieldName = 'FAX'
       Size = 14
     end
-    object cdsKlientFORIN: TStringField
+    object ToDeletecdsKlientFORIN: TStringField
       FieldName = 'FORIN'
       Size = 10
     end
-    object cdsKlientIPN: TStringField
+    object ToDeletecdsKlientIPN: TStringField
       FieldName = 'IPN'
       Size = 12
     end
-    object cdsKlientSVREG: TStringField
+    object ToDeletecdsKlientSVREG: TStringField
       FieldName = 'SVREG'
       Size = 16
     end
-    object cdsKlientLICO: TStringField
+    object ToDeletecdsKlientLICO: TStringField
       FieldName = 'LICO'
       Size = 50
     end
-    object cdsKlientFIO: TStringField
+    object ToDeletecdsKlientFIO: TStringField
       FieldName = 'FIO'
       Size = 40
     end
-    object cdsKlientOTV: TStringField
+    object ToDeletecdsKlientOTV: TStringField
       FieldName = 'OTV'
       Size = 45
     end
-    object cdsKlientADRES: TStringField
+    object ToDeletecdsKlientADRES: TStringField
       FieldName = 'ADRES'
       Size = 50
     end
-    object cdsKlientGOROD: TStringField
+    object ToDeletecdsKlientGOROD: TStringField
       FieldName = 'GOROD'
       Size = 40
     end
-    object cdsKlientSTAN: TStringField
+    object ToDeletecdsKlientSTAN: TStringField
       FieldName = 'STAN'
       Size = 60
     end
-    object cdsKlientADRP: TStringField
+    object ToDeletecdsKlientADRP: TStringField
       FieldName = 'ADRP'
       Size = 60
     end
-    object cdsKlientDELMARKED: TSmallintField
+    object ToDeletecdsKlientDELMARKED: TSmallintField
       FieldName = 'DELMARKED'
       Required = True
     end
-    object cdsKlientTIP: TIntegerField
+    object ToDeletecdsKlientTIP: TIntegerField
       FieldName = 'TIP'
       Required = True
     end
-    object cdsKlientFULLNAME: TStringField
+    object ToDeletecdsKlientFULLNAME: TStringField
       FieldName = 'FULLNAME'
       Size = 252
     end
-    object cdsKlientMODIFIED: TSQLTimeStampField
+    object ToDeletecdsKlientMODIFIED: TSQLTimeStampField
       FieldName = 'MODIFIED'
       Required = True
     end
-    object cdsKlientDAT_OSNOV: TSQLTimeStampField
+    object ToDeletecdsKlientDAT_OSNOV: TSQLTimeStampField
       FieldName = 'DAT_OSNOV'
     end
-    object cdsKlientOFFICESKLAD: TStringField
+    object ToDeletecdsKlientOFFICESKLAD: TStringField
       FieldName = 'OFFICESKLAD'
       Size = 252
     end
-    object cdsKlientSOTRUDNIKOV_OT: TIntegerField
+    object ToDeletecdsKlientSOTRUDNIKOV_OT: TIntegerField
       FieldName = 'SOTRUDNIKOV_OT'
     end
-    object cdsKlientSOTRUDNIKOV_DO: TStringField
+    object ToDeletecdsKlientSOTRUDNIKOV_DO: TStringField
       FieldName = 'SOTRUDNIKOV_DO'
       Size = 252
     end
-    object cdsKlientFILIALY: TStringField
+    object ToDeletecdsKlientFILIALY: TStringField
       FieldName = 'FILIALY'
       Size = 252
     end
-    object cdsKlientID_ANALOG: TIntegerField
+    object ToDeletecdsKlientID_ANALOG: TIntegerField
       FieldName = 'ID_ANALOG'
     end
-    object cdsKlientKTOZAKUPAET: TStringField
+    object ToDeletecdsKlientKTOZAKUPAET: TStringField
       FieldName = 'KTOZAKUPAET'
       Size = 252
     end
-    object cdsKlientKAKOYKABELNUGEN: TStringField
+    object ToDeletecdsKlientKAKOYKABELNUGEN: TStringField
       FieldName = 'KAKOYKABELNUGEN'
       Size = 252
     end
-    object cdsKlientOBJEMZAGOD: TStringField
+    object ToDeletecdsKlientOBJEMZAGOD: TStringField
       FieldName = 'OBJEMZAGOD'
       Size = 252
     end
-    object cdsKlientOBJEMZA6MESYATSEV: TStringField
+    object ToDeletecdsKlientOBJEMZA6MESYATSEV: TStringField
       FieldName = 'OBJEMZA6MESYATSEV'
       Size = 252
     end
-    object cdsKlientKTOMOGETPORUCHITSYA: TStringField
+    object ToDeletecdsKlientKTOMOGETPORUCHITSYA: TStringField
       FieldName = 'KTOMOGETPORUCHITSYA'
       Size = 252
     end
-    object cdsKlientVASHIPARTNERY: TStringField
+    object ToDeletecdsKlientVASHIPARTNERY: TStringField
       FieldName = 'VASHIPARTNERY'
       Size = 252
     end
-    object cdsKlientVASHIKONKURENTY: TStringField
+    object ToDeletecdsKlientVASHIKONKURENTY: TStringField
       FieldName = 'VASHIKONKURENTY'
       Size = 252
     end
-    object cdsKlientFINANSOVOEPOLOGENIE: TStringField
+    object ToDeletecdsKlientFINANSOVOEPOLOGENIE: TStringField
       FieldName = 'FINANSOVOEPOLOGENIE'
       Size = 252
     end
-    object cdsKlientDELOVAYAREPUTACIYA: TStringField
+    object ToDeletecdsKlientDELOVAYAREPUTACIYA: TStringField
       FieldName = 'DELOVAYAREPUTACIYA'
       Size = 252
     end
-    object cdsKlientRASPOLAGAETLIKONKURENT: TStringField
+    object ToDeletecdsKlientRASPOLAGAETLIKONKURENT: TStringField
       FieldName = 'RASPOLAGAETLIKONKURENT'
       Size = 252
     end
-    object cdsKlientID_SFERADEYATELNOSTI: TIntegerField
+    object ToDeletecdsKlientID_SFERADEYATELNOSTI: TIntegerField
       FieldName = 'ID_SFERADEYATELNOSTI'
     end
-    object cdsKlientSFERA: TStringField
+    object ToDeletecdsKlientSFERA: TStringField
       FieldKind = fkLookup
       FieldName = 'SFERA'
       LookupDataSet = dmdEx.cdsSfera
@@ -1810,7 +1807,7 @@ object frmClientEdit: TfrmClientEdit
       KeyFields = 'ID_SFERADEYATELNOSTI'
       Lookup = True
     end
-    object cdsKlientANALOG: TStringField
+    object ToDeletecdsKlientANALOG: TStringField
       FieldKind = fkLookup
       FieldName = 'ANALOG'
       LookupDataSet = dmdEx.cdsAllClient
@@ -1819,16 +1816,16 @@ object frmClientEdit: TfrmClientEdit
       KeyFields = 'ID_ANALOG'
       Lookup = True
     end
-    object cdsKlientID_MANAGER: TIntegerField
+    object ToDeletecdsKlientID_MANAGER: TIntegerField
       FieldName = 'ID_MANAGER'
     end
-    object cdsKlientID_RESULT: TIntegerField
+    object ToDeletecdsKlientID_RESULT: TIntegerField
       FieldName = 'ID_RESULT'
     end
-    object cdsKlientDAT_CONTACT: TSQLTimeStampField
+    object ToDeletecdsKlientDAT_CONTACT: TSQLTimeStampField
       FieldName = 'DAT_CONTACT'
     end
-    object cdsKlientRESULT: TStringField
+    object ToDeletecdsKlientRESULT: TStringField
       DisplayLabel = #1056#1077#1079#1091#1083#1100#1090#1072#1090
       FieldKind = fkLookup
       FieldName = 'RESULT'
@@ -1840,7 +1837,7 @@ object frmClientEdit: TfrmClientEdit
     end
   end
   object dsKlient: TDataSource
-    DataSet = cdsKlient
+    DataSet = ToDeletecdsKlient
     Left = 256
     Top = 132
   end

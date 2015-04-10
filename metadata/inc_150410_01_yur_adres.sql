@@ -1,0 +1,5 @@
+CREATE DOMAIN VAR130_N AS
+VARCHAR(130);
+
+commit;
+
