@@ -1,6 +1,6 @@
 object frmNaklo: TfrmNaklo
-  Left = 252
-  Top = 252
+  Left = 286
+  Top = 124
   BorderStyle = bsDialog
   Caption = #1054#1090#1075#1088#1091#1079#1082#1080' '#1089#1086' '#1089#1082#1083#1072#1076#1072
   ClientHeight = 524
@@ -227,6 +227,32 @@ object frmNaklo: TfrmNaklo
             '1'
             '0')
           ReadOnly = True
+          Width = 22
+        end
+        item
+          Checkboxes = True
+          EditButtons = <>
+          FieldName = 'OTGRUGENO'
+          Footers = <>
+          KeyList.Strings = (
+            '1'
+            '0')
+          NotInKeyListIndex = 0
+          ReadOnly = True
+          Title.Hint = #1054#1090#1075#1088#1091#1078#1077#1085#1086
+          Width = 22
+        end
+        item
+          Checkboxes = True
+          EditButtons = <>
+          FieldName = 'POLUCHENO'
+          Footers = <>
+          KeyList.Strings = (
+            '1'
+            '0')
+          NotInKeyListIndex = 0
+          ReadOnly = True
+          Title.Hint = #1055#1086#1083#1091#1095#1077#1085#1086
           Width = 22
         end
         item
@@ -511,6 +537,14 @@ object frmNaklo: TfrmNaklo
       Caption = #1047#1072#1087#1086#1083#1085#1080#1090#1100' '#1079#1085#1072#1095#1077#1085#1080#1077#1084
       OnExecute = actSetColumnValueExecute
     end
+    object actOtgrugeno: TAction
+      Caption = #1054#1090#1075#1088#1091#1079#1080#1090#1100
+      OnExecute = actOtgrugenoExecute
+    end
+    object actPolucheno: TAction
+      Caption = #1055#1086#1083#1091#1095#1080#1090#1100
+      OnExecute = actPoluchenoExecute
+    end
   end
   object sdsNaklo: TSQLDataSet
     CommandText = 
@@ -519,8 +553,9 @@ object frmNaklo: TfrmNaklo
       'om.id_izg,'#13#10'  om.id_zak,'#13#10'  om.id_manager,'#13#10'  om.kurs,'#13#10'  om.nds' +
       ','#13#10'  om.tip,'#13#10'  om.delmarked,'#13#10'  om.id_sklad_to,'#13#10'  om.blocked,'#13 +
       #10'  om.parent_id_nakl,'#13#10'  (select id from NAKLO om2 where om2.id_' +
-      'nakl=om.parent_id_nakl) as parent_id'#13#10'from '#13#10'  NAKLO om'#13#10'where'#13#10 +
-      '   om.tip in (5,6,103,30)'#13#10'order by'#13#10'  om.dat, om.id, om.id_nakl'
+      'nakl=om.parent_id_nakl) as parent_id,'#13#10'  om.OTGRUGENO,'#13#10'  om.POL' +
+      'UCHENO'#13#10'from '#13#10'  NAKLO om'#13#10'where'#13#10'   om.tip in (5,6,103,30)'#13#10'ord' +
+      'er by'#13#10'  om.dat, om.id, om.id_nakl'
     MaxBlobSize = -1
     Params = <>
     SQLConnection = dmdEx.scUchet
@@ -580,7 +615,6 @@ object frmNaklo: TfrmNaklo
       FieldName = 'NDS'
       Required = True
       Precision = 15
-      Size = 8
     end
     object sdsNakloTIP: TSmallintField
       FieldName = 'TIP'
@@ -602,6 +636,15 @@ object frmNaklo: TfrmNaklo
     end
     object sdsNakloPARENT_ID: TStringField
       FieldName = 'PARENT_ID'
+      ProviderFlags = []
+    end
+    object sdsNakloOTGRUGENO: TSmallintField
+      FieldName = 'OTGRUGENO'
+      ProviderFlags = []
+      Required = True
+    end
+    object sdsNakloPOLUCHENO: TSmallintField
+      FieldName = 'POLUCHENO'
       ProviderFlags = []
     end
   end
@@ -702,7 +745,6 @@ object frmNaklo: TfrmNaklo
       end
       item
         Name = 'ID_SKLAD_TO'
-        Attributes = [faRequired]
         DataType = ftInteger
       end
       item
@@ -718,6 +760,14 @@ object frmNaklo: TfrmNaklo
         Name = 'PARENT_ID'
         DataType = ftString
         Size = 20
+      end
+      item
+        Name = 'OTGRUGENO'
+        DataType = ftSmallint
+      end
+      item
+        Name = 'POLUCHENO'
+        DataType = ftSmallint
       end>
     IndexDefs = <>
     Params = <>
@@ -884,6 +934,16 @@ object frmNaklo: TfrmNaklo
       FieldName = 'PARENT_ID'
       ProviderFlags = []
     end
+    object cdsNakloOTGRUGENO: TSmallintField
+      DisplayLabel = #1054#1090#1075#1088#1091#1078#1077#1085#1086
+      FieldName = 'OTGRUGENO'
+      ProviderFlags = []
+    end
+    object cdsNakloPOLUCHENO: TSmallintField
+      DisplayLabel = #1055#1086#1083#1091#1095#1077#1085#1086
+      FieldName = 'POLUCHENO'
+      ProviderFlags = []
+    end
   end
   object sdsPost: TSQLDataSet
     CommandText = 'NAKLO_POST_PC'
@@ -964,6 +1024,12 @@ object frmNaklo: TfrmNaklo
       end
       object N20: TMenuItem
         Action = actMakeNaklr
+      end
+      object N13: TMenuItem
+        Action = actOtgrugeno
+      end
+      object N21: TMenuItem
+        Action = actPolucheno
       end
     end
   end
@@ -1620,7 +1686,6 @@ object frmNaklo: TfrmNaklo
     object cdsRepNakloKOLOTP: TFMTBCDField
       FieldName = 'KOLOTP'
       Precision = 15
-      Size = 8
     end
     object cdsRepNakloKOLBUXT: TIntegerField
       FieldName = 'KOLBUXT'
@@ -1631,7 +1696,6 @@ object frmNaklo: TfrmNaklo
     object cdsRepNakloKOLOTP_ITOG: TFMTBCDField
       FieldName = 'KOLOTP_ITOG'
       Precision = 15
-      Size = 8
     end
     object cdsRepNakloNOMER_TARY_ITOG: TStringField
       FieldName = 'NOMER_TARY_ITOG'
@@ -1754,7 +1818,6 @@ object frmNaklo: TfrmNaklo
     object sdsNaklotCENA: TFMTBCDField
       FieldName = 'CENA'
       Precision = 15
-      Size = 8
     end
     object sdsNaklotID_NAKL: TIntegerField
       FieldName = 'ID_NAKL'
@@ -1774,7 +1837,6 @@ object frmNaklo: TfrmNaklo
     object sdsNaklotKOLOTP: TFMTBCDField
       FieldName = 'KOLOTP'
       Precision = 15
-      Size = 8
     end
     object sdsNaklotSKIDKA: TFMTBCDField
       FieldName = 'SKIDKA'
@@ -1865,7 +1927,6 @@ object frmNaklo: TfrmNaklo
       FieldName = 'CENA'
       DisplayFormat = '0.00'
       Precision = 15
-      Size = 8
     end
     object cdsNaklotID_NAKL: TIntegerField
       DisplayWidth = 1
@@ -1889,7 +1950,6 @@ object frmNaklo: TfrmNaklo
       FieldName = 'KOLOTP'
       DisplayFormat = '0.000'
       Precision = 15
-      Size = 8
     end
     object cdsNaklotSKIDKA: TFMTBCDField
       DisplayLabel = #1057#1082#1080#1076#1082#1072
@@ -2039,7 +2099,6 @@ object frmNaklo: TfrmNaklo
     object FMTBCDField1: TFMTBCDField
       FieldName = 'KOLOTP'
       Precision = 15
-      Size = 8
     end
     object IntegerField1: TIntegerField
       FieldName = 'KOLBUXT'
@@ -2050,7 +2109,6 @@ object frmNaklo: TfrmNaklo
     object FMTBCDField2: TFMTBCDField
       FieldName = 'KOLOTP_ITOG'
       Precision = 15
-      Size = 8
     end
     object StringField2: TStringField
       FieldName = 'NOMER_TARY_ITOG'
@@ -2124,7 +2182,7 @@ object frmNaklo: TfrmNaklo
       Lookup = True
     end
   end
-  object sdsMakeNaklo: TSQLDataSet
+  object sdsMakeNaklr: TSQLDataSet
     CommandText = 'NAKLO_MAKE_NAKLR_PC'
     CommandType = ctStoredProc
     MaxBlobSize = -1
@@ -2190,5 +2248,33 @@ object frmNaklo: TfrmNaklo
     DataSource = dsNaklo
     Left = 520
     Top = 304
+  end
+  object sdsOtgruzit: TSQLDataSet
+    CommandText = 'NAKLO_OTGRUZIT_PC'
+    CommandType = ctStoredProc
+    MaxBlobSize = -1
+    Params = <
+      item
+        DataType = ftInteger
+        Name = 'ID_NAKL'
+        ParamType = ptInput
+      end>
+    SQLConnection = dmdEx.scUchet
+    Left = 456
+    Top = 144
+  end
+  object sdsPoluchit: TSQLDataSet
+    CommandText = 'NAKLO_POLUCHIT_PC'
+    CommandType = ctStoredProc
+    MaxBlobSize = -1
+    Params = <
+      item
+        DataType = ftInteger
+        Name = 'ID_NAKL'
+        ParamType = ptInput
+      end>
+    SQLConnection = dmdEx.scUchet
+    Left = 456
+    Top = 112
   end
 end

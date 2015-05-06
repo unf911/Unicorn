@@ -472,6 +472,7 @@ begin
   //накладные с выданными откатами
   if dsNakloEdit.DataSet.FieldByName('tip').asInteger = 5 then begin
     frmNaklrList.qeNaklr.SetSql('where','((tip=3047 and trim(comment)='''') or (tip<>3047))',5);
+    frmNaklrList.qeNaklr.SetSql('where','posted=1',6);
   end;
   frmNaklrList.actSettings.Enabled:=false;
   frmNaklrList.ProcessSettings;

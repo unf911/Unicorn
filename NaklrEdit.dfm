@@ -1,11 +1,11 @@
 object frmNaklrEdit: TfrmNaklrEdit
-  Left = 486
-  Top = 199
-  Width = 354
-  Height = 486
+  Left = 477
+  Top = 116
+  Width = 355
+  Height = 502
   Caption = #1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1085#1080#1077' '#1088#1072#1089#1093#1086#1076#1085#1086#1081' '#1085#1072#1082#1083#1072#1076#1085#1086#1081
   Color = clBtnFace
-  Constraints.MinHeight = 486
+  Constraints.MinHeight = 502
   Constraints.MinWidth = 351
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -20,13 +20,13 @@ object frmNaklrEdit: TfrmNaklrEdit
   object GroupBox2: TGroupBox
     Left = 0
     Top = 0
-    Width = 338
-    Height = 448
+    Width = 339
+    Height = 464
     Align = alClient
     TabOrder = 0
     DesignSize = (
-      338
-      448)
+      339
+      464)
     object Label3: TLabel
       Left = 8
       Top = 136
@@ -142,7 +142,7 @@ object frmNaklrEdit: TfrmNaklrEdit
     object dbeIDNAKL: TDBEditEh
       Left = 112
       Top = 16
-      Width = 221
+      Width = 222
       Height = 21
       TabStop = False
       Anchors = [akLeft, akTop, akRight]
@@ -157,7 +157,7 @@ object frmNaklrEdit: TfrmNaklrEdit
     object lcbMANAGER: TDBLookupComboboxEh
       Left = 112
       Top = 136
-      Width = 221
+      Width = 222
       Height = 21
       Anchors = [akLeft, akTop, akRight]
       DataField = 'ID_MANAGER'
@@ -174,7 +174,7 @@ object frmNaklrEdit: TfrmNaklrEdit
     object dbeLico: TDBEdit
       Left = 112
       Top = 208
-      Width = 221
+      Width = 222
       Height = 21
       Anchors = [akLeft, akTop, akRight]
       DataField = 'LICO'
@@ -185,7 +185,7 @@ object frmNaklrEdit: TfrmNaklrEdit
     object dbeID: TDBEditEh
       Left = 112
       Top = 40
-      Width = 221
+      Width = 222
       Height = 21
       Anchors = [akLeft, akTop, akRight]
       DataField = 'id'
@@ -198,7 +198,7 @@ object frmNaklrEdit: TfrmNaklrEdit
     object lcbSklad: TDBLookupComboboxEh
       Left = 112
       Top = 184
-      Width = 221
+      Width = 222
       Height = 21
       Anchors = [akLeft, akTop, akRight]
       DataField = 'SKLAD'
@@ -213,7 +213,7 @@ object frmNaklrEdit: TfrmNaklrEdit
     object dteDat: TDBDateTimeEditEh
       Left = 112
       Top = 64
-      Width = 221
+      Width = 222
       Height = 21
       Anchors = [akLeft, akTop, akRight]
       DataField = 'dat'
@@ -227,7 +227,7 @@ object frmNaklrEdit: TfrmNaklrEdit
     object btnOk: TBitBtn
       Left = 12
       Top = 427
-      Width = 173
+      Width = 174
       Height = 25
       Action = actOk
       Anchors = [akLeft, akRight, akBottom]
@@ -253,7 +253,7 @@ object frmNaklrEdit: TfrmNaklrEdit
       NumGlyphs = 2
     end
     object btnCancel: TBitBtn
-      Left = 236
+      Left = 237
       Top = 427
       Width = 97
       Height = 25
@@ -283,7 +283,7 @@ object frmNaklrEdit: TfrmNaklrEdit
     object lcbIZG: TDBLookupComboboxEh
       Left = 112
       Top = 88
-      Width = 221
+      Width = 222
       Height = 21
       Anchors = [akLeft, akTop, akRight]
       DataField = 'ID_IZG'
@@ -301,7 +301,7 @@ object frmNaklrEdit: TfrmNaklrEdit
     object lcbZak: TDBLookupComboboxEh
       Left = 112
       Top = 112
-      Width = 221
+      Width = 222
       Height = 21
       Anchors = [akLeft, akTop, akRight]
       DataField = 'ID_ZAK'
@@ -319,7 +319,7 @@ object frmNaklrEdit: TfrmNaklrEdit
     object dneNds: TDBNumberEditEh
       Left = 112
       Top = 400
-      Width = 222
+      Width = 223
       Height = 21
       Anchors = [akLeft, akTop, akRight]
       Ctl3D = True
@@ -340,7 +340,7 @@ object frmNaklrEdit: TfrmNaklrEdit
     object dneKurs: TDBNumberEditEh
       Left = 112
       Top = 160
-      Width = 220
+      Width = 221
       Height = 21
       Anchors = [akLeft, akTop, akRight]
       Ctl3D = True
@@ -361,7 +361,7 @@ object frmNaklrEdit: TfrmNaklrEdit
     object dbeDov: TDBEdit
       Left = 112
       Top = 232
-      Width = 221
+      Width = 222
       Height = 21
       Anchors = [akLeft, akTop, akRight]
       DataField = 'DOV'
@@ -372,7 +372,7 @@ object frmNaklrEdit: TfrmNaklrEdit
     object dbeFr: TDBEdit
       Left = 112
       Top = 280
-      Width = 221
+      Width = 222
       Height = 21
       Anchors = [akLeft, akTop, akRight]
       DataField = 'FR'
@@ -383,7 +383,7 @@ object frmNaklrEdit: TfrmNaklrEdit
     object dbeDDo: TDBDateTimeEditEh
       Left = 112
       Top = 256
-      Width = 221
+      Width = 222
       Height = 21
       Anchors = [akLeft, akTop, akRight]
       DataField = 'DDO'
@@ -397,7 +397,7 @@ object frmNaklrEdit: TfrmNaklrEdit
     object DBCheckBoxEh1: TDBCheckBoxEh
       Left = 8
       Top = 304
-      Width = 321
+      Width = 322
       Height = 17
       Alignment = taLeftJustify
       Anchors = [akLeft, akTop, akRight]
@@ -411,7 +411,7 @@ object frmNaklrEdit: TfrmNaklrEdit
     object dbeVidDostavki: TDBLookupComboboxEh
       Left = 112
       Top = 328
-      Width = 221
+      Width = 222
       Height = 21
       Anchors = [akLeft, akTop, akRight]
       DataField = 'VID_DOSTAVKI'
@@ -426,7 +426,7 @@ object frmNaklrEdit: TfrmNaklrEdit
     object dbeXozOper: TDBLookupComboboxEh
       Left = 112
       Top = 352
-      Width = 221
+      Width = 222
       Height = 21
       Anchors = [akLeft, akTop, akRight]
       DataField = 'XOZOPER'
@@ -441,7 +441,7 @@ object frmNaklrEdit: TfrmNaklrEdit
     object DBLookupComboboxEh1: TDBLookupComboboxEh
       Left = 112
       Top = 376
-      Width = 221
+      Width = 222
       Height = 21
       Anchors = [akLeft, akTop, akRight]
       DataField = 'REYS_NOMER_AVTO'

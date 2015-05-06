@@ -1,12 +1,12 @@
 object frmNaklodet: TfrmNaklodet
-  Left = 205
-  Top = 297
-  Width = 640
-  Height = 458
+  Left = 209
+  Top = 140
+  Width = 645
+  Height = 466
   Caption = #1042#1099#1073#1086#1088' '#1086#1090#1075#1088#1091#1079#1086#1082' '#1089#1086' '#1089#1082#1083#1072#1076#1072
   Color = clBtnFace
-  Constraints.MinHeight = 458
-  Constraints.MinWidth = 640
+  Constraints.MinHeight = 466
+  Constraints.MinWidth = 645
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -18,8 +18,8 @@ object frmNaklodet: TfrmNaklodet
   OnCreate = FormCreate
   OnShow = FormShow
   DesignSize = (
-    624
-    383)
+    629
+    408)
   PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel
@@ -39,8 +39,8 @@ object frmNaklodet: TfrmNaklodet
   object dbgSklostt: TDBGridEh
     Left = 8
     Top = 88
-    Width = 619
-    Height = 105
+    Width = 617
+    Height = 130
     AllowedSelections = [gstRecordBookmarks]
     Anchors = [akLeft, akTop, akRight, akBottom]
     AutoFitColWidths = True
@@ -123,7 +123,7 @@ object frmNaklodet: TfrmNaklodet
   end
   object btnWhole: TBitBtn
     Left = 160
-    Top = 200
+    Top = 225
     Width = 81
     Height = 25
     Action = actWhole
@@ -133,7 +133,7 @@ object frmNaklodet: TfrmNaklodet
   end
   object btnCutPart: TBitBtn
     Left = 272
-    Top = 200
+    Top = 225
     Width = 81
     Height = 25
     Action = actCutPart
@@ -144,7 +144,7 @@ object frmNaklodet: TfrmNaklodet
   object dlcTovar: TDBLookupComboboxEh
     Left = 8
     Top = 16
-    Width = 369
+    Width = 374
     Height = 21
     Anchors = [akLeft, akTop, akRight]
     DropDownBox.AutoDrop = True
@@ -161,9 +161,9 @@ object frmNaklodet: TfrmNaklodet
   end
   object dbgNaklodet: TDBGridEh
     Left = 8
-    Top = 232
-    Width = 619
-    Height = 145
+    Top = 257
+    Width = 617
+    Height = 115
     TabStop = False
     Anchors = [akLeft, akRight, akBottom]
     AutoFitColWidths = True
@@ -223,8 +223,8 @@ object frmNaklodet: TfrmNaklodet
   end
   object btnOk: TBitBtn
     Left = 208
-    Top = 384
-    Width = 257
+    Top = 380
+    Width = 262
     Height = 25
     Anchors = [akLeft, akRight, akBottom]
     Caption = 'OK'
@@ -267,7 +267,7 @@ object frmNaklodet: TfrmNaklodet
   end
   object btnReturn: TBitBtn
     Left = 528
-    Top = 200
+    Top = 225
     Width = 97
     Height = 25
     Action = actReturn
@@ -278,7 +278,7 @@ object frmNaklodet: TfrmNaklodet
   end
   object btnNamotka: TBitBtn
     Left = 384
-    Top = 200
+    Top = 225
     Width = 81
     Height = 25
     Action = actNamotka
@@ -287,7 +287,7 @@ object frmNaklodet: TfrmNaklodet
     TabOrder = 4
   end
   object rgCena: TRadioGroup
-    Left = 384
+    Left = 389
     Top = 6
     Width = 241
     Height = 75
@@ -301,7 +301,7 @@ object frmNaklodet: TfrmNaklodet
     OnClick = rgCenaClick
   end
   object dbnCena: TDBNumberEditEh
-    Left = 499
+    Left = 504
     Top = 37
     Width = 121
     Height = 21
@@ -327,7 +327,7 @@ object frmNaklodet: TfrmNaklodet
     OnKeyUp = dbnCenaKeyUp
   end
   object dbnCenaNds: TDBNumberEditEh
-    Left = 499
+    Left = 504
     Top = 58
     Width = 121
     Height = 21
@@ -351,7 +351,7 @@ object frmNaklodet: TfrmNaklodet
     OnKeyUp = dbnCenaNdsKeyUp
   end
   object dbnSkidka: TDBNumberEditEh
-    Left = 499
+    Left = 504
     Top = 16
     Width = 121
     Height = 21
@@ -378,7 +378,7 @@ object frmNaklodet: TfrmNaklodet
   end
   object BitBtn2: TBitBtn
     Left = 8
-    Top = 200
+    Top = 225
     Width = 89
     Height = 25
     Action = actDetail
@@ -478,13 +478,11 @@ object frmNaklodet: TfrmNaklodet
       FieldName = 'KOLOTP'
       Required = True
       Precision = 15
-      Size = 8
     end
     object sdsSklostdetKOLREZERV: TFMTBCDField
       FieldName = 'KOLREZERV'
       Required = True
       Precision = 15
-      Size = 8
     end
     object sdsSklostdetNOMER_TARY: TStringField
       FieldName = 'NOMER_TARY'
@@ -554,7 +552,6 @@ object frmNaklodet: TfrmNaklodet
       Required = True
       DisplayFormat = '0.000'
       Precision = 15
-      Size = 8
     end
     object cdsSklostdetKOLREZERV: TFMTBCDField
       DisplayLabel = #1047#1072#1088#1077#1079' '#1082#1086#1083'-'#1074#1086
@@ -562,7 +559,6 @@ object frmNaklodet: TfrmNaklodet
       Required = True
       DisplayFormat = '0.000'
       Precision = 15
-      Size = 8
     end
     object cdsSklostdetNOMER_TARY: TStringField
       DisplayLabel = #1053#1086#1084#1077#1088' '#1090#1072#1088#1099
@@ -702,7 +698,6 @@ object frmNaklodet: TfrmNaklodet
     object sdsNaklodetKOLOTP: TFMTBCDField
       FieldName = 'KOLOTP'
       Precision = 15
-      Size = 8
     end
     object sdsNaklodetNOMER_TARY: TStringField
       FieldName = 'NOMER_TARY'
@@ -754,7 +749,6 @@ object frmNaklodet: TfrmNaklodet
       FieldName = 'KOLOTP'
       DisplayFormat = '0.000'
       Precision = 15
-      Size = 8
     end
     object cdsNaklodetCOMMENT: TStringField
       DisplayLabel = #1050#1086#1084#1084#1077#1085#1090#1072#1088#1080#1081

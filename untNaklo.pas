@@ -201,7 +201,7 @@ type
     cdsRepNakloCOMMENT: TStringField;
     actMakeNaklr: TAction;
     N4: TMenuItem;
-    sdsMakeNaklo: TSQLDataSet;
+    sdsMakeNaklr: TSQLDataSet;
     actMakeSchet: TAction;
     sdsMakeSchet: TSQLDataSet;
     N12: TMenuItem;
@@ -234,6 +234,16 @@ type
     cdsNaklotCENANDS: TFloatField;
     cdsNaklotSUMA: TFloatField;
     cdsNaklotSUMANDS: TFloatField;
+    sdsNakloOTGRUGENO: TSmallintField;
+    sdsNakloPOLUCHENO: TSmallintField;
+    cdsNakloOTGRUGENO: TSmallintField;
+    cdsNakloPOLUCHENO: TSmallintField;
+    actOtgrugeno: TAction;
+    N13: TMenuItem;
+    actPolucheno: TAction;
+    N21: TMenuItem;
+    sdsOtgruzit: TSQLDataSet;
+    sdsPoluchit: TSQLDataSet;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure actSettingsExecute(Sender: TObject);
 		procedure actGrid1ListShowExecute(Sender: TObject);
@@ -289,6 +299,8 @@ type
     procedure cdsNaklotSKIDKAChange(Sender: TField);
     procedure actSetColumnValueExecute(Sender: TObject);
     procedure cdsNaklotCalcFields(DataSet: TDataSet);
+    procedure actOtgrugenoExecute(Sender: TObject);
+    procedure actPoluchenoExecute(Sender: TObject);
 
 	private
 		intNpp : integer; //номер позиции по порядку
@@ -315,6 +327,18 @@ type
     procedure ProcessSklad;
     procedure ProcessTip;
     procedure ProcessLowerPanelVisible;
+    function OtgruzitNaklo(Field: TIntegerField;
+      FieldIdNakl:TIntegerField): boolean;
+    function PoluchitNaklo(Field: TIntegerField;
+      FieldIdNakl:TIntegerField): boolean;
+    function SetFlagViaStoredProcForNaklo(Field: TIntegerField;
+      FieldIdNakl:TIntegerField;
+      sdsDo: TSQLDataSet;
+      DoYouWantToMessage:string;
+      YouDontHaveARightMessage:string;
+      WarningMessageCriteria:string;
+      CantDoItAllOverAgainMessage:string;
+      bAskConfirmationQuestion:boolean=true): boolean;
 
 	public
 		{ Public declarations }
@@ -896,10 +920,10 @@ begin
     exit;
   end;
 try
-  sdsMakeNaklo.Params.ParamByName('id_nakl_in').asInteger :=
+  sdsMakeNaklr.Params.ParamByName('id_nakl_in').asInteger :=
     cdsNaklo.FieldByName('id_nakl').asInteger;
   try
-    dmdEx.ExecSQL(sdsMakeNaklo,false);
+    dmdEx.ExecSQL(sdsMakeNaklr,false);
   except
     on E:EDatabaseError do begin
       if AnsiContainsText(e.message,'Родительская расходная накладная уже существует') then begin
@@ -911,13 +935,13 @@ try
   end;
   //iTemp := sdsMakeNaklo.Params.ParamByName('id_nakl').asInteger;
   OpenDocument(self,
-    sdsMakeNaklo.Params.ParamByName('id_nakl').asInteger,
+    sdsMakeNaklr.Params.ParamByName('id_nakl').asInteger,
     dmdEx.GetOidObjects('РАСХОДНЫЕ НАКЛАДНЫЕ',-100),
     0);
   dsNaklo.DataSet.Tag :=1;
   dsNaklo.DataSet.Edit;
   dsNaklo.DataSet.FieldByName('parent_id_nakl').asInteger :=
-    sdsMakeNaklo.Params.ParamByName('id_nakl').asInteger;
+    sdsMakeNaklr.Params.ParamByName('id_nakl').asInteger;
   dsNaklo.DataSet.Post;
   dsNaklo.DataSet.Tag :=0;
 except
@@ -1218,7 +1242,7 @@ begin
     TIntegerField(cdsNaklo.FieldByName('posted')),
     sdsPost,
     TIntegerField(cdsNaklo.FieldByName('id_nakl')),
-    not actPost.Checked); 
+    not actPost.Checked);
 end;
 
 procedure TfrmNaklo.ProcessLowerPanelVisible;
@@ -1261,6 +1285,141 @@ begin
     Semaphore := false;
   end;
 end;
+
+procedure TfrmNaklo.actOtgrugenoExecute(Sender: TObject);
+begin
+  OtgruzitNaklo(
+    TIntegerField(cdsNaklo.FieldByName('otgrugeno')),
+    TIntegerField(cdsNaklo.FieldByName('id_nakl')));
+end;
+
+procedure TfrmNaklo.actPoluchenoExecute(Sender: TObject);
+begin
+  PoluchitNaklo(
+    TIntegerField(cdsNaklo.FieldByName('polucheno')),
+    TIntegerField(cdsNaklo.FieldByName('id_nakl')));
+end;
+
+function TfrmNaklo.SetFlagViaStoredProcForNaklo(Field: TIntegerField;
+  FieldIdNakl:TIntegerField;
+  sdsDo: TSQLDataSet;
+  DoYouWantToMessage:string;
+  YouDontHaveARightMessage:string;
+  WarningMessageCriteria:string;
+  CantDoItAllOverAgainMessage:string;
+  bAskConfirmationQuestion:boolean=true): boolean;
+begin
+  Result:=false;
+try
+  if FieldIdNakl.AsInteger=0 then exit; //не выбран документ
+  if ((Field.asInteger = 0)) then begin
+    if ((not bAskConfirmationQuestion) or
+      (MessageDlg(DoYouWantToMessage, mtConfirmation, [mbYes, mbNo], 0) = mrYes))
+    then begin
+      try
+        dmdEx.StartWaiting;
+        sdsDo.Params.ParamByName('id_nakl').AsInteger :=
+          FieldIdNakl.AsInteger;
+        dmdEx.ExecSQL(sdsDo,false);
+        Field.DataSet.edit;
+        Field.AsInteger := 1;
+        Field.DataSet.checkBrowseMode;
+        ApplyOrCancel(Field.DataSet);
+        Result :=true;
+        dmdEx.StopWaiting;
+      except
+        on E:EDatabaseError do begin
+          dmdEx.StopWaiting;
+          if AnsiStartsText('no permission', e.message) and
+            AnsiContainsText('_post_pc',e.message) then begin
+            MessageDlg (YouDontHaveARightMessage,mtWarning,[mbOK],0);
+            exit;
+          end;
+          if AnsiContainsText(e.Message,WarningMessageCriteria) then begin
+            MessageDlg (e.Message,mtWarning,[mbOK],0);
+            exit;
+          end;
+          showmessage (e.message);
+         end; //on
+      end;  //try
+    end; //if ok
+  end else begin  //if posted
+    MessageDlg (CantDoItAllOverAgainMessage,mtWarning,[mbOK],0);
+  end; //if posted
+except
+  AssertInternal('4E2922A1-3DD5-43EA-9CB1-190D16F65CB5');
+end; //try assert
+end;
+
+
+function TfrmNaklo.OtgruzitNaklo(Field: TIntegerField;
+  FieldIdNakl:TIntegerField): boolean;
+begin
+  Result:=SetFlagViaStoredProcForNaklo(Field, FieldIdNakl, sdsOtgruzit,
+    'Вы хотите отгрузить накладную? ' +
+         #13#10 +
+         'Внимание - эта операция не может быть потом отменена.',
+   'Вы не имеете права отгружать накладную',
+   'Нельзя отгрузить',
+   'Нельзя отгрузить уже отгруженную накладную',
+  true);
+{try
+  if FieldIdNakl.AsInteger=0 then exit; //не выбран документ
+  if ((Field.asInteger = 0)) then begin
+    if ((not bAskConfirmationQuestion) or
+      (MessageDlg('Вы хотите отгрузить накладную? ' +
+         #13#10 +
+         'Внимание - эта операция не может быть потом отменена.',
+      mtConfirmation, [mbYes, mbNo], 0) = mrYes))
+    then begin
+      try
+        dmdEx.StartWaiting;
+        sdsOtgruzit.Params.ParamByName('id_nakl').AsInteger :=
+          FieldIdNakl.AsInteger;
+        dmdEx.ExecSQL(sdsOtgruzit,false);
+        Field.DataSet.edit;
+        Field.AsInteger := 1;
+        Field.DataSet.checkBrowseMode;
+        ApplyOrCancel(Field.DataSet);
+        Result :=true;
+        dmdEx.StopWaiting;
+      except
+        on E:EDatabaseError do begin
+          dmdEx.StopWaiting;
+          if AnsiStartsText('no permission', e.message) and
+            AnsiContainsText('_post_pc',e.message) then begin
+            MessageDlg ('Вы не имеете права отгружать накладную',mtWarning,[mbOK],0);
+            exit;
+          end;
+          if AnsiContainsText(e.Message,'Нельзя отгрузить') then begin
+            MessageDlg (e.Message,mtWarning,[mbOK],0);
+            exit;
+          end;
+          showmessage (e.message);
+         end; //on
+      end;  //try
+    end; //if ok
+  end else begin  //if posted
+    MessageDlg ('Нельзя отгрузить уже отгруженную накладную',mtWarning,[mbOK],0);
+  end; //if posted
+except
+  AssertInternal('4E2922A1-3DD5-43EA-9CB1-190D16F65CB5');
+end; //try assert
+}
+end;
+
+function TfrmNaklo.PoluchitNaklo(Field: TIntegerField;
+  FieldIdNakl:TIntegerField): boolean;
+begin
+  Result:=SetFlagViaStoredProcForNaklo(Field, FieldIdNakl, sdsPoluchit,
+    'Вы хотите получить накладную? ' +
+         #13#10 +
+         'Внимание - эта операция не может быть потом отменена.',
+   'Вы не имеете права получать накладную',
+   'Нельзя получить',
+   'Нельзя получить уже полученную накладную',
+  true);
+end;  
 
 end.
 
