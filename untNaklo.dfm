@@ -641,7 +641,6 @@ object frmNaklo: TfrmNaklo
     object sdsNakloOTGRUGENO: TSmallintField
       FieldName = 'OTGRUGENO'
       ProviderFlags = []
-      Required = True
     end
     object sdsNakloPOLUCHENO: TSmallintField
       FieldName = 'POLUCHENO'

@@ -555,7 +555,9 @@ begin
 	cdsNaklo.FieldByName('posted').asInteger := 0;
   cdsNaklo.FieldByName('tip').asInteger := 5; //отгрузка
   cdsNaklo.FieldByName('delmarked').asInteger := 0;
-  cdsNaklo.FieldByName('blocked').asInteger := 0;  
+  cdsNaklo.FieldByName('blocked').asInteger := 0;
+  cdsNaklo.FieldByName('otgrugeno').asInteger := 0;
+  cdsNaklo.FieldByName('polucheno').asInteger := 0;
   dmdEx.StopWaiting;
   ShowDetail1;
 end;
