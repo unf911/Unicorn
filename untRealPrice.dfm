@@ -1,6 +1,6 @@
 object frmRealPrice: TfrmRealPrice
-  Left = 230
-  Top = 338
+  Left = 236
+  Top = 146
   BorderStyle = bsDialog
   Caption = #1060#1072#1082#1090' '#1094#1077#1085#1099
   ClientHeight = 367
@@ -317,7 +317,6 @@ object frmRealPrice: TfrmRealPrice
       FieldName = 'NDS_FACT'
       ProviderFlags = []
       Precision = 15
-      Size = 8
     end
     object sdsNaklrID_IZG: TIntegerField
       FieldName = 'ID_IZG'
@@ -341,7 +340,6 @@ object frmRealPrice: TfrmRealPrice
       ProviderFlags = []
       Required = True
       Precision = 15
-      Size = 8
     end
     object sdsNaklrCOMMENT: TStringField
       FieldName = 'COMMENT'
@@ -496,13 +494,11 @@ object frmRealPrice: TfrmRealPrice
       DisplayWidth = 10
       FieldName = 'NDS'
       DisplayFormat = '0.00'
-      Size = 8
     end
     object cdsNaklrNDS_FACT2: TFMTBCDField
       DisplayLabel = #1057#1091#1084#1084#1072' '#1092#1072#1082#1090
       FieldName = 'NDS_FACT'
       DisplayFormat = '0.00'
-      Size = 8
     end
     object cdsNaklrIZG2: TStringField
       FieldKind = fkInternalCalc
@@ -510,7 +506,7 @@ object frmRealPrice: TfrmRealPrice
       Visible = False
     end
     object cdsNaklrOTKAT: TFloatField
-      DisplayLabel = #1054#1090#1082#1072#1090
+      DisplayLabel = #1041#1086#1085#1091#1089
       FieldKind = fkInternalCalc
       FieldName = 'OTKAT'
       DisplayFormat = '0.00'

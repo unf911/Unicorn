@@ -1,6 +1,6 @@
 object frmRepMan: TfrmRepMan
-  Left = 800
-  Top = 428
+  Left = 434
+  Top = 194
   Anchors = [akLeft, akTop, akBottom]
   BorderStyle = bsDialog
   Caption = #1054#1090#1095#1105#1090' '#1087#1086' '#1084#1077#1085#1077#1076#1078#1077#1088#1072#1084
@@ -349,8 +349,8 @@ object frmRepMan: TfrmRepMan
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
     PreviewOptions.Zoom = 1.000000000000000000
     PrintOptions.Printer = 'Default'
-    ReportOptions.CreateDate = 38989.722892465310000000
-    ReportOptions.LastChange = 39142.691239178240000000
+    ReportOptions.CreateDate = 38989.722892465300000000
+    ReportOptions.LastChange = 42149.965429409720000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       'begin'
@@ -674,7 +674,6 @@ object frmRepMan: TfrmRepMan
         end
         object Memo50: TfrxMemoView
           Left = 314.000000000000000000
-          Top = 0.000000000000014211
           Width = 56.000000000000000000
           Height = 15.000000000000000000
           Color = clWhite
@@ -686,7 +685,7 @@ object frmRepMan: TfrmRepMan
           Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
           HAlign = haRight
           Memo.UTF8 = (
-            #1056#1115#1057#8218#1056#1108#1056#176#1057#8218)
+            #1056#8216#1056#1109#1056#1029#1057#1107#1057#1027)
           ParentFont = False
         end
         object Memo52: TfrxMemoView
@@ -859,7 +858,7 @@ object frmRepMan: TfrmRepMan
           Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
           HAlign = haRight
           Memo.UTF8 = (
-            #1056#1115#1057#8218#1056#1108#1056#176#1057#8218)
+            #1056#8216#1056#1109#1056#1029#1057#1107#1057#1027)
           ParentFont = False
         end
         object Memo43: TfrxMemoView
@@ -1551,7 +1550,7 @@ object frmRepMan: TfrmRepMan
       DisplayFormat = '0.00'
     end
     object cdsQuery1OTKAT: TFloatField
-      DisplayLabel = #1054#1090#1082#1072#1090
+      DisplayLabel = #1041#1086#1085#1091#1089
       FieldName = 'OTKAT'
       DisplayFormat = '0.00'
     end

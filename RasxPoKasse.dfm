@@ -642,7 +642,6 @@ object frmRasxPoKasse: TfrmRasxPoKasse
       DisplayFormat = '0.00'
       EditFormat = '0.00'
       Precision = 15
-      Size = 8
     end
     object cdsNakloPRIM: TStringField
       DisplayLabel = #1050#1086#1084#1084#1077#1085#1090#1072#1088#1080#1081
@@ -669,7 +668,6 @@ object frmRasxPoKasse: TfrmRasxPoKasse
       FieldName = 'ZATRATY'
       DisplayFormat = '0.00'
       Precision = 15
-      Size = 8
     end
     object cdsNakloKURS: TFloatField
       DisplayLabel = #1050#1091#1088#1089
@@ -802,7 +800,7 @@ object frmRasxPoKasse: TfrmRasxPoKasse
       FieldName = 'ID_NAKL'
     end
     object cdsNaklotOTKAT: TFloatField
-      DisplayLabel = #1054#1090#1082#1072#1090
+      DisplayLabel = #1041#1086#1085#1091#1089
       FieldName = 'OTKAT'
       DisplayFormat = '0.00'
     end

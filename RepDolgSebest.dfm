@@ -219,7 +219,7 @@ object frmRepDolgSebest: TfrmRepDolgSebest
       DisplayFormat = '0.00'
     end
     object cdsDolgBux2OTKAT: TFloatField
-      DisplayLabel = #1054#1090#1082#1072#1090' '#1074' '#1076#1086#1083#1075#1072#1093
+      DisplayLabel = #1041#1086#1085#1091#1089' '#1074' '#1076#1086#1083#1075#1072#1093
       FieldName = 'OTKAT'
       DisplayFormat = '0.00'
     end
