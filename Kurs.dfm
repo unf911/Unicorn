@@ -153,7 +153,7 @@ object frmKurs: TfrmKurs
     object sdsKursUSD: TFloatField
       FieldName = 'USD'
     end
-    object sdsKursID_CURRENCY: TSmallintField
+    object sdsKursID_CURRENCY: TIntegerField
       FieldName = 'ID_CURRENCY'
       Required = True
     end
@@ -195,7 +195,7 @@ object frmKurs: TfrmKurs
       FieldName = 'USD'
       DisplayFormat = '0.0000##'
     end
-    object qurKursID_CURRENCY: TSmallintField
+    object qurKursID_CURRENCY: TIntegerField
       DefaultExpression = '3035'
       FieldName = 'ID_CURRENCY'
       Required = True

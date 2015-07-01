@@ -27,7 +27,6 @@ type
     qeKurs: TQueryExtender;
     qurKursDAT: TSQLTimeStampField;
     qurKursUSD: TFloatField;
-    qurKursID_CURRENCY: TSmallintField;
     DBGridEh1: TDBGridEh;
     rpsClientEdit: TRegPropStorageManEh;
     PropStorageEh1: TPropStorageEh;
@@ -52,10 +51,11 @@ type
     qurKursID_CURRENCY_FROM: TIntegerField;
     sdsKursDAT: TSQLTimeStampField;
     sdsKursUSD: TFloatField;
-    sdsKursID_CURRENCY: TSmallintField;
     sdsKursID_CURRENCY_FROM: TIntegerField;
     sdsKursKURS_FROM: TFloatField;
     qurKursKURS_FROM: TFloatField;
+    sdsKursID_CURRENCY: TIntegerField;
+    qurKursID_CURRENCY: TIntegerField;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
