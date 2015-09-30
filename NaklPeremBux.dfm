@@ -1,6 +1,6 @@
 object frmNaklPeremBux: TfrmNaklPeremBux
-  Left = 162
-  Top = 121
+  Left = 149
+  Top = 219
   BorderStyle = bsDialog
   Caption = #1055#1077#1088#1077#1084#1077#1097#1077#1085#1080#1103
   ClientHeight = 403
@@ -765,6 +765,24 @@ object frmNaklPeremBux: TfrmNaklPeremBux
       Size = 50
       Lookup = True
     end
+    object cdsNakloREYS_NOMER_PRAV: TStringField
+      FieldKind = fkLookup
+      FieldName = 'REYS_NOMER_PRAV'
+      LookupDataSet = dmdEx.cdsVygruzka
+      LookupKeyFields = 'ID_VYGRUZKA'
+      LookupResultField = 'NOMER_PRAV'
+      KeyFields = 'ID_VYGRUZKA'
+      Lookup = True
+    end
+    object cdsNakloREYS_VID_PEREVOZOK: TStringField
+      FieldKind = fkLookup
+      FieldName = 'REYS_VID_PEREVOZOK'
+      LookupDataSet = dmdEx.cdsVygruzka
+      LookupKeyFields = 'ID_VYGRUZKA'
+      LookupResultField = 'VID_PEREVOZOK'
+      KeyFields = 'ID_VYGRUZKA'
+      Lookup = True
+    end
     object cdsNakloREYS_NOMER_AVTO: TStringField
       DisplayLabel = #1042#1099#1075#1088#1091#1079#1082#1072
       DisplayWidth = 10
@@ -905,8 +923,8 @@ object frmNaklPeremBux: TfrmNaklPeremBux
     Top = 336
     Datasets = <
       item
-        DataSet = frDBNaklo
-        DataSetName = 'frDBNaklo'
+        DataSet = frdbNaklo
+        DataSetName = 'frdbNaklo'
       end>
     Variables = <
       item
@@ -999,7 +1017,6 @@ object frmNaklPeremBux: TfrmNaklPeremBux
     object cdsRepNakloKOLOTP: TFMTBCDField
       FieldName = 'KOLOTP'
       Precision = 15
-      Size = 8
     end
     object cdsRepNakloCENA: TFloatField
       FieldName = 'CENA'
@@ -1071,7 +1088,6 @@ object frmNaklPeremBux: TfrmNaklPeremBux
     object sdsNaklotKOLOTP: TFMTBCDField
       FieldName = 'KOLOTP'
       Precision = 15
-      Size = 8
     end
   end
   object dspNaklot: TDataSetProvider
@@ -1168,7 +1184,6 @@ object frmNaklPeremBux: TfrmNaklPeremBux
       FieldName = 'KOLOTP'
       DisplayFormat = '0.000'
       Precision = 15
-      Size = 8
     end
     object cdsNaklotTOVAR: TStringField
       DisplayLabel = #1058#1086#1074#1072#1088
@@ -1369,9 +1384,38 @@ object frmNaklPeremBux: TfrmNaklPeremBux
     Left = 376
     Top = 144
   end
-  object frDBNaklo: TfrxDBDataset
-    UserName = 'frDBNaklo'
+  object frdbNaklo: TfrxDBDataset
+    UserName = 'frdbNaklo'
     CloseDataSource = False
+    FieldAliases.Strings = (
+      'ID_NAKL=ID_NAKL'
+      'ID_IZG=ID_IZG'
+      'ID_MANAGER=ID_MANAGER'
+      'ID_SKLAD=ID_SKLAD'
+      'POSTED=POSTED'
+      'COMMENT=COMMENT'
+      'IZG=IZG'
+      'MANAGER=MANAGER'
+      'DAT=DAT'
+      'DELMARKED=DELMARKED'
+      'ID=ID'
+      'SKLAD=SKLAD'
+      'ID_SKLAD_TO=ID_SKLAD_TO'
+      'SKLAD_TO=SKLAD_TO'
+      'IZGFULLNAME=IZGFULLNAME'
+      'SKLAD_FULLNAME=SKLAD_FULLNAME'
+      'SKLAD_TO_FULLNAME=SKLAD_TO_FULLNAME'
+      'ID_VYGRUZKA=ID_VYGRUZKA'
+      'REYS_POKUPATEL_PLATIT=REYS_POKUPATEL_PLATIT'
+      'REYS_NOMER_PRITSEPA=REYS_NOMER_PRITSEPA'
+      'REYS_PUNKT_VYGRUZKI=REYS_PUNKT_VYGRUZKI'
+      'REYS_PUNKT_ZAGRUZKI=REYS_PUNKT_ZAGRUZKI'
+      'REYS_PEREVOZCHIK=REYS_PEREVOZCHIK'
+      'REYS_DAT_REYS=REYS_DAT_REYS'
+      'REYS_FIO_VODITELYA=REYS_FIO_VODITELYA'
+      'REYS_NOMER_PRAV=REYS_NOMER_PRAV'
+      'REYS_VID_PEREVOZOK=REYS_VID_PEREVOZOK'
+      'REYS_NOMER_AVTO=REYS_NOMER_AVTO')
     DataSet = cdsNaklo
     Left = 520
     Top = 304
@@ -1384,19 +1428,21 @@ object frmNaklPeremBux: TfrmNaklPeremBux
     PreviewOptions.Zoom = 1.000000000000000000
     PrintOptions.Printer = 'Default'
     ReportOptions.CreateDate = 41663.681350335600000000
-    ReportOptions.LastChange = 41689.765455636570000000
+    ReportOptions.LastChange = 42278.007076747690000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       'begin'
       ''
       'end.')
     StoreInDFM = False
+    OnBeginDoc = frTtnBeginDoc
+    OnGetValue = frTtnGetValue
     Left = 520
     Top = 336
     Datasets = <
       item
-        DataSet = frDBNaklo
-        DataSetName = 'frDBNaklo'
+        DataSet = frdbNaklo
+        DataSetName = 'frdbNaklo'
       end>
     Variables = <
       item

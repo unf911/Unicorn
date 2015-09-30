@@ -167,7 +167,7 @@ type
     N4: TMenuItem;
     N5: TMenuItem;
     N6: TMenuItem;
-    frDBNaklo: TfrxDBDataset;
+    frdbNaklo: TfrxDBDataset;
     actPost: TAction;
     sdsNakloID_VYGRUZKA: TIntegerField;
     cdsNakloID_VYGRUZKA: TIntegerField;
@@ -185,6 +185,8 @@ type
     N9: TMenuItem;
     frRepNaklo: TfrxReport;
     frxRichObject1: TfrxRichObject;
+    cdsNakloREYS_NOMER_PRAV: TStringField;
+    cdsNakloREYS_VID_PEREVOZOK: TStringField;
     frTtn: TfrxReport;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure actSettingsExecute(Sender: TObject);
@@ -241,6 +243,8 @@ type
     procedure actPostExecute(Sender: TObject);
     procedure actPreviewTtnExecute(Sender: TObject);
     procedure actDebugExecute(Sender: TObject);
+    procedure frTtnGetValue(const ParName: String; var ParValue: Variant);
+    procedure frTtnBeginDoc(Sender: TObject);
 
 	private
 		intNpp : integer; //номер позиции по порядку
@@ -248,6 +252,8 @@ type
     FiIZG : integer;
 		frmEdit : TfrmNaklPeremBuxEdit;
 		frmDet : TfrmNaklPeremBuxDet;
+    cdIzg : TClientDetail;
+
     procedure ShowDetail2;
 		procedure ShowDetail1;
 		procedure ProcessShowDeleted;
@@ -966,7 +972,7 @@ try
 finally
   slHead.Free;
 end;
-end; 
+end;
 
 
 
@@ -1041,7 +1047,7 @@ end;
 procedure TfrmNaklPeremBux.actPreviewTtnExecute(Sender: TObject);
 begin
   MonthToStrInit;
-  dmdEx.GetReport('TtnPeremBux.fr3',frTtn);
+  dmdEx.GetReport('TtnPeremBux_151001.fr3',frTtn);
   frTtn.PrintOptions.ShowDialog := true;
   frTtn.PrepareReport;
   frTtn.ShowReport;
@@ -1055,6 +1061,20 @@ begin
   end else begin //if actDebug checked
     ColumnByName(dbgNaklo.Columns,'ID_NAKL').Visible := false;
   end;  //if actDebug checked
+end;
+
+procedure TfrmNaklPeremBux.frTtnGetValue(const ParName: String;
+  var ParValue: Variant);
+begin
+
+  if AnsiUpperCase(ParName)='I_ADRP' then begin
+    ParValue := cdIZG.adrp;
+  end;
+end;
+
+procedure TfrmNaklPeremBux.frTtnBeginDoc(Sender: TObject);
+begin
+  cdIzg :=  dmdEx.GetClientDetail(cdsNaklo.FieldByName('id_izg').asInteger);
 end;
 
 end.
