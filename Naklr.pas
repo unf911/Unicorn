@@ -238,8 +238,8 @@ type
     frxRichObject1: TfrxRichObject;
     cdsNakloREYS_NOMER_PRAV: TStringField;
     cdsNakloREYS_VID_PEREVOZOK: TStringField;
-    frTtn: TfrxReport;
     frNaklr: TfrxReport;
+    frTtn: TfrxReport;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure actSettingsExecute(Sender: TObject);
     procedure dbgNaklrDblClick(Sender: TObject);
