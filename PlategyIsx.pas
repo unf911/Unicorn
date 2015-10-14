@@ -140,6 +140,8 @@ type
     N10: TMenuItem;
     N11: TMenuItem;
     N12: TMenuItem;
+    sdsPlatDELMARKED: TSmallintField;
+    cdsNakloDELMARKED: TSmallintField;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
 		procedure cdsNakloAfterInsert(DataSet: TDataSet);

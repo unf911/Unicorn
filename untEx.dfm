@@ -2,7 +2,7 @@ object dmdEx: TdmdEx
   OldCreateOrder = False
   OnCreate = DataModuleCreate
   OnDestroy = DataModuleDestroy
-  Top = 32
+  Top = 34
   Height = 728
   Width = 855
   object scUchet: TSQLConnection

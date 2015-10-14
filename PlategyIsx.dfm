@@ -1,6 +1,6 @@
 object frmPlategyIsx: TfrmPlategyIsx
   Left = 32
-  Top = 164
+  Top = 166
   BorderStyle = bsDialog
   Caption = #1048#1089#1093#1086#1076#1103#1097#1080#1077' '#1087#1083#1072#1090#1077#1078#1080
   ClientHeight = 360
@@ -436,8 +436,8 @@ object frmPlategyIsx: TfrmPlategyIsx
     CommandText = 
       'select'#13#10'  id_nakl,dat,id_zak,id_izg,nds,comment, id_manager,id,'#13 +
       #10'  posted,id_sklad,parent_id_nakl,zatraty,kurs,id_currency,'#13#10'  i' +
-      'd_currency_to,kurs_indirect,nds_from,id_sklad_to'#13#10'from PLATEGY_V' +
-      'W om'#13#10'order by om.dat,om.id_nakl'
+      'd_currency_to,kurs_indirect,nds_from,id_sklad_to, delmarked'#13#10'fro' +
+      'm PLATEGY_VW om'#13#10'order by om.dat,om.id_nakl'
     MaxBlobSize = -1
     Params = <>
     SQLConnection = dmdEx.scUchet
@@ -508,6 +508,9 @@ object frmPlategyIsx: TfrmPlategyIsx
     end
     object sdsPlatID_SKLAD_TO: TIntegerField
       FieldName = 'ID_SKLAD_TO'
+    end
+    object sdsPlatDELMARKED: TSmallintField
+      FieldName = 'DELMARKED'
     end
   end
   object dspPlat: TDataSetProvider
@@ -695,6 +698,10 @@ object frmPlategyIsx: TfrmPlategyIsx
       KeyFields = 'ID_SKLAD_TO'
       Size = 50
       Lookup = True
+    end
+    object cdsNakloDELMARKED: TSmallintField
+      FieldName = 'DELMARKED'
+      Visible = False
     end
   end
   object qeNaklo: TQueryExtender
