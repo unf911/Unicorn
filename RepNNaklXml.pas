@@ -21,7 +21,7 @@ uses
   SettingsPlugin, //TfmSettingPlugin
   untSettings, xmldom,
   XMLIntf, msxmldom, XMLDoc,
-  J1201007, UnfFilter,  // IXMLDeclarContent
+  J1201008, UnfFilter,  // IXMLDeclarContent
   XMLHelper, PropFilerEh, PropStorageEh;
 
 const KlientTipExport: integer = 1;
@@ -30,7 +30,7 @@ const KlientTipNeplNds: integer = 2;
 type
   TFormatNode = function (XMLNode : IXMLNode;Field:TField):string;
 
-  TfrmRepNnaklXml = class(TForm)
+ TfrmRepNnaklXml = class(TForm)
     dsNNaklrt: TDataSource;
     ActionList1: TActionList;
     frdRasx: TfrxDBDataset;
@@ -154,7 +154,7 @@ type
     function GetOKPO : string;
     function GetNumDocZaPeriod: integer;
     procedure CleanUpXml(var XMLDocument1 : TXMLDocument);
-    procedure FillTovar(XMLDeclarContent: IXMLDeclarContent; dsTovar: TDataSet);
+    procedure FillTovar(XMLDeclarContent: IXMLDeclarContent; dsTovar: TDataSet; tip: integer);
     procedure CreateXMLFile(IsSilent:boolean; FolderName:String='');
     //function  CheckIPN(DataSet :TDataSet):boolean;
     procedure TestGetStringListFromSqlRecord;
@@ -163,6 +163,7 @@ type
     function GetXMLDocument:TXMLDocument;
     procedure ProcessSettings(cdsRasx:TClientDataSet);
     function FillSettings():TfrmSettings;
+
 	public
     procedure Test;
     function Defaultopen: boolean;
@@ -170,6 +171,9 @@ type
 
 		{ Public declarations }
 	end;
+
+  function FormatAsConstantValue109 (XMLNode : IXMLNode;Field:TField):string;
+  function FormatAsConstantValue20 (XMLNode : IXMLNode;Field:TField):string;
 
 var
 	frmRepNnaklXml: TfrmRepNnaklXml;
@@ -271,7 +275,7 @@ begin
     TIN:=GetOKPO;
     C_DOC:='J12';
     C_DOC_SUB:='010';
-    C_DOC_VER:='7';//
+    C_DOC_VER:='8';//
     C_DOC_TYPE:=0;//тип документа. 0-основной
     C_DOC_CNT := GetNumDocZaPeriod; //номер документа за период = номеру налоговой
     C_REG:=GetOblastKod;//15;//код области
@@ -289,11 +293,13 @@ procedure TfrmRepNnaklXml.CleanUpXml(var XMLDocument1 : TXMLDocument);
 begin
   XMLDocument1.XML.Text := AnsiReplaceStr(XMLDocument1.XML.Text,'<DECLAR>',
     '<DECLAR xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" '+
-    'xsi:noNamespaceSchemaLocation="J1201004.xsd">'
+    'xsi:noNamespaceSchemaLocation="J1201008.xsd">'
     );
+  {
   XMLDocument1.XML.Text := AnsiReplaceStr(XMLDocument1.XML.Text,'</D_FILL>',
     '</D_FILL><LINKED_DOCS xsi:nil="true"/>'
     );
+  }
   XMLDocument1.active := true;
 end;
 
@@ -312,19 +318,16 @@ begin
   end;//while not eof
 end;
 
-procedure TfrmRepNnaklXml.FillTovar(XMLDeclarContent: IXMLDeclarContent; dsTovar :TDataSet);
+procedure TfrmRepNnaklXml.FillTovar(XMLDeclarContent: IXMLDeclarContent;
+  dsTovar :TDataSet; tip:integer);
 begin
-  WriteNode(XMLDeclarContent.DECLARBODY.RXXXXG2D,
-    'RXXXXG2D',
-    FormatNodeDateTime,
-    dsTovar.FieldByName('DAT'));
   WriteNode(XMLDeclarContent.DECLARBODY.RXXXXG3S,
     'RXXXXG3S',
     FormatNodeString,
     dsTovar.FieldByName('FULLNAME'));
   WriteNode(XMLDeclarContent.DECLARBODY.RXXXXG4,
     'RXXXXG4',
-    FormatNodeString,
+    FormatNodeStringOrNil,
     dsTovar.FieldByName('KODVED'));
   WriteNode(XMLDeclarContent.DECLARBODY.RXXXXG4S,
     'RXXXXG4S',
@@ -342,10 +345,34 @@ begin
     'RXXXXG6',
     FormatNodeFloat,
     dsTovar.FieldByName('cena'));
-  WriteNode(XMLDeclarContent.DECLARBODY.RXXXXG7,
-    'RXXXXG7',
+
+  WriteNode(XMLDeclarContent.DECLARBODY.RXXXXG010,
+    'RXXXXG010',
     FormatNodeFloat,
     dsTovar.FieldByName('SUMA2GRN'));
+  if (tip = -32) then begin
+    WriteNode(XMLDeclarContent.DECLARBODY.RXXXXG008,
+      'RXXXXG008',
+      FormatAsConstantValue109,
+      dsTovar.FieldByName('cena'));
+  end else begin
+    WriteNode(XMLDeclarContent.DECLARBODY.RXXXXG008,
+      'RXXXXG008',
+      FormatAsConstantValue20,
+      dsTovar.FieldByName('cena'));
+  end;
+end;
+
+function FormatAsConstantValue20 (XMLNode : IXMLNode;Field:TField):string;
+begin
+  Result := '20';
+  XMLNode.NodeValue := Result;
+end;
+
+function FormatAsConstantValue109 (XMLNode : IXMLNode;Field:TField):string;
+begin
+  Result := '109';
+  XMLNode.NodeValue := Result;
 end;
 
 procedure TfrmRepNnaklXml.FillFooter(XMLDeclarContent: IXMLDeclarContent; DataSet :TDataSet;
@@ -355,15 +382,15 @@ begin
     //экспортная и т.п.
     XMLDeclarContent.DECLARBODY.r01g7 := FormatFloat ('0.00', 0 , FormatSettings);
     XMLDeclarContent.DECLARBODY.R03G7 := FormatFloat ('0.00', 0 , FormatSettings);
-    XMLDeclarContent.DECLARBODY.R04G7 := FormatFloat ('0.00', 0 , FormatSettings);
+    //XMLDeclarContent.DECLARBODY.R04G7 := FormatFloat ('0.00', 0 , FormatSettings);
 
     XMLDeclarContent.DECLARBODY.R01G9 := FormatFloat ('0.00',
       DataSet.fieldbyname('vsego').AsFloat , FormatSettings);
     XMLDeclarContent.DECLARBODY.R03G109 := FormatFloat ('0.00',
       DataSet.fieldbyname('vsego').AsFloat*
       DataSet.fieldbyname('NALOG_NDS').AsFloat , FormatSettings);
-    XMLDeclarContent.DECLARBODY.R04G9 := FormatFloat ('0.00',
-      DataSet.fieldbyname('nds').AsFloat , FormatSettings);
+    //XMLDeclarContent.DECLARBODY.R04G9 := FormatFloat ('0.00',
+    //  DataSet.fieldbyname('nds').AsFloat , FormatSettings);
   end else begin
     XMLDeclarContent.DECLARBODY.r01g7 := FormatFloat ('0.00',
       DataSet.fieldbyname('vsego').AsFloat , FormatSettings);
@@ -371,12 +398,12 @@ begin
       '0.00', DataSet.fieldbyname('vsego').AsFloat*
         DataSet.fieldbyname('NALOG_NDS').AsFloat,
       FormatSettings);
-    XMLDeclarContent.DECLARBODY.R04G7 := FormatFloat ('0.00',
-      DataSet.fieldbyname('nds').AsFloat , FormatSettings);
+    //XMLDeclarContent.DECLARBODY.R04G7 := FormatFloat ('0.00',
+    //  DataSet.fieldbyname('nds').AsFloat , FormatSettings);
   end;
 
-  XMLDeclarContent.DECLARBODY.R01G11 := FormatFloat ('0.00',
-    DataSet.fieldbyname('vsego').AsFloat , FormatSettings);
+  //XMLDeclarContent.DECLARBODY.R01G11 := FormatFloat ('0.00',
+  //  DataSet.fieldbyname('vsego').AsFloat , FormatSettings);
   XMLDeclarContent.DECLARBODY.R03G11 := FormatFloat (
       '0.00', DataSet.fieldbyname('vsego').AsFloat*
         DataSet.fieldbyname('NALOG_NDS').AsFloat,
@@ -384,7 +411,9 @@ begin
   XMLDeclarContent.DECLARBODY.R04G11 := FormatFloat (
       '0.00', DataSet.fieldbyname('nds').AsFloat, FormatSettings);
   XMLDeclarContent.DECLARBODY.R02G11 := FormatFloat ('0.00', 0 , FormatSettings);
-  XMLDeclarContent.DECLARBODY.H10G1S := DataSet.fieldbyname('SIGNATURE').AsString;
+  //XMLDeclarContent.DECLARBODY.H10G1S := DataSet.fieldbyname('SIGNATURE').AsString;
+  XMLDeclarContent.DECLARBODY.HBOS := 'М.Д. Борисова';
+  XMLDeclarContent.DECLARBODY.HKBOS := '2267109863';  
 end;
 
 function TfrmRepNnaklXml.GetOriginalOstaetsyUProdavtsa: integer;
@@ -404,11 +433,17 @@ begin
 end;
 
 procedure TfrmRepNnaklXml.FillBodyXML(XMLDeclarContent:IXMLDeclarContent; dsNNakl: TDataSet);
+var
+  tipPrichiny: string;
 begin
   with XMLDeclarContent.DECLARBODY do begin
-    HORIG1 := 1; //Оригинал выдаеться покупцю
-    HORIG1 := GetOriginalOstaetsyUProdavtsa;//0. оригинал остаётся у продавца
-    HTYPR := GetOrigUProdTipPrichiny;
+    if (GetOriginalOstaetsyUProdavtsa=1) then begin
+      HORIG1 := 1;//0. оригинал остаётся у продавца
+    end;
+    tipPrichiny := GetOrigUProdTipPrichiny;
+    if (tipPrichiny<>'') then begin
+      HTYPR := tipPrichiny;
+    end;
     HFILL := FormatDateTime('ddmmyyyy',dsNNakl.FieldByName('dat').AsDateTime);
     HNUM := dsNNakl.FieldByName('id').AsInteger;
 
@@ -426,16 +461,17 @@ begin
     end else begin
       HKBUY := cdZAK.ipn;
     end;
-    HLOCSEL := cdIzg.adrp;
-    HLOCBUY := cdZak.adrp;
-    HTELSEL := cdIzg.tel;
-    HTELBUY := cdZak.tel;
+    //HLOCSEL := cdIzg.adrp;
+    //HLOCBUY := cdZak.adrp;
+    //HTELSEL := cdIzg.tel;
+    //HTELBUY := cdZak.tel;
 
-    H01G1S := cdsNnakl.FieldByName('tip_dogovora').AsString;
-    H01G2D := FormatDateTime('ddmmyyyy', dsNNakl.FieldByName('dat_dogovora').AsDateTime);
-    H01G3S := cdsNnakl.FieldByName('nomer_dogovora').AsString;
-    H02G1S := cdsNnakl.FieldByName('VIDOPL').AsString;
+    //H01G1S := cdsNnakl.FieldByName('tip_dogovora').AsString;
+    //H01G2D := FormatDateTime('ddmmyyyy', dsNNakl.FieldByName('dat_dogovora').AsDateTime);
+    //H01G3S := cdsNnakl.FieldByName('nomer_dogovora').AsString;
+    //H02G1S := cdsNnakl.FieldByName('VIDOPL').AsString;
   end;
+
 end;
 
 procedure TfrmRepNnaklXml.Test;
@@ -471,7 +507,7 @@ begin
     FormatFloat('00', GetOblastKod ) +
     FormatFloat('00', GetRajonKod ) +
     FormatFloat('0000000000',strtoint(GetOKPO)) +
-    'J1201007'+'100'+
+    'J1201008'+'100'+
     FormatFloat('0000000', GetNumDocZaPeriod ) +
     '1' +
     FormatFloat('00', MonthOf(dat))+
@@ -571,7 +607,7 @@ begin
 
   FillHeadXML(XMLDeclarContent, dsNNakl.DataSet.FieldByName('dat').AsDateTime);
   FillBodyXML(XMLDeclarContent, dsNNakl.DataSet);
-  FillTovar(XMLDeclarContent, dsNNaklrt.dataset);
+  FillTovar(XMLDeclarContent, dsNNaklrt.dataset, dsNNakl.DataSet.FieldByName('tip').asInteger);
   FillFooter(XMLDeclarContent, dsNNakl.DataSet, FormatSettings);
 
   CleanUpXml(XMLDocument1);

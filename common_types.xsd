@@ -4,6 +4,81 @@
 		<xs:documentation>Загальні типи даних</xs:documentation>
 	</xs:annotation>
 	<!--Прості типи-->
+	<!--тип "Код корисних копалин"-->
+	<xs:simpleType name="DGCodeMinerals">
+		<xs:annotation>
+			<xs:documentation>
+				Код корисних копалин (Додаток 13 до Податкової декларації з рентної плати) Наказ Міністерства фінансів України 17 серпня 2015 року № 719</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[12]\.[0-6]\.[0-9]{2}\.[0-9]{2}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--тип "Код товарної продукції гірничого підприємства"-->
+	<xs:simpleType name="DGCodeMPMCo">
+		<xs:annotation>
+			<xs:documentation>
+				Код товарної продукції гірничого підприємства (Додаток 14 до Податкової декларації з рентної плати) Наказ Міністерства фінансів України 17 серпня 2015 року № 719</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="1.1.1"/>
+			<xs:enumeration value="1.1.2"/>
+			<xs:enumeration value="1.1.3"/>
+			<xs:enumeration value="1.1.4"/>
+			<xs:enumeration value="2.1.1"/>
+			<xs:enumeration value="2.1.2"/>
+			<xs:enumeration value="2.1.3"/>
+			<xs:enumeration value="2.1.4"/>
+			<xs:enumeration value="2.1.5"/>
+			<xs:enumeration value="2.2.1.1"/>
+			<xs:enumeration value="2.2.1.2"/>
+			<xs:enumeration value="2.2.2.1"/>
+			<xs:enumeration value="2.2.2.2"/>
+			<xs:enumeration value="2.2.3.1"/>
+			<xs:enumeration value="2.2.3.2"/>
+			<xs:enumeration value="2.2.3.3"/>
+			<xs:enumeration value="2.2.3.4"/>
+			<xs:enumeration value="2.2.3.5"/>
+			<xs:enumeration value="2.2.3.6"/>
+			<xs:enumeration value="3"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--тип "Код водного об’єкта"-->
+	<xs:simpleType name="DGCodeWaterBody">
+		<xs:annotation>
+			<xs:documentation>
+				Код водного об’єкта зазначається платником згідно з додатком 16 до Податкової декларації з рентної плати (Наказ Міністерства фінансів України 17 серпня 2015 року № 719). Останній розряд коду повинен бути відмінним від "0"
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="1.1.1"/>
+			<xs:enumeration value="1.2.1"/>
+			<xs:enumeration value="1.3.1"/>
+			<xs:enumeration value="1.3.2"/>
+			<xs:enumeration value="2.1.1"/>
+			<xs:enumeration value="2.2.1"/>
+			<xs:enumeration value="3.1.1"/>
+			<xs:enumeration value="3.2.1"/>
+			<xs:enumeration value="4.1.1"/>
+			<xs:enumeration value="4.2.1"/>
+			<xs:enumeration value="4.3.1"/>
+			<xs:enumeration value="4.3.2"/>
+			<xs:enumeration value="5.1.1"/>
+			<xs:enumeration value="5.2.1"/>
+			<xs:enumeration value="6.1.1"/>
+			<xs:enumeration value="6.2.1"/>
+			<xs:enumeration value="7.1.1"/>
+			<xs:enumeration value="7.2.1"/>
+			<xs:enumeration value="8.1.1"/>
+			<xs:enumeration value="8.2.1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--тип "Строка, що повинна бути заповнена,- повинна мати 1 непустий символ"-->
+	<xs:simpleType name="DGstring">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="([\s]*[\S]+[\s]*)+"/>
+		</xs:restriction>
+	</xs:simpleType>
 	<!--тип "Ознака неприбуткової установи (організації) (Наказ Мінфін України від 24.01.2013 № 37) (значення 0001-0019)"-->
 	<xs:simpleType name="DGOZN_NPR">
 		<xs:restriction base="xs:string">
@@ -77,7 +152,7 @@
 			<xs:enumeration value="2.3.2.2"/>
 		</xs:restriction>
 	</xs:simpleType>
-	<!--тип "акциз Розділ в декларації" -->
+	<!--тип "акциз код Розділу в декларації"-->
 	<xs:simpleType name="DGJ02095Ind1">
 		<xs:annotation>
 			<xs:documentation>
@@ -88,7 +163,7 @@
 			<xs:pattern value="[АБВГ]{1}"/>
 		</xs:restriction>
 	</xs:simpleType>
-	<!--тип "акциз операція в декларації" -->
+	<!--тип "акциз код операція в декларації"-->
 	<xs:simpleType name="DGJ02095Ind2">
 		<xs:annotation>
 			<xs:documentation>
@@ -97,6 +172,90 @@
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:pattern value="([АБВГ]([1-9]{1}[0-9]{0,1}){1}){1}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--тип "акциз код Розділу в декларації для версії 2"-->
+	<xs:simpleType name="DGJ02095Ind3">
+		<xs:annotation>
+			<xs:documentation>
+				розділ Декларації (А,Б,В,Г,Ґ,Д) розширення попереднього типу DGJ02095Ind1 для наступної версії документа
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[АБВГҐД]{1}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--тип "акциз код операція в декларації для версії 2"-->
+	<xs:simpleType name="DGJ02095Ind4">
+		<xs:annotation>
+			<xs:documentation>
+				код операції розділу в Декларації акцизного податку  для розширення попереднього типу DGJ02095Ind2 для наступної версії документа
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="А1"/>
+			<xs:enumeration value="А2"/>
+			<xs:enumeration value="А3"/>
+			<xs:enumeration value="А4"/>
+			<xs:enumeration value="А5"/>
+			<xs:enumeration value="А6"/>
+			<xs:enumeration value="А7"/>
+			<xs:enumeration value="А8"/>
+			<xs:enumeration value="А9"/>
+			<xs:enumeration value="А10"/>
+			<xs:enumeration value="А11.1"/>
+			<xs:enumeration value="А11.2"/>
+			<xs:enumeration value="А12.1"/>
+			<xs:enumeration value="А12.2"/>
+			<xs:enumeration value="А13"/>
+			<xs:enumeration value="А14"/>
+			<xs:enumeration value="А15"/>
+			<xs:enumeration value="Б1"/>
+			<xs:enumeration value="Б2"/>
+			<xs:enumeration value="Б3"/>
+			<xs:enumeration value="Б4"/>
+			<xs:enumeration value="Б5"/>
+			<xs:enumeration value="Б6"/>
+			<xs:enumeration value="Б7"/>
+			<xs:enumeration value="Б8"/>
+			<xs:enumeration value="Б9.1"/>
+			<xs:enumeration value="Б9.2"/>
+			<xs:enumeration value="Б10"/>
+			<xs:enumeration value="Б10.1"/>
+			<xs:enumeration value="Б10.2"/>
+			<xs:enumeration value="Б11"/>
+			<xs:enumeration value="Б12"/>
+			<xs:enumeration value="В1"/>
+			<xs:enumeration value="В2"/>
+			<xs:enumeration value="В3"/>
+			<xs:enumeration value="В4"/>
+			<xs:enumeration value="В5"/>
+			<xs:enumeration value="В6"/>
+			<xs:enumeration value="В7"/>
+			<xs:enumeration value="В8"/>
+			<xs:enumeration value="В9"/>
+			<xs:enumeration value="В10.1"/>
+			<xs:enumeration value="В10.2"/>
+			<xs:enumeration value="В12"/>
+			<xs:enumeration value="В13"/>
+			<xs:enumeration value="В14"/>
+			<xs:enumeration value="В15"/>
+			<xs:enumeration value="Г1"/>
+			<xs:enumeration value="Г2"/>
+			<xs:enumeration value="Г3"/>
+			<xs:enumeration value="Г4"/>
+			<xs:enumeration value="Г5"/>
+			<xs:enumeration value="Г6"/>
+			<xs:enumeration value="Г7"/>
+			<xs:enumeration value="Г8.1"/>
+			<xs:enumeration value="Г8.2"/>
+			<xs:enumeration value="Г9"/>
+			<xs:enumeration value="Г10"/>
+			<xs:enumeration value="Ґ1"/>
+			<xs:enumeration value="Д1.1"/>
+			<xs:enumeration value="Д1.2"/>
+			<xs:enumeration value="Д2.1"/>
+			<xs:enumeration value="Д2.2"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<!--тип "Можливі варіанти Виду документа" -->
@@ -202,7 +361,7 @@
 	<xs:simpleType name="DGcpFPR">
 		<xs:annotation>
 			<xs:documentation>
-				тип, що описує код показника довідника " "Види операцій", число з ведучими нулями довжиною 2 знаки
+				тип, що описує код показника довідника "Форми проведення розрахунку", число з ведучими нулями довжиною 2 знаки
 			</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
@@ -302,6 +461,13 @@
 		<xs:restriction base="xs:unsignedLong">
 			<xs:minInclusive value="1"/>
 			<xs:maxInclusive value="99"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--Загальний тип "Число від 1 до 9" використовується для вказання номера-->
+	<xs:simpleType name="DGI1inom">
+		<xs:restriction base="xs:unsignedLong">
+			<xs:minInclusive value="1"/>
+			<xs:maxInclusive value="9"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<!--Загальний тип "Число 4 знаки з початковими нулями від 0000 до 9999"-->
@@ -464,6 +630,22 @@
 			</xs:extension>
 		</xs:simpleContent>
 	</xs:complexType>
+	<!--Тип причини, з якої акцизна накладна не видається отримувачу пального-->
+	<xs:simpleType name="DGEItyper">
+		<xs:annotation>
+			<xs:documentation>
+			Тип причини:			
+			1 – отримувач не є платником акцизного податку з реалізації пального (кінцевий споживач та суб’єкти господарювання, які відсутні у Реєстрі платників акцизного податку з реалізації  пального)
+			2 – відвантаження за умовами ст.229 розділу VI Податкового Кодексу
+			3 – власне споживання
+			4 – втрачене пальне (п.216.3 ст.216 Кодексу)
+			5 – втрачене пальне (п.214.7 ст.214 Кодексу)
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:nonNegativeInteger">
+			<xs:pattern value="[0-5]"/>
+		</xs:restriction>
+	</xs:simpleType>
 	<!--Причини, складання податкової накладної за окремими операціями версія реєстру 6 (дублюється типом DGPNtypr)-->
 	<xs:simpleType name="DGKodСausesOperation6">
 		<xs:annotation>
@@ -485,10 +667,11 @@
 			14 – Складена покупцем (отримувачем) послуг від нерезидента.
 			15 – Складена на суму перевищення митної вартості над фактичною ціною постачання.
 			16 – Складена на суму перевищення балансової (залишкової) вартості необоротних активів над фактичною ціною їх постачання.
+			17 - складена на суму перевищення собівартості самостійно виготовлених товарів/послуг над фактичною ціною їх постачання.
 			</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
-			<xs:pattern value="((0[1-9])|(1[0-5]))"/>
+			<xs:pattern value="((0[1-9])|(1[0-7]))"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<!--Ознака, - дані документа включаються до уточнюючих розрахунків за звітний (податковий) період „У” -->
@@ -704,6 +887,13 @@
 				<xs:annotation>
 					<xs:documentation>
 				Складена на суму перевищення балансової (залишкової) вартості необоротних активів над фактичною ціною їх постачання
+			</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="17">
+				<xs:annotation>
+					<xs:documentation>
+				Складена на суму перевищення собівартості самостійно виготовлених товарів/послуг над фактичною ціною їх постачання
 			</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
@@ -930,18 +1120,32 @@
 			<xs:pattern value="(([1-9])|([1-9][0-9])){1}(\.[0-9]){0,1}"/>
 		</xs:restriction>
 	</xs:simpleType>
-	<!--Загальний тип "Місяц з нолем на початку"-->
+	<!--Загальний тип "Числові дані 2 знаки крапка 2 знаки"-->
+	<xs:simpleType name="DGN2pointN2">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[0-9]{2}\.[0-9]{2}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--Загальний тип "Числові дані 2 знаки крапка 2 знаки" в колонці-->
+	<xs:complexType name="N2pointN2Column">
+		<xs:simpleContent>
+			<xs:extension base="DGN2pointN2">
+				<xs:attribute name="ROWNUM" type="rowInt" use="required"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<!--Загальний тип "Місяць з нолем на початку"-->
 	<xs:simpleType name="DG0Month">
 		<xs:restriction base="xs:string">
 			<xs:length value="2"/>
 			<xs:pattern value="((0[1-9])|(1[0-2]))"/>
 		</xs:restriction>
 	</xs:simpleType>
-	<!--Загальний тип "Місяц і рік"-->
+	<!--Загальний тип "Місяць і рік"-->
 	<xs:simpleType name="DGMonthYear">
 		<xs:restriction base="xs:string">
 			<xs:length value="6"/>
-			<xs:pattern value="(((0[1-9])|(1[0-2]))(20)\d{2})"/>
+			<xs:pattern value="(((0[1-9])|(1[0-2]))((19)\d{2}|(20)\d{2}))"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<!--Загальний тип "Дата кінець квартала у форматі ддммрррр"-->
@@ -1013,6 +1217,27 @@
 			<xs:pattern value="[0-9]{9,10}"/>
 		</xs:restriction>
 	</xs:simpleType>
+	<!--Загальний тип "Кадастровий номер земельної ділянки" (HKNEA) ХХХХХХХХХХ:ХХ:ХХХ:ХХХХ-->
+	<xs:simpleType name="DGKNEA">
+		<xs:annotation>
+			<xs:documentation>
+			Кадастровий номер земельної ділянки складається з таких структурних елементів:
+			НКЗ : НКК : НЗД,
+			де НКЗ - номер кадастрової зони
+				НКК - номер кадастрового кварталу
+			Номер кадастрового кварталу складається з таких структурних елементів:
+			НКЗ : НКК,
+			де НКЗ - дванадцятизначний номер кадастрової зони (максимальна кількість кадастрових зон становить 999999999999), в якому останні дві цифри відокремлюються від перших десяти двокрапкою;
+			НКК - тризначний номер кадастрового кварталу в межах кадастрової зони (максимальна кількість кадастрових кварталів у межах кадастрової зони становить 999).
+			Для нумерації кадастрової зони за межами адміністративно-територіальних одиниць використовується значення 9000000000 : 00.
+			НЗД - чотиризначний номер земельної ділянки в межах кадастрового кварталу (максимальна кількість земельних ділянок у межах кадастрового кварталу становить 9999)
+			Структурні елементи кадастрового номера земельної ділянки відокремлюються один від одного двокрапкою (:).
+   </xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[0-9]{10}:[0-9]{2}:[0-9]{3}:[0-9]{4}"/>
+		</xs:restriction>
+	</xs:simpleType>
 	<!--Загальний тип "Код від 1 до 4 знаків ДРФО, ознака типу документа для Реєстра накладних версії 2"-->
 	<xs:simpleType name="DGOsp">
 		<xs:restriction base="xs:integer">
@@ -1030,7 +1255,8 @@
 	<!--Загальний тип "Код 1/2 для ДРФО"-->
 	<xs:simpleType name="DGOzn12">
 		<xs:restriction base="xs:integer">
-			<xs:pattern value="[1,2]"/>
+			<xs:minInclusive value="1"/>
+			<xs:maxInclusive value="2"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<!--Загальний тип "Ознака доходу від 1 до 66 для ДРФО"-->
@@ -1204,6 +1430,13 @@
 			<xs:maxInclusive value="5"/>
 		</xs:restriction>
 	</xs:simpleType>
+	<!--Загальний тип "Рік"-->
+	<xs:simpleType name="DGYear">
+		<xs:restriction base="xs:integer">
+			<xs:minInclusive value="1981"/>
+			<xs:maxInclusive value="2099"/>
+		</xs:restriction>
+	</xs:simpleType>
 	<!--Загальний тип "Рік народження"-->
 	<xs:simpleType name="DGNYear">
 		<xs:restriction base="xs:integer">
@@ -1211,10 +1444,10 @@
 			<xs:maxInclusive value="2099"/>
 		</xs:restriction>
 	</xs:simpleType>
-	<!--Загальний тип "Рік"-->
-	<xs:simpleType name="DGYear">
+	<!--Загальний тип "Рік випуску, створення, ..."-->
+	<xs:simpleType name="DGMadeYear">
 		<xs:restriction base="xs:integer">
-			<xs:minInclusive value="1981"/>
+			<xs:minInclusive value="1800"/>
 			<xs:maxInclusive value="2099"/>
 		</xs:restriction>
 	</xs:simpleType>
@@ -1295,6 +1528,12 @@
 	<xs:simpleType name="DGdecimal2">
 		<xs:restriction base="xs:decimal">
 			<xs:pattern value="\-{0,1}[0-9]+\.[0-9]{2}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--Загальний тип "Позитивні числові дані 2 знаки після коми"-->
+	<xs:simpleType name="DGdecimal2_P">
+		<xs:restriction base="xs:decimal">
+			<xs:pattern value="[0-9]+\.[0-9]{2}"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<!--Загальний тип "Числові дані 3 знаки після коми"-->
@@ -1396,6 +1635,14 @@
 			<xs:pattern value="[АБВГДЕЄЖЗИІКЛМНОПРСТУФХЦЧШЩЮЯ]{2}"/>
 		</xs:restriction>
 	</xs:simpleType>
+	<!--Загальний тип "серія паспорта" в колонці-->
+	<xs:complexType name="PassSerColumn">
+		<xs:simpleContent>
+			<xs:extension base="DGPassSer">
+				<xs:attribute name="ROWNUM" type="rowInt" use="required"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
 	<!--Загальний тип "№ паспорта" (HPASSNUM)-->
 	<xs:simpleType name="DGPassNum">
 		<xs:restriction base="xs:string">
@@ -1403,6 +1650,14 @@
 			<xs:pattern value="[0-9]{6}"/>
 		</xs:restriction>
 	</xs:simpleType>
+	<!--Загальний тип "№ паспорта" в колонці-->
+	<xs:complexType name="PassNumColumn">
+		<xs:simpleContent>
+			<xs:extension base="DGPassNum">
+				<xs:attribute name="ROWNUM" type="rowInt" use="required"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
 	<!--Загальний тип "Код ЄДРПОУ (тiльки числа-породжений від string, податковий номер)"-->
 	<xs:simpleType name="DGNLong">
 		<xs:restriction base="xs:string">
@@ -1415,6 +1670,13 @@
 		<xs:restriction base="xs:string">
 			<xs:maxLength value="10"/>
 			<xs:pattern value="([0-9]{5,10}|[АБВГДЕЄЖЗИІКЛМНОПРСТУФХЦЧШЩЮЯ]{2}[0-9]{6})"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--Загальний тип "Реєстраційний номер облікової картки платника податків (10 цифр з лідируючим нулем) або серія та номер паспорта"-->
+	<xs:simpleType name="DGDRFO_10">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="10"/>
+			<xs:pattern value="([0-9]{10}|[АБВГДЕЄЖЗИІКЛМНОПРСТУФХЦЧШЩЮЯ]{2}[0-9]{6})"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<!--Загальний тип "Код ЄДРПОУ (ДРФО підприємця: числа, або № паспорта з БК) Для Пенсійного фонду"-->
@@ -1554,6 +1816,12 @@
 			<xs:pattern value="((((0[1-9]|[1-2][0-9])(0(1|[3-9])|1[0-2]))|(30(0(1|[3-9])|1[0-2]))|(31(01|03|05|07|08|10|12)))(19|20)\d{2})|((0[1-9]|[1-2][0-9])02(19|20)(([0|2|4|6|8][0|4|8])|([1|3|5|7|9][2|6]))|(0[1-9]|[1-2][0-8]|19)02(19|20)(([0|2|4|6|8][1-3|5-7|9])|([1|3|5|7|9][0-1|3-5|7-9])))"/>
 		</xs:restriction>
 	</xs:simpleType>
+	<!--Загальний тип "Код [НАЗВИ, КЛАСУ НЕБЕЗПЕЧНОСТІ, ГРАНИЧНОДОПУСТИМОЇ КОНЦЕНТРАЦІЇ, ОРІЄНТОВНО БЕЗПЕЧНИЙ РІВЕНЬ ВПЛИВУ - ЗАБРУДНЮЮЧОЇ РЕЧОВИНИ, КЛАС НЕБЕЗПЕКИ ТА РІВЕНЬ НЕБЕЗПЕЧНОСТІ ВІДХОДІВ]" -->
+	<xs:simpleType name="DGecoCodePollution">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[0-9]{3}\.[0-9]\.[0-9]{3}"/>
+		</xs:restriction>
+	</xs:simpleType>
 	<!--Загальний тип атрибуту ROWNUM для вказання номеру строки в табличних даних-->
 	<xs:simpleType name="rowInt">
 		<xs:restriction base="xs:int">
@@ -1561,6 +1829,103 @@
 			<xs:maxInclusive value="999999"/>
 		</xs:restriction>
 	</xs:simpleType>
+	<!--Загальні специфічні типи для ел.документів структурних підрозділів з питань соціального захисту населення (structural divisions on social protection) - SDSP -->
+	<!--Загальний тип "Тип запиту - інформації з Державного реєстру фізичних осіб - платників податків про джерела та суми отриманих доходів фізичних осіб, 
+які звернулись за призначенням субсидій або які надають соціальні послуги" -->
+	<xs:simpleType name="DGSDSPtypeQuest">
+		<xs:annotation>
+			<xs:documentation>
+			тип запиту,	приймає значення:
+				1 - для нарахування субсидій;
+				2 - для проведення перевірки достовірності призначених субсидій;
+				3 - для призначення компенсацій.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="1"/>
+			<xs:enumeration value="2"/>
+			<xs:enumeration value="3"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--Загальний тип "Результат обробки запиту - відповідь про джерела та суми отриманих доходів фізичних осіб, які звернулись за призначенням субсидій або які надають соціальні послуги" -->
+	<xs:simpleType name="DGSDSPresultProc">
+		<xs:annotation>
+			<xs:documentation>Результат обробки запиту може приймати наступні значення: 
+				0 – інформацію надано у файлі – відповіді; 
+				Відповідь не надано з причини: 
+				1, ...  (код причини)
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[0-9]{1,2}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="SDSPresultProcColumn">
+		<xs:annotation>
+			<xs:documentation>
+			Табличне поле, відповідного простого типу
+			</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="DGSDSPresultProc">
+				<xs:attribute name="ROWNUM" type="rowInt" use="required"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<!--Загальний тип "Початок періоду: місяць	Може приймати значення: 1,4,7,10" -->
+	<xs:simpleType name="DGSDSPperiodBeg">
+		<xs:annotation>
+			<xs:documentation>
+			Початок періоду: місяць	
+			Може приймати значення: 1,4,7,10
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:int">
+			<xs:enumeration value="1"/>
+			<xs:enumeration value="4"/>
+			<xs:enumeration value="7"/>
+			<xs:enumeration value="10"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="SDSPperiodBegColumn">
+		<xs:annotation>
+			<xs:documentation>
+			Табличне поле, відповідного простого типу
+			</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="DGSDSPperiodBeg">
+				<xs:attribute name="ROWNUM" type="rowInt" use="required"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<!--Загальний тип "Кінець періоду: місяць	Може приймати значення: 3,6,9,12" -->
+	<xs:simpleType name="DGSDSPperiodEnd">
+		<xs:annotation>
+			<xs:documentation>
+			Початок періоду: місяць	
+			Може приймати значення: 3,6,9,12
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:int">
+			<xs:enumeration value="3"/>
+			<xs:enumeration value="6"/>
+			<xs:enumeration value="9"/>
+			<xs:enumeration value="12"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="SDSPperiodEndColumn">
+		<xs:annotation>
+			<xs:documentation>
+			Табличне поле, відповідного простого типу
+			</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="DGSDSPperiodEnd">
+				<xs:attribute name="ROWNUM" type="rowInt" use="required"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
 	<!--Опис комплексних типів які використовуються для контролю табличних даних-->
 	<!--тип "статус особи - сторони контрольованої операції залежно від країни реєстрації:
 	 "резидент" - позначка "Р", "нерезидент" - позначка "Н"" в колонці-->
@@ -1575,6 +1940,14 @@
 	<xs:complexType name="TinColumn">
 		<xs:simpleContent>
 			<xs:extension base="DGLong">
+				<xs:attribute name="ROWNUM" type="rowInt" use="required"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<!--Загальний тип "Реєстраційний номер облікової картки платника податків (10 цифр з лідируючим нулем) або серія та номер паспорта в колонці"-->
+	<xs:complexType name="DRFO_10Column">
+		<xs:simpleContent>
+			<xs:extension base="DGDRFO_10">
 				<xs:attribute name="ROWNUM" type="rowInt" use="required"/>
 			</xs:extension>
 		</xs:simpleContent>
@@ -1623,6 +1996,14 @@
 	<xs:complexType name="Decimal2Column">
 		<xs:simpleContent>
 			<xs:extension base="DGdecimal2">
+				<xs:attribute name="ROWNUM" type="rowInt" use="required"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<!--Загальний тип "Позитивні числові дані 2 знаки після коми в колонці"-->
+	<xs:complexType name="Decimal2Column_P">
+		<xs:simpleContent>
+			<xs:extension base="DGdecimal2_P">
 				<xs:attribute name="ROWNUM" type="rowInt" use="required"/>
 			</xs:extension>
 		</xs:simpleContent>
@@ -1683,7 +2064,7 @@
 			</xs:extension>
 		</xs:simpleContent>
 	</xs:complexType>
-	<!--Загальний тип "Місяц і рік в колонці"-->
+	<!--Загальний тип "Місяць і рік в колонці"-->
 	<xs:complexType name="DGMonthYearColumn">
 		<xs:simpleContent>
 			<xs:extension base="DGMonthYear">
@@ -1793,6 +2174,14 @@
 	<xs:complexType name="YearNColumn">
 		<xs:simpleContent>
 			<xs:extension base="DGNYear">
+				<xs:attribute name="ROWNUM" type="rowInt" use="required"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<!--Загальний тип "Рік випуску, створення, ... в колонці"-->
+	<xs:complexType name="MadeYearColumn">
+		<xs:simpleContent>
+			<xs:extension base="DGMadeYear">
 				<xs:attribute name="ROWNUM" type="rowInt" use="required"/>
 			</xs:extension>
 		</xs:simpleContent>
@@ -1968,6 +2357,14 @@
 			</xs:extension>
 		</xs:simpleContent>
 	</xs:complexType>
+	<!--Загальний тип колонки таблиці "Число від 1 до ... 9" -->
+	<xs:complexType name="DGI1nomColumn">
+		<xs:simpleContent>
+			<xs:extension base="DGI1inom">
+				<xs:attribute name="ROWNUM" type="rowInt" use="required"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
 	<!--Загальний тип колонки таблиці "Число від 1 до ... 9999" [номер філії, кількість, №рядка]-->
 	<xs:complexType name="DGI4nomColumn">
 		<xs:simpleContent>
@@ -2004,6 +2401,14 @@
 	<xs:complexType name="KOATUUColumn">
 		<xs:simpleContent>
 			<xs:extension base="DGKOATUU">
+				<xs:attribute name="ROWNUM" type="rowInt" use="required"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<!--Загальний тип "Кадастровий номер земельної ділянки" в колонці -->
+	<xs:complexType name="KNEAColumn">
+		<xs:simpleContent>
+			<xs:extension base="DGKNEA">
 				<xs:attribute name="ROWNUM" type="rowInt" use="required"/>
 			</xs:extension>
 		</xs:simpleContent>
@@ -2056,7 +2461,7 @@
 			</xs:extension>
 		</xs:simpleContent>
 	</xs:complexType>
-
+	<!-- Типи, що використовуються в документах Статистики -->
 	<!-- тип "Код області статистика". Число, 2 знаки -->
 	<xs:simpleType name="STATOBL">
 		<xs:restriction base="xs:string">
@@ -2088,7 +2493,7 @@
 			<xs:enumeration value="80"/>
 			<xs:enumeration value="85"/>
 			<xs:enumeration value="90"/>
-	</xs:restriction>
+		</xs:restriction>
 	</xs:simpleType>
 	<!-- тип "Код району". Число, 3 знаки, крім комбінації '000' -->
 	<xs:simpleType name="STATRAY">
@@ -2097,4 +2502,59 @@
 			<xs:pattern value="([1-9]{3}|[1-9][0-9][0-9]|[0-9][1-9][0-9]|[0-9][0-9][1-9])"/>
 		</xs:restriction>
 	</xs:simpleType>
+	<!--тип "Тип пiдпису для Повiдомлення про реєстрацiю електронного цифрового пiдпису", для документа з кодом J1391101 -->
+	<xs:simpleType name="DGSignGKS">
+		<xs:annotation>
+			<xs:documentation>
+	  "Тип підпису для Повідомлення про реєстрацію електронного цифрового підпису" 
+	  </xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Директор"/>
+			<xs:enumeration value="Бухгалтер"/>
+			<xs:enumeration value="Печатка установи"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--Загальний тип колонки таблицi "Тип пiдпису для Повiдомлення про реєстрацiю електронного цифрового пiдпису", для документа з кодом J1391101 -->
+	<xs:complexType name="DGSignGKSColumn">
+		<xs:annotation>
+			<xs:documentation>
+		"Тип підпису для Повідомлення про реєстрацію електронного цифрового підпису" - табличне поле
+		</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="DGSignGKS">
+				<xs:attribute name="ROWNUM" type="rowInt" use="required"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<!--Загальний тип колонки таблицi "Код [НАЗВИ, КЛАСУ НЕБЕЗПЕЧНОСТІ, ГРАНИЧНОДОПУСТИМОЇ КОНЦЕНТРАЦІЇ, ОРІЄНТОВНО БЕЗПЕЧНИЙ РІВЕНЬ ВПЛИВУ - ЗАБРУДНЮЮЧОЇ РЕЧОВИНИ, КЛАС НЕБЕЗПЕКИ ТА РІВЕНЬ НЕБЕЗПЕЧНОСТІ ВІДХОДІВ]" -->
+	<xs:complexType name="ecoCodePollutionColumn">
+		<xs:annotation>
+			<xs:documentation>
+		"Тип підпису для Повідомлення про реєстрацію електронного цифрового підпису" - табличне поле
+		</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="DGecoCodePollution">
+				<xs:attribute name="ROWNUM" type="rowInt" use="required"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<!--Загальний тип "Код МФО (6 знаків) в колонці"-->
+	<xs:complexType name="MfoColumn">
+		<xs:simpleContent>
+			<xs:extension base="DGmfo">
+				<xs:attribute name="ROWNUM" type="rowInt" use="required"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<!--Загальний тип "Код міста в колонці"-->
+	<xs:complexType name="ZipColumn">
+		<xs:simpleContent>
+			<xs:extension base="DGHZIP">
+				<xs:attribute name="ROWNUM" type="rowInt" use="required"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
 </xs:schema>

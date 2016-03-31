@@ -273,7 +273,6 @@ type
     procedure actPreviewCopyExecute(Sender: TObject);
     procedure actPrintCopyExecute(Sender: TObject);
     procedure actGenerateXMLExecute(Sender: TObject);
-
 	private
 
 		intVis : integer; //в отчёте видна ли дата

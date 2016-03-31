@@ -18,11 +18,13 @@ type
 
   function FormatNodeDateTime (XMLNode : IXMLNode;Field:TField):string;
   function FormatNodeString (XMLNode : IXMLNode;Field:TField):string;
+  function FormatNodeStringOrNil (XMLNode : IXMLNode;Field:TField):string;  
   function FormatNodeStringIPN (XMLNode : IXMLNode;Field:TField):string;
   function FormatNodeFloat (XMLNode : IXMLNode;Field:TField):string;
   function FormatNodeFloatZero (XMLNode : IXMLNode;Field:TField):string;
   function FormatInteger (XMLNode : IXMLNode;Field:TField):string;
   function FormatInteger4Digits (XMLNode : IXMLNode;Field:TField):string;
+
   function  CheckIPN(DataSet :TDataSet;
     FieldName:String ='f6_ipn';
     FieldNameForFullName:String='f5_zak';
@@ -79,6 +81,16 @@ function FormatNodeString (XMLNode : IXMLNode;Field:TField):string;
 begin
   Result := Field.asString;
   XMLNode.NodeValue := Result;
+end;
+
+function FormatNodeStringOrNil (XMLNode : IXMLNode;Field:TField):string;
+begin
+  Result := Field.asString;
+  if (Result='') then begin
+    XMLNode.Attributes['xsi:nil']:='true';
+  end else begin
+    XMLNode.NodeValue := Result;
+  end;
 end;
 
 function FormatNodeStringIPN (XMLNode : IXMLNode;Field:TField):string;
