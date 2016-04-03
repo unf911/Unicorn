@@ -218,6 +218,13 @@ type
     actMakeNnakl: TAction;
     N11: TMenuItem;
     frNaklr2: TfrxReport;
+    actPreviewActElvo: TAction;
+    actPrintActElvo: TAction;
+    N18: TMenuItem;
+    N21: TMenuItem;
+    N22: TMenuItem;
+    N23: TMenuItem;
+    N24: TMenuItem;
     frNaklr: TfrxReport;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure actSettingsExecute(Sender: TObject);
@@ -293,6 +300,8 @@ type
       Shift: TShiftState);
     procedure actCreateNaklruExecute(Sender: TObject);virtual;
     procedure actMakeNnaklExecute(Sender: TObject);
+    procedure actPreviewActElvoExecute(Sender: TObject);
+    procedure actPrintActElvoExecute(Sender: TObject);
 
   private
     curSum : currency;
@@ -985,6 +994,19 @@ begin
   end;
 end;
 
+procedure PrintActElvo (dbgNaklot: TDBGridEh;param:variant;Object1:Pointer=nil );
+var
+  frmNaklru : TfrmNaklru;
+  bReadyToPrint : boolean;
+begin
+  frmNaklru := TfrmNaklru(Object1);
+  bReadyToPrint := frmNaklru.PrepareReport('NaklruActElvo.fr3');
+  if bReadyToPrint then begin
+    frmNaklru.frNaklr.PrintOptions.ShowDialog :=false;
+    frmNaklru.frNaklr.Print;
+  end;
+end;
+
 procedure TfrmNaklru.actPrintExecute(Sender: TObject);
 begin
   dmdEx.ColumnSelectAndProcess(dbgNaklr,Null,PrintUsl,self);
@@ -1481,6 +1503,27 @@ try
 except
   AssertInternal('979554F8-3163-4DB5-B7DA-5F1CB791ADA8');
 end;
+end;
+
+procedure TfrmNaklru.actPreviewActElvoExecute(Sender: TObject);
+begin
+  if cdsNaklo.FieldByName('id_dogovor').IsNull then begin
+    messagedlg('Не выбран договор',mtWarning,[mbOK],0);
+    exit;
+  end;
+try
+  dsNaklot.dataset.DisableControls;
+  PrepareReport('NaklruActElvo.fr3');
+  frNaklr.ShowReport;
+//  Curr2StrUA1.Active := false;
+finally
+  dsNaklot.dataset.EnableControls;
+end;
+end;
+
+procedure TfrmNaklru.actPrintActElvoExecute(Sender: TObject);
+begin
+  dmdEx.ColumnSelectAndProcess(dbgNaklr,Null,PrintActElvo,self);
 end;
 
 end.

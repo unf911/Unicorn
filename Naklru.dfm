@@ -435,6 +435,16 @@ object frmNaklru: TfrmNaklru
       Caption = #1057#1086#1079#1076#1072#1090#1100' '#1085#1072#1083#1086#1075#1086#1074#1091#1102' '#1085#1072' '#1086#1089#1085#1086#1074#1072#1085#1080#1080'...'
       OnExecute = actMakeNnaklExecute
     end
+    object actPreviewActElvo: TAction
+      Caption = #1055#1088#1086#1089#1084#1086#1090#1088' '#1072#1082#1090#1072' '#1076#1083#1103' '#1101#1083#1077#1082#1090#1088#1086#1101#1085#1077#1088#1075#1080#1080
+      ImageIndex = 2
+      OnExecute = actPreviewActElvoExecute
+    end
+    object actPrintActElvo: TAction
+      Caption = #1055#1077#1095#1072#1090#1100' '#1072#1082#1090#1072' '#1085#1072' '#1101#1083#1077#1082#1090#1088#1080#1095#1077#1089#1090#1074#1086
+      ImageIndex = 1
+      OnExecute = actPrintActElvoExecute
+    end
   end
   object qeNaklot: TQueryExtender
     Query = cdsNaklot
@@ -463,6 +473,12 @@ object frmNaklru: TfrmNaklru
       end
       object N4: TMenuItem
         Action = actPrint
+      end
+      object N18: TMenuItem
+        Action = actPreviewActElvo
+      end
+      object N21: TMenuItem
+        Action = actPrintActElvo
       end
       object N1: TMenuItem
         Action = actRefresh
@@ -1284,7 +1300,7 @@ object frmNaklru: TfrmNaklru
     PrintOptions.Printer = 'Default'
     PrintOptions.ShowDialog = False
     ReportOptions.CreateDate = 38982.467101585700000000
-    ReportOptions.LastChange = 42204.897381724500000000
+    ReportOptions.LastChange = 42463.952020682870000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       'begin'
@@ -1453,6 +1469,15 @@ object frmNaklru: TfrmNaklru
     end
     object N6: TMenuItem
       Action = actCreateNaklru
+    end
+    object N23: TMenuItem
+      Action = actPrint
+    end
+    object N22: TMenuItem
+      Action = actPreviewActElvo
+    end
+    object N24: TMenuItem
+      Action = actPrintActElvo
     end
   end
   object frxDesigner1: TfrxDesigner
