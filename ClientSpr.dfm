@@ -428,6 +428,9 @@ object frmClientSpr: TfrmClientSpr
     object sdsKlientIS_FIZLICO: TSmallintField
       FieldName = 'IS_FIZLICO'
     end
+    object sdsKlientNOMER_FILIALA: TSmallintField
+      FieldName = 'NOMER_FILIALA'
+    end
   end
   object dspKlient: TDataSetProvider
     DataSet = sdsKlient
@@ -686,6 +689,9 @@ object frmClientSpr: TfrmClientSpr
     end
     object cdsKlientIS_FIZLICO: TSmallintField
       FieldName = 'IS_FIZLICO'
+    end
+    object cdsKlientNOMER_FILIALA: TSmallintField
+      FieldName = 'NOMER_FILIALA'
     end
   end
   object ActionList1: TActionList

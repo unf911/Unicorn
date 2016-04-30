@@ -2,10 +2,10 @@ object frmClientEdit: TfrmClientEdit
   Left = 508
   Top = 45
   Width = 547
-  Height = 494
+  Height = 519
   Caption = #1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1085#1080#1077' '#1089#1087#1088#1072#1074#1086#1095#1085#1080#1082#1072' '#1082#1083#1080#1077#1085#1090#1086#1074
   Color = clBtnFace
-  Constraints.MinHeight = 494
+  Constraints.MinHeight = 519
   Constraints.MinWidth = 547
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -18,14 +18,14 @@ object frmClientEdit: TfrmClientEdit
   OnShow = FormShow
   DesignSize = (
     531
-    456)
+    481)
   PixelsPerInch = 96
   TextHeight = 13
   object PageControl1: TPageControl
     Left = 0
     Top = 0
     Width = 531
-    Height = 425
+    Height = 450
     ActivePage = TabSheet1
     Align = alTop
     Anchors = [akLeft, akTop, akRight, akBottom]
@@ -37,7 +37,7 @@ object frmClientEdit: TfrmClientEdit
         Left = 0
         Top = 0
         Width = 523
-        Height = 394
+        Height = 419
         AutoChildPosLeft = True
         AutoChildWidth = True
         Align = alClient
@@ -45,17 +45,17 @@ object frmClientEdit: TfrmClientEdit
         TabOrder = 0
         DesignSize = (
           523
-          394)
+          419)
         object Panel2: TPanel
           Left = 1
           Top = 192
           Width = 269
-          Height = 153
+          Height = 177
           BevelInner = bvLowered
           TabOrder = 0
           DesignSize = (
             269
-            153)
+            177)
           object Label12: TLabel
             Left = 10
             Top = 4
@@ -90,6 +90,13 @@ object frmClientEdit: TfrmClientEdit
             Width = 63
             Height = 13
             Caption = #1055#1088#1080#1084#1077#1095#1072#1085#1080#1077
+          end
+          object Label42: TLabel
+            Left = 10
+            Top = 129
+            Width = 81
+            Height = 13
+            Caption = #1053#1086#1084#1077#1088' '#1092#1080#1083#1080#1072#1083#1072
           end
           object DBEdit12: TDBEdit
             Left = 104
@@ -133,7 +140,7 @@ object frmClientEdit: TfrmClientEdit
           end
           object dbcbDelmarked: TDBCheckBox
             Left = 8
-            Top = 128
+            Top = 152
             Width = 185
             Height = 17
             Caption = #1055#1086#1084#1077#1090#1082#1072' '#1085#1072' '#1091#1076#1072#1083#1077#1085#1080#1077
@@ -157,11 +164,23 @@ object frmClientEdit: TfrmClientEdit
             TabOrder = 5
             Visible = True
           end
+          object dbeNomerFiliala: TDBNumberEditEh
+            Left = 104
+            Top = 124
+            Width = 158
+            Height = 21
+            DataField = 'NOMER_FILIALA'
+            DataSource = dsKlientEdit
+            EditButtons = <>
+            MaxValue = 32676.000000000000000000
+            TabOrder = 6
+            Visible = True
+          end
         end
         object GroupBox1: TGroupBox
           Left = 274
           Top = 193
-          Width = 257
+          Width = 250
           Height = 80
           Anchors = [akLeft, akTop, akRight]
           Caption = #1058#1080#1087' '#1092#1080#1088#1084#1099
@@ -461,8 +480,8 @@ object frmClientEdit: TfrmClientEdit
         object DBRadioGroup1: TDBRadioGroup
           Left = 274
           Top = 275
-          Width = 257
-          Height = 71
+          Width = 250
+          Height = 94
           Anchors = [akLeft, akTop, akRight]
           Caption = #1051#1100#1075#1086#1090#1099
           DataField = 'LGOTY'
@@ -479,7 +498,7 @@ object frmClientEdit: TfrmClientEdit
         end
         object GroupBox2: TGroupBox
           Left = 0
-          Top = 349
+          Top = 373
           Width = 531
           Height = 44
           Anchors = [akLeft, akTop, akRight]
@@ -518,12 +537,12 @@ object frmClientEdit: TfrmClientEdit
       OnShow = TabSheet2Show
       DesignSize = (
         523
-        394)
+        419)
       object DBGridEh1: TDBGridEh
         Left = 0
         Top = 0
         Width = 473
-        Height = 394
+        Height = 419
         Align = alLeft
         Anchors = [akLeft, akTop, akRight, akBottom]
         DataSource = dsContacts
@@ -662,7 +681,7 @@ object frmClientEdit: TfrmClientEdit
       ImageIndex = 2
       DesignSize = (
         523
-        394)
+        419)
       object Label5: TLabel
         Left = 2
         Top = 8
@@ -867,7 +886,7 @@ object frmClientEdit: TfrmClientEdit
       ImageIndex = 3
       DesignSize = (
         523
-        394)
+        419)
       object Label29: TLabel
         Left = 2
         Top = 4
@@ -1056,12 +1075,12 @@ object frmClientEdit: TfrmClientEdit
       OnShow = TabSheet5Show
       DesignSize = (
         523
-        394)
+        419)
       object DBGridEh2: TDBGridEh
         Left = 0
         Top = 0
         Width = 468
-        Height = 394
+        Height = 419
         Align = alLeft
         DataSource = dsCallHistory
         Flat = False
@@ -1162,7 +1181,7 @@ object frmClientEdit: TfrmClientEdit
       OnShow = TabSheet6Show
       DesignSize = (
         523
-        394)
+        419)
       object Label39: TLabel
         Left = 10
         Top = 11
@@ -1261,7 +1280,7 @@ object frmClientEdit: TfrmClientEdit
   end
   object btnOk: TBitBtn
     Left = 24
-    Top = 433
+    Top = 454
     Width = 157
     Height = 25
     Action = actOk
@@ -1289,7 +1308,7 @@ object frmClientEdit: TfrmClientEdit
   end
   object btnCancel: TBitBtn
     Left = 296
-    Top = 433
+    Top = 454
     Width = 149
     Height = 25
     Action = actCancel

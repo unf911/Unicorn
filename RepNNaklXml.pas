@@ -451,9 +451,12 @@ begin
     if (cdZAK.lgoty <>KlientTipNeplNds) then begin
       HNAMEBUY := cdZAK.fullname;
     end else begin
-      HNAMEBUY := '«Неплатник»';
+      HNAMEBUY := 'Неплатник';
     end;
     HKSEL := cdIzg.ipn;
+    if (cdIzg.nomer_filiala<>0) then begin
+       HNUM2 := cdIzg.nomer_filiala;
+    end;
     if (cdZAK.lgoty =KlientTipNeplNds) then begin
       HKBUY := '100000000000';
     end else if (cdZAK.lgoty = KlientTipExport) then begin
@@ -461,15 +464,9 @@ begin
     end else begin
       HKBUY := cdZAK.ipn;
     end;
-    //HLOCSEL := cdIzg.adrp;
-    //HLOCBUY := cdZak.adrp;
-    //HTELSEL := cdIzg.tel;
-    //HTELBUY := cdZak.tel;
-
-    //H01G1S := cdsNnakl.FieldByName('tip_dogovora').AsString;
-    //H01G2D := FormatDateTime('ddmmyyyy', dsNNakl.FieldByName('dat_dogovora').AsDateTime);
-    //H01G3S := cdsNnakl.FieldByName('nomer_dogovora').AsString;
-    //H02G1S := cdsNnakl.FieldByName('VIDOPL').AsString;
+    if (cdZAK.nomer_filiala<>0) then begin
+      HFBUY := cdZAK.nomer_filiala;
+    end;
   end;
 
 end;

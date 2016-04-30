@@ -270,6 +270,8 @@ type
     DBCheckBoxEh2: TDBCheckBoxEh;
     btnOk: TBitBtn;
     btnCancel: TBitBtn;
+    Label42: TLabel;
+    dbeNomerFiliala: TDBNumberEditEh;
     procedure actOkExecute(Sender: TObject);
     procedure actCancelExecute(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
