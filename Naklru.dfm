@@ -445,6 +445,16 @@ object frmNaklru: TfrmNaklru
       ImageIndex = 1
       OnExecute = actPrintActElvoExecute
     end
+    object actPreviewNaklruSub: TAction
+      Caption = #1055#1088#1086#1089#1084#1086#1090#1088' '#1072#1082#1090#1072' '#1089#1091#1073#1072#1088#1077#1085#1076#1099
+      ImageIndex = 2
+      OnExecute = actPreviewNaklruSubExecute
+    end
+    object actPrintNaklruSub: TAction
+      Caption = #1055#1077#1095#1072#1090#1100' '#1072#1082#1090#1072' '#1089#1091#1073#1072#1088#1077#1085#1076#1099
+      ImageIndex = 1
+      OnExecute = actPrintNaklruSubExecute
+    end
   end
   object qeNaklot: TQueryExtender
     Query = cdsNaklot
@@ -479,6 +489,12 @@ object frmNaklru: TfrmNaklru
       end
       object N21: TMenuItem
         Action = actPrintActElvo
+      end
+      object N25: TMenuItem
+        Action = actPreviewNaklruSub
+      end
+      object N26: TMenuItem
+        Action = actPrintNaklruSub
       end
       object N1: TMenuItem
         Action = actRefresh
@@ -1300,7 +1316,7 @@ object frmNaklru: TfrmNaklru
     PrintOptions.Printer = 'Default'
     PrintOptions.ShowDialog = False
     ReportOptions.CreateDate = 38982.467101585700000000
-    ReportOptions.LastChange = 42463.952020682870000000
+    ReportOptions.LastChange = 42204.897381724500000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       'begin'

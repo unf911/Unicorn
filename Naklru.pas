@@ -226,6 +226,10 @@ type
     N23: TMenuItem;
     N24: TMenuItem;
     frNaklr: TfrxReport;
+    actPreviewNaklruSub: TAction;
+    actPrintNaklruSub: TAction;
+    N25: TMenuItem;
+    N26: TMenuItem;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure actSettingsExecute(Sender: TObject);
     procedure dbgNaklrDblClick(Sender: TObject);
@@ -302,6 +306,8 @@ type
     procedure actMakeNnaklExecute(Sender: TObject);
     procedure actPreviewActElvoExecute(Sender: TObject);
     procedure actPrintActElvoExecute(Sender: TObject);
+    procedure actPreviewNaklruSubExecute(Sender: TObject);
+    procedure actPrintNaklruSubExecute(Sender: TObject);
 
   private
     curSum : currency;
@@ -386,7 +392,6 @@ procedure TfrmNaklru.FormCreate(Sender: TObject);
 begin
   qeNaklo.DefSql := sdsNaklo.CommandText;
   qeNaklot.DefSql := sdsNaklot.CommandText;
-  //ProcessShowDeleted;
   FIdNakl := -1;
   MonthToStrInitUa;
   FillSettings;
@@ -542,7 +547,6 @@ try
     try
       PostAndApply(dtNaklr);
       PostAndApply(dtNaklrt);
-      //actNaklrPost.Execute;
     except
       AssertInternal('BBA7888F-20B3-468C-833B-51E05DFE8AD5');
     end;
@@ -584,7 +588,6 @@ begin
     Curr2StrUA1.Summa := CurSum*dsNaklo.DataSet.FieldByName('nalog_nds').AsCurrency;
     Curr2StrUA1.Active := true;
     ParValue := Curr2StrUA1.Value;
-    //ParValue := CurSum;
   end;
 end;
 
@@ -784,7 +787,6 @@ begin
     dsNaklo.DataSet.FieldByName('id_nakl').asInteger;
   intNpp := intNpp +1;
   DataSet.FieldByName('id_pos').asInteger := intNpp;
-  //ShowDetail2;
 end;
 
 procedure ProcessCreateNaklru (dbgNaklot: TDBGridEh;param:variant;Object1:Pointer=nil);
@@ -822,7 +824,6 @@ end;
 
 procedure TfrmNaklru.cdsNaklotBeforePost(DataSet: TDataSet);
 begin
- { DONE : Tovar is not null }
 	if DataSet.FieldByName('id_tovar').IsNull then begin
 		showmessage ('Заполните поле ''Товар''');
 		abort;
@@ -1001,6 +1002,19 @@ var
 begin
   frmNaklru := TfrmNaklru(Object1);
   bReadyToPrint := frmNaklru.PrepareReport('NaklruActElvo.fr3');
+  if bReadyToPrint then begin
+    frmNaklru.frNaklr.PrintOptions.ShowDialog :=false;
+    frmNaklru.frNaklr.Print;
+  end;
+end;
+
+procedure PrintNaklruSub (dbgNaklot: TDBGridEh;param:variant;Object1:Pointer=nil );
+var
+  frmNaklru : TfrmNaklru;
+  bReadyToPrint : boolean;
+begin
+  frmNaklru := TfrmNaklru(Object1);
+  bReadyToPrint := frmNaklru.PrepareReport('NaklruSub.fr3');
   if bReadyToPrint then begin
     frmNaklru.frNaklr.PrintOptions.ShowDialog :=false;
     frmNaklru.frNaklr.Print;
@@ -1511,19 +1525,40 @@ begin
     messagedlg('Не выбран договор',mtWarning,[mbOK],0);
     exit;
   end;
-try
-  dsNaklot.dataset.DisableControls;
-  PrepareReport('NaklruActElvo.fr3');
-  frNaklr.ShowReport;
-//  Curr2StrUA1.Active := false;
-finally
-  dsNaklot.dataset.EnableControls;
-end;
+  try
+    dsNaklot.dataset.DisableControls;
+    PrepareReport('NaklruActElvo.fr3');
+    frNaklr.ShowReport;
+  finally
+    dsNaklot.dataset.EnableControls;
+  end;
 end;
 
 procedure TfrmNaklru.actPrintActElvoExecute(Sender: TObject);
 begin
   dmdEx.ColumnSelectAndProcess(dbgNaklr,Null,PrintActElvo,self);
 end;
+
+procedure TfrmNaklru.actPreviewNaklruSubExecute(Sender: TObject);
+begin
+  if cdsNaklo.FieldByName('id_dogovor').IsNull then begin
+    messagedlg('Не выбран договор',mtWarning,[mbOK],0);
+    exit;
+  end;
+  try
+    dsNaklot.dataset.DisableControls;
+    PrepareReport('NaklruSub.fr3');
+    frNaklr.ShowReport;
+  finally
+    dsNaklot.dataset.EnableControls;
+  end;
+end;
+
+procedure TfrmNaklru.actPrintNaklruSubExecute(Sender: TObject);
+begin
+  dmdEx.ColumnSelectAndProcess(dbgNaklr,Null,PrintNaklruSub,self);
+end;
+
+
 
 end.
