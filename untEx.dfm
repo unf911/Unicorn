@@ -459,7 +459,8 @@ object dmdEx: TdmdEx
       'select'#13#10'  t.id, '#13#10'  t.name,'#13#10'  t.ediz as ediz_old,'#13#10'  t.delmarke' +
       'd,'#13#10'  t.tara,'#13#10'  t.fullname,'#13#10'  t.gruppa1,'#13#10'  t.gruppa2,'#13#10'  t.gr' +
       'uppa3,'#13#10'  t.gruppa4,'#13#10'  t.id_analog,'#13#10'  t.copperperkm,'#13#10'  t.kodv' +
-      'ed,'#13#10'  t.id_ediz'#13#10'from'#13#10'  tovar_all_vw t'#13#10'order by '#13#10'  t.name'
+      'ed,'#13#10'  t.id_ediz,'#13#10'  t.import,'#13#10'  t.kodusl'#13#10'from'#13#10'  tovar_all_vw' +
+      ' t'#13#10'order by '#13#10'  t.name'
     MaxBlobSize = -1
     Params = <>
     SQLConnection = scUchet
@@ -544,6 +545,13 @@ object dmdEx: TdmdEx
       LookupResultField = 'NAME'
       KeyFields = 'ID_EDIZ'
       Lookup = True
+    end
+    object cdsTovarAllIMPORT: TSmallintField
+      FieldName = 'IMPORT'
+    end
+    object cdsTovarAllKODUSL: TStringField
+      FieldName = 'KODUSL'
+      Size = 15
     end
   end
   object dsTovarAll: TDataSource

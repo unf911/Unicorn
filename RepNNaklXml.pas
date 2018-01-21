@@ -9,7 +9,7 @@ uses
   Dialogs,
   FMTBcd, DBClient, Provider, SqlExpr, DBGridEh, QueryExtender, DB,
      ActnList, StdCtrls, Buttons, GridsEh,
-  frxClass, frxDBSet, 
+  frxClass, frxDBSet,
     Menus,
   DBTables, Grids,
   DBGrids,
@@ -21,7 +21,7 @@ uses
   SettingsPlugin, //TfmSettingPlugin
   untSettings, xmldom,
   XMLIntf, msxmldom, XMLDoc,
-  J1201008, UnfFilter,  // IXMLDeclarContent
+  J1201009, UnfFilter,  // IXMLDeclarContent
   XMLHelper, PropFilerEh, PropStorageEh;
 
 const KlientTipExport: integer = 1;
@@ -128,6 +128,8 @@ type
     sdsNNaklNOMER_DOGOVORA: TStringField;
     sdsNNaklTIP_DOGOVORA: TStringField;
     cdsNaklrtEDIZ_KOD: TIntegerField;
+    cdsNaklrtIMPORT: TSmallintField;
+    cdsNaklrtKODUSL: TStringField;
     procedure FormCreate(Sender: TObject);
 		procedure FormClose(Sender: TObject; var Action: TCloseAction);
 		procedure actSettingsExecute(Sender: TObject);
@@ -275,7 +277,7 @@ begin
     TIN:=GetOKPO;
     C_DOC:='J12';
     C_DOC_SUB:='010';
-    C_DOC_VER:='8';//
+    C_DOC_VER:='9';//
     C_DOC_TYPE:=0;//тип документа. 0-основной
     C_DOC_CNT := GetNumDocZaPeriod; //номер документа за период = номеру налоговой
     C_REG:=GetOblastKod;//15;//код области
@@ -293,7 +295,7 @@ procedure TfrmRepNnaklXml.CleanUpXml(var XMLDocument1 : TXMLDocument);
 begin
   XMLDocument1.XML.Text := AnsiReplaceStr(XMLDocument1.XML.Text,'<DECLAR>',
     '<DECLAR xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" '+
-    'xsi:noNamespaceSchemaLocation="J1201008.xsd">'
+    'xsi:noNamespaceSchemaLocation="J1201009.xsd">'
     );
   {
   XMLDocument1.XML.Text := AnsiReplaceStr(XMLDocument1.XML.Text,'</D_FILL>',
@@ -329,6 +331,14 @@ begin
     'RXXXXG4',
     FormatNodeStringOrNil,
     dsTovar.FieldByName('KODVED'));
+  WriteNode(XMLDeclarContent.DECLARBODY.RXXXXG32,
+    'RXXXXG32',
+    FormatIntegerOrNilForZero,
+    dsTovar.FieldByName('IMPORT'));
+  WriteNode(XMLDeclarContent.DECLARBODY.RXXXXG33,
+    'RXXXXG33',
+    FormatNodeStringOrNil,
+    dsTovar.FieldByName('KODUSL'));
   WriteNode(XMLDeclarContent.DECLARBODY.RXXXXG4S,
     'RXXXXG4S',
     FormatNodeString,
@@ -410,7 +420,7 @@ begin
       FormatSettings);
   XMLDeclarContent.DECLARBODY.R04G11 := FormatFloat (
       '0.00', DataSet.fieldbyname('nds').AsFloat, FormatSettings);
-  XMLDeclarContent.DECLARBODY.R02G11 := FormatFloat ('0.00', 0 , FormatSettings);
+  //XMLDeclarContent.DECLARBODY.R02G11 := FormatFloat ('0.00', 0 , FormatSettings);
   //XMLDeclarContent.DECLARBODY.H10G1S := DataSet.fieldbyname('SIGNATURE').AsString;
   XMLDeclarContent.DECLARBODY.HBOS := 'М.Д. Борисова';
   XMLDeclarContent.DECLARBODY.HKBOS := '2267109863';  
@@ -504,7 +514,7 @@ begin
     FormatFloat('00', GetOblastKod ) +
     FormatFloat('00', GetRajonKod ) +
     FormatFloat('0000000000',strtoint(GetOKPO)) +
-    'J1201008'+'100'+
+    'J1201009'+'100'+
     FormatFloat('0000000', GetNumDocZaPeriod ) +
     '1' +
     FormatFloat('00', MonthOf(dat))+

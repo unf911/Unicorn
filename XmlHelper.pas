@@ -24,6 +24,7 @@ type
   function FormatNodeFloatZero (XMLNode : IXMLNode;Field:TField):string;
   function FormatInteger (XMLNode : IXMLNode;Field:TField):string;
   function FormatInteger4Digits (XMLNode : IXMLNode;Field:TField):string;
+  function FormatIntegerOrNilForZero (XMLNode : IXMLNode;Field:TField):string;
 
   function  CheckIPN(DataSet :TDataSet;
     FieldName:String ='f6_ipn';
@@ -76,6 +77,17 @@ begin
     XMLNode.NodeValue := AddLeadingZeroes(Field.AsInteger, 4);
   end;
 end;
+
+function FormatIntegerOrNilForZero (XMLNode : IXMLNode;Field:TField):string;
+begin
+  if Field.AsInteger=0 then begin
+    XMLNode.Attributes['xsi:nil']:='true';
+  end else begin
+    XMLNode.NodeValue := inttostr(Field.AsInteger);
+  end;
+end;
+
+
 
 function FormatNodeString (XMLNode : IXMLNode;Field:TField):string;
 begin

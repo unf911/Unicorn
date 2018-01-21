@@ -50,6 +50,9 @@ type
     dblEdiz: TDBLookupComboboxEh;
     Label17: TLabel;
     dsEdiz: TDataSource;
+    DBCheckBox1: TDBCheckBox;
+    Label2: TLabel;
+    dbeKodUsl: TDBEdit;
     procedure actOkExecute(Sender: TObject);
     procedure actCancelExecute(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);

@@ -328,6 +328,8 @@ type
     cdsTovarNAME: TStringField;
     cdsTovarEDIZ: TStringField;
     cdsTovarID_EDIZ: TIntegerField;
+    cdsTovarAllIMPORT: TSmallintField;
+    cdsTovarAllKODUSL: TStringField;
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);
 //    procedure scUchetBeforeConnect(Sender: TObject);

@@ -175,8 +175,9 @@ object frmTovarSpr: TfrmTovarSpr
       'select '#13#10'  t.id,'#13#10'  t.name,'#13#10'  t.ediz as ediz_old,'#13#10'  t.tara,'#13#10' ' +
       ' t.delmarked,'#13#10'  t.id_analog,'#13#10'  t.skladskaya,'#13#10'  t.weight,'#13#10'  t' +
       '.nothing,'#13#10'  t.fullname,'#13#10'  t.gruppa1,'#13#10'  t.gruppa2,'#13#10'  t.gruppa' +
-      '3,'#13#10'  t.gruppa4,'#13#10'  t.COPPERPERKM,'#13#10'  t.kodved,'#13#10'  t.id_ediz'#13#10'fr' +
-      'om '#13#10'  TOVAR_ALL_VW t'#13#10'order by'#13#10' t.name'#13#10
+      '3,'#13#10'  t.gruppa4,'#13#10'  t.COPPERPERKM,'#13#10'  t.kodved,'#13#10'  t.id_ediz,'#13#10' ' +
+      ' t.import,'#13#10'  t.kodusl'#13#10'from '#13#10'  TOVAR_ALL_VW t'#13#10'order by'#13#10' t.na' +
+      'me'#13#10
     MaxBlobSize = -1
     Params = <>
     SQLConnection = dmdEx.scUchet
@@ -244,6 +245,13 @@ object frmTovarSpr: TfrmTovarSpr
     object sdsTovarEDIZ_OLD: TStringField
       FieldName = 'EDIZ_OLD'
       Size = 5
+    end
+    object sdsTovarIMPORT: TSmallintField
+      FieldName = 'IMPORT'
+    end
+    object sdsTovarKODUSL: TStringField
+      FieldName = 'KODUSL'
+      Size = 15
     end
   end
   object dspTovar: TDataSetProvider
@@ -353,6 +361,13 @@ object frmTovarSpr: TfrmTovarSpr
       LookupResultField = 'NAME'
       KeyFields = 'ID_EDIZ'
       Lookup = True
+    end
+    object cdsTovarIMPORT: TSmallintField
+      FieldName = 'IMPORT'
+    end
+    object cdsTovarKODUSL: TStringField
+      FieldName = 'KODUSL'
+      Size = 15
     end
   end
   object dsTovar: TDataSource

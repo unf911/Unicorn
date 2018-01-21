@@ -74,6 +74,10 @@ type
     cdsTovarID_EDIZ: TIntegerField;
     cdsTovarEDIZ: TStringField;
     sdsTovarEDIZ_OLD: TStringField;
+    sdsTovarIMPORT: TSmallintField;
+    cdsTovarIMPORT: TSmallintField;
+    sdsTovarKODUSL: TStringField;
+    cdsTovarKODUSL: TStringField;
     procedure btnDeleteClick(Sender: TObject);
     procedure btnInsertClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);

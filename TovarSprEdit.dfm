@@ -2,10 +2,10 @@ object frmTovarSprEdit: TfrmTovarSprEdit
   Left = 289
   Top = 126
   Width = 375
-  Height = 420
+  Height = 464
   Caption = #1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1085#1080#1077' '#1090#1086#1074#1072#1088#1086#1074
   Color = clBtnFace
-  Constraints.MinHeight = 420
+  Constraints.MinHeight = 464
   Constraints.MinWidth = 375
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -16,7 +16,7 @@ object frmTovarSprEdit: TfrmTovarSprEdit
   OnClose = FormClose
   DesignSize = (
     359
-    382)
+    426)
   PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel
@@ -110,6 +110,18 @@ object frmTovarSprEdit: TfrmTovarSprEdit
     Height = 13
     Caption = #1045#1076'.'#1080#1079#1084
   end
+  object Label2: TLabel
+    Left = 12
+    Top = 341
+    Width = 49
+    Height = 13
+    Hint = 
+      #1050#1086#1076' '#1075#1086#1089#1091#1076#1072#1088#1089#1090#1074#1077#1085#1085#1086#1075#1086' '#1082#1083#1072#1089#1089#1080#1092#1080#1082#1072#1090#1086#1088#1072' '#1090#1086#1074#1072#1088#1086#1074' '#1080' '#1091#1089#1083#1091#1075'. '#1048#1089#1087#1086#1083#1100#1079#1091#1077#1090#1089 +
+      #1103' '#1076#1083#1103' '#1091#1089#1083#1091#1075' '#1087#1088#1080' '#1088#1072#1089#1087#1077#1095#1072#1090#1082#1077' '#1085#1072#1083#1086#1075#1086#1074#1086#1081' '#1085#1072#1082#1083#1072#1076#1085#1086#1081
+    Caption = #1050#1086#1076' '#1091#1089#1083#1091#1075
+    ParentShowHint = False
+    ShowHint = True
+  end
   object dbeName: TDBEdit
     Left = 172
     Top = 4
@@ -132,7 +144,7 @@ object frmTovarSprEdit: TfrmTovarSprEdit
   end
   object btnOk: TBitBtn
     Left = 16
-    Top = 366
+    Top = 410
     Width = 129
     Height = 25
     Action = actOk
@@ -160,7 +172,7 @@ object frmTovarSprEdit: TfrmTovarSprEdit
   end
   object btnCancel: TBitBtn
     Left = 224
-    Top = 366
+    Top = 410
     Width = 113
     Height = 25
     Action = actCancel
@@ -235,7 +247,7 @@ object frmTovarSprEdit: TfrmTovarSprEdit
   end
   object dbcSkladskaya: TDBCheckBoxEh
     Left = 12
-    Top = 345
+    Top = 357
     Width = 321
     Height = 17
     Caption = #1057#1082#1083#1072#1076#1089#1082#1072#1103
@@ -352,6 +364,34 @@ object frmTovarSprEdit: TfrmTovarSprEdit
     ListSource = dsEdiz
     TabOrder = 16
     Visible = True
+  end
+  object DBCheckBox1: TDBCheckBox
+    Left = 12
+    Top = 376
+    Width = 325
+    Height = 17
+    Anchors = [akLeft, akTop, akRight]
+    Caption = #1048#1084#1087#1086#1088#1090
+    DataField = 'import'
+    DataSource = dsTovarEdit
+    TabOrder = 17
+    ValueChecked = '1'
+    ValueUnchecked = '0'
+  end
+  object dbeKodUsl: TDBEdit
+    Left = 172
+    Top = 341
+    Width = 185
+    Height = 21
+    Hint = 
+      #1050#1086#1076' '#1075#1086#1089#1091#1076#1072#1088#1089#1090#1074#1077#1085#1085#1086#1075#1086' '#1082#1083#1072#1089#1089#1080#1092#1080#1082#1072#1090#1086#1088#1072' '#1090#1086#1074#1072#1088#1086#1074' '#1080' '#1091#1089#1083#1091#1075'. '#1048#1089#1087#1086#1083#1100#1079#1091#1077#1090#1089 +
+      #1103' '#1076#1083#1103' '#1091#1089#1083#1091#1075' '#1087#1088#1080' '#1088#1072#1089#1087#1077#1095#1072#1090#1082#1077' '#1085#1072#1083#1086#1075#1086#1074#1086#1081' '#1085#1072#1082#1083#1072#1076#1085#1086#1081
+    Anchors = [akLeft, akTop, akRight]
+    DataField = 'KODUSL'
+    DataSource = dsTovarEdit
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 18
   end
   object ActionList1: TActionList
     Left = 84

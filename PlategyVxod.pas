@@ -237,8 +237,10 @@ type
     FiTipRasxUsl : integer;
     FiXozOperUsl : integer;
     FiXozOperFinUsl : integer;
+    FiXozOperOtAgenta : integer;
     FiTipRasxFinUsl : integer;
-    
+
+
     SettingsVlad : TfmSettingsPlugin;
     SettingsClient : TfmSettingsPlugin;
     SettingsManager : TfmSettingsPlugin;
@@ -822,11 +824,16 @@ begin
     qurQuery2.Params.ParamByName('tip_rasx').asInteger := FiTipRasxUsl;
     qeQuery2.SetSQL('where','n.id_sklad_to<>-52',0);      ///РАСХОДНАЯ НА УСЛУГИ ФАКТ ЧАСТЬ
   end else begin
-    qeQuery2.SetSQL('where','',0);
-    qurQuery2.Params.ParamByName('tip_rasx').asInteger := FiTipRasx;
+    if (cdsNaklo.FieldByName('id_sklad_to').asInteger=FiXozOperOtAgenta) then begin
+      qeQuery2.SetSQL('where','',0);
+      qurQuery2.Params.ParamByName('tip_rasx').asInteger := 0; //Несуществующий тип расходной накладной
+    end else begin
+      qeQuery2.SetSQL('where','',0);
+      qurQuery2.Params.ParamByName('tip_rasx').asInteger := FiTipRasx;
+    end;
   end;
   end;
-  qeQuery2.Prepare;  
+  qeQuery2.Prepare;
   qurQuery2.Open;
   qeQuery2.GetPosition(False);
   //Если ранее была ошибка ввода и исключение прервало установку флага в 0,
@@ -992,6 +999,7 @@ begin
   iXozOper := dmdEx.GetOidObjects('ХОЗЯЙСТВЕННЫЕ ОПЕРАЦИИ',-100);
   FiXozOperUsl := dmdEx.GetOidObjects('ОПЛАТА ПОКУПАТЕЛЕМ УСЛУГ', iXozOper);
   FiXozOperFinUsl := dmdEx.GetOidObjects('ОПЛАТА ПОКУПАТЕЛЕМ ФИНУСЛУГ', iXozOper);
+  FiXozOperOtAgenta := dmdEx.GetOidObjects('ОПЛАТА ОТ АГЕНТА', iXozOper);
 end;
 
 

@@ -203,7 +203,8 @@ uses
   J0215104 in 'J0215104.pas',
   J1201508 in 'J1201508.pas',
   EdizSpr in 'EdizSpr.pas' {frmEdizSpr},
-  J1201008 in 'J1201008.pas';
+  J1201008 in 'J1201008.pas',
+  J1201009 in 'J1201009.pas';
 
 {$R *.RES}
 begin

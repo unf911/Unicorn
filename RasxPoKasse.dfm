@@ -918,7 +918,7 @@ object frmRasxPoKasse: TfrmRasxPoKasse
         ParamType = ptInput
       end
       item
-        DataType = ftFloat
+        DataType = ftBCD
         Name = 'SUMA'
         ParamType = ptInput
       end

@@ -269,6 +269,24 @@ object frmRepNnaklXml: TfrmRepNnaklXml
       KeyFields = 'ID_TOVAR'
       Lookup = True
     end
+    object cdsNaklrtIMPORT: TSmallintField
+      FieldKind = fkLookup
+      FieldName = 'IMPORT'
+      LookupDataSet = dmdEx.cdsTovarAll
+      LookupKeyFields = 'ID'
+      LookupResultField = 'IMPORT'
+      KeyFields = 'ID_TOVAR'
+      Lookup = True
+    end
+    object cdsNaklrtKODUSL: TStringField
+      FieldKind = fkLookup
+      FieldName = 'KODUSL'
+      LookupDataSet = dmdEx.cdsTovarAll
+      LookupKeyFields = 'ID'
+      LookupResultField = 'KODUSL'
+      KeyFields = 'ID_TOVAR'
+      Lookup = True
+    end
   end
   object qeNNakl: TQueryExtender
     Query = cdsNNakl
