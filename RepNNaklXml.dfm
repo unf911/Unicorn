@@ -287,6 +287,11 @@ object frmRepNnaklXml: TfrmRepNnaklXml
       KeyFields = 'ID_TOVAR'
       Lookup = True
     end
+    object fmtbcdfldNaklrtNDS2GRN: TFMTBCDField
+      FieldKind = fkCalculated
+      FieldName = 'NDS2GRN'
+      Calculated = True
+    end
   end
   object qeNNakl: TQueryExtender
     Query = cdsNNakl

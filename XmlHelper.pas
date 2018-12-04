@@ -25,6 +25,7 @@ type
   function FormatInteger (XMLNode : IXMLNode;Field:TField):string;
   function FormatInteger4Digits (XMLNode : IXMLNode;Field:TField):string;
   function FormatIntegerOrNilForZero (XMLNode : IXMLNode;Field:TField):string;
+  function FormatNodeFloatNds4Digits (XMLNode : IXMLNode;Field:TField):string;
 
   function  CheckIPN(DataSet :TDataSet;
     FieldName:String ='f6_ipn';
@@ -113,6 +114,18 @@ begin
   end else begin
     XMLNode.NodeValue := Result;
   end;
+end;
+
+
+function FormatNodeFloatNds4Digits (XMLNode : IXMLNode;Field:TField):string;
+var
+  FormatSettings : TFormatSettings;
+begin
+  //чтобы цифры сохранялись в xml с точкой, а не запятой
+  GetLocaleFormatSettings(GetThreadLocale, FormatSettings);
+  FormatSettings.DecimalSeparator:='.';
+  Result :=FormatFloat('0.0000', Field.asFloat, FormatSettings);
+  XMLNode.NodeValue := Result;
 end;
 
 function FormatNodeFloat3Digits (XMLNode : IXMLNode;Field:TField):string;

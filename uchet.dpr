@@ -197,14 +197,11 @@ uses
   RepPribylPrilogEdnal in 'RepPribylPrilogEdnal.pas' {frmRepPribylPrilogEdnal},
   J0111901 in 'J0111901.pas',
   RepNNaklXml in 'RepNNaklXml.pas' {frmRepNnaklXml},
-  J1201005 in 'J1201005.pas',
-  J1201006 in 'J1201006.pas',
-  J1201007 in 'J1201007.pas',
   J0215104 in 'J0215104.pas',
   J1201508 in 'J1201508.pas',
   EdizSpr in 'EdizSpr.pas' {frmEdizSpr},
-  J1201008 in 'J1201008.pas',
-  J1201009 in 'J1201009.pas';
+  J1201009 in 'J1201009.pas',
+  J1201010 in 'J1201010.pas';
 
 {$R *.RES}
 begin

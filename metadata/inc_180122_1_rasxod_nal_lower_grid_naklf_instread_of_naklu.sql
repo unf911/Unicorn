@@ -20,6 +20,7 @@ AS
 declare variable id_schet integer;
 declare variable tip_naklr integer;
 declare variable tip_naklrf integer;
+declare variable tip_naklru integer;
 begin
   select oid
     from GET_OID_OBJECTS_PC('“»œ —◊≈“¿',-100)
@@ -33,6 +34,9 @@ begin
   select oid
     from GET_OID_OBJECTS_PC('–¿—’ŒƒÕ€≈ Õ¿ À¿ƒÕ€≈ Õ¿ ‘»Õ”—À”√»',-100)
     into :tip_naklrf;
+  select oid
+    from GET_OID_OBJECTS_PC('–¿—’ŒƒÕ€≈ Õ¿ À¿ƒÕ€≈ Õ¿ ”—À”√»',-100)
+    into :tip_naklru;
   for
     select om.id, om.dat, om.nds, r.sub1,r.sub2,r.sub3, r.sub4 as id_nakl,
       z(om.nds)-(select z(sum(om2.nds))
@@ -51,7 +55,7 @@ begin
         null,null) r
         inner join naklo om on om.id_nakl=r.sub4
       /*$$IBEC$$ where  r.kreditafter<=0 $$IBEC$$*/
-      where om.tip in (:tip_naklr,:tip_naklrf)
+      where om.tip in (:tip_naklr,:tip_naklrf,:tip_naklru)
       group by  r.sub1,r.sub2,r.sub3,r.sub4 ,om.id, om.dat, om.nds
       having (sum(r.debetafter)<>0) or (sum(r.kreditafter)<>0)
       order by om.dat desc, om.id desc
@@ -59,11 +63,15 @@ begin
   do begin
     suspend;
   end
-end
-^
+end^
 
 SET TERM ; ^
 
+GRANT EXECUTE ON PROCEDURE GET_OID_OBJECTS_PC TO PROCEDURE RASXOD_NAL_LOWER_GRID_PC;
 
+GRANT SELECT ON NAKLO TO PROCEDURE RASXOD_NAL_LOWER_GRID_PC;
 
+GRANT EXECUTE ON PROCEDURE REP_OSTATKI_PC TO PROCEDURE RASXOD_NAL_LOWER_GRID_PC;
 
+GRANT EXECUTE ON PROCEDURE RASXOD_NAL_LOWER_GRID_PC TO SYSDBA;
+GRANT EXECUTE ON PROCEDURE RASXOD_NAL_LOWER_GRID_PC TO POWER_USER;
