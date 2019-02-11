@@ -1,6 +1,6 @@
 object frmNaklru: TfrmNaklru
-  Left = 569
-  Top = 241
+  Left = 69
+  Top = 81
   BorderStyle = bsDialog
   Caption = #1056#1072#1089#1093#1086#1076#1085#1099#1077' '#1087#1086' '#1072#1088#1077#1085#1076#1077
   ClientHeight = 379
@@ -436,7 +436,7 @@ object frmNaklru: TfrmNaklru
       OnExecute = actMakeNnaklExecute
     end
     object actPreviewActElvo: TAction
-      Caption = #1055#1088#1086#1089#1084#1086#1090#1088' '#1072#1082#1090#1072' '#1076#1083#1103' '#1101#1083#1077#1082#1090#1088#1086#1101#1085#1077#1088#1075#1080#1080
+      Caption = #1055#1088#1086#1089#1084#1086#1090#1088' '#1072#1082#1090#1072' '#1085#1072' '#1101#1083#1077#1082#1090#1088#1086#1101#1085#1077#1088#1075#1080#1102
       ImageIndex = 2
       OnExecute = actPreviewActElvoExecute
     end
@@ -454,6 +454,16 @@ object frmNaklru: TfrmNaklru
       Caption = #1055#1077#1095#1072#1090#1100' '#1072#1082#1090#1072' '#1089#1091#1073#1072#1088#1077#1085#1076#1099
       ImageIndex = 1
       OnExecute = actPrintNaklruSubExecute
+    end
+    object actPreviewOtoplenie: TAction
+      Caption = #1055#1088#1086#1089#1084#1086#1090#1088' '#1072#1082#1090#1072' '#1085#1072' '#1086#1090#1086#1087#1083#1077#1085#1080#1077
+      ImageIndex = 2
+      OnExecute = actPreviewOtoplenieExecute
+    end
+    object actPrintOtoplenie: TAction
+      Caption = #1055#1077#1095#1072#1090#1100' '#1072#1082#1090#1072' '#1085#1072' '#1086#1090#1086#1087#1083#1077#1085#1080#1077
+      ImageIndex = 1
+      OnExecute = actPrintOtoplenieExecute
     end
   end
   object qeNaklot: TQueryExtender
@@ -495,6 +505,12 @@ object frmNaklru: TfrmNaklru
       end
       object N26: TMenuItem
         Action = actPrintNaklruSub
+      end
+      object N27: TMenuItem
+        Action = actPreviewOtoplenie
+      end
+      object N28: TMenuItem
+        Action = actPrintOtoplenie
       end
       object N1: TMenuItem
         Action = actRefresh
@@ -1316,7 +1332,7 @@ object frmNaklru: TfrmNaklru
     PrintOptions.Printer = 'Default'
     PrintOptions.ShowDialog = False
     ReportOptions.CreateDate = 38982.467101585700000000
-    ReportOptions.LastChange = 42204.897381724500000000
+    ReportOptions.LastChange = 43507.711418043980000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       'begin'

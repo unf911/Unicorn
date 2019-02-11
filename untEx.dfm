@@ -2,9 +2,10 @@ object dmdEx: TdmdEx
   OldCreateOrder = False
   OnCreate = DataModuleCreate
   OnDestroy = DataModuleDestroy
-  Top = 34
-  Height = 728
-  Width = 855
+  Left = 3
+  Top = 2
+  Height = 464
+  Width = 696
   object scUchet: TSQLConnection
     ConnectionName = 'uchet'
     DriverName = 'Interbase'

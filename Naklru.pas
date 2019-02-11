@@ -225,11 +225,15 @@ type
     N22: TMenuItem;
     N23: TMenuItem;
     N24: TMenuItem;
-    frNaklr: TfrxReport;
     actPreviewNaklruSub: TAction;
     actPrintNaklruSub: TAction;
     N25: TMenuItem;
     N26: TMenuItem;
+    actPrintOtoplenie: TAction;
+    actPreviewOtoplenie: TAction;
+    N27: TMenuItem;
+    N28: TMenuItem;
+    frNaklr: TfrxReport;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure actSettingsExecute(Sender: TObject);
     procedure dbgNaklrDblClick(Sender: TObject);
@@ -308,6 +312,8 @@ type
     procedure actPrintActElvoExecute(Sender: TObject);
     procedure actPreviewNaklruSubExecute(Sender: TObject);
     procedure actPrintNaklruSubExecute(Sender: TObject);
+    procedure actPreviewOtoplenieExecute(Sender: TObject);
+    procedure actPrintOtoplenieExecute(Sender: TObject);
 
   private
     curSum : currency;
@@ -1557,6 +1563,41 @@ end;
 procedure TfrmNaklru.actPrintNaklruSubExecute(Sender: TObject);
 begin
   dmdEx.ColumnSelectAndProcess(dbgNaklr,Null,PrintNaklruSub,self);
+end;
+
+
+
+procedure TfrmNaklru.actPreviewOtoplenieExecute(Sender: TObject);
+begin
+  if cdsNaklo.FieldByName('id_dogovor').IsNull then begin
+    messagedlg('Не выбран договор',mtWarning,[mbOK],0);
+    exit;
+  end;
+  try
+    dsNaklot.dataset.DisableControls;
+    PrepareReport('NaklruActOtoplenie.fr3');
+    frNaklr.ShowReport;
+  finally
+    dsNaklot.dataset.EnableControls;
+  end;
+end;
+
+procedure PrintActOtoplenie (dbgNaklot: TDBGridEh;param:variant;Object1:Pointer=nil );
+var
+  frmNaklru : TfrmNaklru;
+  bReadyToPrint : boolean;
+begin
+  frmNaklru := TfrmNaklru(Object1);
+  bReadyToPrint := frmNaklru.PrepareReport('NaklruActOtoplenie.fr3');
+  if bReadyToPrint then begin
+    frmNaklru.frNaklr.PrintOptions.ShowDialog :=false;
+    frmNaklru.frNaklr.Print;
+  end;
+end;
+
+procedure TfrmNaklru.actPrintOtoplenieExecute(Sender: TObject);
+begin
+  dmdEx.ColumnSelectAndProcess(dbgNaklr,Null,PrintActOtoplenie,self);
 end;
 
 
