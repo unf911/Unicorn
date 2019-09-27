@@ -464,8 +464,9 @@ object frmPerevodEdit: TfrmPerevodEdit
       FieldName = 'BANK_NAME'
       Size = 50
     end
-    object cdsBankRASCH: TFloatField
+    object cdsBankRASCH: TStringField
       FieldName = 'RASCH'
+      Size = 32
     end
     object cdsBankMFO: TFloatField
       FieldName = 'MFO'
@@ -529,8 +530,9 @@ object frmPerevodEdit: TfrmPerevodEdit
       FieldName = 'BANK_NAME'
       Size = 50
     end
-    object cdsBankToRASCH: TFloatField
+    object cdsBankToRASCH: TStringField
       FieldName = 'RASCH'
+      Size = 32
     end
     object cdsBankToMFO: TFloatField
       FieldName = 'MFO'

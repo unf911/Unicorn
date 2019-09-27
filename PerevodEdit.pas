@@ -62,7 +62,7 @@ type
     dsBankTo: TDataSource;
     dneNdsFrom: TDBNumberEditEh;
     cdsBankBANK_NAME: TStringField;
-    cdsBankRASCH: TFloatField;
+    cdsBankRASCH: TStringField;
     cdsBankMFO: TFloatField;
     cdsBankID_KLIENT: TIntegerField;
     cdsBankID_CURRENCY: TIntegerField;
@@ -70,7 +70,7 @@ type
     cdsBankDELMARKED: TSmallintField;
     cdsBankFULLNAME: TStringField;
     cdsBankToBANK_NAME: TStringField;
-    cdsBankToRASCH: TFloatField;
+    cdsBankToRASCH: TStringField;
     cdsBankToMFO: TFloatField;
     cdsBankToID_KLIENT: TIntegerField;
     cdsBankToID_CURRENCY: TIntegerField;

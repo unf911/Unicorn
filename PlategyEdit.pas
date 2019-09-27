@@ -54,7 +54,7 @@ type
     lblCurrency: TLabel;
     actKursChange: TAction;
     cdsBankBANK_NAME: TStringField;
-    cdsBankRASCH: TFloatField;
+    cdsBankRASCH: TStringField;
     cdsBankMFO: TFloatField;
     cdsBankID_KLIENT: TIntegerField;
     cdsBankID_CURRENCY: TIntegerField;

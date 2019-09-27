@@ -1,6 +1,6 @@
 object frmSchet: TfrmSchet
-  Left = 380
-  Top = 270
+  Left = 115
+  Top = 44
   BorderStyle = bsDialog
   Caption = #1057#1095#1077#1090#1072
   ClientHeight = 382
@@ -427,34 +427,29 @@ object frmSchet: TfrmSchet
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
     PreviewOptions.Zoom = 1.000000000000000000
     PrintOptions.Printer = 'Default'
-    ReportOptions.CreateDate = 38987.469603831000000000
-    ReportOptions.LastChange = 40736.353696099500000000
+    ReportOptions.CreateDate = 38985.433149953700000000
+    ReportOptions.LastChange = 42402.938581689800000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
-      ''
-      ''
-      'procedure Memo53OnBeforePrint(Sender: TfrxComponent);'
+      'procedure Memo19OnBeforePrint(Sender: TfrxComponent);'
       'begin'
       '  with Memo19, Engine do begin'
-      '   if <frdbNaklot."KOLOTP"> > 0 then'
-      '     Font.Color := clBlack'
-      '   else'
-      '     Font.Color := clWhite;'
-      '  end;'
+      '    if <frDBNaklot."KOLOTP"> > 0 then'
+      '      Font.Color := clBlack'
+      '    else'
+      '      Font.Color := clWhite;'
+      '  end'
       'end;'
       ''
-      'procedure Memo54OnBeforePrint(Sender: TfrxComponent);'
+      'procedure Memo20OnBeforePrint(Sender: TfrxComponent);'
       'begin'
       '  with Memo20, Engine do begin'
-      '   if <frdbNaklot."KOLOTP"> > 0 then'
-      '     Font.Color := clBlack'
-      '   else'
-      '     Font.Color := clWhite;'
-      '  end;'
+      '    if <frDBNaklot."KOLOTP"> > 0 then'
+      '      Font.Color := clBlack'
+      '    else'
+      '      Font.Color := clWhite;'
+      '  end'
       'end;'
-      ''
-      ''
-      ''
       ''
       'begin'
       ''
@@ -481,6 +476,34 @@ object frmSchet: TfrmSchet
       end
       item
         Name = 'SUMA2'
+        Value = Null
+      end
+      item
+        Name = 'OKPO'
+        Value = Null
+      end
+      item
+        Name = 'ADR'
+        Value = Null
+      end
+      item
+        Name = 'BANK_NAME'
+        Value = Null
+      end
+      item
+        Name = 'IPN'
+        Value = Null
+      end
+      item
+        Name = 'SVID'
+        Value = Null
+      end
+      item
+        Name = 'RASCH'
+        Value = Null
+      end
+      item
+        Name = 'MFO'
         Value = Null
       end>
     Style = <>
@@ -743,7 +766,6 @@ object frmSchet: TfrmSchet
       FieldName = 'SKIDKA'
       OnChange = qurNaklrtSKIDKAChange
       DisplayFormat = '0.0'
-      Size = 8
     end
     object qurNaklrtCENA: TFMTBCDField
       DisplayLabel = #1062#1077#1085#1072
@@ -751,7 +773,6 @@ object frmSchet: TfrmSchet
       OnChange = qurNaklrtCENAChange
       DisplayFormat = '0.00'
       EditFormat = '0.00####'
-      Size = 8
     end
     object qurNaklrtKOLOTP: TFloatField
       DisplayLabel = #1050#1086#1083'-'#1074#1086
@@ -893,7 +914,6 @@ object frmSchet: TfrmSchet
     object sdsNaklrtCENA: TFMTBCDField
       FieldName = 'CENA'
       Precision = 15
-      Size = 8
     end
   end
   object sdsTemp: TSQLDataSet
@@ -990,12 +1010,10 @@ object frmSchet: TfrmSchet
     object FMTBCDField2: TFMTBCDField
       FieldName = 'CENA'
       Precision = 15
-      Size = 8
     end
     object FMTBCDField3: TFMTBCDField
       FieldName = 'KOLOTP'
       Precision = 15
-      Size = 8
     end
   end
   object MainMenu1: TMainMenu

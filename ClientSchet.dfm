@@ -3,7 +3,7 @@ object frmClientSchet: TfrmClientSchet
   Top = 262
   Width = 527
   Height = 180
-  Caption = #1057#1095#1077#1090#1072' '#1092#1080#1088#1084#1099
+  Caption = 'Счета фирмы'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -38,8 +38,9 @@ object frmClientSchet: TfrmClientSchet
       FieldName = 'BANK_NAME'
       Size = 50
     end
-    object sdsSchetRASCH: TFloatField
+    object sdsSchetRASCH: TStringField
       FieldName = 'RASCH'
+      Size = 32
     end
     object sdsSchetMFO: TFloatField
       FieldName = 'MFO'
@@ -93,23 +94,25 @@ object frmClientSchet: TfrmClientSchet
       Visible = False
     end
     object cdsSchetFULLNAME: TStringField
-      DisplayLabel = #1053#1072#1079#1074#1072#1085#1080#1077' '#1089#1095#1105#1090#1072
+      DisplayLabel = 'Название счёта'
       DisplayWidth = 15
       FieldName = 'FULLNAME'
       Size = 250
     end
     object cdsSchetBANK_NAME: TStringField
-      DisplayLabel = #1053#1072#1079#1074#1072#1085#1080#1077' '#1073#1072#1085#1082#1072
+      DisplayLabel = 'Название банка'
       DisplayWidth = 40
       FieldName = 'BANK_NAME'
       Size = 50
     end
-    object cdsSchetRASCH: TFloatField
-      DisplayLabel = #1056#1072#1089#1095'/'#1089#1095
+    object cdsSchetRASCH: TStringField
+      DisplayLabel = 'Расч/сч'
       FieldName = 'RASCH'
+      DisplayWidth = 32
+      Size = 32
     end
     object cdsSchetMFO: TFloatField
-      DisplayLabel = #1052#1060#1054
+      DisplayLabel = 'МФО'
       FieldName = 'MFO'
     end
     object cdsSchetID_KLIENT: TIntegerField
@@ -127,7 +130,7 @@ object frmClientSchet: TfrmClientSchet
       Visible = False
     end
     object cdsSchetCURRENCY: TStringField
-      DisplayLabel = #1042#1072#1083#1102#1090#1072
+      DisplayLabel = 'Валюта'
       DisplayWidth = 5
       FieldKind = fkLookup
       FieldName = 'CURRENCY'
@@ -139,14 +142,14 @@ object frmClientSchet: TfrmClientSchet
       Lookup = True
     end
     object cdsSchetIS_NAL: TSmallintField
-      DisplayLabel = #1050#1072#1089#1089#1072
+      DisplayLabel = 'Касса'
       FieldName = 'IS_NAL'
     end
     object cdsSchetID_MANAGER: TIntegerField
       FieldName = 'ID_MANAGER'
     end
     object cdsSchetMANAGER: TStringField
-      DisplayLabel = #1052#1077#1085#1077#1076#1078#1077#1088
+      DisplayLabel = 'Менеджер'
       DisplayWidth = 20
       FieldKind = fkLookup
       FieldName = 'MANAGER'

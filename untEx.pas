@@ -152,7 +152,6 @@ type
     sdsCurrencyFULLNAME: TStringField;
     sdsBankID: TIntegerField;
     sdsBankBANK_NAME: TStringField;
-    sdsBankRASCH: TFloatField;
     sdsBankMFO: TFloatField;
     sdsBankID_KLIENT: TIntegerField;
     cdsCurrencyOID: TIntegerField;
@@ -161,7 +160,6 @@ type
     cdsCurrencyFULLNAME: TStringField;
     cdsBankID: TIntegerField;
     cdsBankBANK_NAME: TStringField;
-    cdsBankRASCH: TFloatField;
     cdsBankMFO: TFloatField;
     cdsBankID_KLIENT: TIntegerField;
     cdsStatya: TClientDataSet;
@@ -330,6 +328,8 @@ type
     cdsTovarID_EDIZ: TIntegerField;
     cdsTovarAllIMPORT: TSmallintField;
     cdsTovarAllKODUSL: TStringField;
+    sfBankRASCH: TStringField;
+    cdsBankRASCH1: TStringField;
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);
 //    procedure scUchetBeforeConnect(Sender: TObject);
