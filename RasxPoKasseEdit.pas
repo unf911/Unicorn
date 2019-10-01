@@ -53,7 +53,6 @@ type
     dspBank: TDataSetProvider;
     cdsBank: TClientDataSet;
     cdsBankBANK_NAME: TStringField;
-    cdsBankRASCH: TFloatField;
     cdsBankMFO: TFloatField;
     cdsBankID_KLIENT: TIntegerField;
     cdsBankID_CURRENCY: TIntegerField;
@@ -69,6 +68,7 @@ type
     Label10: TLabel;
     lbcXozOper: TDBLookupComboboxEh;
     Label11: TLabel;
+    cdsBankRASCH: TStringField;
     procedure actOkExecute(Sender: TObject);
     procedure actCancelExecute(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);

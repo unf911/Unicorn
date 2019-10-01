@@ -1107,8 +1107,9 @@ object frmRasxPoKasse: TfrmRasxPoKasse
       FieldName = 'BANK_NAME'
       Size = 50
     end
-    object sdsBankRASCH: TFloatField
+    object sdsBankRASCH: TStringField
       FieldName = 'RASCH'
+      Size = 32
     end
     object sdsBankMFO: TFloatField
       FieldName = 'MFO'
@@ -1148,8 +1149,9 @@ object frmRasxPoKasse: TfrmRasxPoKasse
       FieldName = 'BANK_NAME'
       Size = 50
     end
-    object cdsBankRASCH: TFloatField
+    object cdsBankRASCH: TStringField
       FieldName = 'RASCH'
+      Size = 32
     end
     object cdsBankMFO: TFloatField
       FieldName = 'MFO'

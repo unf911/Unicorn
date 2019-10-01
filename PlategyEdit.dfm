@@ -1,5 +1,5 @@
 object frmPlategyEdit: TfrmPlategyEdit
-  Left = 693
+  Left = 521
   Top = 455
   Width = 331
   Height = 397

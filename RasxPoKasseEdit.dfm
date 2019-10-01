@@ -470,9 +470,6 @@ object frmRasxPoKasseEdit: TfrmRasxPoKasseEdit
       FieldName = 'BANK_NAME'
       Size = 50
     end
-    object cdsBankRASCH: TFloatField
-      FieldName = 'RASCH'
-    end
     object cdsBankMFO: TFloatField
       FieldName = 'MFO'
     end
@@ -491,6 +488,10 @@ object frmRasxPoKasseEdit: TfrmRasxPoKasseEdit
     object cdsBankFULLNAME: TStringField
       FieldName = 'FULLNAME'
       Size = 250
+    end
+    object cdsBankRASCH: TStringField
+      FieldName = 'RASCH'
+      Size = 32
     end
   end
   object dsBank: TDataSource

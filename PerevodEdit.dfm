@@ -1,5 +1,5 @@
 object frmPerevodEdit: TfrmPerevodEdit
-  Left = 338
+  Left = 254
   Top = 200
   Width = 377
   Height = 370

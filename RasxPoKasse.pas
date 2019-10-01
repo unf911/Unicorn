@@ -149,7 +149,7 @@ type
     sdsBank: TSQLDataSet;
     sdsBankID: TIntegerField;
     sdsBankBANK_NAME: TStringField;
-    sdsBankRASCH: TFloatField;
+    sdsBankRASCH: TStringField;
     sdsBankMFO: TFloatField;
     sdsBankID_KLIENT: TIntegerField;
     sdsBankID_CURRENCY: TIntegerField;
@@ -159,7 +159,7 @@ type
     cdsBank: TClientDataSet;
     cdsBankID: TIntegerField;
     cdsBankBANK_NAME: TStringField;
-    cdsBankRASCH: TFloatField;
+    cdsBankRASCH: TStringField;
     cdsBankMFO: TFloatField;
     cdsBankID_KLIENT: TIntegerField;
     cdsBankID_CURRENCY: TIntegerField;
