@@ -271,7 +271,9 @@ type
     btnOk: TBitBtn;
     btnCancel: TBitBtn;
     Label42: TLabel;
-    dbeNomerFiliala: TDBNumberEditEh;
+    edtNomerFiliala: TDBNumberEditEh;
+    edtKodReestra: TDBNumberEditEh;
+    lbl1: TLabel;
     procedure actOkExecute(Sender: TObject);
     procedure actCancelExecute(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);

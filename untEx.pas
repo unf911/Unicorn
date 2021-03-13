@@ -38,6 +38,7 @@ type
     lgoty : integer;
     okpo : string;
     nomer_filiala : integer;
+    kod_reestra : integer;
   end;
 
   TProcessProcedure = procedure(dbgNaklot: TDBGridEh;param:variant;Object1:Pointer=nil);
@@ -1884,7 +1885,7 @@ var
   cd1 : TClientDetail;
 begin
   strSql := 'select k.fullname,k.tel, k.ipn, k.svreg,k.adrp, '+
-  'lgoty, okpo, nomer_filiala '+
+  'lgoty, okpo, nomer_filiala, kod_reestra '+
   'from klient_all_vw k '+
     'where k.id='+ inttostr(id_client);
   dmdEx.cdsTemp.Close;
@@ -1898,6 +1899,7 @@ begin
   cd1.lgoty := dmdEx.cdsTemp.FieldByName('lgoty').AsInteger;
   cd1.okpo := dmdEx.cdsTemp.FieldByName('okpo').AsString;
   cd1.nomer_filiala := dmdEx.cdsTemp.FieldByName('nomer_filiala').AsInteger;
+  cd1.kod_reestra := dmdEx.cdsTemp.FieldByName('kod_reestra').asInteger;
   dmdEx.cdsTemp.Close;
   Result := cd1;
 end;

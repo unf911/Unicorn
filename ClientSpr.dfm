@@ -431,6 +431,9 @@ object frmClientSpr: TfrmClientSpr
     object sdsKlientNOMER_FILIALA: TSmallintField
       FieldName = 'NOMER_FILIALA'
     end
+    object smlntfldKlientKOD_REESTRA: TSmallintField
+      FieldName = 'KOD_REESTRA'
+    end
   end
   object dspKlient: TDataSetProvider
     DataSet = sdsKlient
@@ -692,6 +695,9 @@ object frmClientSpr: TfrmClientSpr
     end
     object cdsKlientNOMER_FILIALA: TSmallintField
       FieldName = 'NOMER_FILIALA'
+    end
+    object smlntfldKlientKOD_REESTRA1: TSmallintField
+      FieldName = 'KOD_REESTRA'
     end
   end
   object ActionList1: TActionList

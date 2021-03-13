@@ -21,7 +21,7 @@ uses
   SettingsPlugin, //TfmSettingPlugin
   untSettings, xmldom,
   XMLIntf, msxmldom, XMLDoc,
-  J1201010, UnfFilter,  // IXMLDeclarContent
+  J1201011, UnfFilter,  // IXMLDeclarContent
   XMLHelper, PropFilerEh, PropStorageEh;
 
 const KlientTipExport: integer = 1;
@@ -278,7 +278,7 @@ begin
     TIN:=GetOKPO;
     C_DOC:='J12';
     C_DOC_SUB:='010';
-    C_DOC_VER:='10';//
+    C_DOC_VER:='11';//
     C_DOC_TYPE:=0;//тип документа. 0-основной
     C_DOC_CNT := GetNumDocZaPeriod; //номер документа за период = номеру налоговой
     C_REG:=GetOblastKod;//15;//код области
@@ -296,7 +296,7 @@ procedure TfrmRepNnaklXml.CleanUpXml(var XMLDocument1 : TXMLDocument);
 begin
   XMLDocument1.XML.Text := AnsiReplaceStr(XMLDocument1.XML.Text,'<DECLAR>',
     '<DECLAR xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" '+
-    'xsi:noNamespaceSchemaLocation="J1201010.xsd">'
+    'xsi:noNamespaceSchemaLocation="J1201011.xsd">'
     );
   {
   XMLDocument1.XML.Text := AnsiReplaceStr(XMLDocument1.XML.Text,'</D_FILL>',
@@ -432,14 +432,29 @@ begin
     HFILL := FormatDateTime('ddmmyyyy',dsNNakl.FieldByName('dat').AsDateTime);
     HNUM := dsNNakl.FieldByName('id').AsInteger;
 
-    HNAMESEL := cdIzg.fullname;
+
     if (cdZAK.lgoty <>KlientTipNeplNds) then begin
       HNAMEBUY := cdZAK.fullname;
     end else begin
       HNAMEBUY := 'Неплатник';
     end;
+
+    if (cdZAK.kod_reestra<>0) then begin
+      HKB := cdZAK.kod_reestra;
+    end else begin
+      ChildNodes['HKB'].Attributes['xsi:nil']:='true';
+    end;
+
+
+    HNAMESEL := cdIzg.fullname;
     HKSEL := cdIzg.ipn;
     HTINSEL := cdIzg.okpo;
+    if (cdIzg.kod_reestra<>0) then begin
+      HKS := cdIzg.kod_reestra;
+    end else begin
+      ChildNodes['HKS'].Attributes['xsi:nil']:='true';
+    end;
+    
     if (cdIzg.nomer_filiala<>0) then begin
        HNUM2 := cdIzg.nomer_filiala;
     end;
@@ -499,7 +514,9 @@ var
   sTemp: string;
 begin
   StringList := TStringList.Create;
-  GetStringListFromSqlRecord('select k.fullname,k.tel, k.ipn, k.svreg,k.adrp,k.name from klient_all_vw k '+
+  GetStringListFromSqlRecord('select k.fullname, k.tel, k.ipn, k.svreg, ' +
+    '  k.adrp, k.name ' + 
+    'from klient_all_vw k '+
     'where k.id='+ setT.GetPluginResult('fmSettingsVlad'), dmdEx.cdsTemp,stringList);
   sTemp :=stringList.Values['NAME'];
   if sTemp<>setT.GetPluginTextResult('fmSettingsVlad') then begin
@@ -517,7 +534,7 @@ begin
     FormatFloat('00', GetOblastKod ) +
     FormatFloat('00', GetRajonKod ) +
     FormatFloat('0000000000',strtoint(GetOKPO)) +
-    'J1201010'+'100'+
+    'J1201011'+'100'+
     FormatFloat('0000000', GetNumDocZaPeriod ) +
     '1' +
     FormatFloat('00', MonthOf(dat))+

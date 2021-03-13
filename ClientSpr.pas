@@ -151,6 +151,8 @@ type
     cdsKlientIS_FIZLICO: TSmallintField;
     sdsKlientNOMER_FILIALA: TSmallintField;
     cdsKlientNOMER_FILIALA: TSmallintField;
+    smlntfldKlientKOD_REESTRA: TSmallintField;
+    smlntfldKlientKOD_REESTRA1: TSmallintField;
     procedure dbgClientDblClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
