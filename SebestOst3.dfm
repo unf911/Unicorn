@@ -395,9 +395,10 @@ object frmSebestOst3: TfrmSebestOst3
       FieldName = 'ID_TOVAR'
       Visible = False
     end
-    object cdsRasxID_PARTIYA: TIntegerField
+    object cdsRasxID_PARTIYA: TFMTBCDField
       DisplayLabel = #1053#1086#1084#1077#1088' '#1087#1072#1088#1090#1080#1080
       FieldName = 'ID_PARTIYA'
+      Precision = 15
     end
     object cdsRasxKOLOTP: TFloatField
       DisplayLabel = #1050#1086#1083'-'#1074#1086

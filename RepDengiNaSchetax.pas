@@ -29,7 +29,7 @@ type
     sdsDolgBux2SUB3_NAME: TStringField;
     sdsDolgBux2SUB1: TIntegerField;
     sdsDolgBux2SUB2: TIntegerField;
-    sdsDolgBux2SUB3: TIntegerField;
+    sdsDolgBux2SUB3: TFMTBCDField;
     sdsDolgBux2IZGFULLNAME: TStringField;
     sdsDolgBux2BANKFULLNAME: TStringField;
     sdsDolgBux2DEBETBEFORE: TFloatField;
@@ -45,7 +45,7 @@ type
     cdsDolgBux2SUB3_NAME: TStringField;
     cdsDolgBux2SUB1: TIntegerField;
     cdsDolgBux2SUB2: TIntegerField;
-    cdsDolgBux2SUB3: TIntegerField;
+    cdsDolgBux2SUB3: TFMTBCDField;
     cdsDolgBux2IZGFULLNAME: TStringField;
     cdsDolgBux2BANKFULLNAME: TStringField;
     cdsDolgBux2DEBETBEFORE: TFloatField;

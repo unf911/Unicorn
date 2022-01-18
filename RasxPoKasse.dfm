@@ -810,8 +810,9 @@ object frmRasxPoKasse: TfrmRasxPoKasse
     object cdsNaklotSUB2: TIntegerField
       FieldName = 'SUB2'
     end
-    object cdsNaklotSUB3: TIntegerField
+    object cdsNaklotSUB3: TFMTBCDField
       FieldName = 'SUB3'
+      Precision = 15
     end
     object cdsNaklotDAT_FIRST: TSQLTimeStampField
       FieldName = 'DAT_FIRST'
@@ -866,7 +867,7 @@ object frmRasxPoKasse: TfrmRasxPoKasse
     object sdsNaklrSUB2: TIntegerField
       FieldName = 'SUB2'
     end
-    object sdsNaklrSUB3: TIntegerField
+    object sdsNaklrSUB3: TFMTBCDField
       FieldName = 'SUB3'
     end
     object sdsNaklrID_NAKL: TIntegerField

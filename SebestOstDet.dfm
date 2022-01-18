@@ -1,6 +1,6 @@
-object frmSebestOstDet: TfrmSebestOstDet
-  Left = 9
-  Top = 120
+object frmSebestOstDet_old: TfrmSebestOstDet_old
+  Left = 205
+  Top = 125
   BorderStyle = bsDialog
   Caption = #1044#1077#1090#1072#1083#1080#1079#1072#1094#1080#1103' '#1089#1077#1073#1077#1089#1090#1086#1080#1084#1086#1089#1090#1080
   ClientHeight = 352
@@ -264,7 +264,7 @@ object frmSebestOstDet: TfrmSebestOstDet
         ParamType = ptInput
       end
       item
-        DataType = ftInteger
+        DataType = ftFMTBcd
         Name = 'id_partiya_in'
         ParamType = ptInput
       end
@@ -276,9 +276,11 @@ object frmSebestOstDet: TfrmSebestOstDet
     ProviderName = 'dspSklostdet'
     Left = 32
     Top = 120
-    object cdsSklostdetID_PARTIYA: TIntegerField
+    object fmtbcdfldSklostdetID_PARTIYA1: TFMTBCDField
       DisplayLabel = #8470#1087#1072#1088#1090#1080#1080
       FieldName = 'ID_PARTIYA'
+      Precision = 15
+      Size = 0
     end
     object cdsSklostdetID: TStringField
       DisplayLabel = #8470#1085#1072#1082#1083
@@ -374,9 +376,10 @@ object frmSebestOstDet: TfrmSebestOstDet
         ParamType = ptInput
       end
       item
-        DataType = ftInteger
+        DataType = ftFMTBcd
         Name = 'id_partiya_in'
         ParamType = ptInput
+        Value = 222222222222
       end
       item
         DataType = ftInteger

@@ -259,10 +259,9 @@ object frmRepSkladFactDet: TfrmRepSkladFactDet
         Value = Null
       end
       item
-        DataType = ftInteger
+        DataType = ftFMTBcd
         Name = 'sub3_in'
         ParamType = ptInput
-        Value = Null
       end
       item
         DataType = ftInteger
@@ -378,7 +377,7 @@ object frmRepSkladFactDet: TfrmRepSkladFactDet
     object cdsSklostdetATTR1: TIntegerField
       FieldName = 'ATTR1'
     end
-    object cdsSklostdetSUB3: TIntegerField
+    object cdsSklostdetSUB3: TFMTBCDField
       FieldName = 'SUB3'
     end
   end
@@ -396,37 +395,37 @@ object frmRepSkladFactDet: TfrmRepSkladFactDet
     MaxBlobSize = -1
     Params = <
       item
-        DataType = ftUnknown
+        DataType = ftInteger
         Name = 'id_schet'
         ParamType = ptInput
       end
       item
-        DataType = ftUnknown
+        DataType = ftDate
         Name = 'dat_from'
         ParamType = ptInput
       end
       item
-        DataType = ftUnknown
+        DataType = ftDate
         Name = 'dat_to'
         ParamType = ptInput
       end
       item
-        DataType = ftUnknown
+        DataType = ftInteger
         Name = 'sub1_in'
         ParamType = ptInput
       end
       item
-        DataType = ftUnknown
+        DataType = ftInteger
         Name = 'sub2_in'
         ParamType = ptInput
       end
       item
-        DataType = ftUnknown
+        DataType = ftFMTBcd
         Name = 'sub3_in'
         ParamType = ptInput
       end
       item
-        DataType = ftUnknown
+        DataType = ftInteger
         Name = 'sub4_in'
         ParamType = ptInput
       end>

@@ -45,7 +45,7 @@ type
     N4: TMenuItem;
     cdsNaklrSUB1: TIntegerField;
     cdsNaklrSUB2: TIntegerField;
-    cdsNaklrSUB3: TIntegerField;
+    cdsNaklrSUB3: TFMTBCDField;
     cdsNaklrSUB4: TIntegerField;
     cdsNaklrSUB1_NAME: TStringField;
     cdsNaklrSUB2_NAME: TStringField;

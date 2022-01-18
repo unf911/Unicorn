@@ -70,7 +70,7 @@ type
     cdsRasxSUB7: TIntegerField;
     cdsRasxSUB1: TIntegerField;
     cdsRasxSUB2: TIntegerField;
-    cdsRasxSUB3: TIntegerField;
+    cdsRasxSUB3: TFMTBCDField;
     cdsRasxKOLOTP_AFTER: TFloatField;
     cdsRasxID: TStringField;
     cdsNakloIZG: TStringField;
@@ -92,7 +92,7 @@ type
     cdsNaklpOstFloatField7: TFloatField;
     cdsNaklpOstIntegerField5: TIntegerField;
     cdsNaklpOstIntegerField6: TIntegerField;
-    cdsNaklpOstIntegerField7: TIntegerField;
+    cdsNaklpOstIntegerField7: TFMTBCDField;
     cdsNaklpOstSQLTimeStampField: TSQLTimeStampField;
     cdsNaklpOstStringField3: TStringField;
     cdsNaklpOstStringField4: TStringField;

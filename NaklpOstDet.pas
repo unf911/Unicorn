@@ -37,7 +37,7 @@ type
     PopupMenu1: TPopupMenu;
     cdsNaklrSUB1: TIntegerField;
     cdsNaklrSUB2: TIntegerField;
-    cdsNaklrSUB3: TIntegerField;
+    cdsNaklrSUB3: TFMTBCDField;
     cdsNaklrSUB4: TIntegerField;
     cdsNaklrDEBETAFTER: TFloatField;
     cdsNaklrKREDITAFTER: TFloatField;

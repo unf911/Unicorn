@@ -22,7 +22,7 @@ object frmRepSkladBux: TfrmRepSkladBux
   object GroupBox1: TGroupBox
     Left = 0
     Top = 0
-    Width = 571
+    Width = 579
     Height = 39
     Align = alTop
     TabOrder = 0
@@ -128,8 +128,8 @@ object frmRepSkladBux: TfrmRepSkladBux
   object AutoPanel1: TAutoPanel
     Left = 0
     Top = 39
-    Width = 571
-    Height = 271
+    Width = 579
+    Height = 283
     Align = alClient
     BevelInner = bvRaised
     BevelOuter = bvLowered
@@ -137,8 +137,8 @@ object frmRepSkladBux: TfrmRepSkladBux
     object dbgRep: TDBGridEh
       Left = 2
       Top = 2
-      Width = 567
-      Height = 267
+      Width = 575
+      Height = 279
       Align = alClient
       DataSource = dsRep
       EditActions = [geaCopyEh, geaSelectAllEh]
@@ -408,67 +408,71 @@ object frmRepSkladBux: TfrmRepSkladBux
     MaxBlobSize = -1
     Params = <
       item
-        DataType = ftUnknown
+        DataType = ftInteger
         Name = 'id_schet'
         ParamType = ptInput
+        Value = 11352
       end
       item
-        DataType = ftUnknown
+        DataType = ftDate
         Name = 'dat_from'
         ParamType = ptInput
+        Value = 36526d
       end
       item
-        DataType = ftUnknown
+        DataType = ftDate
         Name = 'dat_to'
         ParamType = ptInput
+        Value = 36526d
       end
       item
-        DataType = ftUnknown
+        DataType = ftInteger
         Name = 'sub1_in'
         ParamType = ptInput
       end
       item
-        DataType = ftUnknown
+        DataType = ftInteger
         Name = 'sub2_in'
         ParamType = ptInput
       end
       item
-        DataType = ftUnknown
+        DataType = ftFMTBcd
         Name = 'sub3_in'
         ParamType = ptInput
+        Value = 222222222
       end
       item
-        DataType = ftUnknown
+        DataType = ftInteger
         Name = 'sub4_in'
         ParamType = ptInput
       end
       item
-        DataType = ftUnknown
+        DataType = ftInteger
         Name = 'sub5_in'
         ParamType = ptInput
       end
       item
-        DataType = ftUnknown
+        DataType = ftInteger
         Name = 'sub6_in'
         ParamType = ptInput
       end
       item
-        DataType = ftUnknown
+        DataType = ftInteger
         Name = 'sub7_in'
         ParamType = ptInput
       end
       item
-        DataType = ftUnknown
+        DataType = ftInteger
         Name = 'sub8_in'
         ParamType = ptInput
       end
       item
-        DataType = ftUnknown
+        DataType = ftInteger
         Name = 'sub9_in'
         ParamType = ptInput
       end
       item
-        DataType = ftUnknown
+        DataType = ftInteger
         Name = 'sub10_in'
         ParamType = ptInput
       end>
@@ -524,6 +528,10 @@ object frmRepSkladBux: TfrmRepSkladBux
       item
         Name = 'KOLOTP_AFTER'
         DataType = ftFloat
+      end
+      item
+        Name = 'CENA'
+        DataType = ftFloat
       end>
     IndexDefs = <>
     Params = <
@@ -558,10 +566,9 @@ object frmRepSkladBux: TfrmRepSkladBux
         Value = Null
       end
       item
-        DataType = ftInteger
+        DataType = ftFMTBcd
         Name = 'sub3_in'
         ParamType = ptInput
-        Value = Null
       end
       item
         DataType = ftInteger
@@ -628,9 +635,10 @@ object frmRepSkladBux: TfrmRepSkladBux
       FieldName = 'SUB5_NAME'
       Size = 50
     end
-    object cdsRepSUB3: TIntegerField
+    object cdsRepSUB3: TFMTBCDField
       DisplayLabel = #1055#1072#1088#1090#1080#1103
       FieldName = 'SUB3'
+      Precision = 15
     end
     object cdsRepDEBETBEFORE: TFloatField
       DisplayLabel = #1044#1077#1073#1077#1090' '#1085#1072' '#1085#1072#1095#1072#1083#1086
@@ -734,7 +742,7 @@ object frmRepSkladBux: TfrmRepSkladBux
         ParamType = ptInput
       end
       item
-        DataType = ftInteger
+        DataType = ftFMTBcd
         Name = 'ID_PARTIYA_IN'
         ParamType = ptInput
       end>

@@ -14,7 +14,7 @@ uses
 type
   TFormReportClass = class of TfrmRepDolgBuxPost;
 
-  TfrmRepDvigDenSredstv = class(TfrmRepDolgBuxPost)
+  TfrmRepDvigDenSredstv_old = class(TfrmRepDolgBuxPost)
     sdsDolgBux2: TSQLDataSet;
     dspDolgBux2: TDataSetProvider;
     cdsDolgBux2: TClientDataSet;
@@ -28,7 +28,7 @@ type
     cdsDolgBux2SUM_FINAL: TFMTBCDField;
     cdsDolgBux2SUB1: TIntegerField;
     cdsDolgBux2SUB2: TIntegerField;
-    cdsDolgBux2SUB3: TIntegerField;
+    cdsDolgBux2SUB3: TFMTBCDField;
 
     procedure FormCreate(Sender: TObject);
 
@@ -62,7 +62,7 @@ type
   end;
 
 var
-  frmRepDvigDenSredstv: TfrmRepDvigDenSredstv;
+  frmRepDvigDenSredstv_old: TfrmRepDvigDenSredstv_old;
 
 implementation
 
@@ -78,13 +78,13 @@ uses
 
 {$R *.dfm}
 
-procedure TfrmRepDvigDenSredstv.FormCreate(Sender: TObject);
+procedure TfrmRepDvigDenSredstv_old.FormCreate(Sender: TObject);
 begin
   SetDatasets;
   FillSettings;
 end;
 
-procedure TfrmRepDvigDenSredstv.FillSettings;
+procedure TfrmRepDvigDenSredstv_old.FillSettings;
 begin
   setT := TfrmSettings.Create(self);
   setT.actManagerOff.Execute;
@@ -95,7 +95,7 @@ begin
   PropStorageEh1.section := 'TfrmRepDvigDenSredstv';
 end;
 
-procedure TfrmRepDvigDenSredstv.FillCurrency;
+procedure TfrmRepDvigDenSredstv_old.FillCurrency;
 begin
   SettingsDataset := TfmSettingsDataset.Create(self);
   SettingsDataset.SetLabelValue(
@@ -108,7 +108,7 @@ begin
 end;
 
 
-procedure TfrmRepDvigDenSredstv.Refresh;
+procedure TfrmRepDvigDenSredstv_old.Refresh;
 begin
   dmdEx.startWaiting;
   if dsDolgBux.DataSet.active then begin
@@ -126,7 +126,7 @@ begin
   dmdEx.stopWaiting;
 end;
 
-procedure TfrmRepDvigDenSredstv.ShowDetail;
+procedure TfrmRepDvigDenSredstv_old.ShowDetail;
 var
   frmDet : TfrmRepSkladFactDet;
   idSchet : integer;
@@ -149,7 +149,7 @@ begin
     );
 end;
 
-procedure TfrmRepDvigDenSredstv.DefaultStartup;
+procedure TfrmRepDvigDenSredstv_old.DefaultStartup;
 var
   idCurrencyUSD : integer;
 begin
@@ -165,7 +165,7 @@ end;
 
 
 
-procedure TfrmRepDvigDenSredstv.UpdateCaption;
+procedure TfrmRepDvigDenSredstv_old.UpdateCaption;
 begin
   self.Caption := 'Статьи дохода и расхода с ' +
     DateToStr(setT.DateFrom) +
@@ -175,7 +175,7 @@ begin
     ;
 end;
 
-procedure TfrmRepDvigDenSredstv.Debug;
+procedure TfrmRepDvigDenSredstv_old.Debug;
 begin
   actDebug.Checked := not actDebug.Checked;
   if actDebug.Checked then begin
@@ -193,7 +193,7 @@ begin
 
 end;
 
-procedure TfrmRepDvigDenSredstv.SetDatasets;
+procedure TfrmRepDvigDenSredstv_old.SetDatasets;
 begin
   qeDolgBux.Query := cdsDolgBux2;
   qeDolgBux.DefSql := sdsDolgBux2.CommandText;
@@ -201,7 +201,7 @@ begin
   dsDolgBux.DataSet := cdsDolgBux2;
 end;
 
-procedure TfrmRepDvigDenSredstv.ProcessSettings;
+procedure TfrmRepDvigDenSredstv_old.ProcessSettings;
 begin
   cdsDolgBux2.Params.ParamByName('dat_to').AsDate := setT.DateTo;
   cdsDolgBux2.params.ParamByName('dat_from').AsDate := setT.DateFrom;
@@ -213,7 +213,7 @@ begin
   UpdateCaption;
 end;
 
-procedure TfrmRepDvigDenSredstv.FillDate;
+procedure TfrmRepDvigDenSredstv_old.FillDate;
 begin
   SettingsDate := setT.createPlugin('TfmSettingsDate');
   setT.AddPlugin(SettingsDate);
@@ -221,7 +221,7 @@ begin
   SettingsDate.SetKeyValue (Today);
 end;
 
-function TfrmRepDvigDenSredstv.Defaultopen: boolean;
+function TfrmRepDvigDenSredstv_old.Defaultopen: boolean;
 begin
   ProcessSettings;
   Refresh;
@@ -230,7 +230,7 @@ begin
 end;
 
 
-procedure TfrmRepDvigDenSredstv.ProcessColumns(DataSet: TDataSet);
+procedure TfrmRepDvigDenSredstv_old.ProcessColumns(DataSet: TDataSet);
 begin
 
   with  Dataset do begin
@@ -257,7 +257,7 @@ begin
 
 end;
 
-procedure TfrmRepDvigDenSredstv.ComputeRowsOfBalans;
+procedure TfrmRepDvigDenSredstv_old.ComputeRowsOfBalans;
 begin
 try
   dsDolgBux.DataSet.First;
@@ -270,13 +270,13 @@ except
 end;
 end;
 
-procedure TfrmRepDvigDenSredstv.ComputeOneRow;
+procedure TfrmRepDvigDenSredstv_old.ComputeOneRow;
 begin
   ComputeKurs;
   ComputeSumFinal;
 end;
 
-procedure TfrmRepDvigDenSredstv.ComputeKurs;
+procedure TfrmRepDvigDenSredstv_old.ComputeKurs;
 var
   dKurs : double;
   iKursIndirect: integer;
@@ -298,7 +298,7 @@ begin
   end;
 end;
 
-procedure TfrmRepDvigDenSredstv.ComputeSumFinal;
+procedure TfrmRepDvigDenSredstv_old.ComputeSumFinal;
 begin
   dsDolgBux.DataSet.Edit;
   if dsDolgBux.DataSet.FieldByName('kurs_indirect').asInteger<>1 then begin

@@ -62,7 +62,6 @@ type
     actShowColumnsSum: TAction;
     actShowColumnsKolotp: TAction;
     CheckBox1: TCheckBox;
-    cdsRepSUB3: TIntegerField;
     BitBtn2: TBitBtn;
     BitBtn3: TBitBtn;
     BitBtn6: TBitBtn;
@@ -79,6 +78,7 @@ type
     MenuItem1: TMenuItem;
     N8: TMenuItem;
     N9: TMenuItem;
+    cdsRepSUB3: TFMTBCDField;
     procedure actRefreshExecute(Sender: TObject);
     procedure actSettingsExecute(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -278,7 +278,7 @@ try
   ProcessPart(iMode);
   case iMode of
     0: begin
-      qeRep.SetSQL('select','cast(null as integer) as sub3',0);
+      qeRep.SetSQL('select','cast(222222222222 as bigint) as sub3',0);
       qeRep.SetSQL('group by','',0);
       qeRep.SetSQL('order by','2',0);
       qeRep.Prepare;

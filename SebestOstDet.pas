@@ -10,7 +10,7 @@ uses
   PropStorageEh, UnfFilter, PropFilerEh, GridsEh;
 
 type
-  TfrmSebestOstDet = class(TForm)
+  TfrmSebestOstDet_old = class(TForm)
     dspSklostdet: TDataSetProvider;
     cdsSklostdet: TClientDataSet;
     sdsSklostdet: TSQLDataSet;
@@ -40,7 +40,6 @@ type
     actDetail: TAction;
     RegPropStorageManEh1: TRegPropStorageManEh;
     PropStorageEh1: TPropStorageEh;
-    cdsSklostdetID_PARTIYA: TIntegerField;
     cdsSklostdetID: TStringField;
     cdsSklostdetDAT: TSQLTimeStampField;
     cdsSklostdetKOLOTP: TFloatField;
@@ -65,6 +64,7 @@ type
     actRefresh: TAction;
     BitBtn2: TBitBtn;
     UnfFilter1: TUnfFilter;
+    fmtbcdfldSklostdetID_PARTIYA1: TFMTBCDField;
     procedure actExitExecute(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -78,13 +78,13 @@ type
   public
     { Public declarations }
     function ShowDetail(mode: integer; id_sklad_in ,
-      id_tovar_in, id_currency_to, dat_to,
-      id_partiya_in, id_nakld_in:variant):integer;
+      id_tovar_in, id_currency_to, dat_to:variant;
+      id_partiya_in:variant; id_nakld_in:variant):integer;
 
   end;
 
 var
-  frmSebestOstDet: TfrmSebestOstDet;
+  frmSebestOstDet_old: TfrmSebestOstDet_old;
 
 implementation
 
@@ -95,10 +95,10 @@ skladaux //opendocument
 
 {$R *.dfm}
 
-function TfrmSebestOstDet.ShowDetail(mode: integer; id_sklad_in ,
+function TfrmSebestOstDet_old.ShowDetail(mode: integer; id_sklad_in ,
   id_tovar_in,
-  id_currency_to, dat_to,
-  id_partiya_in, id_nakld_in:variant):integer;
+  id_currency_to, dat_to: variant;
+  id_partiya_in:variant; id_nakld_in:variant):integer;
 var
   varSklad : variant;
   varTovarAllND : variant;
@@ -127,7 +127,7 @@ begin
     'name'
   );
   edtTovar.Text := vartostr(varTovarAllNd);
-  edtPartiya.Text := vartostr(id_partiya_in);
+  edtPartiya.Text := vartostr(VarFMTBcdCreate(id_partiya_in));
   if mode=1 then begin
     lblid.Visible:=false;
     dbeID.Visible:=false;
@@ -145,13 +145,13 @@ begin
   Result := 0;
 end;
 
-procedure TfrmSebestOstDet.actExitExecute(Sender: TObject);
+procedure TfrmSebestOstDet_old.actExitExecute(Sender: TObject);
 begin
   self.Close;
   //ModalResult := mrOk;
 end;
 
-procedure TfrmSebestOstDet.FormCreate(Sender: TObject);
+procedure TfrmSebestOstDet_old.FormCreate(Sender: TObject);
 begin
   dmdEx.StartWaiting;
   //end restore grid
@@ -163,7 +163,7 @@ begin
   dmdEx.StopWaiting;
 end;
 
-procedure TfrmSebestOstDet.FormClose(Sender: TObject;
+procedure TfrmSebestOstDet_old.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
   dmdEx.CloseQuery(dmdEx.cdsNaklodetTip,false);
@@ -174,11 +174,11 @@ begin
   Action := caFree;
 end;
 
-procedure TfrmSebestOstDet.actDetailExecute(Sender: TObject);
+procedure TfrmSebestOstDet_old.actDetailExecute(Sender: TObject);
 var
 //  frmNaklo : TfrmNaklo;
 //  frmNaklp : TfrmNaklp;
-  frmSebestOstDet : TfrmSebestOstDet;
+  frmSebestOstDet : TfrmSebestOstDet_old;
   varCurrency : variant;
   varDate : variant;
 begin
@@ -194,7 +194,7 @@ begin
   if (cdsSklostdet.Params.ParamByName('mode').asInteger in [2,3]) then begin
     //если отчёт по позиции одной накладной, то показать из чего
     //получилась каждая партия упоминаемая в позиции
-    frmSebestOstDet := TfrmSebestOstDet.Create(Application);
+    frmSebestOstDet := TfrmSebestOstDet_old.Create(Application);
     varCurrency := Null;
     varDate := Null;
     frmSebestOstDet.ShowDetail(
@@ -203,18 +203,18 @@ begin
       cdsSklostdet.Params.ParamByName('id_tovar_in').asInteger,
       varCurrency,
       varDate,
-      cdsSklostdet.FieldByName('id_partiya').AsInteger,
+      VarFMTBcdCreate(cdsSklostdet.FieldByName('id_partiya').AsBCD),
       Null
     );
   end;//('mode').asInteger=2
 end;
 
-procedure TfrmSebestOstDet.dbgSklostdetDblClick(Sender: TObject);
+procedure TfrmSebestOstDet_old.dbgSklostdetDblClick(Sender: TObject);
 begin
   actDetail.Execute;
 end;
 
-procedure TfrmSebestOstDet.dbgSklostdetKeyUp(Sender: TObject;
+procedure TfrmSebestOstDet_old.dbgSklostdetKeyUp(Sender: TObject;
   var Key: Word; Shift: TShiftState);
 begin
   case key of 
@@ -224,7 +224,7 @@ begin
   end;//case
 end; 
 
-procedure TfrmSebestOstDet.actRefreshExecute(Sender: TObject);
+procedure TfrmSebestOstDet_old.actRefreshExecute(Sender: TObject);
 begin
   cdsSklostdet.Refresh;
 end;

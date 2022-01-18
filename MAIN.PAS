@@ -2404,14 +2404,14 @@ end;
 
 procedure TMainForm.actRepDvigDenSredstvExecute(Sender: TObject);
 begin
-  ShowReportForm(TfrmRepDvigDenSredstv);
+  ShowReportForm(TfrmRepDvigDenSredstv_old);
 end;
 
 procedure TMainForm.TestRepDvigDenSredstv;
 var
-  RepDvigDenSredstv :TfrmRepDvigDenSredstv;
+  RepDvigDenSredstv :TfrmRepDvigDenSredstv_old;
 begin
-  RepDvigDenSredstv := TfrmRepDvigDenSredstv.Create(Application);
+  RepDvigDenSredstv := TfrmRepDvigDenSredstv_old.Create(Application);
   try
     RepDvigDenSredstv.DefaultStartup;
     if not RepDvigDenSredstv.DefaultOpen then begin

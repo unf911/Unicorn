@@ -278,7 +278,7 @@ object frmSebestOstDet3: TfrmSebestOstDet3
         ParamType = ptInput
       end
       item
-        DataType = ftInteger
+        DataType = ftFMTBcd
         Name = 'id_partiya_in'
         ParamType = ptInput
       end
@@ -290,9 +290,10 @@ object frmSebestOstDet3: TfrmSebestOstDet3
     ProviderName = 'dspSklostdet'
     Left = 32
     Top = 120
-    object cdsSklostdetID_PARTIYA: TIntegerField
+    object cdsSklostdetID_PARTIYA: TFMTBCDField
       DisplayLabel = #8470#1087#1072#1088#1090#1080#1080
       FieldName = 'ID_PARTIYA'
+      Precision = 15
     end
     object cdsSklostdetID: TStringField
       DisplayLabel = #8470#1085#1072#1082#1083

@@ -446,7 +446,7 @@ object frmSpecOstAll: TfrmSpecOstAll
         ParamType = ptInput
       end
       item
-        DataType = ftInteger
+        DataType = ftFMTBcd
         Name = 'sub3_in'
         ParamType = ptInput
       end
@@ -535,8 +535,9 @@ object frmSpecOstAll: TfrmSpecOstAll
     object cdsRasxSUB2: TIntegerField
       FieldName = 'SUB2'
     end
-    object cdsRasxSUB3: TIntegerField
+    object cdsRasxSUB3: TFMTBCDField
       FieldName = 'SUB3'
+      Precision = 15
     end
     object cdsRasxKOLOTP_AFTER: TFloatField
       DisplayLabel = #1054#1089#1090#1072#1090#1086#1082' '#1082#1086#1083'-'#1074#1086
@@ -667,13 +668,12 @@ object frmSpecOstAll: TfrmSpecOstAll
         ParamType = ptInput
       end
       item
-        DataType = ftInteger
+        DataType = ftFMTBcd
         Name = 'sub3_in'
         ParamType = ptInput
-        Value = Null
       end
       item
-        DataType = ftInteger
+        DataType = ftFMTBcd
         Name = 'sub3_in'
         ParamType = ptInput
       end
@@ -728,8 +728,9 @@ object frmSpecOstAll: TfrmSpecOstAll
     object cdsNaklpOstIntegerField6: TIntegerField
       FieldName = 'SUB2'
     end
-    object cdsNaklpOstIntegerField7: TIntegerField
+    object cdsNaklpOstIntegerField7: TFMTBCDField
       FieldName = 'SUB3'
+      Precision = 15
     end
     object cdsNaklpOstIntegerField2: TIntegerField
       FieldName = 'SUB5'

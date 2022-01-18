@@ -42,7 +42,7 @@ type
     cdsDolgMANAGER: TStringField;
     cdsDolgSUB1P: TIntegerField;
     cdsDolgSUB2P: TIntegerField;
-    cdsDolgSUB3P: TIntegerField;
+    cdsDolgSUB3P: TFMTBCDField;
     cdsDolgDEBET: TFloatField;
     cdsDolgKREDIT: TFloatField;
     PopupMenu1: TPopupMenu;
@@ -58,7 +58,7 @@ type
     sdsDolgMANAGER: TStringField;
     sdsDolgSUB1P: TIntegerField;
     sdsDolgSUB2P: TIntegerField;
-    sdsDolgSUB3P: TIntegerField;
+    sdsDolgSUB3P: TFMTBCDField;
     sdsDolgDEBET: TFloatField;
     sdsDolgKREDIT: TFloatField;
     actTest: TAction;
@@ -82,7 +82,7 @@ type
     StringField3: TStringField;
     IntegerField1: TIntegerField;
     IntegerField2: TIntegerField;
-    IntegerField3: TIntegerField;
+    IntegerField3: TFMTBCDField;
     FloatField1: TFloatField;
     FloatField2: TFloatField;
     SQLTimeStampField1: TSQLTimeStampField;
@@ -97,7 +97,7 @@ type
     FloatField5: TFloatField;
     IntegerField4: TIntegerField;
     IntegerField5: TIntegerField;
-    IntegerField6: TIntegerField;
+    IntegerField6: TFMTBCDField;
     SQLTimeStampField3: TSQLTimeStampField;
     SQLTimeStampField4: TSQLTimeStampField;
     FloatField6: TFloatField;

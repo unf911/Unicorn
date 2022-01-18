@@ -62,7 +62,7 @@ type
     actShowColumnsSum: TAction;
     actShowColumnsKolotp: TAction;
     CheckBox1: TCheckBox;
-    cdsRepSUB3: TIntegerField;
+    cdsRepSUB3: TFMTBCDField;
     BitBtn2: TBitBtn;
     BitBtn3: TBitBtn;
     BitBtn6: TBitBtn;
@@ -293,7 +293,7 @@ try
       setT.DateTo,
       cdsRep.FieldByName('sub1').asVariant,
       cdsRep.FieldByName('sub2').AsVariant,
-      cdsRep.FieldByName('sub3').AsVariant,
+      VarFMTBcdCreate(cdsRep.FieldByName('sub3').asBcd),
       cdsRep.Params.ParamByName('sub4_in').Value,
       cdsRep.Params.ParamByName('sub5_in').Value,
       null,null,
@@ -337,7 +337,7 @@ try
         ' (select name from objects o where o.oid=r.sub2) as sub2_name,'+
         ' cast(null as varchar(50)) as sub5_name,'+
         ' cast(null as integer) as sub5,'+
-        '  r.sub1,r.sub2, cast(null as integer) as sub3',0);
+        '  r.sub1,r.sub2, cast(null as bigint) as sub3',0);
       qeRep.SetSQL('group by','r.sub1,  r.sub2',0);
       qeRep.SetSQL('order by','1',0);
       qeRep.Prepare;
@@ -373,7 +373,7 @@ try
         ' cast(null as integer) as sub1,'+
         ' cast(null as varchar(50)) as sub2_name,'+
         ' cast(null as integer) as sub2, '+
-        ' cast(null as integer) as sub3'
+        ' cast(null as bigint) as sub3'
         ,0);
       qeRep.SetSQL('group by','r.sub5',0);
       qeRep.SetSQL('order by','2',0);
@@ -580,8 +580,8 @@ begin
   sdsSebestRecount.ParamByName('dat_from_in').AsSQLTimeStamp:=
    DateTimeToSQLTimeStamp(
           TClientDataSet(DataSet).Params.ParamValues['dat_from']);
-  sdsSebestRecount.ParamByName('id_partiya_in').asInteger:=
-    DataSet.FieldByName('sub3').asInteger;
+  sdsSebestRecount.ParamByName('id_partiya_in').asBcd:=
+    VarFMTBcdCreate(DataSet.FieldByName('sub3').asBcd);
   dmdEx.ExecSQL(sdsSebestRecount);
   dmdex.StopWaiting;
 end;

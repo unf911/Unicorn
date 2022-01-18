@@ -434,10 +434,9 @@ object frmNaklpOst: TfrmNaklpOst
         Value = Null
       end
       item
-        DataType = ftInteger
+        DataType = ftFMTBcd
         Name = 'sub3_in'
         ParamType = ptInput
-        Value = Null
       end
       item
         DataType = ftInteger
@@ -472,8 +471,9 @@ object frmNaklpOst: TfrmNaklpOst
     object cdsNaklrSUB2: TIntegerField
       FieldName = 'SUB2'
     end
-    object cdsNaklrSUB3: TIntegerField
+    object cdsNaklrSUB3: TFMTBCDField
       FieldName = 'SUB3'
+      Precision = 15
     end
     object cdsNaklrSUB4: TIntegerField
       FieldName = 'SUB4'

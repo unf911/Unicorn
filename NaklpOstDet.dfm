@@ -258,22 +258,22 @@ object frmNaklpOstDet: TfrmNaklpOstDet
         ParamType = ptInput
       end
       item
-        DataType = ftUnknown
+        DataType = ftInteger
         Name = 'sub1_in'
         ParamType = ptInput
       end
       item
-        DataType = ftUnknown
+        DataType = ftInteger
         Name = 'sub2_in'
         ParamType = ptInput
       end
       item
-        DataType = ftUnknown
+        DataType = ftFMTBcd
         Name = 'sub3_in'
         ParamType = ptInput
       end
       item
-        DataType = ftUnknown
+        DataType = ftInteger
         Name = 'sub4_in'
         ParamType = ptInput
       end>
@@ -301,7 +301,8 @@ object frmNaklpOstDet: TfrmNaklpOstDet
       end
       item
         Name = 'SUB3'
-        DataType = ftInteger
+        DataType = ftFMTBcd
+        Precision = 15
       end
       item
         Name = 'SUB4'
@@ -382,7 +383,7 @@ object frmNaklpOstDet: TfrmNaklpOstDet
         ParamType = ptInput
       end
       item
-        DataType = ftInteger
+        DataType = ftFMTBcd
         Name = 'sub3_in'
         ParamType = ptInput
       end
@@ -403,8 +404,9 @@ object frmNaklpOstDet: TfrmNaklpOstDet
     object cdsNaklrSUB2: TIntegerField
       FieldName = 'SUB2'
     end
-    object cdsNaklrSUB3: TIntegerField
+    object cdsNaklrSUB3: TFMTBCDField
       FieldName = 'SUB3'
+      Precision = 15
     end
     object cdsNaklrSUB4: TIntegerField
       FieldName = 'SUB4'

@@ -662,7 +662,6 @@ object frmNaklpBux: TfrmNaklpBux
       ProviderFlags = [pfInUpdate]
       Required = True
       Precision = 32
-      Size = 8
     end
     object sdsNakloDELMARKED: TSmallintField
       FieldName = 'DELMARKED'
@@ -683,7 +682,6 @@ object frmNaklpBux: TfrmNaklpBux
       FieldName = 'ZATRATY'
       Required = True
       Precision = 15
-      Size = 8
     end
     object sdsNakloID_CURRENCY_TO: TIntegerField
       FieldName = 'ID_CURRENCY_TO'
@@ -691,7 +689,6 @@ object frmNaklpBux: TfrmNaklpBux
     object sdsNakloNDS_FROM: TFMTBCDField
       FieldName = 'NDS_FROM'
       Precision = 32
-      Size = 8
     end
     object sdsNakloKURS_INDIRECT: TSmallintField
       FieldName = 'KURS_INDIRECT'
@@ -877,7 +874,6 @@ object frmNaklpBux: TfrmNaklpBux
       Required = True
       DisplayFormat = '0.00'
       Precision = 15
-      Size = 8
     end
     object cdsNakloID_NAKL: TIntegerField
       DisplayLabel = #1048#1076#1077#1085#1090
@@ -1044,7 +1040,6 @@ object frmNaklpBux: TfrmNaklpBux
     object cdsNakloNDS_FROM: TFMTBCDField
       FieldName = 'NDS_FROM'
       Precision = 32
-      Size = 8
     end
     object cdsNakloKURS_INDIRECT: TSmallintField
       FieldName = 'KURS_INDIRECT'
@@ -1132,13 +1127,11 @@ object frmNaklpBux: TfrmNaklpBux
         DataType = ftInteger
         Name = 'ID_NAKL'
         ParamType = ptInput
-        Value = '107203'
       end
       item
         DataType = ftInteger
         Name = 'ID_SCHET'
         ParamType = ptInput
-        Value = Null
       end>
     SQLConnection = dmdEx.scUchet
     Left = 456
@@ -1419,7 +1412,6 @@ object frmNaklpBux: TfrmNaklpBux
     object sdsNaklotCENA: TFMTBCDField
       FieldName = 'CENA'
       Precision = 15
-      Size = 8
     end
     object sdsNaklotID_NAKL: TIntegerField
       FieldName = 'ID_NAKL'
@@ -1439,7 +1431,6 @@ object frmNaklpBux: TfrmNaklpBux
     object sdsNaklotKOLOTP: TFMTBCDField
       FieldName = 'KOLOTP'
       Precision = 15
-      Size = 8
     end
     object sdsNaklotSKIDKA: TFMTBCDField
       FieldName = 'SKIDKA'
@@ -1549,7 +1540,6 @@ object frmNaklpBux: TfrmNaklpBux
       OnChange = cdsNaklotCENAChange
       DisplayFormat = '0.0000'
       Precision = 15
-      Size = 8
     end
     object cdsNaklotID_NAKL: TIntegerField
       DisplayLabel = #1048#1076#1077#1085#1090
@@ -1576,7 +1566,6 @@ object frmNaklpBux: TfrmNaklpBux
       OnChange = cdsNaklotKOLOTPChange
       DisplayFormat = '0.000'
       Precision = 15
-      Size = 8
     end
     object cdsNaklotSKIDKA: TFMTBCDField
       DisplayLabel = #1057#1082#1080#1076#1082#1072
@@ -1736,7 +1725,6 @@ object frmNaklpBux: TfrmNaklpBux
       Required = True
       DisplayFormat = '0.00'
       Precision = 15
-      Size = 8
     end
   end
   object sdsGetKurs: TSQLDataSet

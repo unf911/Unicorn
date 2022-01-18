@@ -23,7 +23,7 @@ object frmRepSkladFact: TfrmRepSkladFact
   object GroupBox1: TGroupBox
     Left = 0
     Top = 0
-    Width = 571
+    Width = 579
     Height = 39
     Align = alTop
     TabOrder = 0
@@ -129,8 +129,8 @@ object frmRepSkladFact: TfrmRepSkladFact
   object AutoPanel1: TAutoPanel
     Left = 0
     Top = 39
-    Width = 571
-    Height = 271
+    Width = 579
+    Height = 283
     Align = alClient
     BevelInner = bvRaised
     BevelOuter = bvLowered
@@ -138,8 +138,8 @@ object frmRepSkladFact: TfrmRepSkladFact
     object dbgRep: TDBGridEh
       Left = 2
       Top = 2
-      Width = 567
-      Height = 267
+      Width = 575
+      Height = 279
       Align = alClient
       DataSource = dsRep
       EditActions = [geaCopyEh, geaSelectAllEh]
@@ -182,6 +182,7 @@ object frmRepSkladFact: TfrmRepSkladFact
           EditButtons = <>
           FieldName = 'SUB3'
           Footers = <>
+          Visible = False
         end
         item
           EditButtons = <>
@@ -394,80 +395,84 @@ object frmRepSkladFact: TfrmRepSkladFact
       'e,'#13#10'  sum(debet) as debet,'#13#10'  sum(kredit) as kredit,'#13#10'  sum(r.de' +
       'betafter)-minnum(sum(r.debetafter),sum(kreditafter)) as debetaft' +
       'er,'#13#10'  sum(r.kreditafter)-minnum(sum(r.debetafter),sum(kreditaft' +
-      'er)) as kreditafter,'#13#10'  '#13#10'  sum(r.kolotp_before) as kolotp_befor' +
-      'e,'#13#10'  sum(r.debet_kolotp) as debet_kolotp,'#13#10'  sum(r.kredit_kolot' +
-      'p) as kredit_kolotp,'#13#10'  sum(r.kolotp_after) as kolotp_after'#13#10'  '#13 +
-      #10'from REP_OBOROTKA2_PC('#13#10'  :id_schet,:dat_from,:dat_to,'#13#10'  :sub1' +
-      '_in,:sub2_in,:sub3_in, :sub4_in, :sub5_in,'#13#10'  :sub6_in,:sub7_in,' +
-      ':sub8_in, :sub9_in, :sub10_in) r'#13#10'group by'#13#10'  r.sub1,  r.sub2'#13#10'h' +
-      'aving '#13#10'  (Round(sum(r.kolotp_before),3)<>0) or '#13#10'  (Round(sum(r' +
-      '.debet_kolotp),3)<>0) or'#13#10'  (Round(sum(r.kredit_kolotp) ,3)<>0) ' +
-      'or'#13#10'  (Round(sum(r.kolotp_after),3)<>0) or'#13#10'  (Round(sum(r.debet' +
-      'after),5)<>0) or'#13#10'  (Round(sum(r.kreditafter),5)<>0)'
+      'er)) as kreditafter,'#13#10'  cast(222222222222 as bigint) as sub3,'#13#10' ' +
+      ' '#13#10'  sum(r.kolotp_before) as kolotp_before,'#13#10'  sum(r.debet_kolot' +
+      'p) as debet_kolotp,'#13#10'  sum(r.kredit_kolotp) as kredit_kolotp,'#13#10' ' +
+      ' sum(r.kolotp_after) as kolotp_after'#13#10'  '#13#10'from REP_OBOROTKA2_PC(' +
+      #13#10'  :id_schet,:dat_from,:dat_to,'#13#10'  :sub1_in,:sub2_in,:sub3_in, ' +
+      ':sub4_in, :sub5_in,'#13#10'  :sub6_in,:sub7_in,:sub8_in, :sub9_in, :su' +
+      'b10_in) r'#13#10'group by'#13#10'  r.sub1,  r.sub2'#13#10'having '#13#10'  (Round(sum(r.' +
+      'kolotp_before),3)<>0) or '#13#10'  (Round(sum(r.debet_kolotp),3)<>0) o' +
+      'r'#13#10'  (Round(sum(r.kredit_kolotp) ,3)<>0) or'#13#10'  (Round(sum(r.kolo' +
+      'tp_after),3)<>0) or'#13#10'  (Round(sum(r.debetafter),5)<>0) or'#13#10'  (Ro' +
+      'und(sum(r.kreditafter),5)<>0)'
     MaxBlobSize = -1
     Params = <
       item
-        DataType = ftUnknown
+        DataType = ftInteger
         Name = 'id_schet'
         ParamType = ptInput
+        Value = 11352
       end
       item
-        DataType = ftUnknown
+        DataType = ftDate
         Name = 'dat_from'
         ParamType = ptInput
+        Value = 36526d
       end
       item
-        DataType = ftUnknown
+        DataType = ftDate
         Name = 'dat_to'
         ParamType = ptInput
+        Value = 36526d
       end
       item
-        DataType = ftUnknown
+        DataType = ftInteger
         Name = 'sub1_in'
         ParamType = ptInput
       end
       item
-        DataType = ftUnknown
+        DataType = ftInteger
         Name = 'sub2_in'
         ParamType = ptInput
       end
       item
-        DataType = ftUnknown
+        DataType = ftFloat
         Name = 'sub3_in'
         ParamType = ptInput
       end
       item
-        DataType = ftUnknown
+        DataType = ftInteger
         Name = 'sub4_in'
         ParamType = ptInput
       end
       item
-        DataType = ftUnknown
+        DataType = ftInteger
         Name = 'sub5_in'
         ParamType = ptInput
       end
       item
-        DataType = ftUnknown
+        DataType = ftInteger
         Name = 'sub6_in'
         ParamType = ptInput
       end
       item
-        DataType = ftUnknown
+        DataType = ftInteger
         Name = 'sub7_in'
         ParamType = ptInput
       end
       item
-        DataType = ftUnknown
+        DataType = ftInteger
         Name = 'sub8_in'
         ParamType = ptInput
       end
       item
-        DataType = ftUnknown
+        DataType = ftInteger
         Name = 'sub9_in'
         ParamType = ptInput
       end
       item
-        DataType = ftUnknown
+        DataType = ftInteger
         Name = 'sub10_in'
         ParamType = ptInput
       end>
@@ -527,6 +532,12 @@ object frmRepSkladFact: TfrmRepSkladFact
         DataType = ftFloat
       end
       item
+        Name = 'SUB3'
+        Attributes = [faRequired]
+        DataType = ftFMTBcd
+        Precision = 15
+      end
+      item
         Name = 'KOLOTP_BEFORE'
         DataType = ftFloat
       end
@@ -575,10 +586,9 @@ object frmRepSkladFact: TfrmRepSkladFact
         Value = Null
       end
       item
-        DataType = ftInteger
+        DataType = ftFMTBcd
         Name = 'sub3_in'
         ParamType = ptInput
-        Value = Null
       end
       item
         DataType = ftInteger
@@ -639,9 +649,14 @@ object frmRepSkladFact: TfrmRepSkladFact
       FieldName = 'SUB2_NAME'
       Size = 50
     end
-    object cdsRepSUB3: TIntegerField
+    object cdsRepSUB3: TFMTBCDField
       DisplayLabel = #1055#1072#1088#1090#1080#1103
+      DisplayWidth = 10
       FieldName = 'SUB3'
+      Required = True
+      Visible = False
+      Precision = 15
+      Size = 0
     end
     object cdsRepDEBETBEFORE: TFloatField
       DisplayLabel = #1044#1077#1073#1077#1090' '#1085#1072' '#1085#1072#1095#1072#1083#1086
@@ -742,7 +757,7 @@ object frmRepSkladFact: TfrmRepSkladFact
       end>
     SQLConnection = dmdEx.scUchet
     Left = 300
-    Top = 92
+    Top = 100
   end
   object sdsPartiyaMinus: TSQLDataSet
     CommandText = 

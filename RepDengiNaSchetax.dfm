@@ -137,8 +137,9 @@ object frmRepDengiNaSchetax: TfrmRepDengiNaSchetax
     object sdsDolgBux2SUB2: TIntegerField
       FieldName = 'SUB2'
     end
-    object sdsDolgBux2SUB3: TIntegerField
+    object sdsDolgBux2SUB3: TFMTBCDField
       FieldName = 'SUB3'
+      Precision = 15
     end
     object sdsDolgBux2IZGFULLNAME: TStringField
       FieldName = 'IZGFULLNAME'
@@ -215,7 +216,7 @@ object frmRepDengiNaSchetax: TfrmRepDengiNaSchetax
         ParamType = ptInput
       end
       item
-        DataType = ftInteger
+        DataType = ftFMTBcd
         Name = 'sub3_in'
         ParamType = ptInput
       end
@@ -288,9 +289,10 @@ object frmRepDengiNaSchetax: TfrmRepDengiNaSchetax
       FieldName = 'SUB2'
       Visible = False
     end
-    object cdsDolgBux2SUB3: TIntegerField
+    object cdsDolgBux2SUB3: TFMTBCDField
       FieldName = 'SUB3'
       Visible = False
+      Precision = 15
     end
     object cdsDolgBux2IZGFULLNAME: TStringField
       FieldName = 'IZGFULLNAME'

@@ -23,7 +23,7 @@ type
     actDetail: TAction;
     RegPropStorageManEh1: TRegPropStorageManEh;
     PropStorageEh1: TPropStorageEh;
-    cdsSklostdetID_PARTIYA: TIntegerField;
+    cdsSklostdetID_PARTIYA: TFMTBCDField;
     cdsSklostdetID: TStringField;
     cdsSklostdetDAT: TSQLTimeStampField;
     cdsSklostdetKOLOTP: TFloatField;

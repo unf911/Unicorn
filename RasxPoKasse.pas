@@ -107,7 +107,7 @@ type
     cdsNaklotOTKAT: TFloatField;
     cdsNaklotSUB1: TIntegerField;
     cdsNaklotSUB2: TIntegerField;
-    cdsNaklotSUB3: TIntegerField;
+    cdsNaklotSUB3: TFMTBCDField;
     cdsNakloOSTATOK: TFloatField;
     sdsPlatID_NAKL: TIntegerField;
     sdsPlatDAT: TSQLTimeStampField;
@@ -132,7 +132,7 @@ type
     sdsNaklrDAT: TSQLTimeStampField;
     sdsNaklrSUB1: TIntegerField;
     sdsNaklrSUB2: TIntegerField;
-    sdsNaklrSUB3: TIntegerField;
+    sdsNaklrSUB3: TFMTBCDField;
     sdsNaklrID_NAKL: TIntegerField;
     sdsNaklrOTKAT: TFloatField;
     sdsNaklrDAT_FIRST: TSQLTimeStampField;

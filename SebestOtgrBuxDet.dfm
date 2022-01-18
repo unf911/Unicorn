@@ -1,6 +1,6 @@
 object frmSebestOtgrBuxDet: TfrmSebestOtgrBuxDet
-  Left = 440
-  Top = 615
+  Left = 349
+  Top = 200
   BorderStyle = bsDialog
   Caption = #1044#1077#1090#1072#1083#1080#1079#1072#1094#1080#1103' '#1089#1077#1073#1077#1089#1090#1086#1080#1084#1086#1089#1090#1080
   ClientHeight = 333
@@ -289,10 +289,9 @@ object frmSebestOtgrBuxDet: TfrmSebestOtgrBuxDet
         Value = Null
       end
       item
-        DataType = ftInteger
+        DataType = ftFMTBcd
         Name = 'id_partiya_in'
         ParamType = ptInput
-        Value = Null
       end
       item
         DataType = ftInteger
@@ -303,9 +302,10 @@ object frmSebestOtgrBuxDet: TfrmSebestOtgrBuxDet
     ProviderName = 'dspSklostdet'
     Left = 32
     Top = 120
-    object cdsSklostdetID_PARTIYA: TIntegerField
+    object cdsSklostdetID_PARTIYA: TFMTBCDField
       DisplayLabel = #8470#1087#1072#1088#1090#1080#1080
       FieldName = 'ID_PARTIYA'
+      Precision = 15
     end
     object cdsSklostdetID: TStringField
       DisplayLabel = #8470#1085#1072#1082#1083
@@ -393,42 +393,42 @@ object frmSebestOtgrBuxDet: TfrmSebestOtgrBuxDet
     MaxBlobSize = -1
     Params = <
       item
-        DataType = ftUnknown
+        DataType = ftInteger
         Name = 'mode'
         ParamType = ptInput
       end
       item
-        DataType = ftUnknown
+        DataType = ftInteger
         Name = 'id_schet_in'
         ParamType = ptInput
       end
       item
-        DataType = ftUnknown
+        DataType = ftInteger
         Name = 'id_sklad_in'
         ParamType = ptInput
       end
       item
-        DataType = ftUnknown
+        DataType = ftInteger
         Name = 'id_tovar_in'
         ParamType = ptInput
       end
       item
-        DataType = ftUnknown
+        DataType = ftInteger
         Name = 'id_currency_to'
         ParamType = ptInput
       end
       item
-        DataType = ftUnknown
+        DataType = ftDate
         Name = 'dat_to'
         ParamType = ptInput
       end
       item
-        DataType = ftUnknown
+        DataType = ftFMTBcd
         Name = 'id_partiya_in'
         ParamType = ptInput
       end
       item
-        DataType = ftUnknown
+        DataType = ftInteger
         Name = 'id_nakld_in'
         ParamType = ptInput
       end>

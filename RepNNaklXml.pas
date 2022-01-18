@@ -395,7 +395,7 @@ end;
 
 procedure TfrmRepNnaklXml.FillFooter(XMLDeclarContent: IXMLDeclarContent; DataSet :TDataSet);
 begin
-  XMLDeclarContent.DECLARBODY.HBOS := 'М.Д. Борисова';
+  XMLDeclarContent.DECLARBODY.HBOS := 'Марина Борисова';
   XMLDeclarContent.DECLARBODY.HKBOS := '2267109863';
 end;
 

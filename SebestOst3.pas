@@ -52,7 +52,7 @@ type
     actClose: TAction;
     cdsRasxID_SKLAD: TIntegerField;
     cdsRasxID_TOVAR: TIntegerField;
-    cdsRasxID_PARTIYA: TIntegerField;
+    cdsRasxID_PARTIYA: TFMTBCDField;
     cdsRasxKOLOTP: TFloatField;
     cdsRasxSEBEST: TFloatField;
     cdsRasxSEBESTSUM: TFloatField;

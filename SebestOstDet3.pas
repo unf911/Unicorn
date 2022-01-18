@@ -24,7 +24,7 @@ type
     actDetail: TAction;
     RegPropStorageManEh1: TRegPropStorageManEh;
     PropStorageEh1: TPropStorageEh;
-    cdsSklostdetID_PARTIYA: TIntegerField;
+    cdsSklostdetID_PARTIYA: TFMTBCDField;
     cdsSklostdetID: TStringField;
     cdsSklostdetDAT: TSQLTimeStampField;
     cdsSklostdetKOLOTP: TFloatField;
@@ -88,8 +88,8 @@ type
   public
     { Public declarations }
     function ShowDetail(mode: integer; id_sklad_in ,
-      id_tovar_in, id_currency_to, dat_to,
-      id_partiya_in, id_nakld_in:variant):integer;
+      id_tovar_in, id_currency_to, dat_to:variant;
+      id_partiya_in:variant; id_nakld_in:variant):integer;
     function ShowDetailModal (id_ostt: integer): integer;    
   end;
 
@@ -109,8 +109,8 @@ untRound;
 //mode=2 - отчёт по позиции
 function TfrmSebestOstDet3.ShowDetail(mode: integer; id_sklad_in ,
   id_tovar_in,
-  id_currency_to, dat_to,
-  id_partiya_in, id_nakld_in:variant):integer;
+  id_currency_to, dat_to:variant;
+  id_partiya_in:variant; id_nakld_in:variant):integer;
 var
   varSklad : variant;
   varTovarAllND : variant;
@@ -219,7 +219,7 @@ begin
       cdsSklostdet.Params.ParamByName('id_tovar_in').asInteger,
       varCurrency,
       varDate,
-      cdsSklostdet.FieldByName('id_partiya').AsInteger,
+      VarFMTBcdCreate(cdsSklostdet.FieldByName('id_partiya').AsBCD),
       Null
     );
   end;//('mode').asInteger=2

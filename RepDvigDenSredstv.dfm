@@ -1,4 +1,4 @@
-object frmRepDvigDenSredstv: TfrmRepDvigDenSredstv
+object frmRepDvigDenSredstv_old: TfrmRepDvigDenSredstv_old
   Left = 230
   Top = 153
   Width = 559
@@ -109,8 +109,9 @@ object frmRepDvigDenSredstv: TfrmRepDvigDenSredstv
     object cdsDolgBux2SUB2: TIntegerField
       FieldName = 'SUB2'
     end
-    object cdsDolgBux2SUB3: TIntegerField
+    object cdsDolgBux2SUB3: TFMTBCDField
       FieldName = 'SUB3'
+      Precision = 15
     end
   end
 end

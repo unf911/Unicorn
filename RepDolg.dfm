@@ -401,10 +401,10 @@ object frmRepDolg3: TfrmRepDolg3
         Value = Null
       end
       item
-        DataType = ftInteger
+        DataType = ftFMTBcd
         Name = 'sub3_in'
         ParamType = ptInput
-        Value = Null
+        Value = 222222222
       end
       item
         DataType = ftDate
@@ -461,10 +461,11 @@ object frmRepDolg3: TfrmRepDolg3
       FieldName = 'SUB2P'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
     end
-    object cdsDolgSUB3P: TIntegerField
+    object cdsDolgSUB3P: TFMTBCDField
       DisplayWidth = 1
       FieldName = 'SUB3P'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Precision = 15
     end
     object cdsDolgLAST_OPL_DAT: TSQLTimeStampField
       DisplayLabel = #1044#1072#1090#1072' '#1087#1086#1089#1083' '#1086#1087#1083
@@ -502,24 +503,26 @@ object frmRepDolg3: TfrmRepDolg3
     MaxBlobSize = -1
     Params = <
       item
-        DataType = ftUnknown
+        DataType = ftInteger
         Name = 'sub1_in'
         ParamType = ptInput
       end
       item
-        DataType = ftUnknown
+        DataType = ftInteger
         Name = 'sub2_in'
         ParamType = ptInput
       end
       item
-        DataType = ftUnknown
+        DataType = ftFMTBcd
         Name = 'sub3_in'
         ParamType = ptInput
+        Value = 222222222
       end
       item
-        DataType = ftUnknown
+        DataType = ftDate
         Name = 'dat_in'
         ParamType = ptInput
+        Value = 37987d
       end>
     SQLConnection = dmdEx.scUchet
     Left = 48
@@ -547,9 +550,10 @@ object frmRepDolg3: TfrmRepDolg3
       FieldName = 'SUB2P'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
     end
-    object sdsDolgSUB3P: TIntegerField
+    object sdsDolgSUB3P: TFMTBCDField
       FieldName = 'SUB3P'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Precision = 15
     end
     object sdsDolgDEBET: TFloatField
       FieldName = 'DEBET'
@@ -632,7 +636,7 @@ object frmRepDolg3: TfrmRepDolg3
         ParamType = ptInput
       end
       item
-        DataType = ftInteger
+        DataType = ftFMTBcd
         Name = 'SUB3'
         ParamType = ptInput
       end
@@ -705,27 +709,28 @@ object frmRepDolg3: TfrmRepDolg3
     MaxBlobSize = -1
     Params = <
       item
-        DataType = ftUnknown
+        DataType = ftInteger
         Name = 'sub1_in'
         ParamType = ptInput
       end
       item
-        DataType = ftUnknown
+        DataType = ftInteger
         Name = 'sub2_in'
         ParamType = ptInput
       end
       item
-        DataType = ftUnknown
+        DataType = ftFMTBcd
         Name = 'sub3_in'
         ParamType = ptInput
+        Value = '222222222'
       end
       item
-        DataType = ftUnknown
+        DataType = ftDate
         Name = 'dat_from_in'
         ParamType = ptInput
       end
       item
-        DataType = ftUnknown
+        DataType = ftDate
         Name = 'dat_to_in'
         ParamType = ptInput
       end>
@@ -755,9 +760,10 @@ object frmRepDolg3: TfrmRepDolg3
       FieldName = 'SUB2P'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
     end
-    object IntegerField3: TIntegerField
+    object IntegerField3: TFMTBCDField
       FieldName = 'SUB3P'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Precision = 15
     end
     object FloatField1: TFloatField
       FieldName = 'DEBET'
@@ -799,9 +805,10 @@ object frmRepDolg3: TfrmRepDolg3
         Value = Null
       end
       item
-        DataType = ftInteger
+        DataType = ftFMTBcd
         Name = 'sub3_in'
         ParamType = ptInput
+        Value = '222222222'
       end
       item
         DataType = ftDate
@@ -862,10 +869,11 @@ object frmRepDolg3: TfrmRepDolg3
       FieldName = 'SUB2P'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
     end
-    object IntegerField6: TIntegerField
+    object IntegerField6: TFMTBCDField
       DisplayWidth = 1
       FieldName = 'SUB3P'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Precision = 15
     end
     object SQLTimeStampField3: TSQLTimeStampField
       DisplayLabel = #1044#1072#1090#1072' '#1087#1086#1089#1083' '#1086#1087#1083
