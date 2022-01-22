@@ -395,84 +395,80 @@ object frmRepSkladFact: TfrmRepSkladFact
       'e,'#13#10'  sum(debet) as debet,'#13#10'  sum(kredit) as kredit,'#13#10'  sum(r.de' +
       'betafter)-minnum(sum(r.debetafter),sum(kreditafter)) as debetaft' +
       'er,'#13#10'  sum(r.kreditafter)-minnum(sum(r.debetafter),sum(kreditaft' +
-      'er)) as kreditafter,'#13#10'  cast(222222222222 as bigint) as sub3,'#13#10' ' +
-      ' '#13#10'  sum(r.kolotp_before) as kolotp_before,'#13#10'  sum(r.debet_kolot' +
-      'p) as debet_kolotp,'#13#10'  sum(r.kredit_kolotp) as kredit_kolotp,'#13#10' ' +
-      ' sum(r.kolotp_after) as kolotp_after'#13#10'  '#13#10'from REP_OBOROTKA2_PC(' +
-      #13#10'  :id_schet,:dat_from,:dat_to,'#13#10'  :sub1_in,:sub2_in,:sub3_in, ' +
-      ':sub4_in, :sub5_in,'#13#10'  :sub6_in,:sub7_in,:sub8_in, :sub9_in, :su' +
-      'b10_in) r'#13#10'group by'#13#10'  r.sub1,  r.sub2'#13#10'having '#13#10'  (Round(sum(r.' +
-      'kolotp_before),3)<>0) or '#13#10'  (Round(sum(r.debet_kolotp),3)<>0) o' +
-      'r'#13#10'  (Round(sum(r.kredit_kolotp) ,3)<>0) or'#13#10'  (Round(sum(r.kolo' +
-      'tp_after),3)<>0) or'#13#10'  (Round(sum(r.debetafter),5)<>0) or'#13#10'  (Ro' +
-      'und(sum(r.kreditafter),5)<>0)'
+      'er)) as kreditafter,'#13#10'  sum(r.kolotp_before) as kolotp_before,'#13#10 +
+      '  sum(r.debet_kolotp) as debet_kolotp,'#13#10'  sum(r.kredit_kolotp) a' +
+      's kredit_kolotp,'#13#10'  sum(r.kolotp_after) as kolotp_after'#13#10'  '#13#10'fro' +
+      'm REP_OBOROTKA2_PC('#13#10'  :id_schet,:dat_from,:dat_to,'#13#10'  :sub1_in,' +
+      ':sub2_in,:sub3_in, :sub4_in, :sub5_in,'#13#10'  :sub6_in,:sub7_in,:sub' +
+      '8_in, :sub9_in, :sub10_in) r'#13#10'group by'#13#10'  r.sub1,  r.sub2'#13#10'havin' +
+      'g '#13#10'  (Round(sum(r.kolotp_before),3)<>0) or '#13#10'  (Round(sum(r.deb' +
+      'et_kolotp),3)<>0) or'#13#10'  (Round(sum(r.kredit_kolotp) ,3)<>0) or'#13#10 +
+      '  (Round(sum(r.kolotp_after),3)<>0) or'#13#10'  (Round(sum(r.debetafte' +
+      'r),5)<>0) or'#13#10'  (Round(sum(r.kreditafter),5)<>0)'
     MaxBlobSize = -1
     Params = <
       item
-        DataType = ftInteger
+        DataType = ftUnknown
         Name = 'id_schet'
         ParamType = ptInput
-        Value = 11352
       end
       item
-        DataType = ftDate
+        DataType = ftUnknown
         Name = 'dat_from'
         ParamType = ptInput
-        Value = 36526d
       end
       item
-        DataType = ftDate
+        DataType = ftUnknown
         Name = 'dat_to'
         ParamType = ptInput
-        Value = 36526d
       end
       item
-        DataType = ftInteger
+        DataType = ftUnknown
         Name = 'sub1_in'
         ParamType = ptInput
       end
       item
-        DataType = ftInteger
+        DataType = ftUnknown
         Name = 'sub2_in'
         ParamType = ptInput
       end
       item
-        DataType = ftFloat
+        DataType = ftUnknown
         Name = 'sub3_in'
         ParamType = ptInput
       end
       item
-        DataType = ftInteger
+        DataType = ftUnknown
         Name = 'sub4_in'
         ParamType = ptInput
       end
       item
-        DataType = ftInteger
+        DataType = ftUnknown
         Name = 'sub5_in'
         ParamType = ptInput
       end
       item
-        DataType = ftInteger
+        DataType = ftUnknown
         Name = 'sub6_in'
         ParamType = ptInput
       end
       item
-        DataType = ftInteger
+        DataType = ftUnknown
         Name = 'sub7_in'
         ParamType = ptInput
       end
       item
-        DataType = ftInteger
+        DataType = ftUnknown
         Name = 'sub8_in'
         ParamType = ptInput
       end
       item
-        DataType = ftInteger
+        DataType = ftUnknown
         Name = 'sub9_in'
         ParamType = ptInput
       end
       item
-        DataType = ftInteger
+        DataType = ftUnknown
         Name = 'sub10_in'
         ParamType = ptInput
       end>

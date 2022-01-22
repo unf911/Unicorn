@@ -278,7 +278,7 @@ try
   ProcessPart(iMode);
   case iMode of
     0: begin
-      qeRep.SetSQL('select','cast(222222222222 as bigint) as sub3',0);
+      qeRep.SetSQL('select','cast(null as bigint) as sub3',0);
       qeRep.SetSQL('group by','',0);
       qeRep.SetSQL('order by','2',0);
       qeRep.Prepare;
@@ -388,7 +388,7 @@ begin
   SettingsTipGroup.AddDetailTip('По партиям');
   setT.AddPlugin(SettingsTipGroup);
   SettingsTipGroup.SetKeyValue(0);
-end; 
+end;
 
 procedure TfrmRepSkladFact.FormClose(Sender: TObject;
   var Action: TCloseAction);
