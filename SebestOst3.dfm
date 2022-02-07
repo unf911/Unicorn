@@ -1,5 +1,5 @@
 object frmSebestOst3: TfrmSebestOst3
-  Left = 2
+  Left = 7
   Top = 0
   BorderStyle = bsDialog
   Caption = #1054#1090#1095#1105#1090' '#1087#1086' '#1089#1077#1073#1077#1089#1090#1086#1080#1084#1086#1089#1090#1080' '#1089#1082#1083#1072#1076#1072'3'
@@ -521,7 +521,7 @@ object frmSebestOst3: TfrmSebestOst3
         ParamType = ptInput
       end
       item
-        DataType = ftInteger
+        DataType = ftBCD
         Name = 'ID_PARTIYA_IN'
         ParamType = ptInput
       end>

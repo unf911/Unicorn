@@ -267,8 +267,8 @@ begin
     DataSet.FieldByName('attr1').asInteger;
   sdsSebestRecount.ParamByName('id_sklad').asInteger:=
     DataSet.Params.ParamValues['sub2_in'];
-  sdsSebestRecount.ParamByName('ID_PARTIYA_IN').asInteger:=
-    DataSet.FieldByName('sub3').asInteger;
+  sdsSebestRecount.ParamByName('ID_PARTIYA_IN').asBcd:=
+    VarFMTBcdCreate(DataSet.FieldByName('sub3').asBcd);
   sdsSebestRecount.ParamByName('tip').AsInteger :=
     DataSet.FieldByName('tip').asInteger;
   sdsSebestRecount.ParamByName('mode').AsInteger := 6;

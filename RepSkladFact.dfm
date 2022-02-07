@@ -747,7 +747,7 @@ object frmRepSkladFact: TfrmRepSkladFact
         ParamType = ptInput
       end
       item
-        DataType = ftInteger
+        DataType = ftFMTBcd
         Name = 'ID_PARTIYA_IN'
         ParamType = ptInput
       end>

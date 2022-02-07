@@ -358,7 +358,7 @@ try
       cdsRasx.FieldByName('id_tovar').AsInteger,
       varCurrency,
       varDate,
-      cdsRasx.FieldByName('id_partiya').AsInteger,
+      VarFMTBcdCreate(cdsRasx.FieldByName('id_partiya').AsBCD),
       Null
     );
   end;
@@ -540,8 +540,8 @@ begin
    DateTimeToSQLTimeStamp(
           TClientDataSet(DataSet).Params.ParamValues['dat_from']);
 }
-  sdsSebestRecount.ParamByName('id_partiya_in').asInteger:=
-    DataSet.FieldByName('id_partiya').asInteger;
+  sdsSebestRecount.ParamByName('id_partiya_in').asBcd:=
+    VarFMTBcdCreate(DataSet.FieldByName('id_partiya').asBcd);
   dmdEx.ExecSQL(sdsSebestRecount);
   dmdex.StopWaiting;
 end;

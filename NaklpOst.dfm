@@ -1,6 +1,6 @@
 object frmNaklpOst: TfrmNaklpOst
-  Left = 326
-  Top = 157
+  Left = 468
+  Top = 237
   BorderStyle = bsDialog
   Caption = #1054#1090#1095#1105#1090' '#1087#1086' '#1085#1077#1076#1086#1087#1086#1089#1090#1072#1074#1082#1072#1084
   ClientHeight = 367

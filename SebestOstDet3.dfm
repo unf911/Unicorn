@@ -407,7 +407,7 @@ object frmSebestOstDet3: TfrmSebestOstDet3
         ParamType = ptInput
       end
       item
-        DataType = ftInteger
+        DataType = ftFMTBcd
         Name = 'id_partiya_in'
         ParamType = ptInput
       end

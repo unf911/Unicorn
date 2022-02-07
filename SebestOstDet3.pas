@@ -339,8 +339,8 @@ begin
   sdsNaklp_Sebest4_Recount.Params.ParamByName('mode').asInteger:=4;
   sdsNaklp_Sebest4_Recount.Params.ParamByName('id_nakl').asInteger:=
     cdsSklostdet.FieldByName('id_nakld').asInteger;
-  sdsNaklp_Sebest4_Recount.Params.ParamByName('id_partiya_in').asInteger:=
-    cdsSklostdet.FieldByName('id_partiya').asInteger;
+  sdsNaklp_Sebest4_Recount.Params.ParamByName('id_partiya_in').asBCD:=
+    VarFMTBcdCreate(cdsSklostdet.FieldByName('id_partiya').asBCD);
   sdsNaklp_Sebest4_Recount.Params.ParamByName('id_sklad').asInteger:=
     cdsSklostdet.Params.ParamByName('id_sklad_in').asInteger;
   sdsNaklp_Sebest4_Recount.Params.ParamByName('tip').asInteger:=
@@ -360,8 +360,8 @@ begin
   sdsNaklp_Sebest4_Recount.Params.ParamByName('mode').asInteger:=6;
   sdsNaklp_Sebest4_Recount.Params.ParamByName('id_nakl').asInteger:=
     cdsSklostdet.FieldByName('id_nakld').asInteger;
-  sdsNaklp_Sebest4_Recount.Params.ParamByName('id_partiya_in').asInteger:=
-    cdsSklostdet.FieldByName('id_partiya').asInteger;
+  sdsNaklp_Sebest4_Recount.Params.ParamByName('id_partiya_in').asBcd:=
+    VarFMTBcdCreate(cdsSklostdet.FieldByName('id_partiya').asBcd);
   sdsNaklp_Sebest4_Recount.Params.ParamByName('id_sklad').asInteger:=
     cdsSklostdet.Params.ParamByName('id_sklad_in').asInteger;
   sdsNaklp_Sebest4_Recount.Params.ParamByName('tip').asInteger:=

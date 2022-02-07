@@ -236,7 +236,7 @@ begin
       cdsSklostdet.Params.ParamByName('id_tovar_in').asInteger,
       varCurrency,
       varDate,
-      cdsSklostdet.FieldByName('id_partiya').AsInteger,
+      VarFMTBcdCreate(cdsSklostdet.FieldByName('id_partiya').AsBCD),
       Null
     );
     frmSebestOtgrBuxDet.cdsSklostdet.Locate(
@@ -362,8 +362,8 @@ begin
   sdsNaklp_Sebest4_Recount.Params.ParamByName('mode_in').asInteger:=2;
   sdsNaklp_Sebest4_Recount.Params.ParamByName('id_nakld_in').asInteger:=
     cdsSklostdet.FieldByName('id_nakld').asInteger;
-  sdsNaklp_Sebest4_Recount.Params.ParamByName('id_partiya_in').asInteger:=
-    cdsSklostdet.FieldByName('id_partiya').asInteger;
+  sdsNaklp_Sebest4_Recount.Params.ParamByName('id_partiya_in').asBcd:=
+    VarFMTBcdCreate(cdsSklostdet.FieldByName('id_partiya').asBcd);
   sdsNaklp_Sebest4_Recount.Params.ParamByName('id_sklad_in').asInteger:=
     cdsSklostdet.Params.ParamByName('id_sklad_in').asInteger;
   sdsNaklp_Sebest4_Recount.Params.ParamByName('tip_in').asInteger:=
@@ -383,8 +383,8 @@ begin
   sdsNaklp_Sebest4_Recount.Params.ParamByName('mode_in').asInteger:=1;
   sdsNaklp_Sebest4_Recount.Params.ParamByName('id_nakld_in').asInteger:=
     cdsSklostdet.FieldByName('id_nakld').asInteger;
-  sdsNaklp_Sebest4_Recount.Params.ParamByName('id_partiya_in').asInteger:=
-    cdsSklostdet.FieldByName('id_partiya').asInteger;
+  sdsNaklp_Sebest4_Recount.Params.ParamByName('id_partiya_in').asBCD:=
+    VarFMTBcdCreate(cdsSklostdet.FieldByName('id_partiya').asBCD);
   sdsNaklp_Sebest4_Recount.Params.ParamByName('id_sklad_in').asInteger:=
     cdsSklostdet.Params.ParamByName('id_sklad_in').asInteger;
   sdsNaklp_Sebest4_Recount.Params.ParamByName('tip_in').asInteger:=
