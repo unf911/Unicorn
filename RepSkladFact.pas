@@ -489,8 +489,8 @@ begin
   sdsSebestRecount.ParamByName('dat_from_in').AsSQLTimeStamp:=
    DateTimeToSQLTimeStamp(
           TClientDataSet(DataSet).Params.ParamValues['dat_from']);
-  sdsSebestRecount.ParamByName('id_partiya_in').asInteger:=
-    DataSet.FieldByName('sub3').asInteger;
+  sdsSebestRecount.ParamByName('id_partiya_in').asBcd:=
+    VarFMTBcdCreate(DataSet.FieldByName('sub3').asBcd);
   dmdEx.ExecSQL(sdsSebestRecount);
   dmdex.StopWaiting;
 end;

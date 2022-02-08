@@ -172,7 +172,7 @@ begin
     cdsRep.Params.ParamByName('sub2_in').Clear;
   end else begin
     cdsRep.Params.ParamByName('sub2_in').AsString := sTemp;
-  end; //if пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+  end; //if все склады
 end;
 
 procedure TfrmRepSkladBux.ProcessTovar;
@@ -207,8 +207,8 @@ end;
 procedure TfrmRepSkladBux.FillTipDetail;
 begin
   SettingsTipDetail := setT.CreatePlugin('TfmSettingsTipDetail');
-  SettingsTipDetail.AddDetailTip('пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ');
-  SettingsTipDetail.AddDetailTip('пїЅпїЅ пїЅпїЅпїЅпїЅ');
+  SettingsTipDetail.AddDetailTip('По товарам');
+  SettingsTipDetail.AddDetailTip('По таре');
   setT.AddPlugin(SettingsTipDetail);
   SettingsTipDetail.SetKeyValue(0);
 end;
@@ -249,9 +249,9 @@ end;
 
 procedure TfrmRepSkladBux.UpdateCaption;
 begin
-  self.Caption := 'пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅ): пїЅ ' +
+  self.Caption := 'Остатки и обороты склада (бух): с ' +
     datetostr (setT.DateFrom) +
-    ' пїЅпїЅ ' + datetostr(setT.dateTo);
+    ' до ' + datetostr(setT.dateTo);
 end;
 
 
@@ -259,9 +259,9 @@ procedure TfrmRepSkladBux.FormCreate(Sender: TObject);
 var
   iSchetTip : integer;
 begin
-  iSchetTip := dmdEx.GetOidObjects('пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ',-100);
-  iSchet := dmdEx.GetOidObjects('пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ',iSchetTip);
-  iSchetTara := dmdEx.GetOidObjects('пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ',iSchetTip);  
+  iSchetTip := dmdEx.GetOidObjects('ТИП СЧЕТА',-100);
+  iSchet := dmdEx.GetOidObjects('СЕБЕСТОИМОСТЬ БУХ',iSchetTip);
+  iSchetTara := dmdEx.GetOidObjects('СЕБЕСТОИМОСТЬ БУХ ТАРА',iSchetTip);
   qeRep.DefSql := sdsRep.CommandText;
   setT := TfrmSettings.Create(self);
   setT.actDataOnly.Execute;
@@ -369,7 +369,7 @@ try
       ColumnByName(dbgRep.Columns,'SUB2_NAME').Visible := true;
       ColumnByName(dbgRep.Columns,'SUB3').Visible := true;
       ColumnByName(dbgRep.Columns,'SUB5_NAME').Visible := false;
-      //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+      //пересчёт партий видет только если отчёт по партиям
       actPartiyaRecount.Visible := true;
     end;
     2: begin
@@ -440,7 +440,7 @@ procedure TfrmRepSkladBux.actDebugExecute(Sender: TObject);
 begin
   actDebug.Checked := not actDebug.Checked;
   if actDebug.Checked then begin
-    //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+    //показать колонки с номерами складов и товаров
     ColumnByName(dbgRep.Columns,'SUB1').visible := true;
     ColumnByName(dbgRep.Columns,'SUB2').visible := true;
     ColumnByName(dbgRep.Columns,'SUB5').visible := true;
@@ -460,8 +460,8 @@ begin
   SettingsSklad := setT.CreatePlugin('TfmSettingsSklad');
   setT.AddPlugin(SettingsSklad);
   SettingsSklad.SetResultType(1);
-  iSkladTreeOid:=dmdEx.GetOidObjects('пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ',-100);
-  iSkladTreeOid:=dmdEx.GetOidObjects('пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ',iSkladTreeOid);
+  iSkladTreeOid:=dmdEx.GetOidObjects('ТИП НАЗВАНИЯ СКЛАДОВ',-100);
+  iSkladTreeOid:=dmdEx.GetOidObjects('УКК Склад',iSkladTreeOid);
   SettingsSklad.SetKeyValue(iSkladTreeOid);
 end;
 
@@ -474,9 +474,9 @@ end;
 procedure TfrmRepSkladBux.FillGroup;
 begin
   SettingsTipGroup := setT.CreatePlugin('TfmSettingsTipGroup');
-  SettingsTipGroup.AddDetailTip('пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ');
-  SettingsTipGroup.AddDetailTip('пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ');
-  SettingsTipGroup.AddDetailTip('пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ');
+  SettingsTipGroup.AddDetailTip('По товарам');
+  SettingsTipGroup.AddDetailTip('По партиям');
+  SettingsTipGroup.AddDetailTip('По поставщикам');
   setT.AddPlugin(SettingsTipGroup);
   SettingsTipGroup.SetKeyValue(0);
 end;
@@ -488,7 +488,7 @@ begin
   SettingsVlad := setT.CreatePlugin('TfmSettingsVlad');
   SettingsVlad.SetResultType(1);
   setT.AddPlugin(SettingsVlad);
-  //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅ
+  //выбираем точное название для Укк
   iTemp := dmdEx.GetDefaultVlad;
   SettingsVlad.SetKeyValue(iTemp);
 end;
@@ -541,7 +541,7 @@ end;
 
 procedure TfrmRepSkladBux.cdsRepCalcFields(DataSet: TDataSet);
 begin
-  //пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+  //если был остаток, то считается цена остатка, иначе считается цена прихода
   if DataSet.State = dsInternalCalc then begin
     if RRoundTo(DataSet.FieldByName('kolotp_before').AsFloat,-4)=0 then begin
       if RRoundTo(DataSet.FieldByName('debet_kolotp').AsFloat,-3)=0 then begin
@@ -561,9 +561,9 @@ end;
 
 procedure TfrmRepSkladBux.actPartiyaRecountExecute(Sender: TObject);
 begin
-  //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ"
+  //Перепроводка расходной только по счёту "себестоимость бух"
   if cdsRep.eof and cdsRep.bof then begin
-    MessageDlg('пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ',mtWarning,[mbOk],0);
+    MessageDlg('Не указана партия для пересчёта',mtWarning,[mbOk],0);
     exit;
   end;
   dmdEx.ColumnSelectAndProcess(dbgRep,Null,ProcessPartiyaRecount,sdsSebestRecount);
@@ -576,7 +576,7 @@ var
 begin
   sdsSebestRecount := TSQLDataSet(Object1);
   DataSet := dbgNaklot.DataSource.DataSet;
-  //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ"
+  //Перепроводка расходной только по счёту "себестоимость бух"
   dmdEx.StartWaiting;
   sdsSebestRecount.ParamByName('id_schet_in').asInteger  :=
     TClientDataSet(DataSet).Params.ParamValues['id_schet'];  
