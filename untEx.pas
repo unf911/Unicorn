@@ -329,8 +329,7 @@ type
     cdsTovarID_EDIZ: TIntegerField;
     cdsTovarAllIMPORT: TSmallintField;
     cdsTovarAllKODUSL: TStringField;
-    sfBankRASCH: TStringField;
-    cdsBankRASCH1: TStringField;
+    sdsBankRASCH: TStringField;
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);
 //    procedure scUchetBeforeConnect(Sender: TObject);

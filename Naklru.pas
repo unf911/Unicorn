@@ -217,7 +217,6 @@ type
     qeDogovor: TQueryExtender;
     actMakeNnakl: TAction;
     N11: TMenuItem;
-    frNaklr2: TfrxReport;
     actPreviewActElvo: TAction;
     actPrintActElvo: TAction;
     N18: TMenuItem;
@@ -233,7 +232,14 @@ type
     actPreviewOtoplenie: TAction;
     N27: TMenuItem;
     N28: TMenuItem;
+    frNaklr2: TfrxReport;
     frNaklr: TfrxReport;
+    actPreviewActVoda: TAction;
+    actPrintActVoda: TAction;
+    N29: TMenuItem;
+    N30: TMenuItem;
+    N31: TMenuItem;
+    N33: TMenuItem;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure actSettingsExecute(Sender: TObject);
     procedure dbgNaklrDblClick(Sender: TObject);
@@ -314,6 +320,8 @@ type
     procedure actPrintNaklruSubExecute(Sender: TObject);
     procedure actPreviewOtoplenieExecute(Sender: TObject);
     procedure actPrintOtoplenieExecute(Sender: TObject);
+    procedure actPreviewActVodaExecute(Sender: TObject);
+    procedure actPrintActVodaExecute(Sender: TObject);
 
   private
     curSum : currency;
@@ -1014,6 +1022,19 @@ begin
   end;
 end;
 
+procedure PrintActVoda (dbgNaklot: TDBGridEh;param:variant;Object1:Pointer=nil );
+var
+  frmNaklru : TfrmNaklru;
+  bReadyToPrint : boolean;
+begin
+  frmNaklru := TfrmNaklru(Object1);
+  bReadyToPrint := frmNaklru.PrepareReport('NaklruActVoda.fr3');
+  if bReadyToPrint then begin
+    frmNaklru.frNaklr.PrintOptions.ShowDialog :=false;
+    frmNaklru.frNaklr.Print;
+  end;
+end;
+
 procedure PrintNaklruSub (dbgNaklot: TDBGridEh;param:variant;Object1:Pointer=nil );
 var
   frmNaklru : TfrmNaklru;
@@ -1600,6 +1621,24 @@ begin
   dmdEx.ColumnSelectAndProcess(dbgNaklr,Null,PrintActOtoplenie,self);
 end;
 
+procedure TfrmNaklru.actPreviewActVodaExecute(Sender: TObject);
+begin
+  if cdsNaklo.FieldByName('id_dogovor').IsNull then begin
+    messagedlg('Не выбран договор',mtWarning,[mbOK],0);
+    exit;
+  end;
+  try
+    dsNaklot.dataset.DisableControls;
+    PrepareReport('NaklruActVoda.fr3');
+    frNaklr.ShowReport;
+  finally
+    dsNaklot.dataset.EnableControls;
+  end;
+end;
 
+procedure TfrmNaklru.actPrintActVodaExecute(Sender: TObject);
+begin
+  dmdEx.ColumnSelectAndProcess(dbgNaklr,Null,PrintActVoda,self);
+end;
 
 end.
